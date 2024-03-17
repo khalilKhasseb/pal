@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Livewire\Home;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::prefix('/')->name('theme.')->group(function () {
+
+    Route::get('/',Home::class)->name('home');
+
+    Route::get('tblog', function () {
+        return view('theme.pages.blog');
+    });
+    Route::get('/post-single', fn () => view('theme.pages.post'));
 });
