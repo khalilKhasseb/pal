@@ -17,7 +17,7 @@ class Home extends Component
         $this->siteSetting = app(SiteSetting::class)->toCollection();
     }
     public function render()
-    {
+    {    
         return view('livewire.home')
             ->layout('theme.layout.app-layout');
     }

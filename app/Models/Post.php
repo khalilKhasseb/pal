@@ -6,6 +6,7 @@ namespace App\Models;
 // use Illuminate\Database\Eloquent\Model;
 use LaraZeus\Sky\Models\Post as Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
@@ -14,4 +15,27 @@ class Post extends Model
         return $this->belongsTo(config('auth.providers.system_users.database.model', config('auth.providers.system_users.model')), 'user_id', 'id');
     }
 
+
+    public function likes(): HasMany
+    {
+        return $this->hasMany(Like::class, 'post_id', 'id');
+    }
+
+
+    public function get_like_ip(string $ip)
+    {
+        return $this->likes()->where('ip', $ip)->first();
+    }
+
+
+    public function checkIfHasLikeForThisIp(string $ip)
+    {
+        return $this->get_like_ip($ip) !== null;
+    }
+
+    public function has_likes()
+    {
+
+        return $this->likes()->count() > 0;
+    }
 }

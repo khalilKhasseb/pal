@@ -6,7 +6,7 @@ const cssFiles = ["resources/css/app.css"];
 const templateFiles = ["vendor/zeus/frontend.css"];
 // const all =
 
-const al_input = [...jsFiles, ...cssFiles, ...templateFiles];
+const al_input = [...jsFiles, ...cssFiles];
 
 export default defineConfig({
     plugins: [

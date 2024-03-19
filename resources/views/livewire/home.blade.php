@@ -1,5 +1,4 @@
 <div>
-
     <x-theme.slide />
     <x-theme.project />
     <x-theme.count />

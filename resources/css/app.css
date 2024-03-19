@@ -42,3 +42,9 @@
     align-items: center;
     justify-content: space-between;
 }
+
+
+.btn-transperent{
+    background-color: transparent;
+    background: transparent;
+}

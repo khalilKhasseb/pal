@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/template/rtl.css')}}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/template/responsive.css')}}" media="all" />
 
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css' , 'resources/js/app.js'])
 
     <style>
         [x-cloak] {
@@ -155,7 +155,7 @@
         {{-- Header start --}}
 
         @include('theme.partial.header' , [
-          'logo' => Storage::url($settings->site_logo),
+        'logo' => Storage::url($settings->site_logo),
         ])
         {{-- Header Ends --}}
 
@@ -240,15 +240,15 @@
     <script type="text/javascript" src="{{asset('js/template/jquery.nstSlider.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/template/jquery.flexslider.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/template/custom.isotope.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/template/custom.map.js')}}"></script>
+    {{-- <script type="text/javascript" src="{{asset('js/template/custom.map.js')}}"></script> --}}
     <script type="text/javascript" src="{{asset('js/template/custom.js')}}"></script>
 
     <!-- Map Api -->
-    <script async defer
+    {{-- <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqVIkdttPNjl5c5hKlc_Hk3bfXQQlf2Rc&callback=initMap">
 
 
-    </script>
+    </script> --}}
 </body>
 
 </html>
