@@ -37,7 +37,7 @@
 
                 " x-init="console.log('aaa')">
                     <button x-on:click="like_post" class="btn-transperent">
-                        <i class="fa fa-heart-o" aria-hidden="true"></i> <span x-text="likes"></span>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i> <span x-text="likes === null ? 0 : likes"></span>
                     </button>
 
                 </li>
