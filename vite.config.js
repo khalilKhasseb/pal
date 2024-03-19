@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import laravel, { refreshPaths } from "laravel-vite-plugin";
 
-const jsFiles = [];
+const jsFiles = ['resources/js/app.js'];
 const cssFiles = ["resources/css/app.css"];
 const templateFiles = ["vendor/zeus/frontend.css"];
 // const all =

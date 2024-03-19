@@ -19,7 +19,7 @@ class ContentController extends Controller
 
             $this->dislike_post($post, $request);
 
-            return response()->json(['message' => 'Post ' . $post->id . " Has a dislike", 'likes' => $post->likes]);
+            return response()->json(['message' => 'Post ' . $post->id . " Has a dislike", 'likes' => $post->likes === 0 || $post->likes === -1 ? 0 : $post->likes]);
         }
         // check if post has likes
 
