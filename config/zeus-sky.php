@@ -48,7 +48,7 @@ return [
 
     'skipHighlightingTerms' => ['iframe'],
 
-    'defaultFeaturedImage' => null,
+    'defaultFeaturedImage' => config('app.asset_url').'/images/palceholder.jpg',
 
     /**
      * the default editor for pages and posts, Available:
