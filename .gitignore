@@ -3,8 +3,13 @@
 /public/build
 /public/hot
 /public/storage
+/public/web.config
+/public/error_log
+/public/settings
+/public/vendor
 /storage/*.key
 /vendor
+.htaccess
 .env
 .env.backup
 .env.production
