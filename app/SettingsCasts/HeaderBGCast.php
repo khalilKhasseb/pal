@@ -2,13 +2,14 @@
 
 namespace App\SettingsCasts;
 
-use Illuminate\Support\Facades\Storage;
 use Spatie\LaravelSettings\SettingsCasts\SettingsCast;
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-
-class UploadFileCast implements SettingsCast
+class HeaderBGCast implements SettingsCast
 {
+
 
     protected $root = 'site';
     public function get($payload)
@@ -17,7 +18,7 @@ class UploadFileCast implements SettingsCast
         // cast payload
         $payload = strval($payload);
 
-        //$this->ensuerIsAfile($payload);
+        $this->ensuerIsAfile($payload);
 
         return $payload;
     }
@@ -26,7 +27,7 @@ class UploadFileCast implements SettingsCast
     {
         // cast payload
 
-        $site_logo = DB::table('settings')->where('name', 'site_logo')->first();
+        $site_logo = DB::table('settings')->where('name', 'header_bg')->first();
 
         $path = Str::remove("\"", $site_logo->payload);
 
@@ -38,15 +39,26 @@ class UploadFileCast implements SettingsCast
         return  $payload;
     }
 
+
+    protected function ensuerIsAfile(string $name)
+    {
+        // check if file is at storage , filament file uplads a file in public storatge disk
+        // check if file when its been set is in dir;
+        if (!$this->isThere($name)) {
+            return $name;
+        }
+        return $this->isThere($name);
+    }
+
+
     private function isThere($path)
     {
 
         return Storage::disk('public')->exists($path);
     }
 
-    protected function delete_file(string $path)
-    {
+    protected function delete_file(string $path) {
 
-       Storage::disk('public')->delete($path);
+        Storage::disk('public')->delete($path)  ;
     }
 }

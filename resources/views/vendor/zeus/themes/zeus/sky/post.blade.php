@@ -48,7 +48,27 @@
                                             {{ optional($post->published_at)->diffForHumans() ?? '' }}
                                             <!-- 22.04.2017 -->
                                         </li>
-                                        <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a>
+                                        <li x-data="
+                                        {
+                                            likes:@js($post->likes),
+                                            post_id:@js($post->id),
+                                             like_post(){
+                                              axios.get('{{route('ajax.like_post',$post->slug)}}')
+                                              .then(r => {
+                                                if(r.data) this.likes = r.data.likes
+                                              })
+                                              .catch(e => console.log(e))
+                                            }
+
+                                        }
+
+
+                                        ">
+                                            <button x-on:click="like_post" class="btn-transperent">
+                                                <i class="fa fa-heart-o" aria-hidden="true"></i> <span
+                                                    x-text="likes === null ? 0 : likes"></span>
+                                            </button>
+
                                         </li>
                                         <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24
                                                 Comment</a></li>

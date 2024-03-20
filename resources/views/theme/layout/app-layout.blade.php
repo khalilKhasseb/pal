@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/template/flexslider.css')}}" media="all" />
 
     <!-- own style css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/template/style.css')}}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/template/style.css')}}?2323" media="all" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/template/rtl.css')}}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/template/responsive.css')}}" media="all" />
 
@@ -53,104 +53,7 @@
 
 <body id="page-top" data-spy="scroll">
     <div class="box-layout">
-        <div class="box-style">
-            <div class="color-btn">
-                <a href="#"><i class="fa fa-cog fa-spin" aria-hidden="true"></i></a>
-            </div>
-            <div class="box-style-inner">
-                <h3>Box Layout</h3>
-                <div class="box-element">
-                    <div class="box-heading">
-                        <h5>HTML Layout</h5>
-                    </div>
-                    <div class="box-content">
-                        <ul class="box-customize">
-                            <li><a class="boxed-btn" href="#">Boxed</a></li>
-                            <li><a class="wide-btn" href="#">Wide</a></li>
-                            <li><a class="rtl-btn" href="#">Rtl</a></li>
-                            <li><a class="ltl-btn" href="#">Ltl</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="box-element">
-                    <div class="box-heading">
-                        <h5>Backgroud Images</h5>
-                    </div>
-                    <div class="box-content">
-                        <ul class="box-bg-img">
-                            <li>
-                                <a class="bg-1" href="#"><img src="/images/box-style/01.jpg" alt=""></a>
-                            </li>
 
-
-                            {{-- <li>
-                                <a class="bg-2" href="#"><img src="assets/images/box-style/02.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a class="bg-3" href="#"><img src="assets/images/box-style/03.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a class="bg-4" href="#"><img src="assets/images/box-style/04.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a class="bg-5" href="#"><img src="assets/images/box-style/05.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a class="bg-6" href="#"><img src="assets/images/box-style/06.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a class="bg-7" href="#"><img src="assets/images/box-style/07.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a class="bg-8" href="#"><img src="assets/images/box-style/08.jpg" alt=""></a>
-                            </li> --}}
-                        </ul>
-                    </div>
-                </div>
-                <div class="box-element">
-                    <div class="box-heading">
-                        <h5>Backgroud Pattern</h5>
-                    </div>
-                    <div class="box-content">
-                        <ul class="box-pattern-img">
-                            <li>
-                                <a class="pt-1" href="#"><img
-                                        src="https://www.codexcoder.com/images/auror/pt-image/01.png" alt=""></a>
-                            </li>
-                            <li>
-                                <a class=" pt-2" href="#"><img
-                                        src="https://www.codexcoder.com/images/auror/pt-image/02.png" alt=""></a>
-                            </li>
-                            <li>
-                                <a class=" pt-3" href="#"><img
-                                        src="https://www.codexcoder.com/images/auror/pt-image/03.png" alt=""></a>
-                            </li>
-                            <li>
-                                <a class=" pt-4" href="#"><img
-                                        src="https://www.codexcoder.com/images/auror/pt-image/04.png" alt=""></a>
-                            </li>
-                            <li>
-                                <a class=" pt-5" href="#"><img
-                                        src="https://www.codexcoder.com/images/auror/pt-image/05.png" alt=""></a>
-                            </li>
-                            <li>
-                                <a class=" pt-6" href="#"><img
-                                        src="https://www.codexcoder.com/images/auror/pt-image/06.png" alt=""></a>
-                            </li>
-                            <li>
-                                <a class=" pt-7" href="#"><img
-                                        src="https://www.codexcoder.com/images/auror/pt-image/07.png" alt=""></a>
-                            </li>
-                            <li>
-                                <a class=" pt-8" href="#"><img
-                                        src="https://www.codexcoder.com/images/auror/pt-image/08.png" alt=""></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
         {{-- Header start --}}
 
@@ -163,7 +66,7 @@
 
         @if(Route::current()->getName() !== 'theme.home')
         <!-- Start Page Header Section -->
-        <section class="bg-page-header">
+        <section style="--header-bg:url({{Storage::url($settings->header_bg)}})" class="bg-page-header">
             <div class="page-header-overlay">
                 <div class="container">
                     <div class="row">

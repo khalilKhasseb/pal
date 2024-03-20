@@ -38,8 +38,6 @@ class MangeHeader extends SettingsPage
                             ->getChildComponentContainer()
                             ->fill()
                     ),
-
-
                 Grid::make(2)
                     ->schema(function (Get $get) {
                         if ($get('top_header_enabled')) {
@@ -49,9 +47,6 @@ class MangeHeader extends SettingsPage
                                         TextInput::make('item'),
                                         IconPicker::make('icon'),
                                         ColorPicker::make('color')
-
-
-
                                     ])->afterStateHydrated(function (Repeater $component, $state) {
                                         $items = app(HeaderSetting::class)->top_header_items;
                                         $component->state($items);
@@ -72,19 +67,13 @@ class MangeHeader extends SettingsPage
     protected function mutateFormDataBeforeSave(array $data): array
     {
         // check if items are filled
-
         $top_items  = app(HeaderSetting::class)->top_header_items;
-
-
         if (count($top_items) > 0) {
             // check if disabled
-
             if (array_key_exists('top_header_enabled', $data) && !$data['top_header_enabled']) {
                 $data['top_header_items'] = $top_items;
             }
         }
-        //dd($data);
-
         return $data;
     }
 }

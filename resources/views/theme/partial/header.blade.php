@@ -72,10 +72,7 @@
                                     @endisset
 
 
-                                    {{-- <li><a href="#about" class="page-scroll">About</a></li> --}}
-                                    {{-- <li><a href="#services" class="page-scroll">Services</a></li>
-                                    <li><a href="#events" class="page-scroll">events</a></li>
-                                    <li><a href="#contact" class="page-scroll">contact</a></li> --}}
+                                  
                                 </ul>
 
                                 <div class="menu-right-option pull-right">

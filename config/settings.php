@@ -40,6 +40,7 @@ return [
     'repositories' => [
         'database' => [
             'type' => Spatie\LaravelSettings\SettingsRepositories\DatabaseSettingsRepository::class,
+            // 'model' => App\Models\SettingsPropertyWithMedia::class,
             'model' => null,
             'table' => null,
             'connection' => null,

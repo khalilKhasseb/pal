@@ -6,10 +6,10 @@ use App\Settings\SiteSetting;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Pages\SettingsPage;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class MangeSite extends SettingsPage
 {
@@ -30,6 +30,10 @@ class MangeSite extends SettingsPage
                         TextInput::make('site_description')
                             ->suffixIcon('heroicon-o-document-text'),
                         FileUpload::make('site_logo')
+                            ->image()
+                            ->imageEditor()
+                            ->directory('site'),
+                        FileUpload::make('header_bg')
                             ->image()
                             ->imageEditor()
                             ->directory('site')
