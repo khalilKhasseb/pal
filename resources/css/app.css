@@ -1,6 +1,6 @@
 .flex{
 
- display: flex;
+ display: flex !important;
 }
 
 .items-center{
@@ -11,6 +11,22 @@
     justify-content: space-between;
 }
 
+.justify-center{
+    justify-content: center;
+}
+
+.p-2{
+    padding: 0.5rem;
+}
+
+
+.content-box-icon{
+    width:25px;
+    border:1px solid #eee;
+    padding: 5px;
+
+
+}
 .baseline{
     align-items: baseline;
 }

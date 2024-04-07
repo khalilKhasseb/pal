@@ -10,6 +10,25 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
+
+    // protected $fillable = [
+    //     'title',
+    //     'slug',
+    //     'description',
+    //     'post_type',
+    //     'content',
+    //     'user_id',
+    //     'parent_id',
+    //     'featured_image',
+    //     'published_at',
+    //     'sticky_until',
+    //     'password',
+    //     'ordering',
+    //     'status',
+    //     'like_id'
+    // ];
+
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(config('auth.providers.system_users.database.model', config('auth.providers.system_users.model')), 'user_id', 'id');

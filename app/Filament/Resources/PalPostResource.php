@@ -21,4 +21,16 @@ class PalPostResource extends Resource
     {
         return (string) static::getModel()::query()->where('post_type', 'post')->count();
     }
+
+    // protected static function
+
+    protected function mutateFormDataBeforeCreate(array $data)
+    {
+
+        // dd($data);
+
+         return $data;
+    }
+
+    // protected function mutate
 }

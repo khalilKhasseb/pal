@@ -2380,12 +2380,12 @@ section{
 	overflow: hidden;
 	padding: 5px 0;
 }
-.address li .fa{
+.address li .fa , .address li svg{
 	float: left;
 	width: 36px;
 	height: 36px;
 	font-size: 20px;
-	color: #53a92c;
+	/* color: #53a92c; */
 	line-height: 36px;
 	text-align: center;
 	background: #000000;

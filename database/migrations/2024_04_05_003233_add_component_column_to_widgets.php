@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->foreignIdFor(App\Models\Like::class)->nullable();
+        Schema::table('widgets', function (Blueprint $table) {
+            //
+            $table->string('component' , 125)->nullable(true);
         });
     }
 
@@ -21,9 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
+        Schema::table('widgets', function (Blueprint $table) {
             //
-            $table->removeColumn('like_id');
+            $table->removeColumn('component');
         });
     }
 };

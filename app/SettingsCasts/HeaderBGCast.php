@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+
 class HeaderBGCast implements SettingsCast
 {
 
@@ -16,6 +17,7 @@ class HeaderBGCast implements SettingsCast
     {
 
         // cast payload
+        //dd($payload);
         $payload = strval($payload);
 
         $this->ensuerIsAfile($payload);
@@ -26,15 +28,16 @@ class HeaderBGCast implements SettingsCast
     public function set($payload)
     {
         // cast payload
+        $payloadValue = json_decode($payload, true)[app()->getLocale()];
 
         $site_logo = DB::table('settings')->where('name', 'header_bg')->first();
 
         $path = Str::remove("\"", $site_logo->payload);
 
-        $payload = strval($payload);
+        // $payload = strval($payload);
         // check if file is the same after save
 
-        if($payload !== $path && $this->isThere($path)) $this->delete_file($path);
+        if ($payloadValue !== $path && $this->isThere($path)) $this->delete_file($path);
 
         return  $payload;
     }
@@ -57,8 +60,9 @@ class HeaderBGCast implements SettingsCast
         return Storage::disk('public')->exists($path);
     }
 
-    protected function delete_file(string $path) {
+    protected function delete_file(string $path)
+    {
 
-        Storage::disk('public')->delete($path)  ;
+        Storage::disk('public')->delete($path);
     }
 }

@@ -17,7 +17,8 @@ return [
     */
     'sets' => [
        'fontawesome-solid',
-        'ant-design-icons'
+        'ant-design-icons',
+        'css-icons'
     ],
     //     example:
     //     'sets' => 'heroicons',

@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-//use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\Model;
 use Spatie\LaravelSettings\Models\SettingsProperty as Model;
+// use Spatie\MediaLibrary\HasMedia;
+// use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Translatable\HasTranslations;
 
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
-
-class SettingsPropertyWithMedia extends Model implements HasMedia
+class SettingsPropertyWithMedia extends Model
 {
-    use InteractsWithMedia;
+    use HasTranslations;
+    public $translatable = ['payload'];
 
 }

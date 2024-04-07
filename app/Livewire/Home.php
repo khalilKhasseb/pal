@@ -14,10 +14,11 @@ class Home extends Component
 
     public function mount()
     {
-        $this->siteSetting = app(SiteSetting::class)->toCollection();
+        //dd(app(SiteSetting::class));
+        //$this->siteSetting = ->toCollection();
     }
     public function render()
-    {    
+    {
         return view('livewire.home')
             ->layout('theme.layout.app-layout');
     }

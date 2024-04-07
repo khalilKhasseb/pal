@@ -2,14 +2,15 @@
 
 namespace App\Settings;
 
-use App\SettingsCasts\HeaderBGCast;
 use Spatie\LaravelSettings\Settings;
+use App\SettingsCasts\HeaderBGCast;
 use App\SettingsCasts\UploadFileCast;
+use App\SettingsCasts\SiteNameCast;
 
 class SiteSetting extends Settings
 {
-    public string $site_name;
-    public string $site_description;
+    public mixed $site_name;
+    public mixed $site_description;
 
     public  $site_logo;
 
@@ -24,6 +25,7 @@ class SiteSetting extends Settings
         return [
             'site_logo' => UploadFileCast::class,
             'header_bg' => HeaderBGCast::class,
+            'site_name' => SiteNameCast::class,
         ];
     }
 }

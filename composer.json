@@ -17,6 +17,7 @@
         "filament/spatie-laravel-translatable-plugin": "3.2",
         "guava/filament-icon-picker": "2.0",
         "guzzlehttp/guzzle": "^7.2",
+        "khatabwedaa/blade-css-icons": "^1.4",
         "lara-zeus/sky": "^3.4",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",

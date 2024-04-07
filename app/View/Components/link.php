@@ -5,17 +5,15 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Settings\SiteSetting;
 
-class appLayout extends Component
+class link extends Component
 {
     /**
      * Create a new component instance.
      */
-
-    
     public function __construct()
     {
+        //
     }
 
     /**
@@ -23,9 +21,6 @@ class appLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('theme.layout.app-layout', [
-            'test' => "Test Vakyue"
-
-        ]);
+        return view('components.link');
     }
 }

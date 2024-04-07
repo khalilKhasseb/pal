@@ -39,9 +39,10 @@ return [
      */
     'repositories' => [
         'database' => [
-            'type' => Spatie\LaravelSettings\SettingsRepositories\DatabaseSettingsRepository::class,
-            // 'model' => App\Models\SettingsPropertyWithMedia::class,
-            'model' => null,
+            // 'type' => Spatie\LaravelSettings\SettingsRepositories\DatabaseSettingsRepository::class,
+            'type' => App\Classes\DatabaseSettingsRepository::class,
+            'model' => App\Models\SettingsPropertyWithMedia::class,
+            // 'model' => null,
             'table' => null,
             'connection' => null,
         ],
@@ -79,7 +80,7 @@ return [
     'global_casts' => [
         DateTimeInterface::class => Spatie\LaravelSettings\SettingsCasts\DateTimeInterfaceCast::class,
         DateTimeZone::class => Spatie\LaravelSettings\SettingsCasts\DateTimeZoneCast::class,
-        //        Spatie\DataTransferObject\DataTransferObject::class => Spatie\LaravelSettings\SettingsCasts\DtoCast::class,
+        //  Spatie\DataTransferObject\DataTransferObject::class => Spatie\LaravelSettings\SettingsCasts\DtoCast::class,
         Spatie\LaravelData\Data::class => Spatie\LaravelSettings\SettingsCasts\DataCast::class,
     ],
 

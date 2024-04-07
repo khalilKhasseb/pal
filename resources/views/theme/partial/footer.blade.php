@@ -4,90 +4,26 @@
             <div class="row">
                 <div class="footer-top">
                     <div class="row">
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="footer-widgets">
-                                <div class="widgets-title">
-                                    <h3>About us</h3>
-                                </div>
-                                <!-- .widgets-title -->
-                                <div class="widgets-content">
-                                    <p>Distily enable team driven services through extensive is a relatonships platforms
-                                        with interactive content. Enthusiastically scale effective.</p>
-                                </div>
-                                <!-- .widgets-content -->
-                                <div class="address-box">
-                                    <ul class="address">
-                                        <li>
-                                            <i class="fa fa-home" aria-hidden="true"></i>
-                                            <span>New Chokoya Road, USA.</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <span>+8801 923 970 698.</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                            <span>Contact@admin.com</span>
+                        @php
+                        $contentbox = App\Models\Widget::location('bottom-footer')->get();
 
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-globe" aria-hidden="true"></i>
-                                            <span>Emai@admin.com</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- .address -->
-                            </div>
-                            <!-- .footer-widgets -->
-                        </div>
-                        <!-- .col-lg-3 -->
+                        @endphp
+                        @if(!empty($contentbox) || !is_null($contentbox))
+                        @foreach ($contentbox as $box )
+                        {{-- @dd($box->component) --}}
                         <div class="col-lg-3 col-sm-6">
-                            <div class="footer-widgets">
-                                <div class="widgets-title">
-                                    <h3>Latest News</h3>
-                                </div>
-                                <!-- .widgets-title -->
-                                <ul class="latest-news">
-                                    <li>
-                                        <span class="thumbnail-img">
-                                            <img src="images/home01/small-bog-img-1.jpg" alt="small-bog-img-1"
-                                                class="img-responsive" />
-                                        </span>
-                                        <div class="thumbnail-content">
-                                            <h5><a href="blog_single.html">Corem psum dolr them amectetuer
-                                                    adipiscing...</a></h5>
-                                            <span class="post-date">04 February 2017</span>
-                                        </div>
-                                        <!-- .thumbnail-content -->
-                                    </li>
-                                    <li>
-                                        <span class="thumbnail-img">
-                                            <img src="images/home01/small-bog-img-2.jpg" alt="small-bog-img-2"
-                                                class="img-responsive" />
-                                        </span>
-                                        <div class="thumbnail-content">
-                                            <h5><a href="blog_single.html">Mirum est notare quam littera gothica
-                                                    nunc...</a></h5>
-                                            <span class="post-date">28 January 2017</span>
-                                        </div>
-                                        <!-- .thumbnail-content -->
-                                    </li>
-                                    <li>
-                                        <span class="thumbnail-img">
-                                            <img src="images/home01/small-bog-img-3.jpg" alt="small-bog-img-3"
-                                                class="img-responsive" />
-                                        </span>
-                                        <div class="thumbnail-content">
-                                            <h5><a href="blog_single.html">Corem psum dolr them amectetuer
-                                                    adipiscing...</a></h5>
-                                            <span class="post-date">03 January 2017</span>
-                                        </div>
-                                        <!-- .thumbnail-content -->
-                                    </li>
-                                </ul>
-                            </div>
+
+
+                            <x-dynamic-component :component="Str::of('widgets.'.$box->component)" :title="$box->title"
+                                :content="$box->content" />
                             <!-- .footer-widgets -->
                         </div>
+                        @endforeach
+
+                        @endif
+                        <!-- .col-lg-3 -->
+
+
                         <!-- .col-lg-3 -->
                         <div class="col-lg-3 col-sm-6">
                             <div class="footer-widgets">
@@ -170,32 +106,6 @@
     </div>
     <!-- .bg-footer-top -->
 
-    <div class="bg-footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="footer-bottom">
-                    <div class="copyright-txt">
-                        <p>&copy; 2017. Designer By <a href="#" title="Al-Amin(Web Designer)">LabArtisan</a></p>
-                    </div>
-                    <!-- .copyright-txt -->
-                    <div class="social-box">
-                        <ul class="social-icon-rounded">
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- .social-box -->
-
-                </div>
-                <!-- .footer-bottom -->
-            </div>
-            <!-- .row -->
-        </div>
-        <!-- .container -->
-    </div>
-    <!-- .bg-footer-bottom -->
+    @include('theme.partial.footer_bottom')
 
 </footer>
