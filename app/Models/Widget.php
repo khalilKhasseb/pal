@@ -24,6 +24,6 @@ class Widget extends Model
     public function scopeType(Builder $query, string $type): void
     {
 
-        $query->where('component', "component-$type");
+        $query->where('component', $type);
     }
 }
