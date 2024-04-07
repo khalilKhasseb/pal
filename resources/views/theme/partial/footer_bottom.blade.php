@@ -11,7 +11,7 @@
                     <ul class="social-icon-rounded">
                         @php
                         $links = App\Models\Widget::location('footer')->type('link')->get();
-                        // dd($links[0]->content);
+                         dd($links->count());
                         @endphp
                         @if(!is_null($links) || $links->count() > 0)
                         @foreach ($links[0]->content as $link )
