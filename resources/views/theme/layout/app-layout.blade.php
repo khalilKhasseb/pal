@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/template/flexslider.css')}}" media="all" />
 
     <!-- own style css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/template/style.css')}}?2323das" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/template/style.css')}}?11sad" media="all" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/template/rtl.css')}}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/template/responsive.css')}}" media="all" />
 

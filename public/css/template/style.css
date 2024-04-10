@@ -4107,7 +4107,7 @@ ul>li>a:focus, ul>li>a:hover {
 .pagination-option{
 	padding-top: 45px;
 }
-.pagination-option .pagination>li>a{
+.pagination-option .pagination>li>a , .pagination-option .pagination>li>span{
 	width: 40px;
     height: 40px;
 	line-height: 40px;
@@ -4118,6 +4118,11 @@ ul>li>a:focus, ul>li>a:hover {
 	border: 1px solid #65ac4c;
 	border-radius: 4px;
 	padding: 0;
+
+}
+
+.pagination-option .pagination>li>span{
+    display: block;
 }
 .pagination-option .pagination>li>a:focus,
 .pagination-option .pagination>li>a:hover,

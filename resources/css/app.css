@@ -64,3 +64,11 @@
     background-color: transparent;
     background: transparent;
 }
+
+
+
+.disbaled{
+    color:gray !important;
+    border-color: gray !important;
+    opacity: 0.6;
+}

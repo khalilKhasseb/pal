@@ -1,26 +1,28 @@
-<div class="blog-items">
-    <div class="blog-img">
-        <a href="{{route('post',$post->slug)}}"><img src="{{$post->image()}}" alt="blog-img-1"
-                class="img-responsive" /></a>
-    </div>
-    <!-- .blog-img -->
-    <div class="blog-content-box">
-        <div class="blog-content">
-            <h4><a href="{{route('post' ,$post->slug)}}">{!! $post->title !!}</a></h4>
-            @if($post->description !== null)
-            <p>
-                {!! $post->description !!}
-            </p>
-            @endif
+<div class="col-lg-4 col-sm-6 col-12">
+
+    <div class="blog-items">
+        <div class="blog-img">
+            <a href="{{route('post',$post->slug)}}"><img src="{{$post->image()}}" alt="blog-img-1"
+                    class="img-responsive" /></a>
         </div>
-        <!-- .blog-content -->
-        <div class="meta-box">
-            <ul class="meta-post">
-                <li>
-                    <i class="fa fa-calendar" aria-hidden="true">
-                    </i> {{optional($post->published_at)->diffForHumans() ?? ''}}
-                </li>
-                <li x-data="
+        <!-- .blog-img -->
+        <div class="blog-content-box">
+            <div class="blog-content">
+                <h4><a href="{{route('post' ,$post->slug)}}">{!! $post->title !!}</a></h4>
+                @if($post->description !== null)
+                <p>
+                    {!! $post->description !!}
+                </p>
+                @endif
+            </div>
+            <!-- .blog-content -->
+            <div class="meta-box">
+                <ul class="meta-post">
+                    <li>
+                        <i class="fa fa-calendar" aria-hidden="true">
+                        </i> {{optional($post->published_at)->diffForHumans() ?? ''}}
+                    </li>
+                    <li x-data="
                 {
                     likes:@js($post->likes),
                     post_id:@js($post->id),
@@ -36,21 +38,25 @@
 
 
                 " x-init="console.log('aaa')">
-                    <button x-on:click="like_post" class="btn-transperent">
-                        <i class="fa fa-heart-o" aria-hidden="true"></i> <span x-text="likes === null ? 0 : likes"></span>
-                    </button>
+                        <button x-on:click="like_post" class="btn-transperent">
+                            <i class="fa fa-heart-o" aria-hidden="true"></i> <span
+                                x-text="likes === null ? 0 : likes"></span>
+                        </button>
 
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24
-                        Comment</a>
-                </li>
-            </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24
+                            Comment</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- .meta-box -->
         </div>
-        <!-- .meta-box -->
+        <!-- .blog-content-box -->
     </div>
-    <!-- .blog-content-box -->
+    <!-- .blog-items -->
 </div>
+<!-- .col-md-4 -->
 
 {{-- <article class="mt-6" itemscope itemtype="https://schema.org/Movie">
     <div class="px-6 pb-6 mx-auto bg-white dark:bg-gray-800 rounded-[2rem] rounded-bl-none rounded-tr-none shadow-md">
