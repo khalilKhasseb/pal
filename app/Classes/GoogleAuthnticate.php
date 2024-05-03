@@ -86,7 +86,7 @@ class GoogleAuthnticate
 
     public static function makeAuthnticateUrl(array $scope = [])
     {
-        $client = static::makeClient($scope, true);
+        $client = static::makeClient($scope);
         return $client->createAuthUrl($scope);
     }
 
