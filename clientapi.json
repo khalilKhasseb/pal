@@ -1,0 +1,10 @@
+{
+    "web": {
+        "client_id": "649052149306-ujdhlj4tnv1nv93jar4m1t4va3rcivl8.apps.googleusercontent.com",
+        "project_id": "palgpc",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "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"
+    }
+}

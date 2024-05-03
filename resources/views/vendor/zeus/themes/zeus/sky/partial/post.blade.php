@@ -26,10 +26,15 @@
                 {
                     likes:@js($post->likes),
                     post_id:@js($post->id),
+                    liked:@js($post->checkIfHasLikeForThisIp(request()->getClientIp())),
                      like_post(){
                       axios.get('{{route('ajax.like_post',$post->slug)}}')
                       .then(r => {
-                        if(r.data) this.likes = r.data.likes
+                        console.log(r)
+                        if(r.data){
+                            this.likes = r.data.likes
+                            this.liked = r.data.liked
+                        }
                       })
                       .catch(e => console.log(e))
                     }
@@ -37,16 +42,18 @@
                 }
 
 
-                " x-init="console.log('aaa')">
+                ">
                         <button x-on:click="like_post" class="btn-transperent">
-                            <i class="fa fa-heart-o" aria-hidden="true"></i> <span
-                                x-text="likes === null ? 0 : likes"></span>
+                            <i x-bind:style="liked && 'color:red'  " x-bind:class="`fa fa-heart-o`"
+                                aria-hidden="true"></i> <span x-text="likes === null ? 0 : likes"></span>
                         </button>
 
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24
-                            Comment</a>
+                        <a href="{{route('author_posts',$post->user_id)}}"><i class="fa fa-user-o"
+                                aria-hidden="true"></i>
+                            {{$post->author->name}}
+                        </a>
                     </li>
                 </ul>
             </div>

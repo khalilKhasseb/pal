@@ -6,7 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades;
 use Illuminate\View\View;
 use App\View\Creators\AppLayoutCreator;
+use App\View\Creators\BlogCreator;
 use App\View\Creators\HeaderSettingsCreator;
+
 class AppViewServiceProvider extends ServiceProvider
 {
     /**
@@ -25,5 +27,7 @@ class AppViewServiceProvider extends ServiceProvider
         //
         Facades\View::composer('theme.layout.app-layout', AppLayoutCreator::class);
         Facades\View::composer('theme.partial.header', HeaderSettingsCreator::class);
+        // Facades\View::composer('theme.partial.header', HeaderSettingsCreator::class);
+        Facades\View::composer('zeus::themes.zeus.sky.partial.sidebar', BlogCreator::class);
     }
 }

@@ -7,7 +7,9 @@ namespace App\Models;
 use LaraZeus\Sky\Models\Post as Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
+use App\Models\Comment;
 class Post extends Model
 {
 
@@ -40,6 +42,9 @@ class Post extends Model
         return $this->hasMany(Like::class, 'post_id', 'id');
     }
 
+    public function comments() : MorphMany {
+        return $this->morphMany(Comment::class , 'commantabel');
+    }
 
     public function get_like_ip(string $ip)
     {

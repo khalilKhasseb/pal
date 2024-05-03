@@ -6,7 +6,7 @@ return [
     /**
      * set the default path for the blog homepage.
      */
-    'prefix' => 'blog',
+    'prefix' => 'content',
 
     /**
      * the middleware you want to apply on all the blog routes
@@ -48,7 +48,7 @@ return [
 
     'skipHighlightingTerms' => ['iframe'],
 
-    'defaultFeaturedImage' => config('app.asset_url').'/images/palceholder.jpg',
+    'defaultFeaturedImage' => config('app.asset_url') . '/images/palceholder.jpg',
 
     /**
      * the default editor for pages and posts, Available:

@@ -18,6 +18,8 @@ use App\Filament\Widgets\StatsOverviewWidget;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Facades\Filament;
 // use Filament\Form\Components\Sw
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\TextEntry;
 
 class MangeHeader extends SettingsPage
 {
@@ -73,6 +75,22 @@ class MangeHeader extends SettingsPage
             ]);
     }
 
+    public function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->state([
+                'name' => 'MacBook Pro',
+                'category' => [
+                    'name' => 'Laptops',
+                ],
+               
+            ])
+            ->schema([
+                TextEntry::make('name'),
+                TextEntry::make('category.name'),
+            ]);
+    }
+
     protected function mutateFormDataBeforeSave(array $data): array
     {
         // check if items are filled
@@ -87,7 +105,7 @@ class MangeHeader extends SettingsPage
             }
         }
 
-       
+
         foreach ($data as $key => $value) {
             // convert value to from json to array
             // get Translation
@@ -96,11 +114,12 @@ class MangeHeader extends SettingsPage
             $translation[app()->getLocale()] = $value;
 
             $data[$key] = json_encode($translation, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-
         }
 
         return $data;
     }
+
+
 
     protected function mutateFormDataBeforeFill(array $data): array
     {

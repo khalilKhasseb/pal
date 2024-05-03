@@ -1,5 +1,4 @@
-<div class="mx-4">
-
+<div>
     <x-slot name="header">
         <h1>{{ __('Libraries') }}</h1>
     </x-slot>
@@ -10,43 +9,63 @@
         </li>
     </x-slot>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-        @foreach($categories as $category)
-            <x-filament::section>
-                <h2><a href="{{ route('library.tag',$category->slug ) }}" class="text-secondary-600">{{ $category->name }}</a></h2>
-                <div class="space-y-2">
-                    @foreach($category->library as $library)
-                        <div>
-                            <a href="{{ route('library.item', ['slug' => $library->slug]) }}" class="flex flex-col py-2 px-1.5 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition ease-in-out duration-500 block cursor-pointer">
-                                <div x-data class="flex items-center justify-between text-primary-600 dark:text-primary-400 hover:dark:text-primary-300">
-                                    <h3>{{ $library->title ?? '' }}</h3>
-                                    @if($library->type === 'IMAGE')
-                                        <span x-tooltip.raw="{{ __('Image') }}">
-                                            @svg('heroicon-o-photo','w-4 h-4 text-gray-400 dark:text-gray-500')
-                                        </span>
-                                    @endif
+    {{-- library categories loop --}}
 
-                                    @if($library->type === 'FILE')
-                                        <span x-tooltip.raw="{{ __('FILE') }}">
-                                            @svg('heroicon-o-document','w-4 h-4 text-gray-400 dark:text-gray-500')
-                                        </span>
-                                    @endif
+    {{-- Each category will be rendered in a group list and catrogry title will be a header for group list --}}
 
-                                    @if($library->type === 'VIDEO')
-                                        <span x-tooltip.raw="{{ __('VIDEO') }}">
-                                            @svg('heroicon-o-film','w-4 h-4 text-gray-400 dark:text-gray-500')
-                                        </span>
-                                    @endif
-                                </div>
-                                <cite class="text-sm text-primary-600 dark:text-primary-500 hover:dark:text-primary-300">
-                                    {{ $library->description }}
-                                </cite>
-                            </a>
-                        </div>
-                    @endforeach
+    <div class="container py-5">
+
+        <div class="row">
+
+
+            @foreach($categories as $category )
+
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        {{$category->name}}
+                        <a class="badge bg-success fs-6" href="{{route('library.tag',['slug' => $category->slug])}}">
+                            {{__('Vist')}}
+                        </a>
+                    </div>
+                    <div class="list-group">
+
+                        @foreach ($category->library as $library )
+                        {{-- Categroy items --}}
+                        <a href="{{route('library.item' ,['slug' => $library->slug])}}"
+                            class="list-group-item list-group-item-action">
+                            <div class="d-flex justify-content-between align-iteme-center">
+                                <span>{{$library->title ?? ''}}</span>
+                                {{-- Add icon according to library type [image , video , file] --}}
+                                @if($library->type === 'IMAGE')
+                                <span style="width: 25px" x-tooltip.raw="{{ __('Image') }}">
+                                    @svg('heroicon-o-photo')
+                                </span>
+                                @endif
+                                @if($library->type === 'FILE')
+                                <span class="d-inline-block" style="width: 25px" x-tooltip.raw="{{ __('FILE') }}">
+                                    @svg('heroicon-o-document')
+                                </span>
+                                @endif
+                                @if($library->type === 'VIDEO')
+                                <span style="width:25px;" x-tooltip.raw="{{ __('VIDEO') }}">
+                                    @svg('heroicon-o-film')
+                                </span>
+                                @endif
+
+                            </div>
+
+                        </a>
+                        @endforeach
+                    </div>
+
+
                 </div>
-            </x-filament::section>
-        @endforeach
-    </div>
 
+                {{-- Category librarys --}}
+
+            </div>
+            @endforeach
+        </div>
+    </div>
 </div>

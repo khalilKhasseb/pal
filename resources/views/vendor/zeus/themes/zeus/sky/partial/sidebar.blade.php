@@ -1,5 +1,11 @@
 {{--@include($skyTheme.'.partial.authors')--}}
-@include($skyTheme.'.partial.sidebar.search')
-@include($skyTheme.'.partial.sidebar.categories')
-@include($skyTheme.'.partial.sidebar.recent')
-@include($skyTheme.'.partial.sidebar.pages')
+<div class="sidebar">
+    @include($skyTheme.'.partial.sidebar.search')
+
+    @include($skyTheme.'.partial.sidebar.categories')
+
+    @include($skyTheme.'.partial.sidebar.recent')
+
+    @include($skyTheme.'.partial.sidebar.tags')
+
+</div>

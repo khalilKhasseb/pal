@@ -24,8 +24,7 @@
 
 
 
-    {{--
-    <link rel="stylesheet" href="{{ asset('vendor/zeus/frontend.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('vendor/zeus/frontend.css') }}"> --}}
 
     <link rel="stylesheet" type="text/css" href="{{asset('css/template/font-awesome.min.css')}}" media="all" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/fonts/flaticon.css')}}" media="all" />

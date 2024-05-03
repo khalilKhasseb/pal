@@ -11,8 +11,23 @@ class ThemeRenderNaveItem
 
     public static function render(array $item, string $class = '')
     {
-        $color = '';
 
+
+
+        $color = '';
+        if ($item['type'] === 'category') {
+            $category = SkyPlugin::get()->getModel('Tag')::getWithType('category')->find($item['data']['category_id']) ?? '';
+            $activeClass = (request()->routeIs('page', $category)) ? $color : 'border-transparent';
+            return '<a class="' . $class . ' ' . $activeClass . '"
+            target="' . ($item['data']['target'] ?? '_self') . '"
+            href="' . route('tags', [
+                'slug' => $category->slug,
+                'type' => $category->type
+            ]) . '"
+        >' .
+                $item['label'] .
+                '</a>';
+        }
         if ($item['type'] === 'page-link' || $item['type'] === 'page_link') {
             $page = SkyPlugin::get()->getModel('Post')::page()->whereDate('published_at', '<=', now())->find($item['data']['page_id']) ?? '';
             $activeClass = (request()->routeIs('page', $page)) ? $color : 'border-transparent';

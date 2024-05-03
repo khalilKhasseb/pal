@@ -52,26 +52,26 @@
                                         {
                                             likes:@js($post->likes),
                                             post_id:@js($post->id),
-                                             like_post(){
+                                            liked : @js($post->checkIfHasLikeForThisIp(request()->getClientIp())),
+                                            like_post(){
                                               axios.get('{{route('ajax.like_post',$post->slug)}}')
                                               .then(r => {
+                                                console.log(r)
                                                 if(r.data) this.likes = r.data.likes
                                               })
                                               .catch(e => console.log(e))
                                             }
 
                                         }
-
-
                                         ">
-                                            <button x-on:click="like_post" class="btn-transperent">
-                                                <i class="fa fa-heart-o" aria-hidden="true"></i> <span
+                                            <button x-on:click="console.log(1)" class="btn-transperent">
+                                                <i   class="fa fa-heart-o" aria-hidden="true"></i> <span
                                                     x-text="likes === null ? 0 : likes"></span>
                                             </button>
 
                                         </li>
-                                        <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24
-                                                Comment</a></li>
+                                        {{-- <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24
+                                                Comment</a></li> --}}
                                     </ul>
                                 </div>
                                 <!-- .meta-box -->
@@ -79,29 +79,7 @@
                                     <h4>{{$post->title}}</h4>
 
                                     {!! $post->getContent() !!}
-                                    {{-- <p>Progressively brand sticky whit without frictionless vortals visualize cost
-                                        effective networks viral Progressively redefine efficient platforms for
-                                        cuttingedge business develop extensive aservices Collaboratively
-                                        conceptualize future-proof partnerships through holistic aproducts
-                                        progreively brand sticky ROI without frictionless vortals. Assertively
-                                        visualize cost effective networks visavis viral experiences. Progressively
-                                        redefine efficient platforms for awesome cuttingedge business. Conveniently
-                                        develop extensive services a effective quality vectors. Colaboratvely
-                                        coeptualize future-proof partnerships through holistic products.</p>
 
-                                    <p class="quate-para">Completely actuaze cent centric coloration and idea
-                                        saharng without an installed awesome theme of event aresourcescreatve
-                                        awesome template and completely and awesome event template and awesome event
-                                        template.</p>
-                                    <p>Progressively brand sticky whit without frictionless vortals visualize cost
-                                        effective networks viral Progressively redefine efficient platforms for
-                                        cuttingedge business develop extensive aservices Collaboratively
-                                        conceptualize future-proof partnerships through holistic aproducts
-                                        progreively brand sticky ROI without frictionless vortals. Assertively
-                                        visualize cost effective networks visavis viral experiences. Progressively
-                                        redefine efficient platforms for awesome cuttingedge business. Conveniently
-                                        develop extensive services a effective quality vectors. Colaboratvely
-                                        coeptualize future-proof partnerships through holistic products.</p> --}}
                                 </div>
                                 <!-- .blog-content -->
                                 <div class="single-blog-bottom">
@@ -135,10 +113,51 @@
                             </div>
                             <!-- .blog-content-box -->
                         </div>
+
+                        <div class="comments-option" x-data="{
+                            comments:@js($post->comments)
+                        }">
+                            <h4 class="comments-title">{{$post->comments->count()}} Comments</h4>
+
+                            @foreach ($post->comments as $comment)
+
+                            @if(!empty($comment->comment) && !empty($comment->comment))
+                            <div class="comments-items">
+                                <div class="comments-image">
+                                    <img src="{{config('theme.defaultCommentAuthorImage')}}"
+                                        alt="comments-author-img" />
+                                </div>
+                                <!-- .comments-image -->
+                                <div class="comments-content">
+                                    <div class="comments-author-title">
+                                        <div class="comments-author-name">
+                                            <h4><a href="#">{{$comment->name}}</a> -
+                                                <small>{{optional($comment->created_at)->diffForHumans()}}</small>
+                                            </h4>
+                                        </div>
+                                        {{-- <div class="reply-icon">
+                                            <h6><i class="fa fa-reply-all"></i><a href="#"> Reply</a></h6>
+                                        </div> --}}
+                                    </div>
+                                    <!-- .comments-author-title -->
+                                    <p>{{$comment->comment}}</p>
+                                </div>
+                                <!-- .comments-content -->
+                            </div>
+                            <!-- .comments-items -->
+                            @endif
+                            @endforeach
+
+                        </div>
+                        <!-- .comments-option -->
+
+                        @livewire('comment' , ['post' => $post])
                     </div>
 
                     <div class="col-lg-4">
-                        <div class="sidebar">
+
+                        @include($skyTheme.'.partial.sidebar')
+                        {{-- <div class="sidebar">
 
 
 
@@ -265,7 +284,7 @@
                                 <!-- .widget-content -->
                             </div>
                             <!-- .widget -->
-                        </div>
+                        </div> --}}
                         <!-- .sidebar -->
                     </div>
                 </div>

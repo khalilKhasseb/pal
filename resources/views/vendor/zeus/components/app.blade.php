@@ -86,7 +86,7 @@
             <div class="flex justify-between items-center">
                 <div class="w-full">
                     @if(isset($breadcrumbs))
-                 
+
                     <nav class="text-gray-400 font-bold my-1" aria-label="Breadcrumb">
                         <ol class="list-none p-0 inline-flex">
                             {{ $breadcrumbs }}

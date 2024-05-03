@@ -15,9 +15,13 @@ $hasMorePages = $totalPages > $current_page ;
 // get Pages for a period of offsets
 // for example if we have
 $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
-// $paginiator->path('blog') ;
+
 
 @endphp
+
+<x-slot name="header">
+    <h2>{{__('All news')}}</h2>
+</x-slot>
 <section class="bg-blog-section">
     <div class="container">
         <div class="row">
@@ -38,7 +42,7 @@ $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
                     @endunless
                 </div>
                 <!-- .row -->
-                <x-theme.paginiation.default :paginiator="$paginiator" :total-pages="$totalPages    " />
+                <x-theme.paginiation.default :paginiator="$paginiator" :total-pages="$totalPages" />
             </div>
             <!-- .blog-section -->
         </div>
