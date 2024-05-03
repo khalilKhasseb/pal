@@ -18,16 +18,22 @@ use Google\Client;
 use App\Models\Token;
 use Google\Service\Exception;
 use Illuminate\Database\Eloquent\Model;
+use Google\Service\Drive;
+use Google\Service\Forms;
 
 class GoogleAuthnticate
 {
     public static $credinital_file_path  = 'clientapi.json';
-     
+
     protected Model $model;
     public static function makeClient(array $scope = []): Client
     {
         if (empty($scope)) {
-            throw new Exception('Scopes cant be empty', 2001);
+            $scope = [
+                Drive::DRIVE_READONLY,
+                Forms::FORMS_BODY_READONLY,
+                Forms::FORMS_RESPONSES_READONLY
+            ];
         }
 
         $client = new Client;
