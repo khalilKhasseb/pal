@@ -42,7 +42,7 @@ class GoogleApiAuthController extends Controller
 
         $tokenData = [];
         $tokenInDatabase = !is_null(Token::first());
-        $client = GoogleAuthnticate::makeClient();
+        $client = GoogleAuthnticate::makeClinetToAuthnticate();
 
         if ($request->has('code')) {
             // which means we successfuly authnitcated and retrive a code to use to fetchaccesstoken

@@ -55,6 +55,26 @@ class GoogleAuthnticate
     }
 
 
+    public static function makeClinetToAuthnticate(array $scope = []) {
+        if (empty($scope)) {
+            $scope = [
+                Drive::DRIVE_READONLY,
+                Forms::FORMS_BODY_READONLY,
+                Forms::FORMS_RESPONSES_READONLY
+            ];
+        }
+
+        $client = new Client;
+        $client->setAuthConfig(static::get_credinital());
+        $client->setRedirectUri(config('google.redirect_uri'));
+
+        $client->setScopes($scope);
+
+        $client->setAccessType(config('google.access_type'));
+
+        return $client ;
+    }
+
 
     protected static function fetchAccessTokenWithRefreshToken(Client $client, string $refresh_token): Token
     {
