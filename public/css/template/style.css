@@ -4410,13 +4410,14 @@ ul>li>a:focus, ul>li>a:hover {
 	float: left;
 }
 .event-author-img{
-	width: 40px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 	background: #ddd;
 	border-radius: 100%;
 	overflow: hidden;
 	float: left;
 	margin-right: 15px;
+    margin-top: 5px;
 }
 .event-author-name{
 	display: table;

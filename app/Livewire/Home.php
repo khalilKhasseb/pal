@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\Panel;
+use App\Models\Post;
 use Livewire\Component;
 use App\Settings\SiteSetting;
 use Illuminate\Support\Collection;
@@ -16,6 +18,7 @@ class Home extends Component
     {
         //dd(app(SiteSetting::class));
         //$this->siteSetting = ->toCollection();
+        
     }
     public function render()
     {

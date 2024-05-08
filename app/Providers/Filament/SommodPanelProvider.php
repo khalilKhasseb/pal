@@ -10,8 +10,6 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
-use Filament\SpatieLaravelTranslatablePlugin;
-
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -20,37 +18,38 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use LaraZeus\Sky\SkyPlugin;
+use Filament\SpatieLaravelTranslatablePlugin;
 use Filament\Navigation\MenuItem;
 use Filament\Facades\Filament;
-class AdminPanelProvider extends PanelProvider
+
+class SommodPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-
         return $panel
-            ->default()
-            ->id('admin')
-            ->path('admin') // where you change url of tha panel path making the app being accessiable without any prefix leave it emptyl ex: path('');
-            ->login()
+            ->id('sommod')
+            ->path('sommod')
             ->colors([
-                'primary' => Color::Sky,
+                'primary' => Color::Amber,
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandName('Nebula Systems')
+            ->discoverResources(in: app_path('Filament/Sommod/Resources'), for: 'App\\Filament\\Sommod\\Resources')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
+            ->discoverPages(in: app_path('Filament/Sommod/Pages'), for: 'App\\Filament\\Sommod\\Pages')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
+            ->discoverWidgets(in: app_path('Filament/Sommod/Widgets'), for: 'App\\Filament\\Sommod\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
             ])->userMenuItems([
-               MenuItem::make()
-               ->label(__('Sommod'))
-               ->url(fn() => Filament::getPanel('sommod')->getUrl())
-            ])
+                MenuItem::make()
+                ->label(__('Concile'))
+                ->url(fn() => Filament::getPanel('admin')->getUrl())
+             ])
             ->authGuard('system')
             ->middleware([
                 EncryptCookies::class,

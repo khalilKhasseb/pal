@@ -14,6 +14,7 @@ use App\Classes\GoogleFormsApi;
 use App\Classes\GoogleAuthnticate;
 use Google\Service\Drive;
 use Google\Service\Forms;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -21,13 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singletonIf(GoogleFormsApi::class, function () {
-            return new GoogleFormsApi(GoogleAuthnticate::makeClient([
-              Drive::DRIVE_READONLY,
-              Forms::FORMS_BODY_READONLY,
-              Forms::FORMS_RESPONSES_READONLY
-            ]));
-        });
+        
     }
 
     /**

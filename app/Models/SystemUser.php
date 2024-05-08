@@ -9,6 +9,11 @@ use Filament\Panel;
 
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+// use Illuminate\Database\Eloquent\Relations\HasOne
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SystemUser extends Model implements FilamentUser
 {
@@ -20,7 +25,34 @@ class SystemUser extends Model implements FilamentUser
         return true;
     }
 
-    public function posts() : HasMany {
-        return $this->hasMany(Post::class , 'user_id' , 'id');
+   
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
+
+    public function googleTokens()
+    {
+        return $this->hasMany(Token::class);
+    }
+
+
+
+    public function hasGoogleTokens(): bool
+    {
+        return !is_null($this->googleTokens) && $this->googleTokens->count() > 0;
+    }
+
+    // public function
+
+    public function getActiveToken()
+    {
+        return $this->tokens()->active()->first();
     }
 }

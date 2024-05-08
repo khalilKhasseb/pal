@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Token extends Model
 {
@@ -14,5 +16,14 @@ class Token extends Model
 
     protected $hidden = ['id','created_at' ,'updated_at' ,'account_email'];
 
+
+    public function system_user() : BelongsTo {
+        return $this->belongsTo(SystemUser::class);
+    }
+
+
+    public function scopeActive(Builder $query) :void{
+        $query->where('active' , 1);
+    }
 
 }

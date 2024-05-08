@@ -20,14 +20,16 @@ use Google\Service\Exception;
 use Illuminate\Database\Eloquent\Model;
 use Google\Service\Drive;
 use Google\Service\Forms;
+use Illuminate\Support\Facades\Redirect;
 
 class GoogleAuthnticate
 {
     public static $credinital_file_path  = 'clientapi.json';
 
     protected Model $model;
-    public static function makeClient(array $scope = []): Client
+    public static function makeClient(array $scope = []): Client | \Illuminate\Routing\Redirector | \Illuminate\Http\RedirectResponse
     {
+
         if (empty($scope)) {
             $scope = [
                 Drive::DRIVE_READONLY,
@@ -44,18 +46,24 @@ class GoogleAuthnticate
 
         $client->setAccessType(config('google.access_type'));
         // validate token expiration and validatiy
-
-        self::validate_token($client)
-            ? $client->setAccessToken(self::get_token()->toArray())
-            : $client->setAccessToken(self::fetchAccessTokenWithRefreshToken($client, self::getRefreshToken())->toArray());
-
-
-
+        $client =  self::setAccessToken($client);
+        
         return $client;
     }
 
 
-    public static function makeClinetToAuthnticate(array $scope = []) {
+    protected static function setAccessToken(Client $client): Client
+    {
+
+        !$client->isAccessTokenExpired()
+            ? $client->setAccessToken(self::get_token()->toArray())
+            : $client->setAccessToken(self::fetchAccessTokenWithRefreshToken($client, self::getRefreshToken())->toArray());
+        return $client;
+    }
+
+
+    public static function makeClinetToAuthnticate(array $scope = [])
+    {
         if (empty($scope)) {
             $scope = [
                 Drive::DRIVE_READONLY,
@@ -72,7 +80,7 @@ class GoogleAuthnticate
 
         $client->setAccessType(config('google.access_type'));
 
-        return $client ;
+        return $client;
     }
 
 
@@ -100,7 +108,8 @@ class GoogleAuthnticate
     protected static function getRefreshToken(): string
     {
 
-        return json_decode(file_get_contents(base_path('refresh_token.json')), true)['refresh_token'];
+        // return json_decode(file_get_contents(base_path('refresh_token.json')), true)['refresh_token'];
+       return self::get_token()->refresh_token;
     }
 
 
@@ -124,8 +133,10 @@ class GoogleAuthnticate
         return config('google.auth_config_path');
     }
 
-    protected static function get_token(): Model
+    protected static function get_token($email = null): Model | null
     {
-        return app(config('google.token_model'))->first();
+        if (is_null($email)) return app(config('google.token_model'))->first();
+
+        return app(config('google.token_model'))->where('account_email', $email)->first();
     }
 }

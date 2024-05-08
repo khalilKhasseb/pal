@@ -1,6 +1,4 @@
 <x-filament-panels::page>
-
-
     {{ $this->table }}
 
     <x-filament::modal id="responce" width="5xl" slide-over>
@@ -39,4 +37,5 @@
         </x-slot>
     </x-filament::modal>
 
+    {{$this->authnticateInfoList}}
 </x-filament-panels::page>

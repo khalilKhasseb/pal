@@ -10,27 +10,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 use App\Models\Comment;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Builder;
+
+use App\Models\Scopes\PanelScope;
+
 class Post extends Model
 {
 
-    // protected $fillable = [
-    //     'title',
-    //     'slug',
-    //     'description',
-    //     'post_type',
-    //     'content',
-    //     'user_id',
-    //     'parent_id',
-    //     'featured_image',
-    //     'published_at',
-    //     'sticky_until',
-    //     'password',
-    //     'ordering',
-    //     'status',
-    //     'like_id'
-    // ];
 
-
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new PanelScope);
+    }
     public function author(): BelongsTo
     {
         return $this->belongsTo(config('auth.providers.system_users.database.model', config('auth.providers.system_users.model')), 'user_id', 'id');
@@ -42,8 +34,9 @@ class Post extends Model
         return $this->hasMany(Like::class, 'post_id', 'id');
     }
 
-    public function comments() : MorphMany {
-        return $this->morphMany(Comment::class , 'commantabel');
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commantabel');
     }
 
     public function get_like_ip(string $ip)
@@ -61,5 +54,13 @@ class Post extends Model
     {
 
         return $this->likes()->count() > 0;
+    }
+
+    public function panels(): MorphToMany
+    {
+        return $this->morphToMany(
+            Panel::class,
+            'resourcables'
+        );
     }
 }

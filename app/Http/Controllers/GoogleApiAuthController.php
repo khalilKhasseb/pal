@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Classes\GoogleAuthnticate;
 use App\Models\Token;
+
+use Filament\Facades\Filament;
 //Google
 
 use Google\Service\Forms;
@@ -19,8 +21,14 @@ class GoogleApiAuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse | \Illuminate\Routing\Redirector
      */
+
+    public function __construct()
+    {
+        $this->middleware(Filament::getCurrentPanel()->getAuthMiddleware());
+    }
     public function redirectToAuthnitcateUrl(Request $request): \Illuminate\Http\RedirectResponse | \Illuminate\Routing\Redirector
     {
+        //   dd();
         return redirect(GoogleAuthnticate::makeAuthnticateUrl([
             Forms::FORMS_BODY,
             Drive::DRIVE,
@@ -41,7 +49,7 @@ class GoogleApiAuthController extends Controller
         // first step validate if token present in database
 
         $tokenData = [];
-        $tokenInDatabase = !is_null(Token::first());
+        $tokenInDatabase = !is_null(Filament::auth()->user()->googleTokens()->where('active', 1)->first());
         $client = GoogleAuthnticate::makeClinetToAuthnticate();
 
         if ($request->has('code')) {
@@ -52,14 +60,24 @@ class GoogleApiAuthController extends Controller
             // case token is bad grant
             if (isset($token['error']) && 'invalid_grant' === $token['error']) return redirect(route('googel.redirect'));
             // case contniue no erros perfom databaes storage
-
+            $client->setAccessToken($token);
+            $idToken = $client->verifyIdToken();
+            if (is_array($idToken)) {
+                // validated if verfid email
+                $tokenData['account_email'] = $idToken['email'];
+            }
             $tokenData = array_merge($token, $tokenData);
+            $tokenData['active'] = true ;
+
+            $_token = null;
 
             $tokenInDatabase
-                ? $this->updateToken($tokenData)
-                : $this->storeToken($tokenData);
+                ? $_token  = $this->updateToken($tokenData)
+                : $_token  = $this->storeToken($tokenData);
 
-            dump($token, $tokenData);
+            Filament::auth()->user()->googleTokens()->save($_token);
+
+            return redirect()->intended();
         }
 
 

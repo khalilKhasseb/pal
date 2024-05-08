@@ -13,7 +13,7 @@ class PalPageResource extends PageResource
 
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->where('post_type', 'page');
+        return parent::getEloquentQuery()->page();
     }
 
 

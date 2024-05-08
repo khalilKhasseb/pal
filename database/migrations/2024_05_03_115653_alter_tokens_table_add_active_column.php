@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::table('tokens' , function(Blueprint $table){
-        //     $table->renameColumn('token' , 'access_token');
-        //     $table->string('expires_in');
-        //     $table->string('scope');
-        //     $table->string('token_type');
-        //     $table->string('created');
-        // });
+        Schema::table('tokens' , function(Blueprint $table){
+            $table->boolean('active')->default(false) ;
+        });
     }
 
     /**

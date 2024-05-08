@@ -20,7 +20,6 @@ use Filament\Facades\Filament;
 // use Filament\Form\Components\Sw
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
-
 class MangeHeader extends SettingsPage
 {
     // use Translatable;
@@ -83,7 +82,7 @@ class MangeHeader extends SettingsPage
                 'category' => [
                     'name' => 'Laptops',
                 ],
-               
+
             ])
             ->schema([
                 TextEntry::make('name'),
@@ -125,5 +124,10 @@ class MangeHeader extends SettingsPage
     {
 
         return $data;
+    }
+
+    public static function canAccess(): bool
+    {
+        return Filament::getCurrentPanel()->getId() === 'admin';
     }
 }

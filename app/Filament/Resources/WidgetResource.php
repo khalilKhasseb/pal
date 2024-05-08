@@ -34,6 +34,7 @@ use Filament\Forms\Set;
 
 
 use App\Classes\WidgetsForms;
+use Filament\Facades\Filament;
 // tables
 use Filament\Tables\Columns\TextColumn;
 //#####//
@@ -90,6 +91,7 @@ class WidgetResource extends Resource
 
     public static function table(Table $table): Table
     {
+        // dd(Filament::getPanels());
         return $table
             ->columns([
                 TextColumn::make('title')->label('Title'),
@@ -117,6 +119,8 @@ class WidgetResource extends Resource
             'index' => Pages\ManageWidgets::route('/'),
         ];
     }
+
+
 
     // Resource privet behivor
 

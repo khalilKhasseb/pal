@@ -30,12 +30,12 @@ return [
      * ->skyModels([ ... ])
      */
     'models' => [
-        'Faq' => \LaraZeus\Sky\Models\Faq::class,
+        'Faq' => App\Models\Blog\Faq::class,
         'Post' => App\Models\Post::class,
         'PostStatus' => \LaraZeus\Sky\Models\PostStatus::class,
-        'Tag' => \LaraZeus\Sky\Models\Tag::class,
-        'Library' => \LaraZeus\Sky\Models\Library::class,
-        'Navigation' => \LaraZeus\Sky\Models\Navigation::class,
+        'Tag' => App\Models\Blog\Tag::class,
+        'Library' => App\Models\Blog\Library::class,
+        'Navigation' => App\Models\Blog\Navigation::class,
     ],
 
     'parsers' => [

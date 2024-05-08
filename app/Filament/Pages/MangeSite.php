@@ -18,7 +18,7 @@ use ReflectionObject;
 use Spatie\LaravelSettings\SettingsMapper;
 use Spatie\LaravelSettings\SettingsConfig;
 use Illuminate\Support\Str;
-
+use Filament\Facades\Filament;
 class MangeSite extends SettingsPage
 {
 
@@ -102,5 +102,10 @@ class MangeSite extends SettingsPage
             [
                 Actions\LocaleSwitcher::make()
             ];
+    }
+
+    public static function canAccess(): bool
+    {
+        return Filament::getCurrentPanel()->getId() === 'admin';
     }
 }
