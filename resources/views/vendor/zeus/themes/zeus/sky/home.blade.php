@@ -1,5 +1,6 @@
 <!-- Start Blog Section -->
 @use(Illuminate\Pagination\Paginator)
+@use(Illuminate\Support\Str)
 @php
 $current_page = empty(request()->query()) ? 1 : (int) request()->query()['page'] ;
 $per_page = 15;
@@ -16,11 +17,13 @@ $hasMorePages = $totalPages > $current_page ;
 // for example if we have
 $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
 
-
+$page_title = str_replace('/' , '' , request()->getRequestUri());
+//$page_title == 'content' ?  __('All News') : __(ucfirst($page_title).'s') ;
+//dd($page_title == 'content' ?  __('All News') : __(ucfirst(Str::plural($page_title))));
 @endphp
 
 <x-slot name="header">
-    <h2>{{__('All news')}}</h2>
+    <h2>{{$page_title == 'content' ?  __('All News') : __(ucfirst(Str::plural($page_title)))}}</h2>
 </x-slot>
 <section class="bg-blog-section">
     <div class="container">

@@ -47,7 +47,7 @@ class GoogleApiAuthController extends Controller
     {
 
         // first step validate if token present in database
-
+        
         $tokenData = [];
         $tokenInDatabase = !is_null(Filament::auth()->user()->googleTokens()->where('active', 1)->first());
         $client = GoogleAuthnticate::makeClinetToAuthnticate();

@@ -1,5 +1,5 @@
 <div class="widget">
-    <h4 class="sidebar-widget-title">Popular News</h4>
+    <h4 class="sidebar-widget-title">{{__('Popular News')}}</h4>
     <div class="widget-content">
         <ul class="popular-news-option">
 

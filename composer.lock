@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "660a5f8c7909fa23877853a8b099e798",
+    "content-hash": "e49893280e46f701e9aced13e187345f",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -132,16 +132,16 @@
         },
         {
             "name": "awcodes/filament-tiptap-editor",
-            "version": "v3.3.2",
+            "version": "v3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/awcodes/filament-tiptap-editor.git",
-                "reference": "3f0c59e0045a5034013f1256e1a97ad5f3ff6eec"
+                "reference": "dafa604c5a8d36ec0b6d7c2440068f6fae417a85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/awcodes/filament-tiptap-editor/zipball/3f0c59e0045a5034013f1256e1a97ad5f3ff6eec",
-                "reference": "3f0c59e0045a5034013f1256e1a97ad5f3ff6eec",
+                "url": "https://api.github.com/repos/awcodes/filament-tiptap-editor/zipball/dafa604c5a8d36ec0b6d7c2440068f6fae417a85",
+                "reference": "dafa604c5a8d36ec0b6d7c2440068f6fae417a85",
                 "shasum": ""
             },
             "require": {
@@ -203,7 +203,7 @@
             ],
             "support": {
                 "issues": "https://github.com/awcodes/filament-tiptap-editor/issues",
-                "source": "https://github.com/awcodes/filament-tiptap-editor/tree/v3.3.2"
+                "source": "https://github.com/awcodes/filament-tiptap-editor/tree/v3.3.3"
             },
             "funding": [
                 {
@@ -211,7 +211,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-09T20:46:28+00:00"
+            "time": "2024-05-06T00:59:28+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -742,16 +742,16 @@
         },
         {
             "name": "danharrin/livewire-rate-limiting",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danharrin/livewire-rate-limiting.git",
-                "reference": "bf16003f0d977b5a41071526d697eec94ac41735"
+                "reference": "1a1b299e20de61f88ed6e94ea0bbcfc33aab1ddb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danharrin/livewire-rate-limiting/zipball/bf16003f0d977b5a41071526d697eec94ac41735",
-                "reference": "bf16003f0d977b5a41071526d697eec94ac41735",
+                "url": "https://api.github.com/repos/danharrin/livewire-rate-limiting/zipball/1a1b299e20de61f88ed6e94ea0bbcfc33aab1ddb",
+                "reference": "1a1b299e20de61f88ed6e94ea0bbcfc33aab1ddb",
                 "shasum": ""
             },
             "require": {
@@ -792,7 +792,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-21T14:53:34+00:00"
+            "time": "2024-05-06T09:10:03+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -1788,7 +1788,7 @@
         },
         {
             "name": "filament/spatie-laravel-media-library-plugin",
-            "version": "v3.2.73",
+            "version": "v3.2.74",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/spatie-laravel-media-library-plugin.git",
@@ -2311,16 +2311,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.351.0",
+            "version": "v0.353.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "a053f7dd118e46845fcefa9036c5b97b1050dfaa"
+                "reference": "fd11c75d0303b3a4237f65482324cf987950b126"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/a053f7dd118e46845fcefa9036c5b97b1050dfaa",
-                "reference": "a053f7dd118e46845fcefa9036c5b97b1050dfaa",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/fd11c75d0303b3a4237f65482324cf987950b126",
+                "reference": "fd11c75d0303b3a4237f65482324cf987950b126",
                 "shasum": ""
             },
             "require": {
@@ -2349,9 +2349,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.351.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.353.0"
             },
-            "time": "2024-04-23T21:58:18+00:00"
+            "time": "2024-05-07T05:10:51+00:00"
         },
         {
             "name": "google/auth",
@@ -2945,6 +2945,219 @@
             "time": "2023-12-03T19:50:20+00:00"
         },
         {
+            "name": "intervention/gif",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/gif.git",
+                "reference": "3a2b5f8a8856e8877cdab5c47e51aab2d4cb23a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/gif/zipball/3a2b5f8a8856e8877cdab5c47e51aab2d4cb23a3",
+                "reference": "3a2b5f8a8856e8877cdab5c47e51aab2d4cb23a3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1",
+                "phpunit/phpunit": "^10.0",
+                "slevomat/coding-standard": "~8.0",
+                "squizlabs/php_codesniffer": "^3.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Gif\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@intervention.io",
+                    "homepage": "https://intervention.io/"
+                }
+            ],
+            "description": "Native PHP GIF Encoder/Decoder",
+            "homepage": "https://github.com/intervention/gif",
+            "keywords": [
+                "animation",
+                "gd",
+                "gif",
+                "image"
+            ],
+            "support": {
+                "issues": "https://github.com/Intervention/gif/issues",
+                "source": "https://github.com/Intervention/gif/tree/4.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/interventionio",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Intervention",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-26T17:23:47+00:00"
+        },
+        {
+            "name": "intervention/image",
+            "version": "3.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/image.git",
+                "reference": "193324ec88bc5ad4039e57ce9b926ae28dfde813"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/193324ec88bc5ad4039e57ce9b926ae28dfde813",
+                "reference": "193324ec88bc5ad4039e57ce9b926ae28dfde813",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "intervention/gif": "^4.1",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "phpstan/phpstan": "^1",
+                "phpunit/phpunit": "^10.0",
+                "slevomat/coding-standard": "~8.0",
+                "squizlabs/php_codesniffer": "^3.8"
+            },
+            "suggest": {
+                "ext-exif": "Recommended to be able to read EXIF data properly."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Image\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@intervention.io",
+                    "homepage": "https://intervention.io/"
+                }
+            ],
+            "description": "PHP image manipulation",
+            "homepage": "https://image.intervention.io/",
+            "keywords": [
+                "gd",
+                "image",
+                "imagick",
+                "resize",
+                "thumbnail",
+                "watermark"
+            ],
+            "support": {
+                "issues": "https://github.com/Intervention/image/issues",
+                "source": "https://github.com/Intervention/image/tree/3.6.4"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/interventionio",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Intervention",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-05-08T13:53:15+00:00"
+        },
+        {
+            "name": "intervention/image-laravel",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/image-laravel.git",
+                "reference": "d30b62fea3c49896dbf26ea7799e7d718e779310"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/image-laravel/zipball/d30b62fea3c49896dbf26ea7799e7d718e779310",
+                "reference": "d30b62fea3c49896dbf26ea7799e7d718e779310",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8|^9|^10|^11",
+                "intervention/image": "^3",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.18",
+                "phpunit/phpunit": "^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Intervention\\Image\\Laravel\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Image": "Intervention\\Image\\Laravel\\Facades\\Image"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Image\\Laravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@intervention.io",
+                    "homepage": "https://intervention.io/"
+                }
+            ],
+            "description": "Laravel Integration of Intervention Image",
+            "homepage": "https://image.intervention.io/",
+            "keywords": [
+                "gd",
+                "image",
+                "imagick",
+                "laravel",
+                "resize",
+                "thumbnail",
+                "watermark"
+            ],
+            "support": {
+                "issues": "https://github.com/Intervention/image-laravel/issues",
+                "source": "https://github.com/Intervention/image-laravel/tree/1.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/interventionio",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Intervention",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-03T09:14:35+00:00"
+        },
+        {
             "name": "khatabwedaa/blade-css-icons",
             "version": "1.4.0",
             "source": {
@@ -3069,16 +3282,16 @@
         },
         {
             "name": "lara-zeus-kh/palsky",
-            "version": "v3.0.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/khalilKhassep/sky.git",
-                "reference": "57f701a5423cd825e67fd33de32431c9b5046789"
+                "url": "https://github.com/khalilKhassep/khsky.git",
+                "reference": "9d3ed4bcf93772c012128097b53dc7ee4d5c5fac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/khalilKhassep/sky/zipball/57f701a5423cd825e67fd33de32431c9b5046789",
-                "reference": "57f701a5423cd825e67fd33de32431c9b5046789",
+                "url": "https://api.github.com/repos/khalilKhassep/khsky/zipball/9d3ed4bcf93772c012128097b53dc7ee4d5c5fac",
+                "reference": "9d3ed4bcf93772c012128097b53dc7ee4d5c5fac",
                 "shasum": ""
             },
             "require": {
@@ -3155,7 +3368,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-05T18:48:14+00:00"
+            "time": "2024-05-08T17:55:51+00:00"
         },
         {
             "name": "lara-zeus/core",
@@ -5082,16 +5295,16 @@
         },
         {
             "name": "openspout/openspout",
-            "version": "v4.23.0",
+            "version": "v4.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openspout/openspout.git",
-                "reference": "28f6a0e45acc3377f34c26cc3866e21f0447e0c8"
+                "reference": "912b2286bdea975b3b9f6b1a1021cc0adaade13e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openspout/openspout/zipball/28f6a0e45acc3377f34c26cc3866e21f0447e0c8",
-                "reference": "28f6a0e45acc3377f34c26cc3866e21f0447e0c8",
+                "url": "https://api.github.com/repos/openspout/openspout/zipball/912b2286bdea975b3b9f6b1a1021cc0adaade13e",
+                "reference": "912b2286bdea975b3b9f6b1a1021cc0adaade13e",
                 "shasum": ""
             },
             "require": {
@@ -5105,13 +5318,13 @@
             },
             "require-dev": {
                 "ext-zlib": "*",
-                "friendsofphp/php-cs-fixer": "^3.46.0",
-                "infection/infection": "^0.27.9",
+                "friendsofphp/php-cs-fixer": "^3.55.0",
+                "infection/infection": "^0.28.1",
                 "phpbench/phpbench": "^1.2.15",
-                "phpstan/phpstan": "^1.10.55",
-                "phpstan/phpstan-phpunit": "^1.3.15",
-                "phpstan/phpstan-strict-rules": "^1.5.2",
-                "phpunit/phpunit": "^10.5.5"
+                "phpstan/phpstan": "^1.10.67",
+                "phpstan/phpstan-phpunit": "^1.3.16",
+                "phpstan/phpstan-strict-rules": "^1.5.5",
+                "phpunit/phpunit": "^10.5.20"
             },
             "suggest": {
                 "ext-iconv": "To handle non UTF-8 CSV files (if \"php-mbstring\" is not already installed or is too limited)",
@@ -5159,7 +5372,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openspout/openspout/issues",
-                "source": "https://github.com/openspout/openspout/tree/v4.23.0"
+                "source": "https://github.com/openspout/openspout/tree/v4.23.1"
             },
             "funding": [
                 {
@@ -5171,7 +5384,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-09T09:30:37+00:00"
+            "time": "2024-05-06T07:22:51+00:00"
         },
         {
             "name": "owenvoke/blade-fontawesome",
@@ -5237,16 +5450,16 @@
         },
         {
             "name": "paragonie/constant_time_encoding",
-            "version": "v2.6.3",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/constant_time_encoding.git",
-                "reference": "58c3f47f650c94ec05a151692652a868995d2938"
+                "reference": "52a0d99e69f56b9ec27ace92ba56897fe6993105"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/58c3f47f650c94ec05a151692652a868995d2938",
-                "reference": "58c3f47f650c94ec05a151692652a868995d2938",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/52a0d99e69f56b9ec27ace92ba56897fe6993105",
+                "reference": "52a0d99e69f56b9ec27ace92ba56897fe6993105",
                 "shasum": ""
             },
             "require": {
@@ -5300,7 +5513,7 @@
                 "issues": "https://github.com/paragonie/constant_time_encoding/issues",
                 "source": "https://github.com/paragonie/constant_time_encoding"
             },
-            "time": "2022-06-14T06:56:20+00:00"
+            "time": "2024-05-08T12:18:48+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -5650,16 +5863,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.28.0",
+            "version": "1.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb"
+                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb",
-                "reference": "cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/536889f2b340489d328f5ffb7b02bb6b183ddedc",
+                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc",
                 "shasum": ""
             },
             "require": {
@@ -5691,9 +5904,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.28.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.0"
             },
-            "time": "2024-04-03T18:51:33+00:00"
+            "time": "2024-05-06T12:04:23+00:00"
         },
         {
             "name": "psr/cache",
@@ -6751,16 +6964,16 @@
         },
         {
             "name": "spatie/image",
-            "version": "3.5.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image.git",
-                "reference": "05166a6fae90b4c2ab57ff2d25d7f97a5e29f47b"
+                "reference": "2e848dcf5c6780455d3d15a3e8f1dcec2571e06b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image/zipball/05166a6fae90b4c2ab57ff2d25d7f97a5e29f47b",
-                "reference": "05166a6fae90b4c2ab57ff2d25d7f97a5e29f47b",
+                "url": "https://api.github.com/repos/spatie/image/zipball/2e848dcf5c6780455d3d15a3e8f1dcec2571e06b",
+                "reference": "2e848dcf5c6780455d3d15a3e8f1dcec2571e06b",
                 "shasum": ""
             },
             "require": {
@@ -6807,7 +7020,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/image/tree/3.5.0"
+                "source": "https://github.com/spatie/image/tree/3.6.0"
             },
             "funding": [
                 {
@@ -6819,20 +7032,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-17T13:16:06+00:00"
+            "time": "2024-05-07T08:56:10+00:00"
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.7.3",
+            "version": "1.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "d4f0d09c44700c78d1718cd40da404b1c800b935"
+                "reference": "ed39c7bfce7a2ecf676174a2d4286ab3a1c4f4f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/d4f0d09c44700c78d1718cd40da404b1c800b935",
-                "reference": "d4f0d09c44700c78d1718cd40da404b1c800b935",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/ed39c7bfce7a2ecf676174a2d4286ab3a1c4f4f7",
+                "reference": "ed39c7bfce7a2ecf676174a2d4286ab3a1c4f4f7",
                 "shasum": ""
             },
             "require": {
@@ -6872,9 +7085,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/image-optimizer/issues",
-                "source": "https://github.com/spatie/image-optimizer/tree/1.7.3"
+                "source": "https://github.com/spatie/image-optimizer/tree/1.7.4"
             },
-            "time": "2024-05-03T14:05:33+00:00"
+            "time": "2024-05-06T09:12:30+00:00"
         },
         {
             "name": "spatie/invade",
@@ -6937,16 +7150,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "11.4.7",
+            "version": "11.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "85f5f8284f827b8f2b426943e357e3df117ad1f5"
+                "reference": "2c50eee8310a90b2210ff5e4907908333f38915c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/85f5f8284f827b8f2b426943e357e3df117ad1f5",
-                "reference": "85f5f8284f827b8f2b426943e357e3df117ad1f5",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/2c50eee8310a90b2210ff5e4907908333f38915c",
+                "reference": "2c50eee8310a90b2210ff5e4907908333f38915c",
                 "shasum": ""
             },
             "require": {
@@ -7029,7 +7242,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
-                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.4.7"
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.4.8"
             },
             "funding": [
                 {
@@ -7041,7 +7254,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-24T13:42:14+00:00"
+            "time": "2024-05-06T09:16:55+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",

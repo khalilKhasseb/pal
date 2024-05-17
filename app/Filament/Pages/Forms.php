@@ -42,6 +42,7 @@ class Forms extends Page implements HasTable
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
+    
     protected static string $view = 'filament.pages.forms';
 
     public array $questionTypes = [
@@ -66,7 +67,7 @@ class Forms extends Page implements HasTable
     public function __construct()
     {
         if (Filament::auth()->user()->hasGoogleTokens()) {
-
+            // dd(filament()->auth()->user());
             $this->service = new GoogleFormsApi(GoogleAuthnticate::makeClient([
                 Drive::DRIVE_READONLY,
                 Google_Service_Forms::FORMS_BODY_READONLY,
@@ -78,17 +79,27 @@ class Forms extends Page implements HasTable
     {
         // $this->service = app(GoogleFormsApi::class);
     }
+
+    public static function getNavigationLabel() : string {
+        return __('Forms');
+    }
+    public function getTitle(): string|\Illuminate\Contracts\Support\Htmlable {
+        return __('Forms');
+    }
     public function table(Table $table): Table
     {
 
         return $table->query(GoogleForm::query())
             ->columns([
-                TextColumn::make('name'),
-                TextColumn::make('type'),
+                TextColumn::make('name')
+                ->label(__('Name')),
+                TextColumn::make('type')
+                ->label(__("Type")),
                 TextColumn::make('google_mimeType'),
             ])->actions([
                 TableAction::make('viwe_response')
                     ->label(__('response'))
+                    ->label(__('Responses'))
                     ->action(function (GoogleForm $record) {
 
                         $formItems = $this->service->getForm($record->google_file_id)->getItems();
@@ -129,12 +140,13 @@ class Forms extends Page implements HasTable
                     // $this->resetTable();
                 })->disabled(!Filament::auth()->user()->hasGoogleTokens()),
             Action::make('refresh')
+            ->label(__("Refresh"))
                 ->action(function () {
                     $this->resetPage();
                 }),
 
             Action::make('revoke')
-                ->label('Revoke')
+                ->label(__('Revoke'))
                 ->action(function () {
                     $revoke = new Revoke;
                     $token  = Token::first();
@@ -160,17 +172,17 @@ class Forms extends Page implements HasTable
 
         return $infolist->make()
             ->state([
-                'hint' => 'To use google forms in this application Authnticate a google acount',
+                'hint' => __('To use google forms in this application Authnticate a google acount'),
                 'account' => Filament::auth()->user()->tokens
             ])
             ->schema([
                 Section::make()
                     ->schema([
                         TextEntry::make('hint')
-                            ->label('Link Google acount'),
+                            ->label(__('Athnticate Google acount')),
                         Actions::make([
                             InofListAction::make('authnticate')
-                                ->label('Link account')
+                                ->label(__('Authnticate'))
                                 ->url(fn () => route('google.redirect'))
                         ])
                     ])->visible(function () {

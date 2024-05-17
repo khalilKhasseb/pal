@@ -14,11 +14,18 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Builder;
 
 use App\Models\Scopes\PanelScope;
+use App\Models\PostMeta;
+use Spatie\Image\Enums\CropPosition;
+use Illuminate\Support\Collection;
 
 class Post extends Model
 {
 
-
+    protected $casts = [
+        'published_at' => 'datetime',
+        'sticky_until' => 'datetime',
+        'has_thumb' => 'boolean',
+    ];
     protected static function booted(): void
     {
         static::addGlobalScope(new PanelScope);
@@ -28,7 +35,16 @@ class Post extends Model
         return $this->belongsTo(config('auth.providers.system_users.database.model', config('auth.providers.system_users.model')), 'user_id', 'id');
     }
 
+    // Post meta relation
 
+    public function post_meta() : HasMany {
+        return $this->hasMany(PostMeta::class , 'post_id' ,'id');
+    }
+    public function links(): MorphMany
+    {
+        return $this->morphMany(Links::class, 'linkable');
+    }
+    // Likes relation    
     public function likes(): HasMany
     {
         return $this->hasMany(Like::class, 'post_id', 'id');
@@ -56,11 +72,56 @@ class Post extends Model
         return $this->likes()->count() > 0;
     }
 
+    public function image($collection = 'posts'): Collection | string | null {
+        $thumbnail = null;
+        #check for event thubmnail media collection 
+        if ($this->getMedia('thumbnail')->isEmpty() && !$this->has_thumb) {
+            #which means we have to load thumb from origin image conversions
+            if (!$this->getMedia($collection)->isEmpty()) {
+
+                $thumb_url = $this->getMedia($collection)[0]->getUrl('thumb-cropped-original');
+
+                $thumbnail = $thumb_url;
+                
+            }else{
+                $thumbnail = parent::image();
+            }
+        } elseif (!$this->getMedia('thumbnail')->isEmpty() && $this->has_thumb) {
+            #load thumb from thumbnail collection conerstion
+
+            $thumb_url = $this->getMedia('thumbnail')[0]->getUrl('thumb-cropped');
+            $thumbnail = $thumb_url;
+        } else {
+            
+            $thumbnail = parent::image();
+        }
+      
+
+        return $thumbnail ;
+    }
+
     public function panels(): MorphToMany
     {
         return $this->morphToMany(
             Panel::class,
             'resourcables'
         );
+    }
+
+   
+ public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void {
+      
+        $this->addMediaConversion('thumb-cropped')
+        ->performOnCollections('thumbnail')
+            ->crop(380, 300, CropPosition::Center);
+
+        // $this->addMediaConversion('thumb-cropped-original')
+        //     ->performOnCollections('posts')
+        //     ->crop(380, 300, CropPosition::Center);
+        $this->addMediaConversion('thumb-cropped-original')
+            ->performOnCollections('posts')
+            ->width(380)
+            ->height(300);
+            
     }
 }

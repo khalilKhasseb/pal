@@ -11,6 +11,7 @@ use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Filament\SpatieLaravelTranslatablePlugin;
+use Filament\Navigation\NavigationGroup;
 
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -26,14 +27,14 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-
+       
         return $panel
             ->default()
             ->id('admin')
             ->path('admin') // where you change url of tha panel path making the app being accessiable without any prefix leave it emptyl ex: path('');
             ->login()
             ->colors([
-                'primary' => Color::Sky,
+                'primary' => Color::Green,
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandName('Nebula Systems')
@@ -46,10 +47,14 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
-            ])->userMenuItems([
+            ])
+            ->userMenuItems([
                MenuItem::make()
                ->label(__('Sommod'))
-               ->url(fn() => Filament::getPanel('sommod')->getUrl())
+               ->url(fn() => route('filament.sommod.pages.dashboard'))
+            ])->navigationGroups([
+                    __('Blog'),
+                   __('Settings')
             ])
             ->authGuard('system')
             ->middleware([
@@ -67,10 +72,10 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])->plugins([
 
-                SpatieLaravelTranslatablePlugin::make()->defaultLocales([config('app.locale'), 'ar']),
+                SpatieLaravelTranslatablePlugin::make()->defaultLocales([config('app.locale'), 'en']),
                 SkyPlugin::make()
-                    ->navigationGroupLabel('Blog'),
+                    ->navigationGroupLabel( __('Blog')),
 
-            ]);
+            ])->default();
     }
 }

@@ -92,10 +92,6 @@ class ContentController extends Controller
         return view('theme.pages.author_posts', ['posts' => $user->posts, 'author' => $user]);
     }
 
-    public function test()
-    {
-        dd(Like::check_like_for_address('ssddsd'));
-    }
 
     public function connect()
     {
@@ -143,9 +139,7 @@ class ContentController extends Controller
         dd($response->files[0]->getName());
         // dd($driveService->files->listFiles(['q' => "mimeType='application/vnd.google-apps.form'"]));
     }
-    public function fetch_form($form_id)
-    {
-    }
+   
     public function create_form()
     {
 

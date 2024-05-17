@@ -29,7 +29,7 @@ class GoogleAuthnticate
     protected Model $model;
     public static function makeClient(array $scope = []): Client | \Illuminate\Routing\Redirector | \Illuminate\Http\RedirectResponse
     {
-
+       
         if (empty($scope)) {
             $scope = [
                 Drive::DRIVE_READONLY,
@@ -64,6 +64,7 @@ class GoogleAuthnticate
 
     public static function makeClinetToAuthnticate(array $scope = [])
     {
+       
         if (empty($scope)) {
             $scope = [
                 Drive::DRIVE_READONLY,
@@ -84,7 +85,7 @@ class GoogleAuthnticate
     }
 
 
-    protected static function fetchAccessTokenWithRefreshToken(Client $client, string $refresh_token): Token
+    protected static function fetchAccessTokenWithRefreshToken(Client $client, string | null $refresh_token): Token
     {
 
         $access_token =  $client->fetchAccessTokenWithRefreshToken($refresh_token);
@@ -105,7 +106,7 @@ class GoogleAuthnticate
 
 
 
-    protected static function getRefreshToken(): string
+    protected static function getRefreshToken(): string | null
     {
 
         // return json_decode(file_get_contents(base_path('refresh_token.json')), true)['refresh_token'];
@@ -135,6 +136,7 @@ class GoogleAuthnticate
 
     protected static function get_token($email = null): Model | null
     {
+       
         if (is_null($email)) return app(config('google.token_model'))->first();
 
         return app(config('google.token_model'))->where('account_email', $email)->first();

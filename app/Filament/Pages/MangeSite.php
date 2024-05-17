@@ -36,7 +36,13 @@ class MangeSite extends SettingsPage
     private SettingsConfig $config;
 
 
+   public function getTitle(): string|\Illuminate\Contracts\Support\Htmlable {
+        return __('Manage Site');
+    }
 
+    public static function getNavigationLabel():string {
+        return __('Manage Site');
+    }
     public function form(Form $form): Form
     {
 
@@ -45,14 +51,18 @@ class MangeSite extends SettingsPage
                 Fieldset::make(__('Site General'))
                     ->schema([
                         TextInput::make('site_name')
+                        ->label(__("Site name"))
                             ->suffixIcon('heroicon-m-globe-alt'),
                         TextInput::make('site_description')
+                        ->label(__('Site description'))
                             ->suffixIcon('heroicon-o-document-text'),
                         FileUpload::make('site_logo')
+                        ->label(__('Logo'))
                             ->image()
                             ->imageEditor()
                             ->directory('site'),
                         FileUpload::make('header_bg')
+                        ->label(__("Cover"))
                             ->image()
                             ->imageEditor()
                             ->directory('site')
@@ -62,10 +72,7 @@ class MangeSite extends SettingsPage
     }
 
 
-    public static function getNavigationLabel(): string
-    {
-        return __('Site Settings');
-    }
+  
 
     protected function mutateFormDataBeforeSave(array $data): array
     {

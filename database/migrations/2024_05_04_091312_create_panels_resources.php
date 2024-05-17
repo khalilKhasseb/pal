@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resourcable', function (Blueprint $table) {
+        Schema::create('resourcables', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('panel_id');
-            $table->unsignedBigInteger('resourcable_id');
-            $table->string('resourcable_type');
+            $table->unsignedBigInteger('resourcables_id');
+            $table->string('resourcables_type');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('panels_resources');
+        Schema::dropIfExists('resourcables');
     }
 };

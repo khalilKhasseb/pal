@@ -46,6 +46,15 @@ class WidgetResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static Form  $formInncatnce;
+
+    public static function getLabel() : string {
+        return __("Widget");
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return __('Widgets');
+    }
     public static function form(Form $form): Form
     {
         static::$formInncatnce = $form;
@@ -55,9 +64,9 @@ class WidgetResource extends Resource
                 Grid::make(4)
                     ->schema([
                         TextInput::make('title')
-                            ->label('title'),
+                            ->label(__('Title')),
                         Select::make('component')
-                            ->label('Select Layout')
+                            ->label(__('Layout'))
                             ->options(WidgetsForms::load_components())
                             ->live()
                             ->afterStateUpdated(function (Select $component, Set $set, $state) {
@@ -72,6 +81,7 @@ class WidgetResource extends Resource
                             ->label(__('Type'))
                             ->disabled(),
                         Select::make('location')
+                        ->label(__('Location'))
                             ->options([
                                 'footer' => __('Footer'),
                                 'homepage' => __('Homepage'),
@@ -94,9 +104,9 @@ class WidgetResource extends Resource
         // dd(Filament::getPanels());
         return $table
             ->columns([
-                TextColumn::make('title')->label('Title'),
-                TextColumn::make('component')->label('layout'),
-                TextColumn::make('location')->label('Location')
+                TextColumn::make('title')->label(__('Title')),
+                TextColumn::make('component')->label(__('layout')),
+                TextColumn::make('location')->label(__("Location"))
             ])
             ->filters([
                 //

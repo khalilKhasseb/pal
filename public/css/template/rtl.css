@@ -270,7 +270,11 @@ body.rtl .shop-grid-view .collection-content {
 }
 
 
-
+.sidebar-widget-title:after,
+.comments-title:after{
+    left: initial !important;
+    right: 0 ;
+}
 
 
 @media only screen and (max-width: 991px) {

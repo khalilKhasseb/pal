@@ -8,7 +8,7 @@
             @if($paginiator->onFirstPage())
             <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
                 <span>
-                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                    <i class="fa fa-angle-double-{{app()->getLocale() === 'ar' ? 'right' : 'left'}}" aria-hidden="true"></i>
 
                 </span>
             </li>
@@ -17,7 +17,7 @@
 
             <li>
                 <a href="{{$paginiator->previousPageUrl()}}" aria-label="Previous">
-                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                    <i class="fa fa-angle-double-{{app()->getLocale() === 'ar' ? 'right' : 'left'}}" aria-hidden="true"></i>
                 </a>
             </li>
 
@@ -38,7 +38,7 @@
                 @if($paginiator->hasMorePages())
                 <li>
                     <a href="{{$paginiator->nextPageUrl()}}" aria-label="Next">
-                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        <i class="fa fa-angle-double-{{app()->getLocale() === 'ar' ? 'left' : 'right'}}" aria-hidden="true"></i>
                     </a>
                 </li>
 
@@ -47,7 +47,7 @@
 
                 <li class="disbaled">
                     <span>
-                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        <i class="fa fa-angle-double-{{app()->getLocale() === 'ar' ? 'left' : 'right'}}" aria-hidden="true"></i>
                     </span>
                 </li>
 

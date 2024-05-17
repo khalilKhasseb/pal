@@ -32,14 +32,21 @@ class MangeHeader extends SettingsPage
 
     public  $top_header_enabled = null;
     public   $top_header_items = null;
+
+    public function getTitle(): string|\Illuminate\Contracts\Support\Htmlable {
+        return __('Manage Header');
+    }
+
+    public static function getNavigationLabel():string {
+        return __('Manage Header');
+    }
     public function form(Form $form): Form
     {
-        // $items = app(HeaderSetting::class)->top_header_items;
-        // dd(app(Filament::class));
-
+        
         return $form
             ->schema([
                 Toggle::make('top_header_enabled')
+                ->label(__("Enabel top header"))
                     ->live()
                     ->afterStateUpdated(
                         fn (Toggle $component) => $component
@@ -53,10 +60,14 @@ class MangeHeader extends SettingsPage
                         if ($get('top_header_enabled')) {
                             return [
                                 Repeater::make('top_header_items')
+                                ->label((__("Top header items")))
                                     ->schema([
-                                        TextInput::make('item'),
-                                        IconPicker::make('icon'),
+                                        TextInput::make('item')
+                                        ->label(__("Item")),
+                                        IconPicker::make('icon')
+                                        ->label(__('Icon')),
                                         ColorPicker::make('color')
+                                        ->label(__("Color"))
                                     ])->afterStateHydrated(function (Repeater $component, $state) {
                                         $items = app(HeaderSetting::class)->top_header_items;
                                         $component->state($items);
@@ -66,7 +77,7 @@ class MangeHeader extends SettingsPage
                         }
 
                         return [
-                            Placeholder::make('notice')->content('Enable top header to add content')
+                            Placeholder::make('notice')->label(__("Notice"))->content(__("Enable top header to add content"))
                         ];
                     })
                     ->key('topHeaderFileds')

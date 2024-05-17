@@ -18,6 +18,7 @@
         "google/apiclient": "2.15.0",
         "guava/filament-icon-picker": "2.0",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image-laravel": "^1.2",
         "khatabwedaa/blade-css-icons": "^1.4",
         "lara-zeus-kh/palsky": "^3.0",
         "laravel/framework": "^10.10",

@@ -12,7 +12,9 @@ class ThemeRenderNaveItem
     public static function render(array $item, string $class = '')
     {
 
+          
 
+      
 
         $color = '';
         if ($item['type'] === 'category') {
@@ -58,7 +60,15 @@ class ThemeRenderNaveItem
                 >' .
                 $item['label'] .
                 '</a>';
-        } else {
+        } elseif($item['type'] === 'collection') {
+            return '<a class="' . $class . '"
+                    target="' . ($item['data']['target'] ?? '_self') . '"
+                    href="' . route($item['data']['collection']) . '"
+                >' .
+                $item['label'] .
+                '</a>';
+        }
+         else {
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
                     href="' . $item['data']['url'] . '"

@@ -73,21 +73,21 @@
                                     <a href="#"><img src="/images/home01/footer-instagram-img-1.jpg"
                                             alt="footer-instagram-img-1" /></a>
 
-                                    <a href="#"><img src="images/home01/footer-instagram-img-2.jpg"
+                                    <a href="#"><img src="/images/home01/footer-instagram-img-2.jpg"
                                             alt="footer-instagram-img-2" /></a>
-                                    <a href="#"><img src="images/home01/footer-instagram-img-3.jpg"
+                                    <a href="#"><img src="/images/home01/footer-instagram-img-3.jpg"
                                             alt="footer-instagram-img-3" /></a>
-                                    <a href="#"><img src="images/home01/footer-instagram-img-4.jpg"
+                                    <a href="#"><img src="/images/home01/footer-instagram-img-4.jpg"
                                             alt="footer-instagram-img-4" /></a>
-                                    <a href="#"><img src="images/home01/footer-instagram-img-5.jpg"
+                                    <a href="#"><img src="/images/home01/footer-instagram-img-5.jpg"
                                             alt="footer-instagram-img-5" /></a>
-                                    <a href="#"><img src="images/home01/footer-instagram-img-6.jpg"
+                                    <a href="#"><img src="/images/home01/footer-instagram-img-6.jpg"
                                             alt="footer-instagram-img-6" /></a>
-                                    <a href="#"><img src="images/home01/footer-instagram-img-7.jpg"
+                                    <a href="#"><img src="/images/home01/footer-instagram-img-7.jpg"
                                             alt="footer-instagram-img-7" /></a>
-                                    <a href="#"><img src="images/home01/footer-instagram-img-8.jpg"
+                                    <a href="#"><img src="/images/home01/footer-instagram-img-8.jpg"
                                             alt="footer-instagram-img-8" /></a>
-                                    <a href="#"><img src="images/home01/footer-instagram-img-9.jpg"
+                                    <a href="#"><img src="/images/home01/footer-instagram-img-9.jpg"
                                             alt="footer-instagram-img-9" /></a>
                                 </div>
                                 <!-- .footer-instagram -->

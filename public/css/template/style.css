@@ -1124,7 +1124,8 @@ section{
 }
 .page-title h2{
 	color: #fff;
-	line-height: 23px;
+	/* line-height: 23px; */
+	line-height: 1.4;
 	text-transform: uppercase;
 }
 .page-header-content .breadcrumb{
@@ -2264,6 +2265,7 @@ section{
 }
 .blog-img{
 	overflow: hidden;
+	
 }
 .blog-img a{
 	display: block;
@@ -2381,17 +2383,17 @@ section{
 	padding: 5px 0;
 }
 .address li .fa , .address li svg{
-	float: left;
+	/* float: left; */
 	width: 36px;
 	height: 36px;
 	font-size: 20px;
 	/* color: #53a92c; */
 	line-height: 36px;
 	text-align: center;
-	background: #000000;
+	/* background: #000000; */
 	border: 1px solid #272727;
 	border-radius: 2px;
-	margin-right: 14px;
+	/* margin-right: 14px; */
 }
 .address li span{
 	display: table;
@@ -4052,7 +4054,7 @@ ul>li>a:focus, ul>li>a:hover {
 	padding: 120px 0 30px 0;
 }
 .event-search-box-option{
-	padding: 23px 0 26px 31px;
+	padding: 23px 31px 26px 31px;
 	box-shadow: 1px 0px 14px 1px #ebebeb;
 }
 .event-box{}

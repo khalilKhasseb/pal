@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        
+
     }
 
     /**
@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // app()->setLocale('ar');صي
+        app()->setLocale('ar');
 
         SkyPlugin::get()->itemType(__('Catoery'), [
             Select::make('category_id')
@@ -39,5 +39,66 @@ class AppServiceProvider extends ServiceProvider
                     return SkyPlugin::get()->getModel('Tag')::getWithType('category')->pluck('name', 'id');
                 })
         ], 'category');
+
+        SkyPlugin::get()->itemType(__('Collection'), [
+            Select::make('collection')
+                ->searchable()
+                ->options(function () {
+                    return [
+                        'event' =>__('Events') ,
+                        'activity' => __('Activities') ,
+                        'administration' => __('Administrations'),
+                        'hall' => __('Halls') ,
+                        'partners'  => __('Partners'),
+                        'product' => __('Products'),
+                        'service'  => __('Services'),
+                        'supporters' => __('Supporters'),
+                        'cource' => __('Cources'),
+                        'initiative' => __('Initiatives')
+                    ];
+                })
+        ], 'collection');
     }
 }
+
+
+// 'events' => [
+//                             'class' => \App\Models\Post::class,
+//                             'query' => 'event'
+//                         ],
+//                         'activities' => [
+//                             'class' => \App\Models\Post::class,
+//                             'query' => 'activity'
+//                         ],
+//                         'adminstration' => [
+//                             'class' => \App\Models\Post::class,
+//                             'query' => 'adminstration',
+//                         ],
+//                         'hall' => [
+//                             'class' => \App\Models\Post::class,
+//                             'query' => 'hall',
+//                         ],
+//                         'partners' => [
+//                             'class' => \App\Models\Post::class,
+//                             'query' => 'partners'
+//                         ],
+//                         'product' => [
+//                             'class' => \App\Models\Post::class,
+//                             'query' => 'product'
+//                         ],
+//                         'service' => [
+//                             'class' => \App\Models\Post::class,
+//                             'query' => 'service'
+//                         ],
+//                         'supporters' => [
+//                             'class' => \App\Models\Supporter::class,
+//                             'query' => 'all'
+//                         ],
+//                         'cource' => [
+//                             'class' => \App\Models\Cource::class,
+//                             'query' => 'all'
+//                         ],
+//                         'initiative' => [
+//                             'class' => \App\Models\Initiative::class,
+//                             'query' => 'all'
+//                         ]

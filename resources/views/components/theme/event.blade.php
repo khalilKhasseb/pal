@@ -1,71 +1,56 @@
-        <!-- Start Upcoming Events Section -->
-        <section class="bg-upcoming-events" id="events">
-            <div class="container">
-                <div class="row">
-                    <div class="upcoming-events">
-                        <div class="section-header">
-                            <h2>upcoming events</h2>
-                            <p>Professionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.</p>
-                        </div>
-                        <!-- .section-header -->
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="event-items">
-                                    <div class="event-img">
-                                        <a href="event_single.html"><img src="images/home02/upcoming-events-img-1.jpg" alt="upcoming-events-img-1" class="img-responsive" /></a>
-                                        <div class="date-box">
-                                            <h3>24</h3>
-                                            <h5>july</h5>
-                                        </div>
-                                        <!-- .date-box -->
-                                    </div>
-                                    <!-- .event-img -->
-                                    <div class="events-content">
-                                        <h3><a href="event_single.html">Completely enable and before brcks</a></h3>
-                                        <ul class="meta-post">
-                                            <li><i class="fa fa-clock-o" aria-hidden="true"></i> 8:30am - 5:30pm</li>
-                                            <li><i class="flaticon-placeholder"></i> Sahera Tropical Center Dhaka</li>
-                                        </ul>
-                                        <p>Uniquely initiate out ofthe-box channels vis and vis multidisciplnary Credbly orcahestrate granular scenarios for forward manufactured Assertively negotiate multimedia based total linkage rather.</p>
-                                        <a href="event_single.html" class="btn btn-default">join now</a>
-                                    </div>
-                                    <!-- .events-content -->
-                                </div>
-                                <!-- .events-items -->
-                            </div>
-                            <!-- .col-md-6 -->
-                            <div class="col-md-6 col-sm-6">
-                                <div class="event-items">
-                                    <div class="event-img">
-                                        <a href="event_single.html"><img src="images/home02/upcoming-events-img-2.jpg" alt="upcoming-events-img-2" class="img-responsive" /></a>
-                                        <div class="date-box">
-                                            <h3>29</h3>
-                                            <h5>july</h5>
-                                        </div>
-                                        <!-- .date-box -->
-                                    </div>
-                                    <!-- .event-img -->
-                                    <div class="events-content">
-                                        <h3><a href="event_single.html">Completely enable and before brcks</a></h3>
-                                        <ul class="meta-post">
-                                            <li><i class="fa fa-clock-o" aria-hidden="true"></i> 8:30am - 5:30pm</li>
-                                            <li><i class="flaticon-placeholder"></i> Sahera Tropical Center Dhaka</li>
-                                        </ul>
-                                        <p>Uniquely initiate out ofthe-box channels vis and vis multidisciplnary Credbly orcahestrate granular scenarios for forward manufactured Assertively negotiate multimedia based total linkage rather.</p>
-                                        <a href="event_single.html" class="btn btn-default">join now</a>
-                                    </div>
-                                    <!-- .events-content -->
-                                </div>
-                                <!-- .events-items -->
-                            </div>
-                            <!-- .col-md-6 -->
-                        </div>
-                        <!-- .row -->
-                    </div>
-                    <!-- .upcoming-events -->
-                </div>
-                <!-- .row -->
-            </div>
-            <!-- .container -->
-        </section>
-        <!-- End Upcoming Events Section -->
+  @props(['event'])
+   @php
+             #when there is no thumb media and has_thumb  = fasle loda thumb from origin croppped tumb conversion
+              
+                 $thumbnail = '' ;
+                 #check for event thubmnail media collection 
+                  if($event->getMedia('thumbnail')->isEmpty() && !$event->has_thumb) {
+                    #which means we have to load thumb from origin image conversions
+                    if(!$event->getMedia('posts')->isEmpty()) {
+       
+                         $thumb_url = $event->getMedia('posts')[0]->getUrl('thumb-cropped-original') ;
+
+                         $thumbnail = $thumb_url ;
+                    }
+                  }elseif(!$event->getMedia('thumbnail')->isEmpty() && $event->has_thumb) {
+                    #load thumb from thumbnail collection conerstion
+
+                    $thumb_url = $event->getMedia('thumbnail')[0]->getUrl('thumb-cropped');
+                    $thumbnail = $thumb_url ;
+                  }else{
+                    $thumbnail = $event->image();
+                  }
+              @endphp   
+  <div class="col-lg-6">
+      <div class="event-items">
+
+          <div class="event-img">
+              <a href="{{route('event.single' , ['slug' => $event->slug])}}"><img src="{{ $event->image()}}" alt="upcoming-events-img-1"
+                      class="img-responsive" /></a>
+              <div class="date-box">
+
+                  <h3>{{ $event->published_at->locale(app()->getLocale())->day }}</h3>
+                  <h5>{{ $event->published_at->locale(app()->getLocale())->monthName }}</h5>
+              </div>
+              <!-- .date-box -->
+          </div>
+          <!-- .event-img -->
+          <div class="events-content">
+              <h3 class="mb-2"><a href="{{route('event.single' , ['slug' => $event->slug])}}">{{ $event->title }}</a></h3>
+              <ul class="meta-event">
+                  @foreach ($event->post_meta as $meta)
+                      <li class="d-flex justify-items-start">
+                          <x-icon class="ps-2" width="20px" color="green" name="{{ $meta->icon }}" />
+
+                          <span>{{ $meta->key }} : {{ $meta->value }} </span>
+                      </li>
+                  @endforeach
+                  {{-- <li><i class="flaticon-placeholder"></i> Sahera Tropical Center Dhaka</li> --}}
+              </ul>
+              <p>{!! $event->description !!}</p>
+              <a href="{{route('event.single' , ['slug' => $event->slug])}}" class="btn btn-default">{{ __('Details') }}</a>
+          </div>
+          <!-- .events-content -->
+      </div>
+      <!-- .events-items -->
+  </div>

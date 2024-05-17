@@ -6,7 +6,7 @@
     <x-theme.focus />
     <x-theme.campaian />
     <x-theme.collection />
-    <x-theme.event />
+    {{-- <x-theme.event /> --}}
     <x-theme.sponser />
     <x-theme.contact-us />
 </div>

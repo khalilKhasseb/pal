@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('system_users' , function(Blueprint $table) {
-            $table->foreignIdFor(Role::class);
+            $table->foreignIdFor(Role::class)->default(1);
         });
     }
 

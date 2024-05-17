@@ -1,18 +1,22 @@
-<div class="col-lg-4 col-sm-6 col-12">
+@use(Illuminate\Support\Str)
+<div class="col-12 col-sm-6 col-lg-4">
 
     <div class="blog-items">
         <div class="blog-img">
-            <a href="{{route('post',$post->slug)}}"><img src="{{$post->image()}}" alt="blog-img-1"
-                    class="img-responsive" /></a>
+            <a href="{{ route('post', $post->slug) }}">
+
+             <img src="{{ $post->image()}}" alt="blog-img-1" class="img-responsive" />
+                 
+            </a>
         </div>
         <!-- .blog-img -->
         <div class="blog-content-box">
             <div class="blog-content">
-                <h4><a href="{{route('post' ,$post->slug)}}">{!! $post->title !!}</a></h4>
-                @if($post->description !== null)
-                <p>
-                    {!! $post->description !!}
-                </p>
+                <h4><a href="{{ route('post', $post->slug) }}">{!! Str::substr($post->title, 0, 30) !!}</a></h4>
+                @if ($post->description !== null)
+                    <p>
+                        {!! Str::substr($post->description, 0, 15) !!}
+                    </p>
                 @endif
             </div>
             <!-- .blog-content -->
@@ -20,39 +24,35 @@
                 <ul class="meta-post">
                     <li>
                         <i class="fa fa-calendar" aria-hidden="true">
-                        </i> {{optional($post->published_at)->diffForHumans() ?? ''}}
+                        </i> {{ optional($post->published_at)->diffForHumans() ?? '' }}
                     </li>
-                    <li x-data="
-                {
-                    likes:@js($post->likes),
-                    post_id:@js($post->id),
-                    liked:@js($post->checkIfHasLikeForThisIp(request()->getClientIp())),
-                     like_post(){
-                      axios.get('{{route('ajax.like_post',$post->slug)}}')
-                      .then(r => {
-                        console.log(r)
-                        if(r.data){
-                            this.likes = r.data.likes
-                            this.liked = r.data.liked
+                    <li x-data="{
+                        likes: @js($post->likes),
+                        post_id: @js($post->id),
+                        liked: @js($post->checkIfHasLikeForThisIp(request()->getClientIp())),
+                        like_post() {
+                            axios.get('{{ route('ajax.like_post', $post->slug) }}')
+                                .then(r => {
+                                    console.log(r)
+                                    if (r.data) {
+                                        this.likes = r.data.likes
+                                        this.liked = r.data.liked
+                                    }
+                                })
+                                .catch(e => console.log(e))
                         }
-                      })
-                      .catch(e => console.log(e))
-                    }
-
-                }
-
-
-                ">
+                    
+                    }">
                         <button x-on:click="like_post" class="btn-transperent">
-                            <i x-bind:style="liked && 'color:red'  " x-bind:class="`fa fa-heart-o`"
+                            <i x-bind:style="liked && 'color:red'" x-bind:class="`fa fa-heart-o`"
                                 aria-hidden="true"></i> <span x-text="likes === null ? 0 : likes"></span>
                         </button>
 
                     </li>
                     <li>
-                        <a href="{{route('author_posts',$post->user_id)}}"><i class="fa fa-user-o"
+                        <a href="{{ ''}}"><i class="fa fa-user-o"
                                 aria-hidden="true"></i>
-                            {{$post->author->name}}
+                            {{ $post->author->name }}
                         </a>
                     </li>
                 </ul>
@@ -81,7 +81,7 @@
                 class="text-2xl md:text-3xl font-bold text-gray-700 dark:text-gray-200 hover:underline">
                 {!! $post->title !!}
             </a>
-            @if($post->description !== null)
+            @if ($post->description !== null)
             <p class="mt-2 text-gray-600 dark:text-gray-200">
                 {!! $post->description !!}
             </p>

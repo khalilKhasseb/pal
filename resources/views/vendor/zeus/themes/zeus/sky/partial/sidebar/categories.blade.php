@@ -25,7 +25,7 @@
 
 
 <div class="widget">
-    <h4 class="sidebar-widget-title">All Categores</h4>
+    <h4 class="sidebar-widget-title">{{__('All Categores')}}</h4>
     <div class="widget-content">
         <ul class="catagories">
             @foreach($categories as $cat)

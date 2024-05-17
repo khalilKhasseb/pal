@@ -1,6 +1,6 @@
  <!-- .widget -->
  <div class="widget">
-    <h4 class="sidebar-widget-title">Popular Tags</h4>
+    <h4 class="sidebar-widget-title">{{__('Popular Tags')}}</h4>
     <div class="widget-content">
         <div class="tag-cloud">
             @foreach ($papular_tags as $tag )

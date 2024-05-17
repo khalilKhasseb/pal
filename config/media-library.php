@@ -37,7 +37,7 @@ return [
     'media_model' => Spatie\MediaLibrary\MediaCollections\Models\Media::class,
 
     /*
-     * When enabled, media collections will be serialised using the default
+     * When enabled, media collections will be serialised using the default 
      * laravel model serialization behaviour.
      *
      * Keep this option disabled if using Media Library Pro components (https://medialibrary.pro)
