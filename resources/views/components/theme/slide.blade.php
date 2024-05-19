@@ -11,7 +11,7 @@
 
                                 <div class="slider-item">
                                     <img src="{{ $item->getUrl() }}" alt="bg-slider-2">
-                                    <div class="slider-content-area">
+                                {{-- <div class="slider-content-area">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-6"></div>
@@ -29,7 +29,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                             </div>
                         @endforeach
