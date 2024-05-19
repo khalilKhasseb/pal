@@ -7,6 +7,6 @@
   "resources/js/app.js": {
     "file": "assets/app-Dt_wruXn.js",
     "src": "resources/js/app.js",
-    "isEntry": true
+    "isEntry": true 
   }
 }
