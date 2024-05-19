@@ -4,8 +4,8 @@
     <div class="bg-header-top">
         <div class="container">
             <div class="row">
-                @if(isset($header_settings) && $header_settings->top_header_enabled )
-                @include('theme.partial.top-header')
+                @if (isset($header_settings) && $header_settings->top_header_enabled)
+                    @include('theme.partial.top-header')
                 @endif
             </div>
             <!-- .header-top -->
@@ -39,53 +39,51 @@
 
                                     @isset($menu)
 
-                                    @foreach ($menu->items as $item )
-                                    <li>
-                                        {!! ThemeRenderNaveItem::render($item) !!}
-
-                                        @if(count($item['children'] ) > 0)
-
-                                        <ul class="sub-menu">
-                                            @foreach ($item['children'] as $child_item )
+                                        @foreach ($menu->items as $item)
                                             <li>
-                                                {!! ThemeRenderNaveItem::render($child_item) !!}
+                                                {!! ThemeRenderNaveItem::render($item) !!}
 
-                                                @if(count($child_item['children']) > 0 )
-                                                <ul class="sub-sub-menu">
-                                                    @foreach ($child_item['children'] as $last_level_child )
+                                                @if (count($item['children']) > 0)
+                                                    <ul class="sub-menu">
+                                                        @foreach ($item['children'] as $child_item)
+                                                            <li>
+                                                                {!! ThemeRenderNaveItem::render($child_item) !!}
 
-                                                    <li>
-                                                        {!! ThemeRenderNaveItem::render($last_level_child) !!}
+                                                                @if (count($child_item['children']) > 0)
+                                                                    <ul class="sub-sub-menu">
+                                                                        @foreach ($child_item['children'] as $last_level_child)
+                                                                            <li>
+                                                                                {!! ThemeRenderNaveItem::render($last_level_child) !!}
 
-                                                    </li>
-                                                    @endforeach
-                                                </ul>
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @endif
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
                                                 @endif
                                             </li>
-                                            @endforeach
-                                        </ul>
-                                        @endif
-                                    </li>
-
-                                    @endforeach
+                                        @endforeach
 
                                     @endisset
 
 
-                                  
+
                                 </ul>
 
                                 <div class="menu-right-option pull-right">
-
-                                    <div class="search-box">
+                                  
+                                    {{-- <div class="search-box">
                                         <i class="fa fa-search first_click" aria-hidden="true"
                                             style="display: block;"></i>
                                         <i class="fa fa-times second_click" aria-hidden="true"
                                             style="display: none;"></i>
-                                    </div>
+                                    </div> --}}
                                     <div class="search-box-text">
                                         <form action="search">
-                                            <input type="text" name="search" id="all-search" placeholder="Search Here">
+                                            <input type="text" name="search" id="all-search"
+                                                placeholder="Search Here">
                                         </form>
                                     </div>
                                 </div>

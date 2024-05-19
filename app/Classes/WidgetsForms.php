@@ -2,6 +2,7 @@
 
 namespace App\Classes;
 
+use App\Models\Gallary;
 use Filament\Forms\Form;
 use Illuminate\Support\Str;
 use Symfony\Component\Finder\Finder;
@@ -143,6 +144,11 @@ class WidgetsForms
 
                     ])
             ]);
+    }
+    public static function gallary(?Form $form) {
+       return Select::make('content')
+            ->label(__('gallary'))
+            ->options(Gallary::all()->pluck('title', 'id'));
     }
 
     public static function news()

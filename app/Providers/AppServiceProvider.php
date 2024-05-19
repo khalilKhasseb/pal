@@ -54,7 +54,9 @@ class AppServiceProvider extends ServiceProvider
                         'service'  => __('Services'),
                         'supporters' => __('Supporters'),
                         'cource' => __('Cources'),
-                        'initiative' => __('Initiatives')
+                        'initiative' => __('Initiatives'),
+                        'blogs' => __('All News'),
+                        'dashboard' => __('Library')
                     ];
                 })
         ], 'collection');

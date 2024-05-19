@@ -95,7 +95,7 @@ class Forms extends Page implements HasTable
                 ->label(__('Name')),
                 TextColumn::make('type')
                 ->label(__("Type")),
-                TextColumn::make('google_mimeType'),
+                TextColumn::make('responder_uri'),
             ])->actions([
                 TableAction::make('viwe_response')
                     ->label(__('response'))
@@ -117,14 +117,16 @@ class Forms extends Page implements HasTable
             Action::make(__('Fetch Forms'))
                 ->action(function () {
                     $forms = $this->service;
-
+             
 
                     foreach ($forms->getForms() as $form) {
-
+                        $responderUri = $forms->getForm($form->getId())->getResponderUri();
+                       
 
                         GoogleForm::updateOrCreate(
                             [
                                 'google_file_id' => $form->getId(),
+                                
                             ],
                             [
                                 'name' => $form->getName(),
@@ -132,6 +134,7 @@ class Forms extends Page implements HasTable
                                 'type' => 'form',
                                 'google_mimeType' => $form->getMimeType(),
                                 'web_view_link' => $form->getWebViewLink(),
+                                'responder_uri' => $responderUri ,
                                 'questions' => json_encode($forms->getFormItemsWithQuestions()[$form->getId()]),
                             ]
                         );

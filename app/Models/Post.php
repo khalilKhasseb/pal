@@ -8,6 +8,7 @@ use LaraZeus\Sky\Models\Post as Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 use App\Models\Comment;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -26,6 +27,10 @@ class Post extends Model
         'sticky_until' => 'datetime',
         'has_thumb' => 'boolean',
     ];
+
+    public function form() : BelongsTo {
+        return $this->belongsTo(GoogleForm::class , 'google_form_id' , 'id');
+    }
     protected static function booted(): void
     {
         static::addGlobalScope(new PanelScope);

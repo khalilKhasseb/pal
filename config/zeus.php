@@ -20,7 +20,7 @@ return [
      * zeus::themes.another-portfolio.layouts.app
      */
     // 'layout' => 'zeus::components.app',
-    'layout' => 'theme.layout.app-layout',
+    'layout' => 'layouts.app-layout',
 
     /**
      * this will be set up the default seo site title. read more about it in 'laravel-seo'.

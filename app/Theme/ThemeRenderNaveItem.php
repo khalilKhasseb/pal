@@ -19,7 +19,7 @@ class ThemeRenderNaveItem
         $color = '';
         if ($item['type'] === 'category') {
             $category = SkyPlugin::get()->getModel('Tag')::getWithType('category')->find($item['data']['category_id']) ?? '';
-            $activeClass = (request()->routeIs('page', $category)) ? $color : 'border-transparent';
+            $activeClass = (request()->routeIs('page', 'category')) ? $color : 'border-transparent';
             return '<a class="' . $class . ' ' . $activeClass . '"
             target="' . ($item['data']['target'] ?? '_self') . '"
             href="' . route('tags', [
@@ -32,7 +32,8 @@ class ThemeRenderNaveItem
         }
         if ($item['type'] === 'page-link' || $item['type'] === 'page_link') {
             $page = SkyPlugin::get()->getModel('Post')::page()->whereDate('published_at', '<=', now())->find($item['data']['page_id']) ?? '';
-            $activeClass = (request()->routeIs('page', $page)) ? $color : 'border-transparent';
+            
+            $activeClass = (request()->routeIs('page')) ? $color : 'border-transparent';
 
             return '<a class="' . $class . ' ' . $activeClass . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
@@ -42,7 +43,7 @@ class ThemeRenderNaveItem
                 '</a>';
         } elseif ($item['type'] === 'post-link' || $item['type'] === 'post_link') {
             $post = SkyPlugin::get()->getModel('Post')::find($item['data']['post_id']) ?? '';
-            $activeClass = (request()->routeIs('post', $post)) ? $color : 'border-transparent';
+            $activeClass = (request()->routeIs('post')) ? $color : 'border-transparent';
 
             return '<a class="' . $class . ' ' . $activeClass . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"

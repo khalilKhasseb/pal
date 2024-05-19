@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Theme\ContentController;
 use App\Http\Controllers\GoogleApiAuthController;
-use Illuminate\Support\Facades\Route;
 use App\Livewire\Home;
 use App\Http\Controllers\Google\FormsController;
 use App\Models\GoogleForm;
@@ -11,6 +12,55 @@ use Intervention\Image\Laravel\Facades\Image;
 use LaraZeus\Sky\Livewire\Post;
 use LaraZeus\Sky\Livewire\Posts;
 use LaraZeus\Sky\Livewire\Tags;
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class , 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +151,8 @@ Route::prefix('initiative')->name('initiative')->group(function () {
     Route::get('/', Posts::class);
     Route::get('/{slug}', Post::class)->name('.view');
 });
+
+Route::post('/contact', App\Http\Controllers\ContactController::class)->name('contact');
 
 
 /**

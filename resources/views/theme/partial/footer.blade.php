@@ -11,7 +11,7 @@
                         @if(!empty($contentbox) || !is_null($contentbox))
                         @foreach ($contentbox as $box )
                         {{-- @dd($box->component) --}}
-                        <div class="col-lg-3 col-sm-6">
+                        <div class="col-lg-3 col-sm-6 col-12">
 
 
                             <x-dynamic-component :component="Str::of('widgets.'.$box->component)" :title="$box->title"
@@ -25,45 +25,9 @@
 
 
                         <!-- .col-lg-3 -->
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="footer-widgets">
-                                <div class="widgets-title">
-                                    <h3>Twitter Widget</h3>
-                                </div>
-                                <!-- .widgets-title -->
-                                <ul class="twitter-widget">
-                                    <li>
-                                        <div class="twitter-icon"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-                                        <div class="twitter-content">
-                                            <h5>Raritas etiam processus a theme dynamicus sequitur <a
-                                                    href="#">http://admin@gmail.com</a></h5>
-                                            <span class="post-date">03 January 2017</span>
-                                        </div>
-                                        <!-- .twitter-content -->
-                                    </li>
-                                    <li>
-                                        <div class="twitter-icon"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-                                        <div class="twitter-content">
-                                            <h5>Duis autem vel eum <a href="#">#iriure</a>dolor in hendrerit in
-                                                vulputate </h5>
-                                            <span class="post-date">8 months ago</span>
-                                        </div>
-                                        <!-- .twitter-content -->
-                                    </li>
-                                    <li>
-                                        <div class="twitter-icon"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-                                        <div class="twitter-content">
-                                            <h5><a href="#">@frankdoe</a> am liber tempor cum soluta nobis eleifend</h5>
-                                            <span class="post-date">03 January 2017</span>
-                                        </div>
-                                        <!-- .twitter-content -->
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- .footer-widgets -->
-                        </div>
+                       
                         <!-- .col-lg-3 -->
-                        <div class="col-lg-3 col-sm-6">
+                        {{-- <div class="col-lg-3 col-sm-6">
                             <div class="footer-widgets">
                                 <div class="widgets-title">
                                     <h3>Recent Photos</h3>
@@ -93,7 +57,7 @@
                                 <!-- .footer-instagram -->
                             </div>
                             <!-- .footer-widgets -->
-                        </div>
+                        </div> --}}
                         <!-- .col-lg-3 -->
                     </div>
                     <!-- .row -->

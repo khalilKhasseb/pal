@@ -19,7 +19,7 @@
         <div class="row">
             <div class="single-blog">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-12">
                         <div class="blog-items">
                             @if($post->image('pages') !== null)
                             {{-- @dd($post->image()) --}}
@@ -77,9 +77,13 @@
                                 </div>
                                 <!-- .meta-box -->
                                 <div class="blog-content">
-                                    <h4>{{$post->title}}</h4>
-
+                                    <h4 class="text-center">{{$post->title}}</h4>
+                                  
                                     {!! $post->getContent() !!}
+
+                                      @if($post->form !== null) 
+                                      <iframe id="{{$post->form->id}}" title="{{$post->form->name}}" src="{{$post->form->responder_uri}}" width="100%" height="1200px"> </iframe>
+                                      @endif
 
                                 </div>
                                 <!-- .blog-content -->
@@ -155,12 +159,12 @@
                         @livewire('comment' , ['post' => $post])
                     </div>
 
-                    <div class="col-lg-4">
+                    {{-- <div class="col-lg-4">
 
                         @include($skyTheme.'.partial.sidebar')
 
                         <!-- .sidebar -->
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

@@ -23,7 +23,7 @@
             href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=KoHo:ital,wght@0,200;0,300;0,500;0,700;1,200;1,300;1,600;1,700&display=swap"
             rel="stylesheet">
     @endif
-    @livewireStyles
+    {{-- @livewireStyles --}}
     {{-- @filamentStyles --}}
     @stack('styles')
 
@@ -31,50 +31,59 @@
 
     {{-- <link rel="stylesheet" href="{{ asset('vendor/zeus/frontend.css') }}"> --}}
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/template/font-awesome.min.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/fonts/flaticon.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/template/bootstrap.min.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/template/animate.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/template/swiper.min.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/template/lightcase.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/template/jquery.nstSlider.css') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/template/flexslider.css') }}" media="all" />
+    @if (!request()->routeIs('login', 'dashboard'))
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/template/font-awesome.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/fonts/flaticon.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/template/bootstrap.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/template/animate.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/template/swiper.min.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/template/lightcase.css') }}" media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/template/jquery.nstSlider.css') }}"
+            media="all" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/template/flexslider.css') }}" media="all" />
 
-    <!-- own style css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?11ssad" media="all" />
-  @if(app()->getLocale() === 'ar')
-      <link rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}?23dswdsa" media="all" />
-@endif
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/template/responsive.css') }}" media="all" />
+        <!-- own style css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?11ssdsad" media="all" />
+        @if (app()->getLocale() === 'ar')
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}?23dswdsa"
+                media="all" />
+        @endif
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/template/responsive.css') }}" media="all" />
+    @endif
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    @vite(['resources/js/app.js'])
     <style>
+        .filament-tiptap-grid-builder {
+            display: grid;
+        }
+
         [x-cloak] {
             display: none !important;
         }
 
-      @if(app()->getLocale() === 'ar')
-        * {
-              font-family: "Rubik", sans-serif;
+       
+            * {
+                font-family: "Rubik", sans-serif; 
+ 
+            }
 
-        }
-        .fontrubib {
-        font-family: "Rubik", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: normal;
-        font-style: normal;
-        }
-        @endif
+            .fontrubib {
+                font-family: "Rubik", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: normal; 
+                font-style: normal;
+            }
+      
     </style>
 </head>
 
 
-<body class={{app()->getLocale() === 'ar' ? 'rtl' : ''}} id="page-top" data-spy="scroll">
+<body class={{ app()->getLocale() === 'ar' ? 'rtl' : '' }} id="page-top" data-spy="scroll">
     <div class="box-layout">
 
 
-        {{-- Header start --}}
+      
 
         @include('theme.partial.header', [
             'logo' => Storage::url($settings->site_logo),
@@ -165,11 +174,11 @@
     <script type="text/javascript" src="{{ asset('js/template/custom.js') }}"></script>
 
     <!-- Map Api -->
-    {{-- <script async defer
+  <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqVIkdttPNjl5c5hKlc_Hk3bfXQQlf2Rc&callback=initMap">
 
 
-    </script> --}}
+    </script> 
 </body>
 
 </html>

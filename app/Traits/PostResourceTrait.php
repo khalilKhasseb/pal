@@ -77,6 +77,9 @@ trait PostResourceTrait {
                         }),
                     config('zeus-sky.editor')::component()
                     ->label(__("Post Content")),
+                    Select::make('google_form_id')
+                        ->relationship(name: 'form', titleAttribute: 'name')
+                        ->preload(),
                     Repeater::make('post_meta')
                     ->label(__("Custom fields"))
                         ->relationship()
@@ -108,6 +111,7 @@ trait PostResourceTrait {
                         ->required()
                         ->maxLength(255)
                         ->label(__("Slug")),
+                    
 
                     // Select::make('parent_id')
                     //     ->options(
