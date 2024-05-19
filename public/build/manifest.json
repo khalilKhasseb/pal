@@ -4,9 +4,14 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/css/filament/admin/theme.css": {
+    "file": "assets/theme-C05s6hED.css",
+    "src": "resources/css/filament/admin/theme.css",
+    "isEntry": true
+  },
   "resources/js/app.js": {
     "file": "assets/app-Dt_wruXn.js",
     "src": "resources/js/app.js",
-    "isEntry": true 
+    "isEntry": true
   }
 }
