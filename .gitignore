@@ -1,7 +1,7 @@
 /.phpunit.cache
 /node_modules
 /public/hot
-# /public/storage
+/public/storage
 /public/web.config
 /public/error_log
 /public/settings
