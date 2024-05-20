@@ -29,7 +29,7 @@
                                 <img src="{{$post->image()}}" alt="recent-project-img-1">
                                 <ul class="project-link-option">
                                     <li class="project-link"><a href="project_single.html"><i class="fa fa-link" aria-hidden="true"></i></a></li>
-                                    <li class="project-search"><a href="images/home02/recent-project-img-1.jpg" data-rel="lightcase:myCollection"><i class="fa fa-search-plus" aria-hidden="true"></i></a></li>
+                                    <li class="project-search"><a href="{{$post->image()}}" data-rel="lightcase:myCollection"><i class="fa fa-search-plus" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
                             <!-- /.portfolio-img -->

@@ -18,7 +18,7 @@ use App\Models\Scopes\PanelScope;
 use App\Models\PostMeta;
 use Spatie\Image\Enums\CropPosition;
 use Illuminate\Support\Collection;
-
+use Spatie\Image\Enums\Fit ;
 class Post extends Model
 {
 
@@ -85,8 +85,11 @@ class Post extends Model
             if (!$this->getMedia($collection)->isEmpty()) {
 
                 $thumb_url = $this->getMedia($collection)[0]->getUrl('thumb-cropped-original');
+                
 
                 $thumbnail = $thumb_url;
+
+                return $thumbnail;
                 
             }else{
                 $thumbnail = parent::image();
@@ -125,8 +128,7 @@ class Post extends Model
         //     ->crop(380, 300, CropPosition::Center);
         $this->addMediaConversion('thumb-cropped-original')
             ->performOnCollections('posts')
-            ->width(380)
-            ->height(300);
+            ->fit(Fit::Fill ,380, 300 , false , '#333');
             
     }
 }

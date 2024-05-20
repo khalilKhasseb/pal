@@ -40,6 +40,11 @@ class AppServiceProvider extends ServiceProvider
                 })
         ], 'category');
 
+        // SkyPlugin::get()->itemType(__('Sommod'))
+        // ->make(m 
+        
+        // )
+
         SkyPlugin::get()->itemType(__('Collection'), [
             Select::make('collection')
                 ->searchable()

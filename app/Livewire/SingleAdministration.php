@@ -15,6 +15,6 @@ class SingleAdministration extends Component
     public function render()
     {
         return view('livewire.single-administration')
-        ->layout('theme.layout.app-layout');
+        ->layout('layouts.theme-layout');
     }
 }

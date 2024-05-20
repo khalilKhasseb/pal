@@ -15,6 +15,6 @@ class AdminstrationComp extends Component
     public function render()
     {
         return view('livewire.adminstration-comp')
-        ->layout('theme.layout.app-layout');
+        ->layout('layouts.theme-layout');
     }
 }

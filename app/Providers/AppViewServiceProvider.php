@@ -25,7 +25,7 @@ class AppViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
-        Facades\View::composer(['layouts.app-layout' , 'layouts.app' , 'layouts.navigation'], AppLayoutCreator::class);
+        Facades\View::composer(['layouts.theme-layout' , 'layouts.app' , 'layouts.navigation'], AppLayoutCreator::class);
         Facades\View::composer('theme.partial.header', HeaderSettingsCreator::class);
         // Facades\View::composer('layouts.app', HeaderSettingsCreator::class);
         // Facades\View::composer('theme.partial.header', HeaderSettingsCreator::class);

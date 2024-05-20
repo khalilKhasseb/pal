@@ -8,7 +8,7 @@ use Livewire\Component;
 use App\Settings\SiteSetting;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Layout;
-#[Layout('layouts.app-layout')]
+#[Layout('layouts.theme-layout')]
 class Home extends Component
 {
 
@@ -23,6 +23,7 @@ class Home extends Component
         //$this->siteSetting = ->toCollection();
         $this->gallaries = \App\Models\Gallary::showInSlider()->get();
         $this->serviceBlocks = \App\Models\ServiceBlock::all();
+        // dd(request());
         
 
 
@@ -30,6 +31,7 @@ class Home extends Component
     public function render()
 
     {
+        
         $recent = config('zeus-sky.models.Post')::query()
             ->posts()
             ->published()

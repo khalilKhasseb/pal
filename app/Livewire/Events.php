@@ -24,6 +24,6 @@ class Events extends Component
     public function render()
     {
         return view('livewire.events')
-        ->layout('theme.layout.app-layout');
+        ->layout('layouts.theme-layout');
     }
 }
