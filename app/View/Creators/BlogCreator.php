@@ -36,7 +36,7 @@ class BlogCreator
         $db = env('DB_DATABASE');
 
         $popularTags =
-        DB::select('SELECT taggables.tag_id ,tags.name ,tags.slug,tags.type,count(*) FROM '.$db.'taggables
+        DB::select('SELECT taggables.tag_id ,tags.name ,tags.slug,tags.type,count(*) FROM taggables
         inner join tags on taggables.tag_id = tags.id
          group by taggables.tag_id,tags.name');
 
