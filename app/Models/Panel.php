@@ -69,6 +69,8 @@ class Panel extends Model
             ->where('panel_name', $name)
             ->first();
     }
+
+   
 }
 
 class_alias('App\Models\Panel', 'PanelModel');

@@ -48,7 +48,7 @@ class SommodPanelProvider extends PanelProvider
             ])->userMenuItems([
                 MenuItem::make()
                 ->label(__('Concile'))
-                ->url(fn() => Filament::getPanel('admin')->getUrl())
+                ->url(fn() => route('filament.admin.pages.dashboard'))
              ])
             ->authGuard('system')
             ->middleware([
@@ -66,7 +66,7 @@ class SommodPanelProvider extends PanelProvider
                 Authenticate::class,
             ])->plugins([
 
-                SpatieLaravelTranslatablePlugin::make()->defaultLocales([config('app.locale'), 'ar']),
+                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['en', 'ar']),
                 SkyPlugin::make()
                     ->navigationGroupLabel('Blog'),
 

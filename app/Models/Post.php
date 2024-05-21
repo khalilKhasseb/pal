@@ -40,6 +40,17 @@ class Post extends Model
         return $this->belongsTo(config('auth.providers.system_users.database.model', config('auth.providers.system_users.model')), 'user_id', 'id');
     }
 
+    public function scopeSommod(Builder $query , $load = true):Builder {
+       if($load){
+            return $query->whereHas('panels', function ($query) {
+                return $query->where('panels.panel_id', 'sommod');
+            });
+       }
+
+        return $query;
+        
+    }
+
     // Post meta relation
 
     public function post_meta() : HasMany {
@@ -115,6 +126,8 @@ class Post extends Model
             'resourcables'
         );
     }
+
+   
 
    
  public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void {

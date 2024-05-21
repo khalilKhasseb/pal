@@ -2,7 +2,20 @@
 @use(Illuminate\Pagination\Paginator)
 @use(Illuminate\Support\Str)
 @php
-$current_page = empty(request()->query()) ? 1 : (int) request()->query()['page'] ;
+
+// santize request uri 
+
+#remove all conent after path uri 
+#take query paramer panel and store it in a variable to use later
+#clear request uri 
+
+$panel = isset(request()->query()['p']) ? request()->query()['p'] : null ;
+#clear reqeust uri from 
+$page_title = preg_replace('([?].*)' , '',request()->getRequestUri() ) ;
+$page_title = str_replace('/' , '' , $page_title);
+#
+
+$current_page = empty(request()->query()) || !isset(request()->query()['page']) ? 1 : (int) request()->query()['page'] ;
 $per_page = 15;
 
 $offset = ($current_page * $per_page) - $per_page ;
@@ -17,7 +30,10 @@ $hasMorePages = $totalPages > $current_page ;
 // for example if we have
 $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
 
-$page_title = str_replace('/' , '' , request()->getRequestUri());
+
+
+#$page_title = str_replace('/' , '' , request()->getRequestUri());
+
 //$page_title == 'content' ?  __('All News') : __(ucfirst($page_title).'s') ;
 //dd($page_title == 'content' ?  __('All News') : __(ucfirst(Str::plural($page_title))));
 @endphp

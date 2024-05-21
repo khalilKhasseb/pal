@@ -9,7 +9,7 @@ class ThemeRenderNaveItem
 {
 
 
-    public static function render(array $item, string $class = '')
+    public static function render(array $item, $sommod = true,string $class = '')
     {
 
           
@@ -17,6 +17,7 @@ class ThemeRenderNaveItem
       
 
         $color = '';
+        $queryParmr="?p=sommod";
         if ($item['type'] === 'category') {
             $category = SkyPlugin::get()->getModel('Tag')::getWithType('category')->find($item['data']['category_id']) ?? '';
             $activeClass = (request()->routeIs('page', 'category')) ? $color : 'border-transparent';
@@ -64,7 +65,15 @@ class ThemeRenderNaveItem
         } elseif($item['type'] === 'collection') {
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route($item['data']['collection']) . '"
+                    href="' . route($item['data']['collection']) . $queryParmr .'"
+                >' .
+                $item['label'] .
+                '</a>';
+        } elseif ($item['type'] === 'sommod-routes') {
+            
+            return '<a class="' . $class . '"
+                    target="' . ($item['data']['target'] ?? '_self') . '"
+                    href="' . route($item['data']['sommod_routes']) . '"
                 >' .
                 $item['label'] .
                 '</a>';

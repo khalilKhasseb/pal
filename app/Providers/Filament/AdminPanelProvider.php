@@ -72,7 +72,7 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])->plugins([
 
-                SpatieLaravelTranslatablePlugin::make()->defaultLocales([config('app.locale'), 'en']),
+                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar', 'en']),
                 SkyPlugin::make()
                     ->navigationGroupLabel( __('Blog')),
 

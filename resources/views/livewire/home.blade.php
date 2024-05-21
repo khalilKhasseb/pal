@@ -2,7 +2,7 @@
 
     <x-theme.slide :gallaries="$gallaries" />
     <x-theme.hero-content />
-    <x-theme.project :posts="$recentPosts" />
+    <x-theme.project :posts="$recent" />
     {{-- <x-theme.count /> --}}
     <x-theme.service :serviceBlocks="$serviceBlocks" />
     {{-- <x-theme.focus /> --}}

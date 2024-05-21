@@ -2,5 +2,5 @@
 'url' => null,
 'route' => '/'
 ])
-<a class="navbar-brand" href="{{$route}}"><img src="{{$url}}" alt="logo"
+<a class="navbar-brand" href="{{$route}}"><img src="{{asset($url)}}" alt="logo"
         class="img-responsive" /></a>

@@ -14,6 +14,7 @@ class HeaderSettingsCreator
 
         $view->with([
          'header_settings' => app(HeaderSetting::class),
-         'menu' =>  \LaraZeus\Sky\SkyPlugin::get()->getModel('Navigation')::fromHandle('main-header-menu')]);
+        // 'menu' =>  \LaraZeus\Sky\SkyPlugin::get()->getModel('Navigation')::fromHandle('main-header-menu')
+        ]);
     }
 }

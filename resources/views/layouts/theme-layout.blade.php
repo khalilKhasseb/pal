@@ -81,14 +81,16 @@
     <div class="box-layout">
 
 
-        @include('theme.partial.header', [
+        {{-- @include('theme.partial.header', [
             'logo' => Storage::url($settings->site_logo),
-        ])
+        ]) --}}
+        @livewire('header')
         {{-- Header Ends --}}
 
         <!-- Start page header -->
 
-        @if (Route::current()->getName() !== 'theme.home')
+        @if (Route::current()->getName() !== 'theme.home' && Route::current()->getName() !== 'front.sommod.home')
+      
             <!-- Start Page Header Section -->
             <section style="--header-bg:url({{ Storage::url($settings->header_bg) }})" class="bg-page-header">
                 <div class="page-header-overlay">

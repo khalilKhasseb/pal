@@ -1,6 +1,6 @@
 <div class="header-top">
     <ul class="flex justify-between">
-        @foreach ($header_settings->top_header_items as $item )
+        @foreach ($items as $item )
 
 
         <li class="flex items-center justify-between top_header_item" style="--color:{{$item['color']}}">
