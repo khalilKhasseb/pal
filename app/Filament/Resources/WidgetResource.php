@@ -130,6 +130,12 @@ class WidgetResource extends Resource
         ];
     }
 
+    public static function getNavigationGroup(): string
+    {
+        return __('Theme content');
+    }
+
+
 
 
     // Resource privet behivor

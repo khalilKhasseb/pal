@@ -82,4 +82,13 @@ class ServiceBlockResource extends Resource
             'index' => Pages\ManageServiceBlocks::route('/'),
         ];
     }
+    public static function getNavigationLabel(): string {
+        return __('Services Blocks');
+    }
+
+    public static function getNavigationGroup(): string
+    {
+        return __('Theme content');
+    }
+
 }

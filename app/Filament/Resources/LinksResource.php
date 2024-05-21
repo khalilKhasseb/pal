@@ -94,4 +94,13 @@ class LinksResource extends Resource
             'edit' => Pages\EditLinks::route('/{record}/edit'),
         ];
     }
+    public static function getNavigationLabel(): string {
+        return __('Links');
+    }
+
+    public static function getNavigationGroup(): string
+    {
+        return __('Theme content');
+    }
+
 }

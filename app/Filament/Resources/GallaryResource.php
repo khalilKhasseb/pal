@@ -75,4 +75,9 @@ class GallaryResource extends Resource
             'edit' => Pages\EditGallary::route('/{record}/edit'),
         ];
     }
+
+ public static function getNavigationLabel(): string
+  {
+        return __('Gallaries');
+  }
 }

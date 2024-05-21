@@ -61,4 +61,12 @@ class ContactResource extends Resource
             'edit' => Pages\EditContact::route('/{record}/edit'),
         ];
     }
+    public static function getNavigationLabel(): string {
+        return __('Contact requests');
+    }
+    public static function getNavigationGroup(): string
+    {
+        return __('Theme content');
+    }
+
 }

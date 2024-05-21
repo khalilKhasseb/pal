@@ -54,7 +54,9 @@ class AdminPanelProvider extends PanelProvider
                ->url(fn() => route('filament.sommod.pages.dashboard'))
             ])->navigationGroups([
                     __('Blog'),
-                   __('Settings')
+                    __('Theme content'),
+                    __('Users'),
+                    __('Settings'),
             ])
             ->authGuard('system')
             ->middleware([

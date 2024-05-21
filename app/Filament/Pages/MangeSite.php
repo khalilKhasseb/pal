@@ -23,7 +23,7 @@ class MangeSite extends SettingsPage
 {
 
     use Translatable, HasActiveLocaleSwitcher;
-    protected static ?string $navigationGroup = 'Settings';
+    // protected static ?string $navigationGroup = 'Settings';
 
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
 
@@ -43,6 +43,11 @@ class MangeSite extends SettingsPage
     public static function getNavigationLabel():string {
         return __('Manage Site');
     }
+    public static function getNavigationGroup(): string
+    {
+        return __('Settings');
+    }
+
     public function form(Form $form): Form
     {
 

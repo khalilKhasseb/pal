@@ -24,7 +24,7 @@ class MangeHeader extends SettingsPage
 {
     // use Translatable;
 
-    protected static ?string $navigationGroup = "Settings";
+    // protected static ?string $navigationGroup = "Settings";
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
 
     protected static string $settings = HeaderSetting::class;
@@ -36,6 +36,9 @@ class MangeHeader extends SettingsPage
     public function getTitle(): string|\Illuminate\Contracts\Support\Htmlable {
         return __('Manage Header');
     }
+      public static function getNavigationGroup(): string {
+        return __('Settings');
+      }
 
     public static function getNavigationLabel():string {
         return __('Manage Header');
