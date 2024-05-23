@@ -106,6 +106,10 @@ Route::prefix('google/')->name('google.')->group(function () {
     Route::get('refresh_token', [GoogleApiAuthController::class, 'refreshToken']);
 });
 
+Route::prefix('cources')->name('cource')->group(function () {
+    Route::get('/', App\Livewire\CourcePage::class);
+});
+
 
 Route::prefix('events')->name('event')->group(function () {
     Route::get('/', App\Livewire\Events::class);

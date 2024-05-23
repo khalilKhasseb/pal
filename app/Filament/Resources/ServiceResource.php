@@ -29,6 +29,11 @@ class ServiceResource extends Resource
         return 'service';
     }
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::service()->count();
+    }
+
     static function getPostSlugLabel() : string {
         return __('Services');
     }

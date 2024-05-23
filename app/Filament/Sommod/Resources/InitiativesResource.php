@@ -84,6 +84,10 @@ class InitiativesResource extends Resource
     public static function getPluralLabel() :string {
         return __("Initiatives");
     }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     public static function getRelations(): array
     {

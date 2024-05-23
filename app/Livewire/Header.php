@@ -16,6 +16,8 @@ class Header extends Component
     public array $topHeaderItems;
 
     public bool $topHeaderEnabled;
+
+    public bool $sommod = false;
     
     public function mount() {
 
@@ -28,10 +30,17 @@ class Header extends Component
         // whenever reqeust uri starts with sommod-home or has a query paramenter p=sommod load sommd menue
         // Set up handel to take sommod paramenters 
         #if site is in home 
-        $handel = request()->routeIs('front.sommod.home') ? 'main-sommod-header-menu' : 'main-header-menu';
+        $handel = 'main-header-menu';
+        if(request()->routeIs('front.sommod.home')) {
+            $this->sommod = true; 
+            $handel = 'main-sommod-header-menu';
+            
+        }
+        
+
 
         if (isset(request()->query()['p']) && request()->query()['p'] == 'sommod') {
-
+            $this->sommod = true; 
             $handel = 'main-sommod-header-menu';
         }
 

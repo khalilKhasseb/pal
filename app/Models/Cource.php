@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Spatie\Image\Enums\Fit;
+use Spatie\Image\Enums\CropPosition;
 
 class Cource extends Model implements HasMedia
 {
@@ -24,10 +27,10 @@ class Cource extends Model implements HasMedia
         'end_date',
         'fees',
         'scholership',
+        'scholership_link',
         'hours',
         'objective',
-        'goles',
-        'summary',
+        'content',
         'google_form_id'
     ];
 
@@ -38,9 +41,40 @@ class Cource extends Model implements HasMedia
         'target_audince',
         'partners',
         'objective',
-        'goles',
+        'content',
+        'hours'
     ];
     public function google_form() : BelongsTo {
         return $this->BelongsTo(GoogleForm::class);
     }
+    public function panels(): MorphToMany
+    {
+        return $this->morphToMany(
+            Panel::class,
+            'resourcables'
+        );
+    }
+
+    public function form(): BelongsTo
+    {
+        return $this->belongsTo(GoogleForm::class, 'google_form_id', 'id');
+    }
+
+    public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void {
+      
+        $this->addMediaConversion('thumb-cropped')
+        ->performOnCollections('thumbnail')
+            ->crop(380, 300, CropPosition::Center);
+
+        // $this->addMediaConversion('thumb-cropped-original')
+        //     ->performOnCollections('posts')
+        //     ->crop(380, 300, CropPosition::Center);
+        $this->addMediaConversion('thumb-cropped-original')
+            ->performOnCollections('cources')
+            ->fit(Fit::Fill ,380, 300 , false , '#333');
+            
+   
+}
+
+
 }

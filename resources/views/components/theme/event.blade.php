@@ -40,7 +40,9 @@
               <ul class="meta-event">
                   @foreach ($event->post_meta as $meta)
                       <li class="d-flex justify-items-start">
+                      @if(!is_null($meta->icon) and !empty($meta->icon))
                           <x-icon class="ps-2" width="20px" color="green" name="{{ $meta->icon }}" />
+                          @endif
 
                           <span>{{ $meta->key }} : {{ $meta->value }} </span>
                       </li>

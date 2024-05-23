@@ -21,6 +21,11 @@ class ProductResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $slug = 'product';
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::product()->count();
+    }
+
 
     public static function getPostType(): string
     {

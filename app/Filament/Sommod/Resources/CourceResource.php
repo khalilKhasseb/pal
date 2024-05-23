@@ -7,6 +7,8 @@ use App\Filament\Sommod\Resources\CourceResource\RelationManagers;
 use App\Models\Cource;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -15,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Actions\LocaleSwitcher;
-
+use Filament\Tables\Filters\TernaryFilter;
 class CourceResource extends Resource
 {
     use Translatable;
@@ -60,16 +62,25 @@ class CourceResource extends Resource
                 Forms\Components\TextInput::make('fees')
                 ->label(__("Fees"))
                     ->maxLength(255),
-                Forms\Components\Toggle::make('scholership')
-                ->label(__('Scolership'))    
-                ->required(),
+                Forms\Components\Fieldset::make(__('Scolership')) 
+                ->schema([
+                        Forms\Components\Toggle::make('scholership')
+                            ->label(__('Scolership'))
+                            ->live()
+                            ->required(),
+
+                        Forms\Components\TextInput::make('scholership_link')
+                            ->label(__('Scholership link'))
+                            ->visible(fn(Get $get) => $get('scholership')),
+                ])->columns(2),   
+                
                 Forms\Components\TextInput::make('hours')
                     ->label(__('Hours'))
                     ->required()
                     ->numeric(),
                  Forms\Components\Section::make()
                  ->schema([
-                        Forms\Components\RichEditor::make('summary')
+                        Forms\Components\RichEditor::make('content')
                             ->label(__('Summary'))
                             ->required()
                             ->maxLength(65535),
@@ -79,11 +90,7 @@ class CourceResource extends Resource
                             ->required()
                             ->maxLength(65535),
                            
-                        Forms\Components\RichEditor::make('goles')
-                            ->label(__('Goles'))
-                            ->required()
-                            ->maxLength(65535)
-                            ->columnSpanFull(),
+                        
                  ])->columns(2),   
                
             ]);
@@ -93,7 +100,9 @@ class CourceResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('google_form_id')
+                Tables\Columns\TextColumn::make('panels.panel_name')
+                    ->label(__('Panel')),
+                Tables\Columns\TextColumn::make('form.name')
                     ->label(__('Form'))
                     ->numeric()
                     ->sortable(),
@@ -142,7 +151,8 @@ class CourceResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+             TernaryFilter::make('scholership'),
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -165,6 +175,11 @@ class CourceResource extends Resource
     public static function getPluralLabel(): string
     {
         return __("Cources");
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
     public static function getHeaderAction(): array
     {

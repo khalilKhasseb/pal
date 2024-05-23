@@ -43,7 +43,7 @@
                         }
                     
                     }">
-                        <button x-on:click="like_post" class="btn-transperent">
+                        <button style="background:transparent" x-on:click="like_post" class="btn-transparent">
                             <i x-bind:style="liked && 'color:red'" x-bind:class="`fa fa-heart-o`"
                                 aria-hidden="true"></i> <span x-text="likes === null ? 0 : likes"></span>
                         </button>

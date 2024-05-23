@@ -26,6 +26,7 @@
     {{-- @livewireStyles --}}
     {{-- @filamentStyles --}}
     @stack('styles')
+    @stack('th3_scripts')
 
 
     {{-- <link rel="stylesheet" href="{{ asset('vendor/zeus/frontend.css') }}"> --}}

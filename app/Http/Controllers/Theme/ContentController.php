@@ -174,6 +174,3 @@ class ContentController extends Controller
     }
 }
 
-/**
- * ya29.a0Ad52N38gxH3-H6QzXLW3fqGELsyR0Nn1a3KbPN2V4WLMMkDAAnFWVHJiKZ5nUcrNHU_atu6eTkjalhv_uYhDVjXP-RgFtRPqWZvscFXzMizvWKXhqlYXdyMRprJVQZYb7lKu5rCeTfxe-FJe_FSmpkNtRzFpziaZUVIlaCgYKAXISARESFQHGX2Mi_R40iWHzaGSKWSjN6lN1Mg0171
- */

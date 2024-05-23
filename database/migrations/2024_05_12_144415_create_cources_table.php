@@ -19,14 +19,14 @@ return new class extends Migration
             $table->string('trainer');
             $table->string('target_audince');
             $table->string('partners')->nullable();
-            $table->dateTime('start_date');
-            $table->dateTime('end_date')->nullable();
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
             $table->string('fees')->nullable();
             $table->boolean('scholership')->default(false);
-            $table->unsignedBigInteger('hours');
-            $table->text('summary');
+            $table->string('scholership_link')->nullable();
+            $table->string('hours');
+            $table->text('content');
             $table->text('objective');
-            $table->text('goles');
             $table->timestamps();
         });
     }

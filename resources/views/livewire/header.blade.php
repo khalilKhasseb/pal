@@ -49,19 +49,19 @@
 
                                         @foreach ($menu->items as $item)
                                             <li>
-                                                {!! ThemeRenderNaveItem::render($item) !!}
+                                                {!! ThemeRenderNaveItem::render($item , $sommod) !!}
 
                                                 @if (count($item['children']) > 0)
                                                     <ul class="sub-menu">
                                                         @foreach ($item['children'] as $child_item)
                                                             <li>
-                                                                {!! ThemeRenderNaveItem::render($child_item) !!}
+                                                                {!! ThemeRenderNaveItem::render($child_item ,$sommod) !!}
 
                                                                 @if (count($child_item['children']) > 0)
                                                                     <ul class="sub-sub-menu">
                                                                         @foreach ($child_item['children'] as $last_level_child)
                                                                             <li>
-                                                                                {!! ThemeRenderNaveItem::render($last_level_child) !!}
+                                                                                {!! ThemeRenderNaveItem::render($last_level_child , $sommod) !!}
 
                                                                             </li>
                                                                         @endforeach

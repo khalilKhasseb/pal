@@ -46,6 +46,11 @@ class ActivityResource extends Resource
     {
         return __('Activities');
     }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::activites()->count();
+    }
+
 
 
     public static function getRoute(): string

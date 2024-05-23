@@ -10,7 +10,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Resources\Pages\Concerns\HasTranslatableRecord;
+// use Filament\Resources\Pages\Concerns\HasTranslatableRecord;
 use Filament\Actions;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Concerns\HasActiveLocaleSwitcher;

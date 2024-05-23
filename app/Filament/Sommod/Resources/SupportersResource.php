@@ -39,41 +39,58 @@ class SupportersResource extends Resource
     {
         return __("Supporters");
     }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 FC\Tabs::make(__('Supporters'))
-                ->tabs([
-                    FC\Tabs\Tab::make(__('Supporter Information'))
-                    ->schema([
-                        FC\Section::make()
-                        ->schema([
-                            FC\TextInput::make('name')
-                            ->label(__("Name")),
-                            FC\TextInput::make('location')
-                            ->label(__("Location")),
-                            FC\TextInput::make('phone')
-                            ->label(__("Phone")),
-                            FC\RichEditor::make('about')
-                            ->label(__("About"))
-                            ->columnSpanFull(),
-                        ])->columns(3),
-                        FC\Section::make()
-                        ->schema([
-                            FC\TextInput::make('supported_porject'),
-                            FC\TextInput::make('supported_project_type'),
-                            
-                        ])
-                        ->columns(2)
-                        ]),
+                    ->tabs([
+                        FC\Tabs\Tab::make(__('Supporter Information'))
+                            ->schema([
+                                FC\Section::make()
+                                    ->schema([
+                                        FC\TextInput::make('name')
+                                            ->label(__("Name")),
+                                        FC\TextInput::make('location')
+                                            ->label(__("Location")),
+                                        FC\TextInput::make('phone')
+                                            ->label(__("Phone")),
+                                        FC\RichEditor::make('about')
+                                            ->label(__("About"))
+                                            ->columnSpanFull(),
+                                        FC\TextInput::make('website')
+                                            ->label(__('Website'))
+                                            ->columnSpanFull()
+                                    ])->columns(3),
+                                FC\Section::make()
+                                    ->schema([
+                                        FC\Select::make('supported_porject')
+                                            ->relationship(name: 'supported_projects', titleAttribute: 'name')
+                                            ->getOptionLabelFromRecordUsing(fn($record) => $record->name)
+                                            ->preload()
+                                            ->multiple()
+                                        ,
+                                        FC\Select::make('supported_project_types')
+                                            ->relationship(name: 'supported_project_types', titleAttribute: 'name')
+                                            ->getOptionLabelFromRecordUsing(fn($record) => $record->name)
+                                            ->preload()
+                                            ->multiple()
+
+                                    ])
+                                    ->columns(2)
+                            ]),
                         FC\Tabs\Tab::make(__('Image'))
-                        ->schema([
+                            ->schema([
                                 SpatieMediaLibraryFileUpload::make('avatar')
-                                ->collection('supporters')
+                                    ->collection('supporters')
 
                             ])
-                ])->columnSpanFull()
+                    ])->columnSpanFull()
             ]);
     }
 
@@ -82,15 +99,17 @@ class SupportersResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
-                ->label(__("Name")),
+                    ->label(__("Name")),
                 TextColumn::make('location')
-                ->label(__("Location")),
+                    ->label(__("Location")),
                 TextColumn::make('phone')
-                ->label(__("Phone")),
-                TextColumn::make('supported_porject')
-                ->label(__("Project")),
-                TextColumn::make('supported_project_type')
-                ->label(__("Project Type")),
+                    ->label(__("Phone")),
+                TextColumn::make('supported_projects.name')
+                    ->label(__("Supported Project")),
+                TextColumn::make('supported_project_types.name')
+                    ->label(__("Supported Project Type")),
+                TextColumn::make('panels.panel_name')
+                    ->label(__("Panel")),
             ])
             ->filters([
                 //
@@ -112,7 +131,8 @@ class SupportersResource extends Resource
         ];
     }
 
-    public static function getHeaderAction():array {
+    public static function getHeaderAction(): array
+    {
         return [
             LocaleSwitcher::make()
         ];

@@ -15,11 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
-            $table->string('supported_porject');
-            $table->string('supported_project_type');
             $table->string('contact_info')->nullable();
-            $table->string('phone');
-            $table->string('about')->nullable();
+            $table->string('phone')->nullable();
+            $table->text('about')->nullable();
+            $table->string('website')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

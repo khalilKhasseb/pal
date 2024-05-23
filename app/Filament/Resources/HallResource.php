@@ -55,6 +55,11 @@ class HallResource extends Resource
     {
         return __('Slug');
     }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::halls()->count();
+    }
+
     public static function getRoute(): string
     {
         return 'hall.view';

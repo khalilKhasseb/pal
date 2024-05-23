@@ -25,6 +25,11 @@ class PartnersResource extends Resource
 
     protected static ?string $slug = 'partners';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::partner()->count();
+    }
+
 
     public static function getModel() : string {
         return SkyPlugin::get()->getModel('Post');
@@ -34,6 +39,8 @@ class PartnersResource extends Resource
 
         return parent::getEloquentQuery()->partner();
     }
+
+
 
     public static function getLabel() : string {
         return __('Partner');

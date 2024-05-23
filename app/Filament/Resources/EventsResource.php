@@ -9,44 +9,6 @@ use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use LaraZeus\Sky\SkyPlugin;
-//use App\Models\Scopes\PanelScope;
-//use App\Models\Post;
-
-// use Filament\Tables\Actions\EditAction;
-// use Filament\Tables\Actions\Action;
-// use Filament\Tables\Actions\ActionGroup;
-// use Filament\Tables\Actions\DeleteAction;
-// use Filament\Tables\Actions\RestoreAction;
-// use Filament\Tables\Actions\ForceDeleteAction;
-
-// use App\Models\Post;
-// use Filament\Forms;
-// use Filament\Forms\Form;
-// use Filament\Tables;
-// use Filament\Tables\Table;
-// use Illuminate\Database\Eloquent\SoftDeletingScope;
-// use Filament\Forms\Get;
-// use Filament\Forms\Set;
-// use Illuminate\Support\Str;
-// use Filament\Forms\Components\Tabs;
-// use Filament\Tables\Filters\Filter;
-// use Filament\Forms\Components\Hidden;
-// use Filament\Forms\Components\Select;
-// use Filament\Forms\Components\Textarea;
-// use Filament\Tables\Columns\TextColumn;
-// use Filament\Tables\Columns\ViewColumn;
-// use Filament\Forms\Components\TextInput;
-// use Filament\Tables\Filters\SelectFilter;
-// use Filament\Forms\Components\Placeholder;
-// use Filament\Tables\Filters\TrashedFilter;
-// use Filament\Forms\Components\ToggleButtons;
-// use Filament\Forms\Components\DateTimePicker;
-//use Filament\Tables\Actions\DeleteBulkAction;
-//use Filament\Tables\Actions\RestoreBulkAction;
-//use Filament\Tables\Actions\ForceDeleteBulkAction;
-// use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-// use Filament\Forms\Components\Repeater;
-// use Guava\FilamentIconPicker\Forms\IconPicker;
 
 class EventsResource extends Resource
 {
@@ -67,6 +29,12 @@ class EventsResource extends Resource
     {
         return parent::getEloquentQuery()->event();
     }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::event()->count();
+    }
+
+
 
     public static function getNavigationLabel(): string
     {

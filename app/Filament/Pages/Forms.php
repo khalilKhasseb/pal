@@ -86,6 +86,11 @@ class Forms extends Page implements HasTable
     public function getTitle(): string|\Illuminate\Contracts\Support\Htmlable {
         return __('Forms');
     }
+    public static function getNavigationBadge(): ?string
+    {
+        return GoogleForm::count();
+    }
+
     public function table(Table $table): Table
     {
 

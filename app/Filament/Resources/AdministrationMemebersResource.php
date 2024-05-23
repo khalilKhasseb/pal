@@ -53,7 +53,12 @@ class AdministrationMemebersResource extends Resource
     {
         return parent::getEloquentQuery()->administration();
     }
-     public static function getRelations(): array  {
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::administration()->count();
+    }
+
+    public static function getRelations(): array  {
 
         return [
             LinksRelationManager::class,

@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Classes\CSVParser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use LaraZeus\Sky\Models\Post;
+use App\Models\Post;
 
 class PostSeeder extends Seeder
 {
@@ -14,22 +15,25 @@ class PostSeeder extends Seeder
     public function run(): void
     {
         // handle 
-        $posts = $this->parse_csv();  
+        $posts = CSVParser::parse('imports/posts-ar.csv');  
         
         foreach ($posts as $post) {
            
-            Post::create([
+            $_p = Post::create([
                 'title' => $post['title'] ,
-                'slug' => fake()->slug(2),
+                'slug' => str($post['title'])->slug(),
                 'description' => fake(app()->getLocale())->sentence(),
                 'post_type' => $post['post_type'],
                 'content' => $post['content'],
                 'user_id' => $post['user_id'],
-                'featured_image' => $post['featured_image'],
+                'featured_image' => null,
                 'published_at' => now(),
-            
-              
             ]);
+
+            $_p->panels()->attach($post['panel']);
+
+            $_p->addMediaFromUrl($post['featured_image'])->toMediaCollection('posts');
+
         }
 
     }
