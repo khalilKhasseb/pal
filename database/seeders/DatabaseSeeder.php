@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
 
-            //  RolesSeeder::class,
-            //  PanelsSeeder::class,
-             SupportedPorjectTypeSeeder::class,
-             SupportedProject::class,
+            RolesSeeder::class,
+            PanelsSeeder::class,
+            SupportedPorjectTypeSeeder::class,
+            SupportedProject::class,
             InititivesSeeder::class,
 
             PostSeeder::class,
