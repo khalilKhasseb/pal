@@ -28,13 +28,13 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             EventSeeder::class,
             HallSeeder::class,
-            AdministrationSeeder::class,
+            // AdministrationSeeder::class,
 
-            SupporterSeeder::class,
-            OutReachSeeder::class,
-            CourceSeeder::class,
+            // SupporterSeeder::class,
+            // OutReachSeeder::class,
+            // CourceSeeder::class,
 
-            PartnerSeeder::class,
+            // PartnerSeeder::class,
 
         ]);
     }
