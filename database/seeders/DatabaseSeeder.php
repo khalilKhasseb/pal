@@ -18,23 +18,23 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
 
-            RolesSeeder::class,
-            PanelsSeeder::class,
-            SupportedPorjectTypeSeeder::class,
-            SupportedProject::class,
-            InititivesSeeder::class,
+            // RolesSeeder::class,
+            // PanelsSeeder::class,
+            // SupportedPorjectTypeSeeder::class,
+            // SupportedProject::class,
+            // InititivesSeeder::class,
 
-            PostSeeder::class,
-            ProductSeeder::class,
-            EventSeeder::class,
-            HallSeeder::class,
-            // AdministrationSeeder::class,
+            // PostSeeder::class,
+            // ProductSeeder::class,
+            // EventSeeder::class,
+            // HallSeeder::class,
+            AdministrationSeeder::class,
 
-            // SupporterSeeder::class,
-            // OutReachSeeder::class,
-            // CourceSeeder::class,
+            SupporterSeeder::class,
+            OutReachSeeder::class,
+            CourceSeeder::class,
 
-            // PartnerSeeder::class,
+            PartnerSeeder::class,
 
         ]);
     }
