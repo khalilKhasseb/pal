@@ -1,5 +1,5 @@
 @use(App\Theme\ThemeRenderNaveItem)
-@php 
+@php
         $sommodMenu = str_contains(str_replace('/', '', request()->getRequestUri()),'home-sommod' );
         $handel = $sommodMenu ? 'main-sommod-header-menu'  : 'main-header-menu';
     $menu = \LaraZeus\Sky\SkyPlugin::get()->getModel('Navigation')::fromHandle($handel);
@@ -19,7 +19,7 @@
     <!-- .bg-header-top -->
 
     <!-- Start Menu -->
-    <div class="bg-main-menu menu-scroll">
+    <div class="py-2 bg-main-menu menu-scroll">
         <div class="container">
             <div class="row">
                 <div class="main-menu">
@@ -77,7 +77,7 @@
                                 </ul>
 
                                 <div class="menu-right-option pull-right">
-                                  
+
                                     {{-- <div class="search-box">
                                         <i class="fa fa-search first_click" aria-hidden="true"
                                             style="display: block;"></i>

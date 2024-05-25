@@ -65,11 +65,13 @@ class MangeSite extends SettingsPage
                         ->label(__('Logo'))
                             ->image()
                             ->imageEditor()
+                            ->disk('public')
                             ->directory('site'),
                         FileUpload::make('header_bg')
                         ->label(__("Cover"))
                             ->image()
                             ->imageEditor()
+                            ->disk('public')
                             ->directory('site')
                     ])
 
@@ -77,7 +79,7 @@ class MangeSite extends SettingsPage
     }
 
 
-  
+
 
     protected function mutateFormDataBeforeSave(array $data): array
     {

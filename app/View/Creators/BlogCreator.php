@@ -51,8 +51,6 @@ class BlogCreator
             return $tag;
         });
 
-
-
         $view
             ->with('categories', $categories)
             ->with('recent', $recent)

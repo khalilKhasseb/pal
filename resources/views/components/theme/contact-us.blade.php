@@ -1,6 +1,9 @@
  <!-- Start Contact us Section -->
  <section class="bg-contact-home" id="contact">
     <div class="container">
+        @if(session()->has('message'))
+         <h3 class="text-center text-dark">{{session()->get('message')}}</h3>
+        @endif
         <div class="row">
             <div class="contact-us">
                 <div class="section-header">

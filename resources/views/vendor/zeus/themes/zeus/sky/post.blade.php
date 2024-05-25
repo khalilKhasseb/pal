@@ -75,9 +75,9 @@
                                             like_post() {
                                                 axios.get('{{ route('ajax.like_post', $post->slug) }}')
                                                     .then(r => {
-                                        
+
                                                         if (r.data) this.likes = r.data.likes
-                                        
+
                                                     })
                                                     .catch(e => console.log(e))
                                             },
@@ -85,17 +85,17 @@
                                                 if (this.liked) {
                                                     axios.get('{{ route('ajax.like_post', $post->slug) }}')
                                                         .then(r => {
-                                        
+
                                                             if (r.data) {
                                                                 this.likes = r.data.likes
                                                                 this.liked = r.data.liked
                                                             }
-                                        
+
                                                         })
                                                         .catch(e => console.log(e))
                                                 }
                                             }
-                                        
+
                                         }">
                                             <button style="background:transparent" x-on:click="like_post" class="btn-transperent">
                                                 <i class="fa fa-heart-o" aria-hidden="true"></i> <span
@@ -115,7 +115,7 @@
 
                                     @if (!is_null($post->post_meta))
 
-                                        <div style="float:none !important" class="single-date-option mt-2">
+                                        <div style="float:none !important" class="mt-2 single-date-option">
                                             <ul class="single-date">
                                                 @foreach ($post->post_meta as $meta)
                                                     <li class="d-flex justify-items-start">
@@ -137,7 +137,7 @@
                                     <ul class="tags">
                                         <li><i class="fa fa-tags" aria-hidden="true"></i> {{ __('Tags') }} :</li>
                                         @unless ($post->tags->isEmpty())
-                                            @foreach ($post->tags->where('type', 'tag') as $tag)
+                                            @foreach ($post->tags as $tag)
                                                 @include($skyTheme . '.partial.tag')
                                             @endforeach
                                         @endunless

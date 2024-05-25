@@ -1,272 +1,154 @@
-  <!-- Start Blog Section -->
-        <section class="bg-blog-section">
-            <div class="container">
-                <div class="row">
-                    <div class="blog-section blog-page">
-                        <div class="row">
-                            <div class="col-lg-4 col-sm-6 col-12">
-                                <div class="blog-items">
-                                    <div class="blog-img">
-                                        <a href="blog_single.html"><img src="assets/images/home01/blog-img-1.jpg" alt="blog-img-1" class="img-responsive" /></a>
-                                    </div>
-                                    <!-- .blog-img -->
-                                    <div class="blog-content-box">
-                                        <div class="blog-content">
-                                            <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                            <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                        </div>
-                                        <!-- .blog-content -->
-                                        <div class="meta-box">
-                                            <ul class="meta-post">
-                                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .meta-box -->
-                                    </div>
-                                    <!-- .blog-content-box -->
-                                </div>
-                                <!-- .blog-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                            <div class="col-lg-4 col-sm-6 col-12">
-                                <div class="blog-items">
-                                    <div class="blog-img">
-                                        <a href="blog_single.html"><img src="assets/images/home01/blog-img-2.jpg" alt="blog-img-2" class="img-responsive" /></a>
-                                    </div>
-                                    <!-- .blog-img -->
-                                    <div class="blog-content-box">
-                                        <div class="blog-content">
-                                            <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                            <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                        </div>
-                                        <!-- .blog-content -->
-                                        <div class="meta-box">
-                                            <ul class="meta-post">
-                                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .meta-box -->
-                                    </div>
-                                    <!-- .blog-content-box -->
-                                </div>
-                                <!-- .blog-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                            <div class="col-lg-4 col-sm-6 col-12">
-                                <div class="blog-items">
-                                    <div class="blog-img">
-                                        <a href="blog_single.html"><img src="assets/images/home01/blog-img-3.jpg" alt="blog-img-3" class="img-responsive" /></a>
-                                    </div>
-                                    <!-- .blog-img -->
-                                    <div class="blog-content-box">
-                                        <div class="blog-content">
-                                            <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                            <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                        </div>
-                                        <!-- .blog-content -->
-                                        <div class="meta-box">
-                                            <ul class="meta-post">
-                                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .meta-box -->
-                                    </div>
-                                    <!-- .blog-content-box -->
-                                </div>
-                                <!-- .blog-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                            <div class="col-lg-4 col-sm-6 col-12">
-                                <div class="blog-items">
-                                    <div class="blog-img">
-                                        <a href="blog_single.html"><img src="assets/images/blog/blog-img-4.jpg" alt="blog-img-4" class="img-responsive" /></a>
-                                    </div>
-                                    <!-- .blog-img -->
-                                    <div class="blog-content-box">
-                                        <div class="blog-content">
-                                            <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                            <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                        </div>
-                                        <!-- .blog-content -->
-                                        <div class="meta-box">
-                                            <ul class="meta-post">
-                                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .meta-box -->
-                                    </div>
-                                    <!-- .blog-content-box -->
-                                </div>
-                                <!-- .blog-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                            <div class="col-lg-4 col-sm-6 col-12">
-                                <div class="blog-items">
-                                    <div class="blog-img">
-                                        <a href="blog_single.html"><img src="assets/images/blog/blog-img-5.jpg" alt="blog-img-5" class="img-responsive" /></a>
-                                    </div>
-                                    <!-- .blog-img -->
-                                    <div class="blog-content-box">
-                                        <div class="blog-content">
-                                            <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                            <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                        </div>
-                                        <!-- .blog-content -->
-                                        <div class="meta-box">
-                                            <ul class="meta-post">
-                                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .meta-box -->
-                                    </div>
-                                    <!-- .blog-content-box -->
-                                </div>
-                                <!-- .blog-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                            <div class="col-lg-4 col-sm-6 col-12">
-                                <div class="blog-items">
-                                    <div class="blog-img">
-                                        <a href="blog_single.html"><img src="assets/images/blog/blog-img-6.jpg" alt="blog-img-6" class="img-responsive" /></a>
-                                    </div>
-                                    <!-- .blog-img -->
-                                    <div class="blog-content-box">
-                                        <div class="blog-content">
-                                            <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                            <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                        </div>
-                                        <!-- .blog-content -->
-                                        <div class="meta-box">
-                                            <ul class="meta-post">
-                                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .meta-box -->
-                                    </div>
-                                    <!-- .blog-content-box -->
-                                </div>
-                                <!-- .blog-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                            <div class="col-lg-4 col-sm-6 col-12">
-                                <div class="blog-items">
-                                    <div class="blog-img">
-                                        <a href="blog_single.html"><img src="assets/images/blog/blog-img-7.jpg" alt="blog-img-7" class="img-responsive" /></a>
-                                    </div>
-                                    <!-- .blog-img -->
-                                    <div class="blog-content-box">
-                                        <div class="blog-content">
-                                            <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                            <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                        </div>
-                                        <!-- .blog-content -->
-                                        <div class="meta-box">
-                                            <ul class="meta-post">
-                                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .meta-box -->
-                                    </div>
-                                    <!-- .blog-content-box -->
-                                </div>
-                                <!-- .blog-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                            <div class="col-lg-4 col-sm-6 col-12">
-                                <div class="blog-items">
-                                    <div class="blog-img">
-                                        <a href="blog_single.html"><img src="assets/images/blog/blog-img-8.jpg" alt="blog-img-8" class="img-responsive" /></a>
-                                    </div>
-                                    <!-- .blog-img -->
-                                    <div class="blog-content-box">
-                                        <div class="blog-content">
-                                            <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                            <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                        </div>
-                                        <!-- .blog-content -->
-                                        <div class="meta-box">
-                                            <ul class="meta-post">
-                                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .meta-box -->
-                                    </div>
-                                    <!-- .blog-content-box -->
-                                </div>
-                                <!-- .blog-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                            <div class="col-lg-4 col-sm-6 col-12">
-                                <div class="blog-items">
-                                    <div class="blog-img">
-                                        <a href="blog_single.html"><img src="assets/images/blog/blog-img-9.jpg" alt="blog-img-9" class="img-responsive" /></a>
-                                    </div>
-                                    <!-- .blog-img -->
-                                    <div class="blog-content-box">
-                                        <div class="blog-content">
-                                            <h4><a href="blog_single.html">Actualze Cententrc Staled</a></h4>
-                                            <p>Completely actuaze cent centric coloration an sharing without ainstalled and base awesome event PSD Template.</p>
-                                        </div>
-                                        <!-- .blog-content -->
-                                        <div class="meta-box">
-                                            <ul class="meta-post">
-                                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 22.04.2017</li>
-                                                <li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> 24 Like</a></li>
-                                                <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24 Comment</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- .meta-box -->
-                                    </div>
-                                    <!-- .blog-content-box -->
-                                </div>
-                                <!-- .blog-items -->
-                            </div>
-                            <!-- .col-md-4 -->
-                        </div>
-                        <!-- .row -->
-                        <div class="pagination-option">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                    <li>
-                                        <a href="#" aria-label="Previous">
-                                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li><a href="#">1</a></li>
-                                    <li class="active"><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">...</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- .pagination_option -->
-                    </div>
-                    <!-- .blog-section -->
-                </div>
-                <!-- .container -->
+<x-slot name="header">
+    <h2 class="capitalize">{{ $pageTitle }}</h2>
+</x-slot>
+
+
+<div class="container mb-4">
+
+    <div x-data="courcess_data" class="row">
+        <!-- Supporters side -->
+        @unless ($courcess->isEmpty())
+            <div class="pt-3 col-12 col-md-2 col-lg-4">
+                <h4 class="mb-1 text-dark">{{ __('Courcess') }}</h4>
+                <hr />
+                <ul>
+                    <template x-for="(_cource , index) in courcess">
+                        <li x-init="if (index === 0) { cource = _cource }" x-on:click="loadCource(_cource)"
+                            x-text="_cource.title.{{ app()->getLocale() }}" class="p-2 my-1 text-black border"
+                            style="cursor:pointer"></li>
+                    </template>
+                </ul>
             </div>
-            <!-- .bg-blog-section -->
-        </section>
-        <!-- End Blog Section -->
+            <!-- Supporters side -->
+
+            <div class="pt-3 col-12 col-md-10 col-lg-8">
+
+
+                <div class="p-2 ms-1 cource-content" style="background-color: #eee">
+
+                    <template x-if="cource !== null">
+                        <div>
+                            <div class="d-flex justify-content-between">
+                                <dl class="d-fex justify-content-between">
+                                    <dt class="ms-2">{{ __('Start date') }}</dt>
+                                    <dd class="ms-2" x-text="cource.start_date"></dd>
+
+                                    <dt class="ms-2">{{ __('Fees') }}</dt>
+                                    <dd class="ms-2" x-text="cource.fees"></dd>
+                                </dl>
+
+                                <dl class="me-4">
+
+                                    <dt>{{ __('End date') }}</dt>
+                                    <dd x-text="cource.end_date"></dd>
+
+
+                                    <dt>{{ __('Scolership') }}</dt>
+                                    <dd :class="`badge ${cource.scholership ? 'bg-success' : 'bg-danger'}`"
+                                        x-text="cource.scholership !==0 ? 'Yes' : 'No'"></dd>
+                                </dl>
+
+                                <div class="p-2 bg-white rounded-top w-25 d-flex align-items-center"
+                                    style="margin-right:auto">
+                                    <img :src="cource.image" alt="" class="rounded d-block mw-100">
+
+                                </div>
+                            </div>
+
+                            <div class="p-2 mb-2 bg-white rounded">
+
+
+                                <h4 x-text="cource.title.{{ app()->getLocale() }}">
+                                </h4>
+                                <div x-html="cource.content.{{ app()->getLocale() }}">
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="p-2 bg-white rounded">
+
+                                <h4>
+                                    {{ __('Objectives') }}
+                                </h4>
+                                <div x-html="cource.objective.{{ app()->getLocale() }}">
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="p-2 bg-white rounded">
+                                <dl>
+                                    <dt>{{ __('Trainer') }}</dt>
+                                    <dd x-text="cource.trainer.{{ app()->getLocale() }}"></dd>
+
+                                    <dt>{{ __('Target audince') }}</dt>
+                                    <dd x-text="cource.target_audince.{{ app()->getLocale() }}"></dd>
+
+                                    <dt>{{ __('Partners') }}</dt>
+                                    <dd x-text="cource.partners.{{ app()->getLocale() }}"></dd>
+
+
+                                    <dt>{{ __('Trainer') }}</dt>
+                                    <dd x-text="cource.trainer.{{ app()->getLocale() }}"></dd>
+                                </dl>
+                            </div>
+
+                            <div class="mt-2 actions">
+                                <a :href="cource.form_register" target="_blank"
+                                    :class="`btn btn-primary ${!cource.form_register ? 'disabled':''} `" tabindex="-1"
+                                    role="button"
+                                    :aria-disabled="!cource.form_register ? true : false">{{ __('Sign up') }}</a>
+                                <a :href="cource.scholership_link" target="_blank"
+                                    :class="`btn btn-primary ${!cource.scholership ? 'disabled' : ''}`" tabindex="-1"
+                                    role="button"
+                                    :aria-disabled="!cource.scholership ? true : false">{{ __('Apply Grant') }}</a>
+
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        @else
+            @include($skyTheme . '.partial.empty')
+        @endunless
+    </div>
+</div>
+
+@script
+    <script>
+        Alpine.data('courcess_data', () => ({
+            init() {
+                this.courcess = @JS($courcess);
+            },
+            courcess: null,
+            // supporters: [],
+            cource: null,
+            status: null,
+            trans: {
+                open: @JS(__('Open')),
+                closed: @JS(__('Closed'))
+            },
+            loadCources(index) {
+                //   console.log(this.inititaives[index].supporters)
+                //this.supporters = this.inititaives[index].supporters
+                //this.supporter = this.supporters[0]
+            },
+            loadCource($cource) {
+                this.cource = $cource;
+                let start_date = new Date(this.cource.start_date).getTime();
+                let now = new Date().getTime()
+                if (start_date > now) {
+                    this.status = this.trans.open
+                } else if (start_date < now) {
+                    this.status = this.trans.closed
+                }
+                console.log(this.cource)
+            },
+            test() {}
+
+        }))
+    </script>
+@endscript

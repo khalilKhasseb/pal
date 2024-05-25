@@ -138,7 +138,8 @@ class WidgetsForms
                                 TextInput::make('title')
                                     ->label(__('Title')),
                                 IconPicker::make('icon')
-                                    ->label(__('Icon')),
+                                    ->label(__('Icon'))
+                                    ->preload(),
                                 ColorPicker::make('color')->label(__('Color'))
                             ])->hidden(fn (Get $get): bool => !$get('icons_enable'))
 

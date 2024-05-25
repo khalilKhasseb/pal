@@ -331,14 +331,19 @@ body.rtl .shop-grid-view .collection-content {
     body.rtl .shop-grid-view .collection-img {
 	    float: none;
 	}
-	
+
 	body.rtl .shop-grid-view .collection-content {
 	    text-align: center;
 	}
 }
 
 
+/* Bootstrap */
 
+.accordion-button::after{
+    margin-left: initial !important;
+    margin-right: auto;
+}
 
 
 

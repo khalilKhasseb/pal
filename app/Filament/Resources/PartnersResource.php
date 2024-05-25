@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Traits\PostResourceTrait;
 use Filament\Resources\Concerns\Translatable;
 use LaraZeus\Sky\SkyPlugin;
+use App\Models\Post;
 
 class PartnersResource extends Resource
 {
@@ -45,7 +46,7 @@ class PartnersResource extends Resource
     public static function getLabel() : string {
         return __('Partner');
     }
-    
+
 
     public static function getPostType() : string {
         return 'partner';
@@ -72,7 +73,7 @@ class PartnersResource extends Resource
     public static function getRoute() : string {
         return 'partners.view';
     }
-   
+
 
     // public static function getRelations(): array
     // {

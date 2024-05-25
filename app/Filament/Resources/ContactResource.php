@@ -23,7 +23,14 @@ class ContactResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name'),
+                Forms\Components\TextInput::make('email')
+                ->type('email'),
+                Forms\Components\TextInput::make('phone'),
+                Forms\Components\TextInput::make('address'),
+                Forms\Components\TextInput::make('subject'),
+                Forms\Components\Textarea::make('message'),
+
             ]);
     }
 
@@ -31,7 +38,10 @@ class ContactResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('subject'),
+                Tables\Columns\TextColumn::make('message'),
             ])
             ->filters([
                 //

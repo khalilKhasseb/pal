@@ -11,7 +11,7 @@ class Faq extends Model
 {
     protected static function booted(): void
     {
-        static::addGlobalScope(new PanelScope);
+        //static::addGlobalScope(new PanelScope);
     }
 
     public function panels(): MorphToMany

@@ -37,7 +37,11 @@ class UploadFileCast implements SettingsCast
 
         $site_logo = DB::table('settings')->where('name', 'site_logo')->first();
 
-        $path = Str::remove("\"", $site_logo->payload);
+        // $path = Str::remove("\"", $site_logo->payload);
+        $path = json_decode($site_logo->payload,true)[app()->getLocale()];
+
+        // dd($path , $payloadValue);
+
 
 
         if ($payloadValue !== $path && $this->isThere($path)) $this->delete_file($path);

@@ -32,7 +32,7 @@ unset($content[$key]);
             <li @style([ 'display:flex' , 'justify-items:center' , 'align-items:center' ])>
                 {{-- <i class="fa fa-home" aria-hidden="true"></i> --}}
                 {{-- <span>New Chokoya Road, USA.</span> --}}
-                <x-icon :name="$icon['icon']" @style(['color:'.$icon['color']]) @class(['p-2']) />
+                <x-icon :name="$icon['icon']" @style(['color:'.$icon['color']]) @class(['p-2 ms-2']) />
                 <span> {{$icon['title']}}</span>
             </li>
             @endforeach

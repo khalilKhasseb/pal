@@ -2,11 +2,13 @@
 /node_modules
 /public/hot
 /public/storage
+/public/media
 /public/web.config
 /public/error_log
 /public/settings
 /public/vendor
 /storage/*.key
+/storage/media-library
 /vendor
 .htaccess
 .env

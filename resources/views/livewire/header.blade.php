@@ -1,5 +1,5 @@
 @use(App\Theme\ThemeRenderNaveItem)
-@php 
+@php
         #$sommodMenu = str_contains(str_replace('/', '', request()->getRequestUri()),'home-sommod' );
        # $handel = $sommodMenu ? 'main-sommod-header-menu'  : 'main-header-menu';
         # $menu = \LaraZeus\Sky\SkyPlugin::get()->getModel('Navigation')::fromHandle($handel);
@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 @if (isset($settings) && $settings->top_header_enabled)
-                    
+
                     @include('theme.partial.top-header' , [
                         'items' => $settings->top_header_items
                     ])
@@ -22,13 +22,13 @@
     <!-- .bg-header-top -->
 
     <!-- Start Menu -->
-    <div class="bg-main-menu menu-scroll">
+    <div class="bg-main-menu menu-scroll py-2">
         <div class="container">
             <div class="row">
                 <div class="main-menu">
                     <div class="main-menu-bottom">
                         <div class="navbar-header">
-                     
+
 
                             <x-theme.logo :route="route('theme.home')" :url="$_logo"  />
 
@@ -81,7 +81,7 @@
                                 </ul>
 
                                 <div class="menu-right-option pull-right">
-                                  
+
                                     {{-- <div class="search-box">
                                         <i class="fa fa-search first_click" aria-hidden="true"
                                             style="display: block;"></i>

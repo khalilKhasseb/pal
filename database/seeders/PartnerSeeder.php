@@ -14,7 +14,7 @@ class PartnerSeeder extends Seeder
     public function run(): void
     {
         $partners = CSVParser::parse(base_path('imports/partners.csv'));
-         
+
         foreach($partners as $partner) {
             $post =Post::create([
                 'title' => $partner['title'],
@@ -27,10 +27,10 @@ class PartnerSeeder extends Seeder
             ]);
 
             $post->panels()->attach($partner['panel']);
-            $post->addMediaFromUrl($partner['img'])->toMediaCollection('posts');
+            $post->addMediaFromUrl($partner['img'])->toMediaCollection('partners');
 
-            
+
         }
-        
+
     }
 }

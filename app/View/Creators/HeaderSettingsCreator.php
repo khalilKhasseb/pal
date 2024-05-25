@@ -5,7 +5,7 @@ namespace App\View\Creators;
 use Illuminate\View\View;
 use App\Settings\HeaderSetting;
 
-class HeaderSettingsCreator
+class   HeaderSettingsCreator
 {
 
 
