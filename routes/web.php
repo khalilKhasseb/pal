@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class , 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 /*
@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 
@@ -74,7 +74,7 @@ Route::prefix('/')->name('theme.')->group(function () {
     Route::get('/', Home::class)->name('home');
 
 
-    Route::get('/post-single', fn() => view('theme.pages.post'));
+    Route::get('/post-single', fn () => view('theme.pages.post'));
 });
 
 
@@ -150,9 +150,9 @@ Route::prefix('initiative')->name('initiative')->group(function () {
     Route::get('/{slug}', Post::class)->name('.view');
 });
 
-Route::get('/faqs' , App\Livewire\FaqPage::class)->name('faq');
+Route::get('/faqs', App\Livewire\FaqPage::class)->name('faq');
 
-Route::get('gallary' , App\Livewire\GallaryPage::class);
+Route::get('gallary', App\Livewire\GallaryPage::class);
 Route::post('/contact', App\Http\Controllers\ContactController::class)->name('contact');
 
 
@@ -164,5 +164,3 @@ Route::post('/contact', App\Http\Controllers\ContactController::class)->name('co
  *
  * attache media to model for each post model
  */
-
-

@@ -71,7 +71,7 @@ class PartnersResource extends Resource
         return __("Partners");
     }
     public static function getRoute() : string {
-        return 'partners.view';
+        return 'partner.view';
     }
 
 
