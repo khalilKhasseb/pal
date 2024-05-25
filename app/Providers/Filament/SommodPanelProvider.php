@@ -44,7 +44,7 @@ class SommodPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Sommod/Widgets'), for: 'App\\Filament\\Sommod\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                //Widgets\FilamentInfoWidget::class,
             ])->userMenuItems([
                 MenuItem::make()
                 ->label(__('Concile'))
