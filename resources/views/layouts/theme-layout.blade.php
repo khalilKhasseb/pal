@@ -87,7 +87,8 @@
 
         <!-- Start page header -->
 
-        @if (Route::current()->getName() !== 'theme.home' && Route::current()->getName() !== 'front.sommod.home')
+
+        @if (!is_null(Route::current()) &&   Route::current()->getName() !== 'theme.home' && Route::current()->getName() !== 'front.sommod.home')
 
             <!-- Start Page Header Section -->
             <section style="--header-bg:url({{ Storage::url($settings->header_bg) }})" class="bg-page-header">

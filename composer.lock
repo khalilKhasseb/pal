@@ -3282,7 +3282,7 @@
         },
         {
             "name": "lara-zeus-kh/palsky",
-            "version": "3.0.5",
+            "version": "3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/khalilKhassep/khsky.git",

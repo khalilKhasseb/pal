@@ -41,7 +41,9 @@
                     <!-- .col-md-6 -->
                     <div class="col-lg-6">
 
-                        <div id="map"></div>
+                        <div id="mapframe" class="w-full d-block w-100 h-100">
+                            <iframe class="d-block w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1693.5130704629737!2d35.212099665081794!3d31.90588710408815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe4b933cc0c04b2fe!2zMzHCsDU0JzIxLjgiTiAzNcKwMTInNDIuNCJF!5e0!3m2!1sar!2sae!4v1673350698182!5m2!1sar!2sae" frameborder="0"></iframe>
+                        </div>
 
                     </div>
                     <!-- .col-md-6 -->
