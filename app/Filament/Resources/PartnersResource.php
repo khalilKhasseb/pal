@@ -32,6 +32,8 @@ class PartnersResource extends Resource
     }
 
 
+
+
     public static function getModel() : string {
         return SkyPlugin::get()->getModel('Post');
     }

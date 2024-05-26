@@ -31,7 +31,7 @@
                                                      class="fa fa-plus" aria-hidden="true"></i></a>
                                          </div>
                                          <div class="recent-project-content">
-                                             <p><a href="#">images title here</a></p>
+                                             <p><a href="#">{{$gallary->title}}</a></p>
                                          </div>
                                          <!-- .latest-port-content -->
                                      </div>
