@@ -114,7 +114,9 @@ Route::prefix('events')->name('event')->group(function () {
 });
 
 
-
+Route::prefix('supporters')->name('supporters')->group(function(){
+  Route::get('/' , function(){});
+});
 Route::prefix('administration')->name('administration')->group(function () {
     Route::get('/', App\Livewire\AdminstrationComp::class);
 
@@ -155,7 +157,8 @@ Route::get('/faqs', App\Livewire\FaqPage::class)->name('faq');
 Route::get('gallary', App\Livewire\GallaryPage::class);
 Route::post('/contact', App\Http\Controllers\ContactController::class)->name('contact');
 
-Route::get('attachment/{media}' , App\Http\Controllers\DownloadMedia::class)->name('downloadAttachment');
+Route::get('attachment/{media
+}' , App\Http\Controllers\DownloadMedia::class)->name('downloadAttachment');
 
 /**
  * First try to copy file from remote path to a give destnation
