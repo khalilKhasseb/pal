@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
             Select::make('category_id')
                 ->searchable()
                 ->options(function () {
-                    return SkyPlugin::get()->getModel('Tag')::getWithType('category')->pluck('name', 'id');
+                    return SkyPlugin::get()->getModel('Tag')::whereIn('type' ,SkyPlugin::get()->getModel('Tag')::getTypes())->pluck('name', 'id');
                 })
         ], 'category');
 
