@@ -74,7 +74,7 @@
             }
 
     </style>
-    {{-- @vite('resources/js/app.js') --}}
+    @vite('resources/js/app.js')
 </head>
 
 <body class="{{ app()->getLocale() === 'ar' ? 'rtl' : '' }} " id="page-top" data-spy="scroll">

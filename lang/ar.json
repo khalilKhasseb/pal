@@ -1,6 +1,7 @@
 {
     "Form": "إستبيان",
     "Forms": "الاستبينات",
+    "Home": "الرئيسية",
     "Location": "المكان",
     "Contact info": "معلومات الاتصال",
     "Cources": "تدريبات",
@@ -88,7 +89,7 @@
     "Site name": "اسم الموقع",
     "Blog": "محتوى ",
     "Settings": "إعدادات",
-    "All News": "الأخبار",
+    "All news": "الأخبار",
     "Posted by": "نُشر بواسطة",
     "share": "مشاركة",
     "comments": "التعليقات",
@@ -202,5 +203,6 @@
     "Send Email": "أرسل رسالة",
     "Message" : "الرسالة",
     "Subject" : "الموضوع",
+    "No Posts found" : "لا يوجد محتوى بعد." ,
     "rofessionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills." : "مجلس الفلسطيني للأبنية الخضراء هو مؤسسة أهلية غير حكومية وغير ربحية تأسست منتصف العام 2011، وهو جزء من المجلس العالمي للأبنية الخضراء وشبكة مجالس الشرق الأوسط وشمال أفريقيا MENA"
 }

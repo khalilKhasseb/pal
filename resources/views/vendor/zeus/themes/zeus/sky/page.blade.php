@@ -4,13 +4,18 @@
 
 <x-slot name="breadcrumbs">
     <li class="">
-        <a href="{{ route('blogs') }}">{{ __('Posts') }}</a>
+        <a href="{{ route('theme.home') }}">{{ __('Home') }}</a>
         {{-- @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3 rtl:rotate-180') --}}
     </li>
     <li class="">
         {{ $post->title }}
     </li>
 </x-slot>
+@push('th3_scripts')
+    <script type="text/javascript"
+        src="https://platform-api.sharethis.com/js/sharethis.js#property=664c7db51783940019670c0e&product=inline-share-buttons&source=platform"
+        async="async"></script>
+@endpush
 
 
 <section class="bg-single-blog">
@@ -23,15 +28,16 @@
                         <div class="blog-items">
                             @if($post->image('pages') !== null)
                             {{-- @dd($post->image()) --}}
-                            <div class="blog-img">
+                            {{-- <div class="blog-img">
                                 <a href="#">
                                     <img src="{{$post->image('pages')}}" alt="{{$post->title}}" class="img-responsive" />
                                 </a>
-                            </div>
+                            </div> --}}
                             @endif
                             <!-- .blog-img -->
-                            <div class="blog-content-box">
-                                <div class="meta-box">
+                            <div class="blog-content-box" style="border-top: 1px solid #f0f0f0">
+
+                                {{-- <div class="meta-box" style="border-top:1px solid #f0f0f0">
                                     <div class="event-author-option">
                                         <div class="event-author-img">
                                             <img src="{{\Filament\Facades\Filament::getUserAvatarUrl($post->author) }}"
@@ -65,23 +71,24 @@
 
                                         }
                                         ">
-                                            <button x-on:click="console.log(1)" class="btn-transperent">
+                                            <button x-on:click="console.log(1)" class="btn-transparent" style="background:transparent">
                                                 <i   class="fa fa-heart-o" aria-hidden="true"></i> <span
                                                     x-text="likes === null ? 0 : likes"></span>
                                             </button>
 
                                         </li>
-                                        {{-- <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> 24
-                                                Comment</a></li> --}}
+
                                     </ul>
-                                </div>
+                                </div> --}}
+
+
                                 <!-- .meta-box -->
                                 <div class="blog-content">
                                     <h4 class="text-center">{{$post->title}}</h4>
-                                  
+
                                     {!! $post->getContent() !!}
 
-                                      @if($post->form !== null) 
+                                      @if($post->form !== null)
                                       <iframe id="{{$post->form->id}}" title="{{$post->form->name}}" src="{{$post->form->responder_uri}}" width="100%" height="1200px"> </iframe>
                                       @endif
 
@@ -89,7 +96,7 @@
                                 <!-- .blog-content -->
                                 <div class="single-blog-bottom">
                                     <ul class="tags">
-                                        <li><i class="fa fa-tags" aria-hidden="true"></i> Tags :</li>
+                                        <li><i class="fa fa-tags" aria-hidden="true"></i> {{__('Tags')}} :</li>
                                         @unless ($post->tags->isEmpty())
                                         @foreach($post->tags->where('type','tag') as $tag)
                                         @include($skyTheme.'.partial.tag')
@@ -97,20 +104,11 @@
                                         @endunless
                                     </ul>
                                     <!-- .author-option -->
-                                    <div class="event-share-option">
-                                        <ul class="social-icon share-icon">
-                                            <li><i class="fa fa-share-alt" aria-hidden="true"></i><span>share
-                                                    :</span></li>
-                                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
-                                            </li>
-                                        </ul>
+                                    <div class="event-share-option d-flex justify-items-start align-items-center">
+
+
+                                        <span> {{ __('share') }} </span>
+                                        <div class="sharethis-inline-share-buttons"></div>
                                     </div>
                                     <!-- .share-option -->
                                 </div>
@@ -122,7 +120,7 @@
                         <div class="comments-option" x-data="{
                             comments:@js($post->comments)
                         }">
-                            <h4 class="comments-title">{{$post->comments->count()}} Comments</h4>
+                            <h4 class="comments-title">{{$post->comments->count() > 0 ? $post->comments->count : ''}} {{__('comments')}}</h4>
 
                             @foreach ($post->comments as $comment)
 

@@ -40,7 +40,7 @@ body.rtl .cart-dropdown-menu {
     right: auto;
 }
 body.rtl .slider-option.slider-two .slider-content {
-    text-align: left;
+    /* text-align: left; */
 }
 body.rtl .slider-option.slider-three .slider-content {
     text-align: center;

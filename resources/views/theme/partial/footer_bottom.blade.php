@@ -3,7 +3,7 @@
         <div class="row">
             <div class="footer-bottom">
                 <div class="copyright-txt">
-                    <p>&copy; {{date('Y')}}. Develped By <a href="#" title="Al-Amin(Web Designer)">@nebula</a></p>
+                    <p>&copy; {{date('Y')}}. <bdi>Develped By </bdi> <a href="#" title="Al-Amin(Web Designer)"><bdi>@nebula </bdi></a></p>
 
                 </div>
                 <!-- .copyright-txt -->
