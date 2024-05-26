@@ -3282,16 +3282,16 @@
         },
         {
             "name": "lara-zeus-kh/palsky",
-            "version": "3.0.6",
+            "version": "3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/khalilKhassep/khsky.git",
-                "reference": "5f81d7c3d1e6f420e01dbc29ce1308d97441dea5"
+                "reference": "22d99bbdc86f9e952074c1821a7c6b8707b57487"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/khalilKhassep/khsky/zipball/5f81d7c3d1e6f420e01dbc29ce1308d97441dea5",
-                "reference": "5f81d7c3d1e6f420e01dbc29ce1308d97441dea5",
+                "url": "https://api.github.com/repos/khalilKhassep/khsky/zipball/22d99bbdc86f9e952074c1821a7c6b8707b57487",
+                "reference": "22d99bbdc86f9e952074c1821a7c6b8707b57487",
                 "shasum": ""
             },
             "require": {
@@ -3368,7 +3368,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-26T21:27:13+00:00"
+            "time": "2024-05-26T23:39:23+00:00"
         },
         {
             "name": "lara-zeus/core",
