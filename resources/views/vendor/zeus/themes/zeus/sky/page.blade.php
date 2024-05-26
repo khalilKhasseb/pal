@@ -26,9 +26,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="blog-items">
-                            @if($post->image('pages') !== null)
-                            {{-- @dd($post->image()) --}}
-                            {{-- <div class="blog-img">
+                            @if ($post->image('pages') !== null)
+                                {{-- @dd($post->image()) --}}
+                                {{-- <div class="blog-img">
                                 <a href="#">
                                     <img src="{{$post->image('pages')}}" alt="{{$post->title}}" class="img-responsive" />
                                 </a>
@@ -84,23 +84,47 @@
 
                                 <!-- .meta-box -->
                                 <div class="blog-content">
-                                    <h4 class="text-center">{{$post->title}}</h4>
+                                    <h4 class="text-center">{{ $post->title }}</h4>
 
                                     {!! $post->getContent() !!}
 
-                                      @if($post->form !== null)
-                                      <iframe id="{{$post->form->id}}" title="{{$post->form->name}}" src="{{$post->form->responder_uri}}" width="100%" height="1200px"> </iframe>
-                                      @endif
+                                    @if (!$post->getMedia('attachments')->isEmpty())
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">{{__('Attachment')}}</th>
+                                                    <th scope="col">{{__('Download')}}</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               @foreach($post->getMedia('attachments') as $media)
+                                                <tr>
+                                                    <th>{{$media->getDownloadFilename()}}</th>
+                                                    <td><a class="rounded btn-success btn" href="{{route('downloadAttachment',$media)}}">{{__('Download')}}</a></td>
+
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endif
+                                    @if ($post->form !== null)
+                                        <iframe id="{{ $post->form->id }}" title="{{ $post->form->name }}"
+                                            src="{{ $post->form->responder_uri }}" width="100%" height="1200px">
+                                        </iframe>
+                                    @endif
+
+
 
                                 </div>
                                 <!-- .blog-content -->
                                 <div class="single-blog-bottom">
                                     <ul class="tags">
-                                        <li><i class="fa fa-tags" aria-hidden="true"></i> {{__('Tags')}} :</li>
+                                        <li><i class="fa fa-tags" aria-hidden="true"></i> {{ __('Tags') }} :</li>
                                         @unless ($post->tags->isEmpty())
-                                        @foreach($post->tags->where('type','tag') as $tag)
-                                        @include($skyTheme.'.partial.tag')
-                                        @endforeach
+                                            @foreach ($post->tags->where('type', 'tag') as $tag)
+                                                @include($skyTheme . '.partial.tag')
+                                            @endforeach
                                         @endunless
                                     </ul>
                                     <!-- .author-option -->
@@ -118,43 +142,43 @@
                         </div>
 
                         <div class="comments-option" x-data="{
-                            comments:@js($post->comments)
+                            comments: @js($post->comments)
                         }">
-                            <h4 class="comments-title">{{$post->comments->count() > 0 ? $post->comments->count : ''}} {{__('comments')}}</h4>
+                            <h4 class="comments-title">{{ $post->comments->count() > 0 ? $post->comments->count : '' }}
+                                {{ __('comments') }}</h4>
 
                             @foreach ($post->comments as $comment)
-
-                            @if(!empty($comment->comment) && !empty($comment->comment))
-                            <div class="comments-items">
-                                <div class="comments-image">
-                                    <img src="{{config('theme.defaultCommentAuthorImage')}}"
-                                        alt="comments-author-img" />
-                                </div>
-                                <!-- .comments-image -->
-                                <div class="comments-content">
-                                    <div class="comments-author-title">
-                                        <div class="comments-author-name">
-                                            <h4><a href="#">{{$comment->name}}</a> -
-                                                <small>{{optional($comment->created_at)->diffForHumans()}}</small>
-                                            </h4>
+                                @if (!empty($comment->comment) && !empty($comment->comment))
+                                    <div class="comments-items">
+                                        <div class="comments-image">
+                                            <img src="{{ config('theme.defaultCommentAuthorImage') }}"
+                                                alt="comments-author-img" />
                                         </div>
-                                        {{-- <div class="reply-icon">
+                                        <!-- .comments-image -->
+                                        <div class="comments-content">
+                                            <div class="comments-author-title">
+                                                <div class="comments-author-name">
+                                                    <h4><a href="#">{{ $comment->name }}</a> -
+                                                        <small>{{ optional($comment->created_at)->diffForHumans() }}</small>
+                                                    </h4>
+                                                </div>
+                                                {{-- <div class="reply-icon">
                                             <h6><i class="fa fa-reply-all"></i><a href="#"> Reply</a></h6>
                                         </div> --}}
+                                            </div>
+                                            <!-- .comments-author-title -->
+                                            <p>{{ $comment->comment }}</p>
+                                        </div>
+                                        <!-- .comments-content -->
                                     </div>
-                                    <!-- .comments-author-title -->
-                                    <p>{{$comment->comment}}</p>
-                                </div>
-                                <!-- .comments-content -->
-                            </div>
-                            <!-- .comments-items -->
-                            @endif
+                                    <!-- .comments-items -->
+                                @endif
                             @endforeach
 
                         </div>
                         <!-- .comments-option -->
 
-                        @livewire('comment' , ['post' => $post])
+                        @livewire('comment', ['post' => $post])
                     </div>
 
                     {{-- <div class="col-lg-4">
@@ -167,5 +191,3 @@
             </div>
         </div>
     </div>
-
-

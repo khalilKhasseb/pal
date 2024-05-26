@@ -131,6 +131,27 @@
                                         </div>
                                     @endif
 
+                                    @if (!$post->getMedia('attachments')->isEmpty())
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">{{__('Attachment')}}</th>
+                                                <th scope="col">{{__('Download')}}</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           @foreach($post->getMedia('attachments') as $media)
+                                            <tr>
+                                                <th>{{$media->getDownloadFilename()}}</th>
+                                                <td><a class="rounded btn-success btn" href="{{route('downloadAttachment',$media)}}">{{__('Download')}}</a></td>
+
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
+
                                 </div>
                                 <!-- .blog-content -->
                                 <div class="single-blog-bottom">

@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Traits;
 //Laravel
 use Illuminate\Database\Eloquent\Builder;
@@ -58,7 +58,7 @@ use Illuminate\Support\Str;
 use App\Models\Scopes\PanelScope;
 
 trait PostResourceTrait {
-    
+
     protected static $post_type = 'post';
 
 
@@ -111,7 +111,7 @@ trait PostResourceTrait {
                         ->required()
                         ->maxLength(255)
                         ->label(__("Slug")),
-                    
+
 
                     // Select::make('parent_id')
                     //     ->options(
@@ -198,13 +198,13 @@ trait PostResourceTrait {
                                 ->directory(SkyPlugin::get()->getUploadDirectory())
                                 ->live()
                                 ->afterStateHydrated(function ($state, ?\LaraZeus\Sky\Models\Post $record, Get $get, Set $set, string $operation) {
-                                    // state is null on create , empty array on edit 
-                                    // do clear thubnail collection when adding a custom thubnail 
-                        
+                                    // state is null on create , empty array on edit
+                                    // do clear thubnail collection when adding a custom thubnail
+
                                     $has_thmb = $get('has_thumb') === null ? false : $get('has_thumb');
 
                                     // dd($state, $record);
-                        
+
                                     if ($operation === 'edit') {
                                     }
                                     if ($operation === 'create') {
@@ -221,19 +221,19 @@ trait PostResourceTrait {
                                         // has thumb
                                         //      if(!is_null($record)) {
                                         //         if($record->has_thumb) {
-                                        //             // get media url 
+                                        //             // get media url
                                         //             $media = $record->getMedia('posts')[0]->getPath('thumb-cropped-original');
-                        
+
 
 
                                         //         }
                                         // }
-                        
+
                                         $has_thmb = true;
                                     }
 
                                     // dd($has_thmb);
-                        
+
                                     $set('has_thumb', $has_thmb);
 
                                     //dd($state, $operation , $record);
@@ -243,6 +243,16 @@ trait PostResourceTrait {
                                 ->required()
                         ])
                 ]),
+
+                Tabs\Tab::mak(__('Attachment'))
+                ->schema([
+                    SpatieMediaLibraryFileUpload::make('attachments')
+                    ->label(__('Attachments'))
+                    ->acceptedFileTypes(['pdf','doc'])
+                    ->collection('attachments')
+                    ->directory('attachments')
+                    ->dehydrated(false)
+                ])
             ])->columnSpan(2),
         ]);
     }
@@ -309,7 +319,7 @@ trait PostResourceTrait {
             RestoreAction::make(),
         ];
 
-       
+
 
         return [ActionGroup::make($action)];
     }

@@ -131,7 +131,7 @@ class ContentController extends Controller
         $client = GoogleAuthnticate::makeClient([
             Drive::DRIVE_READONLY
         ]);
-       
+
         $service = new Forms($client);
         $driveService = new Drive($client);
         // dd($service->forms->get('1e-VMViperLCDdID9zzEqUOuQynV1lyFjFSiFd3mqYL8'));
@@ -139,7 +139,7 @@ class ContentController extends Controller
         dd($response->files[0]->getName());
         // dd($driveService->files->listFiles(['q' => "mimeType='application/vnd.google-apps.form'"]));
     }
-   
+
     public function create_form()
     {
 
@@ -173,4 +173,3 @@ class ContentController extends Controller
         return $form;
     }
 }
-
