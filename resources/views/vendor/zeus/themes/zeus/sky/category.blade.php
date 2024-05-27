@@ -1,6 +1,6 @@
 {{-- <div>
     @unless($posts->isEmpty())
-    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 gap-4 mt-10 sm:grid-cols-2 md:grid-cols-3">
         @foreach($posts as $post)
         @include($skyTheme.'.partial.sticky')
         @endforeach
@@ -36,7 +36,11 @@ $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
 
 <x-slot name="breadcrumbs">
     <li class="">
-        <a href="{{ route('blogs') }}">{{ __('All news') }}</a>
+        @php
+        $route = request()->is('content/'.$tag->type) ? 'blogs' : $tag->type ;
+        // dd($route);
+        @endphp
+        <a href="{{ route($route) }}">{{ __('All '. $tag->type) }}</a>
         {{-- @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3 rtl:rotate-180') --}}
     </li>
     <li class="">

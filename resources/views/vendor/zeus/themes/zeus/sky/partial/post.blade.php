@@ -6,13 +6,13 @@
             <a href="{{ route('post', $post->slug) }}">
 
              <img src="{{ $post->image()}}" alt="blog-img-1" class="img-responsive" />
-                 
+
             </a>
         </div>
         <!-- .blog-img -->
         <div class="blog-content-box">
             <div class="blog-content">
-                <h4><a href="{{ route('post', $post->slug) }}">{!! Str::substr($post->title, 0, 30) !!}</a></h4>
+                <h4 class="h-6 fs-1"><a href="{{ route('post', $post->slug) }}">{!! $post->title !!}</a></h4>
                 @if ($post->description !== null)
                     <p>
                         {!! Str::substr($post->description, 0, 15) !!}
@@ -41,7 +41,7 @@
                                 })
                                 .catch(e => console.log(e))
                         }
-                    
+
                     }">
                         <button style="background:transparent" x-on:click="like_post" class="btn-transparent">
                             <i x-bind:style="liked && 'color:red'" x-bind:class="`fa fa-heart-o`"
@@ -68,7 +68,7 @@
 {{-- <article class="mt-6" itemscope itemtype="https://schema.org/Movie">
     <div class="px-6 pb-6 mx-auto bg-white dark:bg-gray-800 rounded-[2rem] rounded-bl-none rounded-tr-none shadow-md">
         <div class="flex items-center justify-between">
-            <span class="font-light text-sm text-gray-600 dark:text-gray-200 mt-2">{{
+            <span class="mt-2 text-sm font-light text-gray-600 dark:text-gray-200">{{
                 optional($post->published_at)->diffForHumans() ?? '' }}</span>
             <div>
                 @unless ($post->tags->isEmpty())
@@ -78,7 +78,7 @@
         </div>
         <aside class="mt-2">
             <a href="{{ route('post',$post->slug) }}"
-                class="text-2xl md:text-3xl font-bold text-gray-700 dark:text-gray-200 hover:underline">
+                class="text-2xl font-bold text-gray-700 md:text-3xl dark:text-gray-200 hover:underline">
                 {!! $post->title !!}
             </a>
             @if ($post->description !== null)
