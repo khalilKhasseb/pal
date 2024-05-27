@@ -4,7 +4,7 @@
    <div class="container">
     <div class="section-header">
         <h2>{{__('News')}}</h2>
-        <p>{{__('rofessionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.')}}</p>
+        <p>{{__('Professionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.')}}</p>
     </div>
     <div class="row">
         @foreach($posts as $post)
