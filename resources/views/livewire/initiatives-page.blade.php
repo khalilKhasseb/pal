@@ -22,7 +22,7 @@
             <div class="pt-3 col-12 col-md-10 col-lg-8">
                 <div class="d-flex justify-content-between align-items-center">
                     @foreach ($initiatives as $initiative)
-                        <h4 @if ($loop->first) x-init="supporters = @JS($initiative->supporters) ; supporter =@JS($initiative->supporters[0]) " @endif
+                        <h4 style="cursor:pointer" @if ($loop->first) x-init="supporters = @JS($initiative->supporters) ; supporter =@JS($initiative->supporters[0]) " @endif
                             x-on:click="loadSupporters({{ $loop->index }})"
                             class="px-2 py-2 text-center text-white ms-1 d-block w-100 bg-success">
                             {{ $initiative->title }}
