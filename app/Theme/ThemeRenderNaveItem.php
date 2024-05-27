@@ -4,22 +4,19 @@ namespace App\Theme;
 
 
 use LaraZeus\Sky\SkyPlugin;
-
+use App\Models\Blog\Tag;
 class ThemeRenderNaveItem
 {
+
 
 
     public static function render(array $item, $sommod = true,string $class = '')
     {
 
-          
-
-      
-
         $color = '';
         $queryParmr= $sommod ? "?p=sommod" : '';
         if ($item['type'] === 'category') {
-            $category = SkyPlugin::get()->getModel('Tag')::getWithType('category')->find($item['data']['category_id']) ?? '';
+            $category = SkyPlugin::get()->getModel('Tag')::whereIn('type',Tag::getTypes())->find($item['data']['category_id']) ?? '';
             $activeClass = (request()->routeIs('page', 'category')) ? $color : 'border-transparent';
             return '<a class="' . $class . ' ' . $activeClass . '"
             target="' . ($item['data']['target'] ?? '_self') . '"
@@ -33,7 +30,7 @@ class ThemeRenderNaveItem
         }
         if ($item['type'] === 'page-link' || $item['type'] === 'page_link') {
             $page = SkyPlugin::get()->getModel('Post')::page()->whereDate('published_at', '<=', now())->find($item['data']['page_id']) ?? '';
-            
+
             $activeClass = (request()->routeIs('page')) ? $color : 'border-transparent';
 
             return '<a class="' . $class . ' ' . $activeClass . '"
@@ -70,7 +67,7 @@ class ThemeRenderNaveItem
                 $item['label'] .
                 '</a>';
         } elseif ($item['type'] === 'sommod-routes') {
-            
+
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
                     href="' . route($item['data']['sommod_routes']) . '"
