@@ -10,7 +10,7 @@
      $siteTitle= !is_null($settings->site_name) ? $settings->site_name : config('app.name' , 'Palgpc') ;
     @endphp
     <meta name="application-name" content="{{ $siteTitle }}">
-
+      <title>{{$siteTitle}}</title>
     <!-- Seo Tags -->
     <x-seo::meta />
     <!-- Seo Tags -->
