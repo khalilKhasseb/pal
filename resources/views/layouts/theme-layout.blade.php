@@ -6,7 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="application-name" content="{{ config('app.name', 'Laravel') }}">
+    @php
+     $siteTitle= !is_null($settings->site_title) ? $settings->site_title : config('app.name' , 'Palgpc') ;
+    @endphp
+    <meta name="application-name" content="{{ $siteTitle }}">
 
     <!-- Seo Tags -->
     <x-seo::meta />
