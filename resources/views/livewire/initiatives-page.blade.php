@@ -12,7 +12,7 @@
                 <hr />
                 <ul>
                     <template x-for="sup in supporters">
-                        <li x-on:click="loadSupporter(sup)" x-text="sup.name.{{ app()->getLocale() }}"
+                        <li style="cursor:pointer" x-on:click="loadSupporter(sup)" x-text="sup.name.{{ app()->getLocale() }}"
                             class="p-2 my-1 text-black border"></li>
                     </template>
                 </ul>
