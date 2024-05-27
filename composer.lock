@@ -1788,16 +1788,16 @@
         },
         {
             "name": "filament/spatie-laravel-media-library-plugin",
-            "version": "v3.2.82",
+            "version": "v3.2.83",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/spatie-laravel-media-library-plugin.git",
-                "reference": "b096e29c0f30223031c98d7e3090514d05c3a105"
+                "reference": "7bf9d40b132dfd07216da27b31cd1b24e006c151"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/spatie-laravel-media-library-plugin/zipball/b096e29c0f30223031c98d7e3090514d05c3a105",
-                "reference": "b096e29c0f30223031c98d7e3090514d05c3a105",
+                "url": "https://api.github.com/repos/filamentphp/spatie-laravel-media-library-plugin/zipball/7bf9d40b132dfd07216da27b31cd1b24e006c151",
+                "reference": "7bf9d40b132dfd07216da27b31cd1b24e006c151",
                 "shasum": ""
             },
             "require": {
@@ -1821,7 +1821,7 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2024-05-20T16:26:41+00:00"
+            "time": "2024-05-27T10:09:06+00:00"
         },
         {
             "name": "filament/spatie-laravel-settings-plugin",
@@ -2311,16 +2311,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.356.0",
+            "version": "v0.357.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "8e22b0a6f661f2db3f99abb6ee5a1dcf28d370e7"
+                "reference": "c84b0ac2191d56d40d43bc18e62b37a2781040a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/8e22b0a6f661f2db3f99abb6ee5a1dcf28d370e7",
-                "reference": "8e22b0a6f661f2db3f99abb6ee5a1dcf28d370e7",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/c84b0ac2191d56d40d43bc18e62b37a2781040a9",
+                "reference": "c84b0ac2191d56d40d43bc18e62b37a2781040a9",
                 "shasum": ""
             },
             "require": {
@@ -2349,9 +2349,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.356.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.357.0"
             },
-            "time": "2024-05-18T01:10:18+00:00"
+            "time": "2024-05-27T01:02:20+00:00"
         },
         {
             "name": "google/auth",
@@ -3282,16 +3282,16 @@
         },
         {
             "name": "lara-zeus-kh/palsky",
-            "version": "3.0.8",
+            "version": "3.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/khalilKhassep/khsky.git",
-                "reference": "ad70934a54bcba20c2a39bd86d42b89913d8e7cd"
+                "reference": "3cbb70bc270f36fde8637b76826f2921da16340c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/khalilKhassep/khsky/zipball/ad70934a54bcba20c2a39bd86d42b89913d8e7cd",
-                "reference": "ad70934a54bcba20c2a39bd86d42b89913d8e7cd",
+                "url": "https://api.github.com/repos/khalilKhassep/khsky/zipball/3cbb70bc270f36fde8637b76826f2921da16340c",
+                "reference": "3cbb70bc270f36fde8637b76826f2921da16340c",
                 "shasum": ""
             },
             "require": {
@@ -3368,7 +3368,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-27T00:17:58+00:00"
+            "time": "2024-05-27T18:56:04+00:00"
         },
         {
             "name": "lara-zeus/core",
@@ -7133,16 +7133,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "11.5.1",
+            "version": "11.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "37ecca8a5166c9290388b681923bc336a378ca3d"
+                "reference": "99760ad7865a418708474cf594e736a381b45c0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/37ecca8a5166c9290388b681923bc336a378ca3d",
-                "reference": "37ecca8a5166c9290388b681923bc336a378ca3d",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/99760ad7865a418708474cf594e736a381b45c0e",
+                "reference": "99760ad7865a418708474cf594e736a381b45c0e",
                 "shasum": ""
             },
             "require": {
@@ -7225,7 +7225,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
-                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.5.1"
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.5.2"
             },
             "funding": [
                 {
@@ -7237,7 +7237,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-23T08:10:59+00:00"
+            "time": "2024-05-27T09:07:25+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
