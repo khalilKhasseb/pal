@@ -40,10 +40,7 @@ $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
         $route = request()->is('content/'.$tag->type) ? 'blogs' : $tag->type ;
         // dd($route);
         @endphp
-        <a href="{{ route('tags' , [
-            'type' => $tag->type,
-            'slug' => $tag->slug,
-        ]) }}">{{ __('All '. $tag->type) }}</a>
+        <a href="{{ route($route) }}">{{ __('All '. $tag->type) }}</a>
         {{-- @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3 rtl:rotate-180') --}}
     </li>
     <li class="">
