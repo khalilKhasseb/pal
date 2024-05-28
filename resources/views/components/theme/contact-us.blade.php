@@ -8,7 +8,7 @@
             <div class="contact-us">
                 <div class="section-header">
                     <h2>{{__('Get in Touch')}}</h2>
-                    <p>{{__('rofessionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.')}}</p>
+                    <p>{{__('Professionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.')}}</p>
                 </div>
                 <!-- .section-header -->
                 <div class="row">

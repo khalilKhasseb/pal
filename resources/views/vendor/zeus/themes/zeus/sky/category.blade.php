@@ -37,7 +37,7 @@ $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
 <x-slot name="breadcrumbs">
     <li class="">
         @php
-        $route = request()->is('content/'.$tag->type) ? 'blogs' : $tag->type ;
+        $route = request()->is('content/category/*') ? 'blogs' : $tag->type ;
         // dd($route);
         @endphp
         <a href="{{ route($route) }}">{{ __('All '. $tag->type) }}</a>

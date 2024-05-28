@@ -3,14 +3,14 @@
 @use(Illuminate\Support\Str)
 @php
 
-// santize request uri 
+// santize request uri
 
-#remove all conent after path uri 
+#remove all conent after path uri
 #take query paramer panel and store it in a variable to use later
-#clear request uri 
+#clear request uri
 
 $panel = isset(request()->query()['p']) ? request()->query()['p'] : null ;
-#clear reqeust uri from 
+#clear reqeust uri from
 $page_title = preg_replace('([?].*)' , '',request()->getRequestUri() ) ;
 $page_title = str_replace('/' , '' , $page_title);
 #

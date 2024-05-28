@@ -1,7 +1,10 @@
 @use(Illuminate\Pagination\Paginator)
 @php
-    $current_page = empty(request()->query()) ? 1 : (int) request()->query()['page'];
-    $per_page = 15;
+    $panel = isset(request()->query()['p']) ? request()->query()['p'] : null;
+
+    $current_page =
+        empty(request()->query()) || !isset(request()->query()['page']) ? 1 : (int) request()->query()['page'];
+    $per_page = 6;
 
     $offset = $current_page * $per_page - $per_page;
 
@@ -14,10 +17,10 @@
     // get Pages for a period of offsets
     // for example if we have
     $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
-
+    // dd($paginiator->items())
 @endphp
 <x-slot name="header">
-    <h2>{{__('Events')}}</h2>
+    <h2>{{ __('Events') }}</h2>
 </x-slot>
 
 <div id="root-events-page-component">
@@ -31,7 +34,7 @@
                                 <div class="event-box">
                                     <div class="form-group">
                                         <label for="date">{{__('events from')}}</label>
-                                        <input type="text" class="form-control px-4" id="date" name="date" placeholder="{{__('Date')}}">
+                                        <input type="text" class="px-4 form-control" id="date" name="date" placeholder="{{__('Date')}}">
                                     </div>
                                     <!-- .form-group -->
                                 </div>
@@ -42,7 +45,7 @@
                             <div class="event-box">
                                 <div class="form-group">
                                     <label for="search">{{ __('Search') }}</label>
-                                    <input wire:model="searchQuery" type="text" class="form-control px-4"
+                                    <input wire:model="searchQuery" type="text" class="px-4 form-control"
                                         id="search" placeholder="{{ __('Keyword') }}">
 
                                 </div>
@@ -55,7 +58,7 @@
                                 <div class="event-box">
                                     <div class="form-group">
                                         <label for="location">{{__('Location')}}</label>
-                                        <input type="text" class="form-control px-4" id="location" placeholder="{{__('Type to search')}}">
+                                        <input type="text" class="px-4 form-control" id="location" placeholder="{{__('Type to search')}}">
                                     </div>
                                     <!-- .form-group -->
                                 </div>
@@ -85,12 +88,12 @@
             <div class="row">
                 <div wire:transition class="upcoming-events">
                     <div class="row">
-                        @if (!$events->isEmpty())
-                            @foreach ($events as $event)
+                        @if (count($paginiator->items()) > 0)
+                            @foreach ($paginiator->items() as $event)
                                 <x-theme.event :event="$event" />
                             @endforeach
-                        @elseif($events->isEmpty())
-                             
+                        @elseif(count($paginiator->items()) === 0)
+                            @include($skyTheme . '.partial.empty')
                         @endif
                         <!-- .col-lg-6 -->
 
