@@ -79,11 +79,14 @@ trait PostResourceTrait
                         }),
                     config('zeus-sky.editor')::component()
                         ->label(__("Post Content")),
+
                     Select::make('google_form_id')
                         ->relationship(name: 'form', titleAttribute: 'name')
                         ->preload(),
-                    Repeater::make('post_meta')
-                        ->label(__("Custom fields"))
+                    Section::make(__('Custom fields'))
+                    ->schema([
+                        Repeater::make('post_meta')
+                        ->label(__("Fields"))
                         ->relationship()
                         ->schema([
                             TextInput::make('key')
@@ -93,6 +96,8 @@ trait PostResourceTrait
                             IconPicker::make('icon')
                                 ->label(__('Icon'))
                         ])
+                    ]),
+
                 ]),
                 Tabs\Tab::make(__('SEO'))->schema([
                     Hidden::make('user_id')
