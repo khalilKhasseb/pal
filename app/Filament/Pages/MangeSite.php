@@ -19,6 +19,11 @@ use Spatie\LaravelSettings\SettingsMapper;
 use Spatie\LaravelSettings\SettingsConfig;
 use Illuminate\Support\Str;
 use Filament\Facades\Filament;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
+
 class MangeSite extends SettingsPage
 {
 
@@ -36,11 +41,13 @@ class MangeSite extends SettingsPage
     private SettingsConfig $config;
 
 
-   public function getTitle(): string|\Illuminate\Contracts\Support\Htmlable {
+    public function getTitle(): string|\Illuminate\Contracts\Support\Htmlable
+    {
         return __('Manage Site');
     }
 
-    public static function getNavigationLabel():string {
+    public static function getNavigationLabel(): string
+    {
         return __('Manage Site');
     }
     public static function getNavigationGroup(): string
@@ -53,27 +60,43 @@ class MangeSite extends SettingsPage
 
         return $form
             ->schema([
-                Fieldset::make(__('Site General'))
+                Section::make(__('Site General'))
                     ->schema([
-                        TextInput::make('site_name')
-                        ->label(__("Site name"))
-                            ->suffixIcon('heroicon-m-globe-alt'),
-                        TextInput::make('site_description')
-                        ->label(__('Site description'))
-                            ->suffixIcon('heroicon-o-document-text'),
-                        FileUpload::make('site_logo')
-                        ->label(__('Logo'))
-                            ->image()
-                            ->imageEditor()
-                            ->disk('public')
-                            ->directory('site'),
-                        FileUpload::make('header_bg')
-                        ->label(__("Cover"))
-                            ->image()
-                            ->imageEditor()
-                            ->disk('public')
-                            ->directory('site')
-                    ])
+                        Fieldset::make(__('Information'))
+                            ->schema([
+                                TextInput::make('site_name')
+                                    ->label(__("Site name"))
+                                    ->suffixIcon('heroicon-m-globe-alt'),
+                                TextInput::make('site_description')
+                                    ->label(__('Site description'))
+                                    ->suffixIcon('heroicon-o-document-text'),
+
+                            ]),
+
+                        Fieldset::make(__('Image'))
+                            ->schema([
+                                FileUpload::make('site_logo')
+                                    ->label(__('Logo'))
+                                    ->image()
+                                    ->imageEditor()
+                                    ->disk('public')
+                                    ->directory('site'),
+                                FileUpload::make('header_bg')
+                                    ->label(__("Cover"))
+                                    ->image()
+                                    ->imageEditor()
+                                    ->disk('public')
+                                    ->directory('site')
+                            ]),
+
+                        ]),
+
+                  Section::make(__('Features'))
+                  ->schema([
+                    Toggle::make('comments_enabled')
+                    ->label(__('Enable comments'))
+
+                  ])
 
             ]);
     }

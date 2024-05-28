@@ -97,7 +97,8 @@
                                             }
 
                                         }">
-                                            <button style="background:transparent" x-on:click="like_post" class="btn-transperent">
+                                            <button style="background:transparent" x-on:click="like_post"
+                                                class="btn-transperent">
                                                 <i class="fa fa-heart-o" aria-hidden="true"></i> <span
                                                     x-text="likes === null ? 0 : likes"></span>
                                             </button>
@@ -132,25 +133,27 @@
                                     @endif
 
                                     @if (!$post->getMedia('attachments')->isEmpty())
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">{{__('Attachment')}}</th>
-                                                <th scope="col">{{__('Download')}}</th>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">{{ __('Attachment') }}</th>
+                                                    <th scope="col">{{ __('Download') }}</th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                           @foreach($post->getMedia('attachments') as $media)
-                                            <tr>
-                                                <th>{{$media->getDownloadFilename()}}</th>
-                                                <td><a class="rounded btn-success btn" href="{{route('downloadAttachment',$media)}}">{{__('Download')}}</a></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($post->getMedia('attachments') as $media)
+                                                    <tr>
+                                                        <th>{{ $media->getDownloadFilename() }}</th>
+                                                        <td><a class="rounded btn-success btn"
+                                                                href="{{ route('downloadAttachment', $media) }}">{{ __('Download') }}</a>
+                                                        </td>
 
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @endif
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endif
 
                                 </div>
                                 <!-- .blog-content -->
@@ -177,44 +180,47 @@
                             <!-- .blog-content-box -->
                         </div>
 
-                        <div class="comments-option" x-data="{
-                            comments: @js($post->comments)
-                        }">
-                            <h4 class="comments-title"> {{ strtoupper(__('comments')) }}
-                                {{ $post->comments->count() !== 0 ? '-' . $post->comments->count() : '' }}</h4>
+                        @if ($settings->comments_enabled)
 
-                            @foreach ($post->comments as $comment)
-                                @if (!empty($comment->comment) && !empty($comment->comment))
-                                    <div class="comments-items">
-                                        <div class="comments-image">
-                                            <img src="{{ config('theme.defaultCommentAuthorImage') }}"
-                                                alt="comments-author-img" />
-                                        </div>
-                                        <!-- .comments-image -->
-                                        <div class="comments-content">
-                                            <div class="comments-author-title">
-                                                <div class="comments-author-name">
-                                                    <h4><a href="#">{{ $comment->name }}</a> -
-                                                        <small>{{ optional($comment->created_at)->diffForHumans() }}</small>
-                                                    </h4>
-                                                </div>
-                                                {{-- <div class="reply-icon">
+                            <div class="comments-option" x-data="{
+                                comments: @js($post->comments)
+                            }">
+                                <h4 class="comments-title"> {{ strtoupper(__('comments')) }}
+                                    {{ $post->comments->count() !== 0 ? '-' . $post->comments->count() : '' }}</h4>
+
+                                @foreach ($post->comments as $comment)
+                                    @if (!empty($comment->comment) && !empty($comment->comment))
+                                        <div class="comments-items">
+                                            <div class="comments-image">
+                                                <img src="{{ config('theme.defaultCommentAuthorImage') }}"
+                                                    alt="comments-author-img" />
+                                            </div>
+                                            <!-- .comments-image -->
+                                            <div class="comments-content">
+                                                <div class="comments-author-title">
+                                                    <div class="comments-author-name">
+                                                        <h4><a href="#">{{ $comment->name }}</a> -
+                                                            <small>{{ optional($comment->created_at)->diffForHumans() }}</small>
+                                                        </h4>
+                                                    </div>
+                                                    {{-- <div class="reply-icon">
                                             <h6><i class="fa fa-reply-all"></i><a href="#"> Reply</a></h6>
                                         </div> --}}
+                                                </div>
+                                                <!-- .comments-author-title -->
+                                                <p>{{ $comment->comment }}</p>
                                             </div>
-                                            <!-- .comments-author-title -->
-                                            <p>{{ $comment->comment }}</p>
+                                            <!-- .comments-content -->
                                         </div>
-                                        <!-- .comments-content -->
-                                    </div>
-                                    <!-- .comments-items -->
-                                @endif
-                            @endforeach
+                                        <!-- .comments-items -->
+                                    @endif
+                                @endforeach
 
-                        </div>
-                        <!-- .comments-option -->
+                            </div>
+                            <!-- .comments-option -->
 
-                        @livewire('comment', ['post' => $post])
+                            @livewire('comment', ['post' => $post])
+                        @endif
                     </div>
 
                     <div class="col-lg-4">

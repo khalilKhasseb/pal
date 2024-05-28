@@ -6,6 +6,7 @@ use Spatie\LaravelSettings\Settings;
 use App\SettingsCasts\HeaderBGCast;
 use App\SettingsCasts\UploadFileCast;
 use App\SettingsCasts\SiteNameCast;
+use App\SettingsCasts\CommentsCast;
 
 class SiteSetting extends Settings
 {
@@ -15,6 +16,8 @@ class SiteSetting extends Settings
     public  $site_logo;
 
     public $header_bg;
+
+    public  $comments_enabled;
     public static function group(): string
     {
         return 'generalSetting';
@@ -26,6 +29,7 @@ class SiteSetting extends Settings
             'site_logo' => UploadFileCast::class,
             'header_bg' => HeaderBGCast::class,
             'site_name' => SiteNameCast::class,
+            // "comments_enabled" => CommentsCast::class,
         ];
     }
 }

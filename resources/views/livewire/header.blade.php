@@ -8,10 +8,10 @@
     <div class="bg-header-top">
         <div class="container">
             <div class="row">
-                @if (isset($settings) && $settings->top_header_enabled)
+                @if (isset($header_settings) && $header_settings->top_header_enabled)
 
                     @include('theme.partial.top-header' , [
-                        'items' => $settings->top_header_items
+                        'items' => $header_settings->top_header_items
                     ])
                 @endif
             </div>
@@ -22,7 +22,7 @@
     <!-- .bg-header-top -->
 
     <!-- Start Menu -->
-    <div class="bg-main-menu menu-scroll py-2">
+    <div class="py-2 bg-main-menu menu-scroll">
         <div class="container">
             <div class="row">
                 <div class="main-menu">
