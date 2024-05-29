@@ -25,7 +25,7 @@
 
                     @unless ($stickyPosts->isEmpty())
                         @foreach ($stickyPosts as $post)
-                            <div class="carousel-item" data-bs-interval="10000">
+                            <div class="carousel-item" data-bs-interval="1000">
 
                                 <div class="slider-item">
                                     <img src="{{ $post->image() }}" alt="{{ $post->title }}">
