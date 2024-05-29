@@ -7,17 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @php
-     $siteTitle= !is_null($settings->site_name) ? $settings->site_name : config('app.name' , 'Palgpc') ;
+        $siteTitle = !is_null($settings->site_name) ? $settings->site_name : config('app.name', 'Palgpc');
     @endphp
     <meta name="application-name" content="{{ $siteTitle }}">
-      <title>{{$siteTitle}}</title>
+    <title>{{ $siteTitle }}</title>
     <!-- Seo Tags -->
     <x-seo::meta />
     <!-- Seo Tags -->
     @if (app()->getLocale() === 'ar')
         <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
         <link data-layout="front" rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link data-layout="front" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        <link data-layout="front"
+            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
             rel="stylesheet">
     @else
         <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,23 +35,32 @@
 
 
     @if (!request()->routeIs('login', 'dashboard'))
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/font-awesome.min.css') }}" media="all" />
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/fonts/flaticon.css') }}" media="all" />
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/bootstrap.min.css') }}" media="all" />
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/animate.css') }}" media="all" />
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/swiper.min.css') }}" media="all" />
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/lightcase.css') }}" media="all" />
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/jquery.nstSlider.css') }}"
+        <link data-layout="front" rel="stylesheet" type="text/css"
+            href="{{ asset('css/template/font-awesome.min.css') }}" media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/fonts/flaticon.css') }}"
             media="all" />
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/flexslider.css') }}" media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/bootstrap.min.css') }}"
+            media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/animate.css') }}"
+            media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/swiper.min.css') }}"
+            media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/lightcase.css') }}"
+            media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css"
+            href="{{ asset('css/template/jquery.nstSlider.css') }}" media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/flexslider.css') }}"
+            media="all" />
 
         <!-- own style css -->
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?11ssdasad" media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css"
+            href="{{ asset('css/template/style.css') }}?11ssdasad" media="all" />
         @if (app()->getLocale() === 'ar')
-            <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}?23dsadswdsa"
-                media="all" />
+            <link data-layout="front" rel="stylesheet" type="text/css"
+                href="{{ asset('css/template/rtl.css') }}?23dsadswdsa" media="all" />
         @endif
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/responsive.css') }}" media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/responsive.css') }}"
+            media="all" />
     @endif
 
 
@@ -64,18 +74,17 @@
         }
 
 
-            * {
-                font-family: "Rubik", sans-serif;
+        * {
+            font-family: "Rubik", sans-serif;
 
-            }
+        }
 
-            .fontrubib {
-                font-family: "Rubik", sans-serif;
-                font-optical-sizing: auto;
-                font-weight: normal;
-                font-style: normal;
-            }
-
+        .fontrubib {
+            font-family: "Rubik", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: normal;
+            font-style: normal;
+        }
     </style>
     @vite('resources/js/app.js')
 </head>
@@ -91,7 +100,10 @@
         <!-- Start page header -->
 
 
-        @if (!is_null(Route::current()) &&   Route::current()->getName() !== 'theme.home' && Route::current()->getName() !== 'front.sommod.home')
+        @if (
+            !is_null(Route::current()) &&
+                Route::current()->getName() !== 'theme.home' &&
+                Route::current()->getName() !== 'front.sommod.home')
 
             <!-- Start Page Header Section -->
             <section style="--header-bg:url({{ Storage::url($settings->header_bg) }})" class="bg-page-header">
@@ -132,12 +144,13 @@
 
         {{-- Content area --}}
         {{ $slot }}
-        {{-- End content area --}}
-        <!-- Start Scrolling -->
-        <div class="scroll-img"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
-        <!-- End Scrolling -->
+    </div>
+    {{-- End content area --}}
+    <!-- Start Scrolling -->
+    <div class="scroll-img"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+    <!-- End Scrolling -->
 
-        @include('theme.partial.footer')
+    @include('theme.partial.footer')
 
     </div>
 
@@ -158,23 +171,23 @@
     <!-- End Pre-Loader -->
 
 
- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery-2.2.3.min.js') }}"></script>
- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/bootstrap.min.js') }}"></script>
- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.easing.1.3.js') }}"></script>
- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.waypoints.min.js') }}"></script>
- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.counterup.min.js') }}"></script>
- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/swiper.min.js') }}"></script>
- {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/plugins.isotope.js') }}"></script> --}}
- {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/isotope.pkgd.min.js') }}"></script> --}}
- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/lightcase.js') }}"></script>
- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.nstSlider.js') }}"></script>
- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.flexslider.js') }}"></script>
- {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.isotope.js') }}"></script> --}}
- {{-- <script type="text/javascript" src="{{asset('js/template/custom.map.js')}}"></script> --}}
- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.js') }}"></script>
- @stack('scripts_comp')
- <!-- Map Api -->
- {{-- <script data-layout="front" async defer
+    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery-2.2.3.min.js') }}"></script>
+    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/bootstrap.min.js') }}"></script>
+    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.easing.1.3.js') }}"></script>
+    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.waypoints.min.js') }}"></script>
+    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.counterup.min.js') }}"></script>
+    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/swiper.min.js') }}"></script>
+    {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/plugins.isotope.js') }}"></script> --}}
+    {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/isotope.pkgd.min.js') }}"></script> --}}
+    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/lightcase.js') }}"></script>
+    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.nstSlider.js') }}"></script>
+    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.flexslider.js') }}"></script>
+    {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.isotope.js') }}"></script> --}}
+    {{-- <script type="text/javascript" src="{{asset('js/template/custom.map.js')}}"></script> --}}
+    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.js') }}"></script>
+    @stack('scripts_comp')
+    <!-- Map Api -->
+    {{-- <script data-layout="front" async defer
      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqVIkdttPNjl5c5hKlc_Hk3bfXQQlf2Rc&callback=initMap"></script> --}}
 
 </body>
