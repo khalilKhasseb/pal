@@ -55,7 +55,7 @@
                         @endforeach
                     @endunless
                     @foreach ($i as $item)
-                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
+                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="1000">
 
                             <div class="slider-item">
                                 <img src="{{ $item->getUrl() }}" alt="bg-slider-2">
