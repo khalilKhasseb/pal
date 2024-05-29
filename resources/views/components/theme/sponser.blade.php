@@ -1,7 +1,7 @@
    <!-- Start Sponsors Section -->
    @props(['partners' => null])
    @if($partners !== null)
-   <section class="bg-sponsors-section">
+   <section class="mt-5 bg-sponsors-section">
     <div class="container">
         <div class="row">
             <div class="sponsors-option">
