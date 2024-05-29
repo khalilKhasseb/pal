@@ -28,7 +28,7 @@
                                          <img src="{{ $media->getUrl() }}" alt="gallery-img-1">
                                          <div class="project-plus">
                                              <a href="{{ $media->getUrl() }}" data-rel="lightcase:myCollection"><i
-                                                     class="fa fa-plus" aria-hidden="true"></i></a>
+                                                     class="fa fa-search" aria-hidden="true"></i></a>
                                          </div>
                                          <div class="recent-project-content">
                                              <p><a href="#">{{$gallary->title}}</a></p>

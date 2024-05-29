@@ -1,12 +1,4 @@
-{{-- <div>
-    @unless($posts->isEmpty())
-    <div class="grid grid-cols-1 gap-4 mt-10 sm:grid-cols-2 md:grid-cols-3">
-        @foreach($posts as $post)
-        @include($skyTheme.'.partial.sticky')
-        @endforeach
-    </div>
-    @endunless
-</div> --}}
+
 
 <!-- Start Blog Section -->
 @use(Illuminate\Pagination\Paginator)
@@ -40,7 +32,7 @@ $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
         $route = request()->is('content/category/*') ? 'blogs' : $tag->type ;
         // dd($route);
         @endphp
-        <a href="{{ route($route) }}">{{ __('All '. $tag->type) }}</a>
+        <a href="{{ route($route) }}">{{ __((string) str($tag->type)->plural()->ucfirst()) }}</a>
         {{-- @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3 rtl:rotate-180') --}}
     </li>
     <li class="">

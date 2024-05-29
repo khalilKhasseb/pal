@@ -26,6 +26,7 @@ class ChildrenRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                ->label(__('Name'))
                     ->required()
                     ->maxLength(255)
                     ->live(onBlur: true)
@@ -49,10 +50,12 @@ class ChildrenRelationManager extends RelationManager
                     }),
 
                             Forms\Components\TextInput::make('slug')
+                            ->label(__('Slug'))
                             ->unique(ignorable: fn (?Model $record): ?Model => $record)
                             ->required()
                             ->maxLength(255),
                             Forms\Components\Select::make('type')
+                            ->label(__('Type'))
                             ->columnSpan(2)
                             ->options(SkyPlugin::get()->getTagTypes())
             ]);

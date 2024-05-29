@@ -84,19 +84,19 @@ trait PostResourceTrait
                         ->relationship(name: 'form', titleAttribute: 'name')
                         ->preload(),
                     Section::make(__('Custom fields'))
-                    ->schema([
-                        Repeater::make('post_meta')
-                        ->label(__("Fields"))
-                        ->relationship()
                         ->schema([
-                            TextInput::make('key')
-                                ->label(__('Title')),
-                            TextInput::make('value')
-                                ->label(__('Value')),
-                            IconPicker::make('icon')
-                                ->label(__('Icon'))
-                        ])
-                    ]),
+                            Repeater::make('post_meta')
+                                ->label(__("Fields"))
+                                ->relationship()
+                                ->schema([
+                                    TextInput::make('key')
+                                        ->label(__('Title')),
+                                    TextInput::make('value')
+                                        ->label(__('Value')),
+                                    IconPicker::make('icon')
+                                        ->label(__('Icon'))
+                                ])
+                        ]),
 
                 ]),
                 Tabs\Tab::make(__('SEO'))->schema([
@@ -259,11 +259,14 @@ trait PostResourceTrait
                         SpatieMediaLibraryFileUpload::make('attachments')
                             ->label(__('Attachments'))
                             ->acceptedFileTypes(['application/msword', 'application/pdf', 'text/plain'])
+                            ->minSize(1)
+                            ->maxSize(1024 * 4)
                             ->multiple()
                             ->preserveFilenames()
                             ->collection('attachments')
                             ->directory('attachments')
                             ->dehydrated(false)
+                            ->notIn('hello')
                     ])
             ])->columnSpan(2),
         ]);
@@ -294,7 +297,7 @@ trait PostResourceTrait
                     ->label(__('Post Category'))
                     ->toggleable()
                     ->type('category'),
-                    SpatieTagsColumn::make(static::getPostType())
+                SpatieTagsColumn::make(static::getPostType())
                     ->label(__('Type Category'))
                     ->toggleable()
                     ->type(static::getPostType()),

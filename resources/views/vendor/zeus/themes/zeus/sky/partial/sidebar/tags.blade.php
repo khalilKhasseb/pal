@@ -4,7 +4,8 @@
      <div class="widget-content">
          <div class="tag-cloud">
              @foreach ($papular_tags as $tag)
-                 @if ($tag->type !== null)
+
+                 @if ($tag->type !== null && $tag->type !== 'faq')
                      <a href="{{ route('tags', [
                          'type' => $tag->type,
                          'slug' => $tag->slug,

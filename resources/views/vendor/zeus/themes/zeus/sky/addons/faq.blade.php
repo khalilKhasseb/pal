@@ -34,6 +34,7 @@
                     @endphp
                     @if (is_null($cat->parent_id) and !$cat->children->isEmpty())
                         <button class="p-2 ms-2 fs-1 border-success btn"
+                         wire:click="loadParentItems({{$cat->id}})"
                          x-on:click="showcb('show_{{ $loop->index }}')"
                             x-init=" show.show_{{ $loop->index }} = false;
                              show = { ...show };

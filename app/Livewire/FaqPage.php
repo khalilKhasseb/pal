@@ -25,6 +25,10 @@ class FaqPage extends Component
         return $this->faqs ;
     }
 
+    public function loadParentItems($id) {
+        
+    }
+
     public function render(): View
     {
         $model = SkyPlugin::get()->getModel('Faq');
