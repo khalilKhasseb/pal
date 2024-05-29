@@ -34,7 +34,7 @@
                                             <div class="row">
 
                                                 <div class="col-md-6">
-                                                    <div  class="text-right slider-content">
+                                                    <div class="text-right slider-content">
                                                         <h3>{{ $post->title }}</h3>
                                                         <h2>{{ $post->description }}</h2>
                                                         {{-- <p>By Planting Tree Tomorrow!</p> --}}
