@@ -45,9 +45,9 @@
         <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/flexslider.css') }}" media="all" />
 
         <!-- own style css -->
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?11ssdsad" media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?11ssddssad" media="all" />
         @if (app()->getLocale() === 'ar')
-            <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}?23dswdsa"
+            <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}?23dsswdsa"
                 media="all" />
         @endif
         <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/responsive.css') }}" media="all" />
