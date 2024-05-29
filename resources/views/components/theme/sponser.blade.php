@@ -15,7 +15,7 @@
                         @foreach ($partners as $p )
                         <div class="swiper-slide">
                             <div class="sopnsors-items">
-                                <a href="{{route('partner.view' , ['slug' => $p->slug])}}"><img src="{{$p->image()}}" alt="sponsors-img-1" class="img-responsive" /></a>
+                                <a href="{{route('partner.view' , ['slug' => $p->slug])}}"><img src="{{$p->getMedia('posts')[0]->getUrl()}}" alt="sponsors-img-1" class="img-responsive" /></a>
                             </div>
                             <!-- .sponsors-items -->
                         </div>
