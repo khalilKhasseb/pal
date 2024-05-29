@@ -21,7 +21,7 @@
 
                     @foreach ($member->links as $link)
                         <li>
-                            <a href="{{ $link->url }}">
+                            <a href="https://www.{{ $link->url }}" target="_blank">
                                 @if (!is_null($link->icon) && !empty($link->icon))
                                     <x-icon class="ps-2" width="25px" color="{{ $link->color }}"
                                         name="{{ $link->icon }}" />
