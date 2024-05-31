@@ -13,21 +13,18 @@ trait PanelResource
 {
     protected static function booted(): void
     {
+        $content_provider = json_decode(Storage::get('content_provider.json'));
 
-
-        //static::addGlobalScope(PanelScope::class);
-
-
-        // $content_provider = json_decode(Storage::get('content_provider.json')) ;
-
-        //     if ($content_provider->source === 'admin') {
-        //         static::withoutGlobalScope(ContentProviderScope::class);
-        //         static::addGlobealScope(PanelScope::class);
-        //     } elseif ($content_provider->source === 'front') {
-        //         static::withoutGlobalScope(PanelScope::class);
-        //         static::addGlobalScope(ContentProviderScope::class);
-        //     }
-
+        if ($content_provider->provider === 'admin') {
+            static::withoutGlobalScope(ContentProviderScope::class);
+            static::addGlobalScope(PanelScope::class);
+        } elseif (
+            $content_provider->provider === 'sommod'
+            || $content_provider->provider === 'council'
+        ) {
+            static::withoutGlobalScope(PanelScope::class);
+            static::addGlobalScope(ContentProviderScope::class);
+        }
     }
 
     public function panels(): MorphToMany

@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
-
+    use \App\Traits\PanelResource;
     protected $casts = [
         'published_at' => 'datetime',
         'sticky_until' => 'datetime',
@@ -35,20 +35,7 @@ class Post extends Model
     {
         return $this->belongsTo(GoogleForm::class, 'google_form_id', 'id');
     }
-    // protected static function booted(): void
-    // {   
 
-    //     $content_provider = json_decode(Storage::get('content_provider.json'));
-
-
-    //     if ($content_provider->source === 'admin') {
-    //         static::withoutGlobalScope(ContentProviderScope::class);
-    //         static::addGlobalScope(PanelScope::class);
-    //     } elseif ($content_provider->source === 'front') {
-    //         static::withoutGlobalScope(PanelScope::class);
-    //         static::addGlobalScope(ContentProviderScope::class);
-    //     }
-    // }
     public function author(): BelongsTo
     {
         return $this->belongsTo(config('auth.providers.system_users.database.model', config('auth.providers.system_users.model')), 'user_id', 'id');
@@ -82,9 +69,6 @@ class Post extends Model
         return $this->likes()->where('ip', $ip)->first();
     }
 
-
-
-
     public function checkIfHasLikeForThisIp(string $ip)
     {
         return $this->get_like_ip($ip) !== null;
@@ -103,46 +87,28 @@ class Post extends Model
         if ($this->getMedia('thumbnail')->isEmpty() && !$this->has_thumb) {
             #which means we have to load thumb from origin image conversions
             if (!$this->getMedia($collection)->isEmpty()) {
-
                 $thumb_url = $this->getMedia($collection)[0]->getUrl('thumb-cropped-original');
-
-
                 $thumbnail = $thumb_url;
-
                 return $thumbnail;
             } else {
                 $thumbnail = parent::image();
             }
         } elseif (!$this->getMedia('thumbnail')->isEmpty() && $this->has_thumb) {
             #load thumb from thumbnail collection conerstion
-
             $thumb_url = $this->getMedia('thumbnail')[0]->getUrl('thumb-cropped');
             $thumbnail = $thumb_url;
         } else {
-
             $thumbnail = parent::image();
         }
-
-
         return $thumbnail;
     }
 
-    public function panels(): MorphToMany
-    {
-        return $this->morphToMany(
-            Panel::class,
-            'resourcables'
-        );
-    }
 
 
     public function gallary(): BelongsTo
     {
         return $this->belongsTo(Gallary::class, 'gallary_id', 'id');
     }
-
-
-
 
     public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void
     {
