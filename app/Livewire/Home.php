@@ -26,9 +26,6 @@ class Home extends Component
     public bool $sommod = false;
     public function mount()
     {
-
-
-        
         $this->loadContent();
     }
 
@@ -36,12 +33,12 @@ class Home extends Component
     {
         //Posts
         //Navigation items
-        $load = str_contains(str_replace('/', '', request()->getRequestUri()), 'home-sommod');
+        // $load = str_contains(str_replace('/', '', request()->getRequestUri()), 'home-sommod');
 
-        $this->sommod = $load;
+        // $this->sommod = $load;
         $this->recent = config('zeus-sky.models.Post')::query()
             ->withoutGlobalScopes([PanelScope::class])
-            ->sommod($load)
+            //->sommod($load)
             ->posts()
             ->published()
             ->whereDate('published_at', '<=', now())
@@ -51,7 +48,7 @@ class Home extends Component
             ->get();
 
         $this->sponsers = config('zeus-sky.models.Post')::query()
-            ->sommod(false)
+            // ->sommod(false)
             ->partner()
             ->published('partner')
             ->with(['tags', 'author', 'media'])

@@ -22,8 +22,6 @@ class Header extends Component
 
     public function mount() {
 
-
-
         $handel = json_decode(Storage::get('content_provider.json'))->provider === 'sommod'
         ? 'main-sommod-header-menu'
         :'main-header-menu';
