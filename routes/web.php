@@ -174,3 +174,17 @@ Route::get('attachment/{media
  *
  * attache media to model for each post model
  */
+
+Route::get('rel/{type}', function (Request $request) {
+     $relations = ['MorphToMany'] ;
+    $reflectorCalss = new ReflectionClass(App\Models\Panel::class);
+    // return type = mo
+    $methods = collect($reflectorCalss->getMethods())->filter(function ($method) use($relations) {
+        // $class_basename = class_basename($method->getReturnType())
+        $returnType = $method->getReturnType();
+        if ($returnType) {
+           return  in_array(class_basename($returnType->getName()) , $relations) ;
+        }
+    });
+    // dd(collect(class_basename($reflectorCalss->getMethods())[0]->getReturnType()));
+});

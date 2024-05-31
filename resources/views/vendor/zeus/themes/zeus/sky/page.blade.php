@@ -87,9 +87,11 @@
                                     <h4 class="text-center">{{ $post->title }}</h4>
 
                                     {!! $post->getContent() !!}
-
+                                    @if (!is_null($post->gallary))
+                                        <x-theme.post-gallary :gallary="$post->gallary" :slug="$post->slug" />
+                                    @endif
                                     @if (!$post->getMedia('attachments')->isEmpty())
-                                        <table class="table table-bordered">
+                                        <table class="table mt-5 table-bordered">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">{{ __('Attachment') }}</th>
@@ -110,6 +112,9 @@
                                             </tbody>
                                         </table>
                                     @endif
+
+
+
                                     @if ($post->form !== null)
                                         <iframe id="{{ $post->form->id }}" title="{{ $post->form->name }}"
                                             src="{{ $post->form->responder_uri }}" width="100%" height="1200px">

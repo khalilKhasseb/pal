@@ -15,10 +15,13 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Builder;
 
 use App\Models\Scopes\PanelScope;
+use App\Models\Scopes\ContentProviderScope;
 use App\Models\PostMeta;
 use Spatie\Image\Enums\CropPosition;
 use Illuminate\Support\Collection;
-use Spatie\Image\Enums\Fit ;
+use Spatie\Image\Enums\Fit;
+use Illuminate\Support\Facades\Storage;
+
 class Post extends Model
 {
 
@@ -28,30 +31,42 @@ class Post extends Model
         'has_thumb' => 'boolean',
     ];
 
-    public function form() : BelongsTo {
-        return $this->belongsTo(GoogleForm::class , 'google_form_id' , 'id');
-    }
-    protected static function booted(): void
+    public function form(): BelongsTo
     {
-        static::addGlobalScope(new PanelScope);
+        return $this->belongsTo(GoogleForm::class, 'google_form_id', 'id');
     }
+    // protected static function booted(): void
+    // {   
+
+    //     $content_provider = json_decode(Storage::get('content_provider.json'));
+
+
+    //     if ($content_provider->source === 'admin') {
+    //         static::withoutGlobalScope(ContentProviderScope::class);
+    //         static::addGlobalScope(PanelScope::class);
+    //     } elseif ($content_provider->source === 'front') {
+    //         static::withoutGlobalScope(PanelScope::class);
+    //         static::addGlobalScope(ContentProviderScope::class);
+    //     }
+    // }
     public function author(): BelongsTo
     {
         return $this->belongsTo(config('auth.providers.system_users.database.model', config('auth.providers.system_users.model')), 'user_id', 'id');
     }
 
-  
+
 
     // Post meta relation
 
-    public function post_meta() : HasMany {
-        return $this->hasMany(PostMeta::class , 'post_id' ,'id');
+    public function post_meta(): HasMany
+    {
+        return $this->hasMany(PostMeta::class, 'post_id', 'id');
     }
     public function links(): MorphMany
     {
         return $this->morphMany(Links::class, 'linkable');
     }
-    // Likes relation    
+    // Likes relation
     public function likes(): HasMany
     {
         return $this->hasMany(Like::class, 'post_id', 'id');
@@ -68,7 +83,9 @@ class Post extends Model
     }
 
 
-    public function checkIfHasLikeForThisIp(string $ip )
+
+
+    public function checkIfHasLikeForThisIp(string $ip)
     {
         return $this->get_like_ip($ip) !== null;
     }
@@ -79,21 +96,21 @@ class Post extends Model
         return $this->likes()->count() > 0;
     }
 
-    public function image($collection = 'posts'): Collection | string | null {
+    public function image($collection = 'posts'): Collection | string | null
+    {
         $thumbnail = null;
-        #check for event thubmnail media collection 
+        #check for event thubmnail media collection
         if ($this->getMedia('thumbnail')->isEmpty() && !$this->has_thumb) {
             #which means we have to load thumb from origin image conversions
             if (!$this->getMedia($collection)->isEmpty()) {
 
                 $thumb_url = $this->getMedia($collection)[0]->getUrl('thumb-cropped-original');
-                
+
 
                 $thumbnail = $thumb_url;
 
                 return $thumbnail;
-                
-            }else{
+            } else {
                 $thumbnail = parent::image();
             }
         } elseif (!$this->getMedia('thumbnail')->isEmpty() && $this->has_thumb) {
@@ -102,12 +119,12 @@ class Post extends Model
             $thumb_url = $this->getMedia('thumbnail')[0]->getUrl('thumb-cropped');
             $thumbnail = $thumb_url;
         } else {
-            
+
             $thumbnail = parent::image();
         }
-      
 
-        return $thumbnail ;
+
+        return $thumbnail;
     }
 
     public function panels(): MorphToMany
@@ -118,13 +135,20 @@ class Post extends Model
         );
     }
 
-   
 
-   
- public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void {
-      
+    public function gallary(): BelongsTo
+    {
+        return $this->belongsTo(Gallary::class, 'gallary_id', 'id');
+    }
+
+
+
+
+    public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void
+    {
+
         $this->addMediaConversion('thumb-cropped')
-        ->performOnCollections('thumbnail')
+            ->performOnCollections('thumbnail')
             ->crop(380, 300, CropPosition::Center);
 
         // $this->addMediaConversion('thumb-cropped-original')
@@ -132,7 +156,6 @@ class Post extends Model
         //     ->crop(380, 300, CropPosition::Center);
         $this->addMediaConversion('thumb-cropped-original')
             ->performOnCollections('posts')
-            ->fit(Fit::Fill ,380, 300 , false , '#333');
-            
+            ->fit(Fit::Fill, 380, 300, false, '#333');
     }
 }

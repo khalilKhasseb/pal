@@ -44,7 +44,9 @@ class GallaryResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                 ->label(__('Title')),
-                Tables\Columns\BooleanColumn::make('show_in_slider')
+                Tables\Columns\TextColumn::make('panels.panel_name')
+                ->label(__("Panel")),
+                Tables\Columns\ToggleColumn::make('show_in_slider')
                 ->label(__('show in slider'))
             ])
             ->filters([

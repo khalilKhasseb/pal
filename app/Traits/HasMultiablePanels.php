@@ -8,7 +8,8 @@ use App\Models\Panel;
 use Illuminate\Support\Arr;
 use Illuminate\Validation\ValidationException;
 
-trait HasMultiablePanels {
+trait HasMultiablePanels
+{
 
     protected function handleRecordCreation(array $data): Model
     {
@@ -46,17 +47,29 @@ trait HasMultiablePanels {
         $this->data = $originalData;
 
         $record->save();
-        
-        $record = $this->attachPanel($record); 
+
+        $record = $this->attachPanel($record);
 
         return $record;
     }
 
-    private static function  attachPanel(Model $record) : Model {
+    private static function  attachPanel(Model $record): Model
+    {
+
         $panel = Panel::findByName(Filament::getCurrentPanel()->getId());
 
-        $panel->posts()->attach($record->id);
+        // try to load method from record name
 
-        return $record; 
+        $recordName = str(class_basename($record))->lcfirst()->plural()->value();
+
+        if (method_exists($panel, $recordName)) {
+
+            $panel->$recordName()->attach($record->id);
+        }
+        // eles return $record without attaching record to panel which means there is no method exists on the panel
+        // go to add method ;
+        // $panel->posts()->attach($record->id);
+
+        return $record;
     }
 }

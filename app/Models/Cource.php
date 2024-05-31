@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Spatie\Image\Enums\Fit;
 use Spatie\Image\Enums\CropPosition;
-
+use App\Traits\PanelResource;
 class Cource extends Model implements HasMedia
 {
-    use HasFactory , InteractsWithMedia , HasTranslations;
+    use HasFactory ,
+     InteractsWithMedia ,
+      HasTranslations,
+      PanelResource;
 
     protected $fillable = [
         'title',
@@ -44,16 +45,11 @@ class Cource extends Model implements HasMedia
         'content',
         'hours'
     ];
+
     public function google_form() : BelongsTo {
         return $this->BelongsTo(GoogleForm::class);
     }
-    public function panels(): MorphToMany
-    {
-        return $this->morphToMany(
-            Panel::class,
-            'resourcables'
-        );
-    }
+    //
 
     public function form(): BelongsTo
     {
@@ -61,7 +57,7 @@ class Cource extends Model implements HasMedia
     }
 
     public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void {
-      
+
         $this->addMediaConversion('thumb-cropped')
         ->performOnCollections('thumbnail')
             ->crop(380, 300, CropPosition::Center);
@@ -72,8 +68,8 @@ class Cource extends Model implements HasMedia
         $this->addMediaConversion('thumb-cropped-original')
             ->performOnCollections('cources')
             ->fit(Fit::Fill ,380, 300 , false , '#333');
-            
-   
+
+
 }
 
 

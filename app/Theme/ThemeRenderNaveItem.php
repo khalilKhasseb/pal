@@ -23,7 +23,7 @@ class ThemeRenderNaveItem
             href="' . route('tags', [
                 'slug' => $category->slug,
                 'type' => $category->type
-            ]) . '"
+            ]) .$queryParmr. '"
         >' .
                 $item['label'] .
                 '</a>';
@@ -35,7 +35,7 @@ class ThemeRenderNaveItem
 
             return '<a class="' . $class . ' ' . $activeClass . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('page', $page) . '"
+                    href="' . route('page', $page) . $queryParmr.'"
                 >' .
                 $item['label'] .
                 '</a>';
@@ -45,7 +45,7 @@ class ThemeRenderNaveItem
 
             return '<a class="' . $class . ' ' . $activeClass . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('post', $post) . '"
+                    href="' . route('post', $post) .$queryParmr. '"
                 >' .
                 $item['label'] .
                 '</a>';
@@ -55,14 +55,14 @@ class ThemeRenderNaveItem
 
             return '<a class="' . $class . ' ' . $activeClass . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('library.tag', $tag->slug) . '"
+                    href="' . route('library.tag', $tag->slug) .$queryParmr. '"
                 >' .
                 $item['label'] .
                 '</a>';
         } elseif($item['type'] === 'collection') {
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route($item['data']['collection']) . $queryParmr .'"
+                    href="' . route($item['data']['collection']) .'"
                 >' .
                 $item['label'] .
                 '</a>';

@@ -58,7 +58,9 @@ class InitiativesResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title')
-                ->label(__('Title'))
+                ->label(__('Title')),
+                Tables\Columns\TextColumn::make('panels.panel_name')
+                ->label(__("Panel")),
             ])
             ->filters([
                 //

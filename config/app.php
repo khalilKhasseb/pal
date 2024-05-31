@@ -4,6 +4,13 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
 return [
+    /**
+     * Content provider for each panel
+     *
+     */
+
+
+     'content_provider' => 'admin',
 
     /*
     |--------------------------------------------------------------------------

@@ -2,23 +2,10 @@
 
 namespace App\Models\Blog;
 
-use App\Models\Panel;
-use App\Models\Scopes\PanelScope;
 use \LaraZeus\Sky\Models\Faq as Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
-
+use App\Traits\PanelResource;
 class Faq extends Model
 {
-    protected static function booted(): void
-    {
-        //static::addGlobalScope(new PanelScope);
-    }
+    use PanelResource;
 
-    public function panels(): MorphToMany
-    {
-        return $this->morphToMany(
-            Panel::class,
-            'resourcables'
-        );
-    }
 }

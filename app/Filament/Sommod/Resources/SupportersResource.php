@@ -71,13 +71,12 @@ class SupportersResource extends Resource
                                     ->schema([
                                         FC\Select::make('supported_porject')
                                             ->relationship(name: 'supported_projects', titleAttribute: 'name')
-                                            ->getOptionLabelFromRecordUsing(fn($record) => $record->name)
+                                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->name)
                                             ->preload()
-                                            ->multiple()
-                                        ,
+                                            ->multiple(),
                                         FC\Select::make('supported_project_types')
                                             ->relationship(name: 'supported_project_types', titleAttribute: 'name')
-                                            ->getOptionLabelFromRecordUsing(fn($record) => $record->name)
+                                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->name)
                                             ->preload()
                                             ->multiple()
 

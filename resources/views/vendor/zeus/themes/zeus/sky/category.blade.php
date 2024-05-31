@@ -3,7 +3,7 @@
 <!-- Start Blog Section -->
 @use(Illuminate\Pagination\Paginator)
 @php
-$current_page = empty(request()->query()) ? 1 : (int) request()->query()['page'] ;
+$current_page =  !isset(request()->query()['page']) || empty(request()->query()) ? 1 : (int) request()->query()['page'] ;
 $per_page = 15;
 
 $offset = ($current_page * $per_page) - $per_page ;

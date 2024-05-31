@@ -23,23 +23,22 @@ class Home extends Component
     public Collection $recent;
     public Collection $sponsers;
 
-    public bool $sommod = false ;
+    public bool $sommod = false;
     public function mount()
     {
-        //dd(app(SiteSetting::class));
-        //$this->siteSetting = ->toCollection();
 
+
+        
         $this->loadContent();
-
-
     }
 
-    protected function loadContent() {
-         //Posts
+    protected function loadContent()
+    {
+        //Posts
         //Navigation items
-        $load = str_contains(str_replace('/', '', request()->getRequestUri()),'home-sommod' );
+        $load = str_contains(str_replace('/', '', request()->getRequestUri()), 'home-sommod');
 
-        $this->sommod = $load ;
+        $this->sommod = $load;
         $this->recent = config('zeus-sky.models.Post')::query()
             ->withoutGlobalScopes([PanelScope::class])
             ->sommod($load)
@@ -51,7 +50,7 @@ class Home extends Component
             ->orderBy('published_at', 'desc')
             ->get();
 
-         $this->sponsers = config('zeus-sky.models.Post')::query()
+        $this->sponsers = config('zeus-sky.models.Post')::query()
             ->sommod(false)
             ->partner()
             ->published('partner')
@@ -62,7 +61,6 @@ class Home extends Component
 
         $this->gallaries = \App\Models\Gallary::showInSlider()->get();
         $this->serviceBlocks = \App\Models\ServiceBlock::all();
-
     }
     public function render()
     {

@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
 
-            // RolesSeeder::class,
-            // PanelsSeeder::class,
+             //RolesSeeder::class,
+             //PanelsSeeder::class,
             // SupportedPorjectTypeSeeder::class,
             // SupportedProject::class,
             // InititivesSeeder::class,
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             // ProductSeeder::class,
             // EventSeeder::class,
             // HallSeeder::class,
-            AdministrationSeeder::class,
+            // AdministrationSeeder::class,
 
             SupporterSeeder::class,
             OutReachSeeder::class,

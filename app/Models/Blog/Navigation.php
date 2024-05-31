@@ -2,30 +2,19 @@
 
 namespace App\Models\Blog;
 
-use App\Models\Panel;
-use App\Models\Scopes\PanelScope;
-use \LaraZeus\Sky\Models\Navigation as Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use Spatie\Translatable\HasTranslations;
 
+
+use \LaraZeus\Sky\Models\Navigation as Model;
+use App\Traits\PanelResource;
 class Navigation extends Model
 {
+
+    use PanelResource;
     // use HasTranslations;
 
     // public array $translatable = [
     //     'items',
 
     // ];
-    protected static function booted(): void
-    {
-        static::addGlobalScope(new PanelScope);
-    }
 
-    public function panels(): MorphToMany
-    {
-        return $this->morphToMany(
-            Panel::class,
-            'resourcables'
-        );
-    }
 }

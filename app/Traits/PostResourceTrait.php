@@ -129,10 +129,10 @@ trait PostResourceTrait
                     //     )
                     //     ->label(__('Parent')),
 
-                    // TextInput::make('ordering')
-                    //     ->integer()
-                    //     ->label(__('Order'))
-                    //     ->default(1),
+                    TextInput::make('ordering')
+                        ->integer()
+                        ->label(__('Order'))
+                        ->default(1),
                 ]),
                 Tabs\Tab::make(__('Tags'))->schema([
                     Placeholder::make(__('Tags and Categories')),
@@ -210,43 +210,19 @@ trait PostResourceTrait
                                 ->afterStateHydrated(function ($state, ?\LaraZeus\Sky\Models\Post $record, Get $get, Set $set, string $operation) {
                                     // state is null on create , empty array on edit
                                     // do clear thubnail collection when adding a custom thubnail
-
                                     $has_thmb = $get('has_thumb') === null ? false : $get('has_thumb');
-
-                                    // dd($state, $record);
 
                                     if ($operation === 'edit') {
                                     }
                                     if ($operation === 'create') {
                                     }
-
-
-
                                     if (is_null($state) || empty($state) && is_null($record) || !$has_thmb) {
-
                                         $has_thmb = $has_thmb;
                                     }
-
                                     if (!is_null($state) && is_array($state) && !empty($state) && !$has_thmb) {
-                                        // has thumb
-                                        //      if(!is_null($record)) {
-                                        //         if($record->has_thumb) {
-                                        //             // get media url
-                                        //             $media = $record->getMedia('posts')[0]->getPath('thumb-cropped-original');
-
-
-
-                                        //         }
-                                        // }
-
                                         $has_thmb = true;
                                     }
-
-                                    // dd($has_thmb);
-
                                     $set('has_thumb', $has_thmb);
-
-                                    //dd($state, $operation , $record);
                                 }),
                             Checkbox::make('has_thumb')
                                 ->label('Has thmbnail')
@@ -266,7 +242,7 @@ trait PostResourceTrait
                             ->collection('attachments')
                             ->directory('attachments')
                             ->dehydrated(false)
-                            ->notIn('hello')
+
                     ])
             ])->columnSpan(2),
         ]);
@@ -280,7 +256,7 @@ trait PostResourceTrait
                     ->sortable(['title'])
                     ->searchable(['title'])
                     ->toggleable()
-                    ->view('zeus::filament.columns.page-title'),
+                    ->view('zeus::filament.columns.post-title'),
 
                 ViewColumn::make('status_desc')
                     ->label(__('Status'))
