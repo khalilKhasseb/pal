@@ -16,6 +16,10 @@ class ContentProviderScope implements Scope
     {
         $provider = json_decode(Storage::get('content_provider.json'))->provider;
 
+        if ($provider === 'council') :
+            $provider = 'admin';
+        endif;
+
         $builder->whereHas('panels', function (Builder $query) use ($provider) {
             return $query->where('panels.panel_id', $provider);
         });
