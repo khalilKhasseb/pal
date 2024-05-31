@@ -9,7 +9,7 @@ use App\Traits\PanelResource;
 class Navigation extends Model
 {
 
-    use PanelResource;
+    // use PanelResource;
     // use HasTranslations;
 
     // public array $translatable = [
