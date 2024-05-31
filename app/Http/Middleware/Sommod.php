@@ -24,6 +24,10 @@ class Sommod
 
     protected function validateSource($request): Request
     {
+        if (!file_exists(storage_path('app' . DIRECTORY_SEPARATOR . "content_provider.json"))) :
+            $this->setProvider($request);
+            return $request;
+        endif;
         $source = $request->route()->getName();
         $content_provider_source = $this->getContentProvider()['source'];
 
