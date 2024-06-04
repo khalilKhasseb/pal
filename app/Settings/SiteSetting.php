@@ -18,6 +18,8 @@ class SiteSetting extends Settings
     public $header_bg;
 
     public  $comments_enabled;
+
+    public bool $checkout_enabled;
     public static function group(): string
     {
         return 'generalSetting';

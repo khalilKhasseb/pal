@@ -54,7 +54,7 @@
 
         <!-- own style css -->
         <link data-layout="front" rel="stylesheet" type="text/css"
-            href="{{ asset('css/template/style.css') }}?11ssdasad2" media="all" />
+            href="{{ asset('css/template/style.css') }}?11ssdasad23" media="all" />
         @if (app()->getLocale() === 'ar')
             <link data-layout="front" rel="stylesheet" type="text/css"
                 href="{{ asset('css/template/rtl.css') }}?23dsadswdsa" media="all" />
@@ -84,6 +84,15 @@
             font-optical-sizing: auto;
             font-weight: normal;
             font-style: normal;
+        }
+
+        :required{
+            position: relative;
+
+        }
+        .required:after {
+            content: "*";
+            color:red
         }
     </style>
     @vite('resources/js/app.js')

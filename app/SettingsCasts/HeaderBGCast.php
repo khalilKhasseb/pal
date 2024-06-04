@@ -28,16 +28,17 @@ class HeaderBGCast implements SettingsCast
     public function set($payload)
     {
         // cast payload
-        $payloadValue = json_decode($payload, true)[app()->getLocale()];
+        // $payloadValue = json_decode($payload, true)[app()->getLocale()];
+        $cover = DB::table('settings')->where('name', 'header_bg')->first();
+        $cover_path = json_decode($cover->payload);
 
-        $site_logo = DB::table('settings')->where('name', 'header_bg')->first();
 
-        $path = Str::remove("\"", $site_logo->payload);
+        // $path = Str::remove("\"", $site_logo->payload);
 
         // $payload = strval($payload);
         // check if file is the same after save
 
-        if ($payloadValue !== $path && $this->isThere($path)) $this->delete_file($path);
+        if ($payload !== $cover_path && $this->isThere($cover_path)) $this->delete_file($cover_path);
 
         return  $payload;
     }

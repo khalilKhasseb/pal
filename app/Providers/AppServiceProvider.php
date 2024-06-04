@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        app()->setLocale('ar'); 
+        app()->setLocale('ar');
 
         SkyPlugin::get()->itemType(__('Catoery'), [
             Select::make('category_id')
@@ -47,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
                     'front.sommod.home' => ('Sommod Home'),
                 ])
         ]);
+        
 
         SkyPlugin::get()->itemType(__('Collection'), [
             Select::make('collection')

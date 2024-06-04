@@ -30,10 +30,10 @@ class Header extends Component
     }
     public function render()
     {
-         $settings = app(HeaderSetting::class);
+         $header_settings = app(HeaderSetting::class);
          $_logo = app(SiteSetting::class)->site_logo;
 
-        return view('livewire.header', compact('settings' , '_logo'));
+        return view('livewire.header', compact('header_settings' , '_logo'));
 
     }
 }

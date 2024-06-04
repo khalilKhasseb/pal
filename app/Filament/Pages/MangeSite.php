@@ -94,9 +94,10 @@ class MangeSite extends SettingsPage
                   Section::make(__('Features'))
                   ->schema([
                     Toggle::make('comments_enabled')
-                    ->label(__('Enable comments'))
-
-                  ])
+                    ->label(__('Enable comments')),
+                    Toggle::make('checkout_enabled')
+                    ->label(__('Enabel Checkout'))
+                  ])->columns(4)
 
             ]);
     }
@@ -104,28 +105,28 @@ class MangeSite extends SettingsPage
 
 
 
-    protected function mutateFormDataBeforeSave(array $data): array
-    {
-        $settings = app(static::$settings);
+    // protected function mutateFormDataBeforeSave(array $data): array
+    // {
+    //     $settings = app(static::$settings);
 
-        // $props = $settings->getRepository()->
-        foreach ($data as $key => $value) {
-            // convert value to from json to array
-            // get Translation
-            $translation = $settings->getRepository()->getPropertyPayload('generalSetting', $key);
+    //     // $props = $settings->getRepository()->
+    //     foreach ($data as $key => $value) {
+    //         // convert value to from json to array
+    //         // get Translation
+    //         $translation = $settings->getRepository()->getPropertyPayload('generalSetting', $key);
 
-            // set Translation
-            $translation[app()->getLocale()] = $value;
+    //         // set Translation
+    //         $translation[app()->getLocale()] = $value;
 
-            // set $data[$key] to translation value
+    //         // set $data[$key] to translation value
 
-            $data[$key] = json_encode($translation, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-        }
+    //         $data[$key] = json_encode($translation, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    //     }
 
-        // dump($data);
+    //     // dump($data);
 
-        return $data;
-    }
+    //     return $data;
+    // }
 
 
     protected function mutateFormDataBeforeFill(array $data): array

@@ -1,15 +1,9 @@
 @use(App\Theme\ThemeRenderNaveItem)
-@php
-        #$sommodMenu = str_contains(str_replace('/', '', request()->getRequestUri()),'home-sommod' );
-       # $handel = $sommodMenu ? 'main-sommod-header-menu'  : 'main-header-menu';
-        # $menu = \LaraZeus\Sky\SkyPlugin::get()->getModel('Navigation')::fromHandle($handel);
-@endphp
 <header class="header-style-2 one-page">
     <div class="bg-header-top">
         <div class="container">
             <div class="row">
                 @if (isset($header_settings) && $header_settings->top_header_enabled)
-
                     @include('theme.partial.top-header' , [
                         'items' => $header_settings->top_header_items
                     ])
@@ -76,8 +70,11 @@
 
                                     @endisset
 
-
-
+                                    @if($settings->checkout_enabled)
+                                     <li>
+                                        <a href="{{route('checkout')}}">{{__('Payment')}}</a>
+                                     </li>
+                                    @endif
                                 </ul>
 
                                 <div class="menu-right-option pull-right">

@@ -25,11 +25,11 @@ class UploadFileCast implements SettingsCast
     public function set($payload)
     {
         // cast payload
-        $payloadValue = json_decode($payload, true)[app()->getLocale()];
+        // $payloadValue = json_decode($payload, true)[app()->getLocale()];
 
         // check if is null
 
-        if(is_null($payloadValue)) return $payload ;
+        //if(is_null($payloadValue)) return $payload ;
 
         // if not null do save and delete
 
@@ -38,20 +38,20 @@ class UploadFileCast implements SettingsCast
         $site_logo = DB::table('settings')->where('name', 'site_logo')->first();
 
         // $path = Str::remove("\"", $site_logo->payload);
-        $path = json_decode($site_logo->payload,true)[app()->getLocale()];
+        $path = json_decode($site_logo->payload);
 
         // dd($path , $payloadValue);
 
 
 
-        if ($payloadValue !== $path && $this->isThere($path)) $this->delete_file($path);
+        if ($payload !== $path && $this->isThere($path)) $this->delete_file($path);
 
         return  $payload;
     }
 
     private function isThere($path)
     {
-
+        if ($path === null) return false;
         return Storage::disk('public')->exists($path);
     }
 

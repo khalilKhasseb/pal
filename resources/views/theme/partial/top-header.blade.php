@@ -1,19 +1,20 @@
-<div class="header-top">
-    <ul class="flex justify-between">
-        @foreach ($items as $item )
-
-
-        <li class="flex items-center justify-between top_header_item" style="--color:{{$item['color']}}">
-            <x-icon name="{{$item['icon']}}" />
-            <span>{{$item['item']}}</span>
-        </li>
-        {{--
-        <li><i class="flaticon-vibrating-phone"></i> Phone : +88017 923 970 659</li> --}}
-        {{-- <li><i class="flaticon-placeholder"></i> Address : Sute 07 Sahara Center</li> --}}
+<div class="header-top d-flex align-items-center justify-content-between">
+    <ul class="justify-content-between d-flex">
+        @foreach ($items as $item)
+            <li class="ms-2 justify-content-between align-items-center d-flex top_header_item"
+                style="--color:{{ $item['color'] }}">
+                <x-icon width="30px" style="fill:var(--color)" name="{{ $item['icon'] }}" />
+                <span>{{ $item['item'] }}</span>
+            </li>
         @endforeach
     </ul>
-    <div class="donate-option">
-        <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> {{__('Subscribe')}}</a>
+
+    <div class="donate-option" style="background: black">
+        <a href="{{ route('login') }}"><i class="fa fa-heart" aria-hidden="true"></i> {{ __('Login') }}</a>
+        @if ($settings->checkout_enabled)
+            <a class="" href="{{ route('checkout') }}"><i class="fa fa-heart" aria-hidden="true"></i>
+                {{ __('Payment') }}</a>
+        @endif
     </div>
     <!-- .donate-option -->
 </div>
