@@ -1,3 +1,7 @@
+@php
+    $rtl = app()->getLocale() === 'ar';
+@endphp
+
 <div>
     <div class="container py-5">
         <h2 class="mb-4 text-center display-2">{{ __('Sponsorship & Donation') }}</h2>
@@ -6,160 +10,160 @@
             {{ __('For those interested in supporting the council’s activities through sponsorship and/or donation, please contact us through the e-mail: admin@palgbc.org') }}
         </p>
         <hr />
-        <div class="row align-items-center justify-content-center">
-            <div class="col-7 ">
-                <form
-                    style="
+
+        @if ($this->checkoutEnabled())
+            <div class="row align-items-center justify-content-center">
+                <div class="col-7 ">
+                    <form
+                        style="
                         background: #eee;
                         padding: 10px;
                         border-radius: 5px;
                         box-shadow: 0 0 5px 0 #eee;
                      "
-                    class="needs-validation" wire:submit="proccessPayment">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="my-2 form-check d-flex justify-content-start align-items-center">
-                                <label class=" form-check-label" for="contactedBefore">
-                                    {{ __('Did you contact us before payment?') }}
-                                </label>
-                                <input wire:model="form.contact_before" class="form-check-input" type="checkbox"
-                                    value="" id="contactedBefore">
-                                @error('form.contact_before')
+                        class="needs-validation" wire:submit="proccessPayment">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="my-2 form-check d-flex justify-content-start align-items-center">
+                                    <label class=" form-check-label" for="contactedBefore">
+                                        {{ __('Did you contact us before payment?') }}
+                                    </label>
+                                    <input wire:model="form.contact_before" class="form-check-input" type="checkbox"
+                                        value="" id="contactedBefore">
+                                    @error('form.contact_before')
+                                        <span class="is-invalid">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 has-validation">
+                                <label class="required" for="paymentPurpose">{{ __('Payment purpose') }}</label>
+                                <select required wire:model="form.payment_purpose" id="paymentPurpose"
+                                    class="mb-3 form-select" aria-label=".form-select">
+                                    <option selected>{{ __('Select value') }}</option>
+                                    <option value="donate">{{ __('Donate') }}</option>
+                                    <option value="membership_cost">{{ __('Membership cost') }}</option>
+                                    <option value="cource_cost">{{ __('Cource cost') }}</option>
+                                    <option value="adv_cost">{{ __('Ads cost') }}</option>
+                                    <option value="sponser">{{ __('Sponser') }}</option>
+                                    <option value="other">{{ __('Others') }}</option>
+                                </select>
+                                @error('form.payment_purpose')
                                     <span class="is-invalid">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 has-validation">
-                            <label class="required" for="paymentPurpose">{{ __('Payment purpose') }}</label>
-                            <select required wire:model="form.payment_purpose" id="paymentPurpose"
-                                class="mb-3 form-select" aria-label=".form-select">
-                                <option selected>{{ __('Select value') }}</option>
-                                <option value="donate">{{ __('Donate') }}</option>
-                                <option value="membership_cost">{{ __('Membership cost') }}</option>
-                                <option value="cource_cost">{{ __('Cource cost') }}</option>
-                                <option value="adv_cost">{{ __('Ads cost') }}</option>
-                                <option value="sponser">{{ __('Sponser') }}</option>
-                                <option value="other">{{ __('Others') }}</option>
-                            </select>
-                            @error('form.payment_purpose')
-                                <span class="is-invalid">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-6 has-validation">
+                            <div class="col-6 has-validation">
 
-                            <label class="required" for="paymentType">{{ __('Payment type') }}</label>
-                            <select required wire:model="form.payment_type" id="paymentType" class="mb-3 form-select"
-                                aria-label=".form-select ">
-                                <option value="indivisuial">{{ __('Indivusials') }}</option>
-                                <option value="company">{{ __('Companies') }}</option>
-                                <option value="orgnization">{{ __('Orginizations') }}</option>
-                            </select>
-                            @error('form.payment_type')
-                                <span class="is-invalid">{{ $message }}</span>
-                            @enderror
+                                <label class="required" for="paymentType">{{ __('Payment type') }}</label>
+                                <select required wire:model="form.payment_type" id="paymentType"
+                                    class="mb-3 form-select" aria-label=".form-select ">
+                                    <option value="indivisuial">{{ __('Indivusials') }}</option>
+                                    <option value="company">{{ __('Companies') }}</option>
+                                    <option value="orgnization">{{ __('Orginizations') }}</option>
+                                </select>
+                                @error('form.payment_type')
+                                    <span class="is-invalid">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="mb-1 row">
+                            <div class="col-4">
+                                <label class="required" for="firstName">{{ __('First name') }}</label>
+                                <input required id="firstName" wire:model="form.first_name" type="text"
+                                    class="p-2 rounded form-control">
+                                @error('form.first_name')
+                                    <span class="is-invalid">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="col-4">
+                                <label class="required" for="midName">{{ __('Middel name') }}</label>
+                                <input required wire:model="form.mid_name" id="midName" type="text"
+                                    class="p-2 rounded form-control">
+                                @error('from.mid_name')
+                                    <span class="is-invalid">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="col-4">
+                                <label class="required" for="lastName">{{ __('Last name') }}</label>
+                                <input required id="lastName" wire:model="form.last_name" type="text"
+                                    class="p-2 rounded form-control">
+                                @error('form.last_name')
+                                    <span class="is-invalid">{{ $message }}</span>
+                                @enderror
+
+                            </div>
 
                         </div>
-                    </div>
-                    <hr />
-                    <div class="mb-1 row">
-                        <div class="col-4">
-                            <label class="required" for="firstName">{{ __('First name') }}</label>
-                            <input required id="firstName" wire:model="form.first_name" type="text"
+
+                        <div class="mb-1 col-12">
+                            <label class="required" for="amount">{{ __('Amount') }}</label>
+                            <input required wire:model="form.amount" id="amount" type="number"
                                 class="p-2 rounded form-control">
-                            @error('form.first_name')
+                            @error('form.amount')
                                 <span class="is-invalid">{{ $message }}</span>
                             @enderror
-
-                        </div>
-                        <div class="col-4">
-                            <label class="required" for="midName">{{ __('Middel name') }}</label>
-                            <input required wire:model="form.mid_name" id="midName" type="text"
-                                class="p-2 rounded form-control">
-                            @error('from.mid_name')
-                                <span class="is-invalid">{{ $message }}</span>
-                            @enderror
-
-                        </div>
-                        <div class="col-4">
-                            <label class="required" for="lastName">{{ __('Last name') }}</label>
-                            <input required id="lastName" wire:model="form.last_name" type="text"
-                                class="p-2 rounded form-control">
-                            @error('form.last_name')
-                                <span class="is-invalid">{{ $message }}</span>
-                            @enderror
-
                         </div>
 
-                    </div>
+                        <div class="mb-1 row">
+                            <div class="col-4">
+                                <label class="required" for="phone">{{ __('Phone') }}</label>
+                                <input required id="phone" wire:model="form.phone" type="text"
+                                    class="p-2 rounded form-control">
+                                @error('form.phone')
+                                    <span class="is-invalid">{{ $message }}</span>
+                                @enderror
 
-                    <div class="mb-1 col-12">
-                        <label class="required" for="amount">{{ __('Amount') }}</label>
-                        <input required wire:model="form.amount" id="amount" type="number"
-                            class="p-2 rounded form-control">
-                        @error('form.amount')
-                            <span class="is-invalid">{{ $message }}</span>
-                        @enderror
-                    </div>
+                            </div>
+                            <div class="col-4">
+                                <label class="required" for="email">{{ __('Email') }}</label>
+                                <input required id="email" wire:model='form.email' type="text"
+                                    class="p-2 rounded form-control">
+                                @error('form.email')
+                                    <span class="is-invalid">{{ $message }}</span>
+                                @enderror
 
-                    <div class="mb-1 row">
-                        <div class="col-4">
-                            <label class="required" for="phone">{{ __('Phone') }}</label>
-                            <input required id="phone" wire:model="form.phone" type="text"
-                                class="p-2 rounded form-control">
-                            @error('form.phone')
-                                <span class="is-invalid">{{ $message }}</span>
-                            @enderror
+                            </div>
+                            <div class="col-4">
+                                <label class="required" for="address">{{ __('Address') }}</label>
+                                <input required id="address" wire:model='form.address' type="text"
+                                    class="p-2 rounded form-control">
+                                @error('form.address')
+                                    <span class="is-invalid">{{ $message }}</span>
+                                @enderror
 
-                        </div>
-                        <div class="col-4">
-                            <label class="required" for="email">{{ __('Email') }}</label>
-                            <input required id="email" wire:model='form.email' type="text"
-                                class="p-2 rounded form-control">
-                            @error('form.email')
-                                <span class="is-invalid">{{ $message }}</span>
-                            @enderror
-
-                        </div>
-                        <div class="col-4">
-                            <label class="required" for="address">{{ __('Address') }}</label>
-                            <input required id="address" wire:model='form.address' type="text"
-                                class="p-2 rounded form-control">
-                            @error('form.address')
-                                <span class="is-invalid">{{ $message }}</span>
-                            @enderror
-
-                        </div>
-                    </div>
-
-                    <div class="mb-1 row">
-                        <div class="col-12">
-                            <label for="paymentDetails">{{ __('Payment Details') }}</label>
-                            <textarea class="form-control" wire:model="form.payment_details" id="paymentDetails" cols="30" rows="10"></textarea>
-                        </div>
-                    </div>
-
-
-                    <button type="submit" class="btn btn-default w-25 d-flex justify-content-between"
-                        style="margin-{{ app()->getLocale() === 'ar' ? 'right' : 'left' }}:auto">
-                        <span>
-                            {{ __('Pay') }}
-                        </span>
-                        <div wire:loading  class="spinner-border text-primary" style="width:15px;height:15px; margin-top:5px" role="status">
-                            <span class="sr-only">Loading...</span>
+                            </div>
                         </div>
 
-                    </button>
-                </form>
+                        <div class="mb-1 row">
+                            <div class="col-12">
+                                <label for="paymentDetails">{{ __('Payment Details') }}</label>
+                                <textarea class="form-control" wire:model="form.payment_details" id="paymentDetails" cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-default w-25 d-flex justify-content-between"
+                            style="margin-{{ app()->getLocale() === 'ar' ? 'right' : 'left' }}:auto">
+                            <span>
+                                {{ __('Pay') }}
+                            </span>
+                            <div wire:loading class="spinner-border text-primary"
+                                style="width:15px;height:15px; margin-top:5px" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+
+                        </button>
+                    </form>
+                </div>
+
             </div>
-
-        </div>
     </div>
 
-    @php
-        $rtl = app()->getLocale() === 'ar';
-    @endphp
     <div x-data="modal_data">
 
         <!-- Modal -->
@@ -213,9 +217,11 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button x-on:click="capClick" class="g-recaptcha btn btn-primary d-flex justify-content-center">
+                        <button x-on:click="capClick"
+                            class="g-recaptcha btn btn-primary d-flex justify-content-center">
                             <span>{{ __('Confirm') }}</span>
-                            <div wire:loading class=" spinner-border text-secondary" style="width:15px;height:15px; margin-top:5px" role="status">
+                            <div wire:loading class=" spinner-border text-secondary"
+                                style="width:15px;height:15px; margin-top:5px" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
 
@@ -291,5 +297,6 @@
             })
         </script>
     @endscript
+    @endif
 
 </div>

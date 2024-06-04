@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Settings\GateWaySettings;
 use Livewire\Component;
 use App\Livewire\Forms\CheckOutForm;
+use App\Settings\SiteSetting;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
@@ -22,9 +23,14 @@ class CheckOutComp extends Component
     #[Renderless]
     public $cap;
     protected int $payment_id;
+
+    protected SiteSetting $settings;
     public function mount()
     {
+        $this->settings = app(SiteSetting::class);
         $this->auth_url = $this->getGateWaySettings('autorize_url');
+
+        $this->checkoutEnabled();
     }
     public function render()
     {
@@ -79,6 +85,26 @@ class CheckOutComp extends Component
         $this->form->reset();
     }
 
+    public function checkoutEnabled() : bool
+    {
+        // get seettings to check if are filled;
+        $unFilledSettings = array_filter($this->getGateWaySettings()->toArray(), fn ($option) => is_null($option));
+
+
+        // checkout correctly enabled
+        $enabled = empty($unFilledSettings) && $this->settings->checkout_enabled;
+
+        // log un filed options;
+
+        if (!$enabled) {
+
+            file_put_contents(base_path('checkout/unfield.json'), json_encode($unFilledSettings));
+        }
+
+        return $enabled;
+
+        // check settings if enabled
+    }
     protected function virifyRecap($token)
     {
         $virify_url = 'https://www.google.com/recaptcha/api/siteverify';
