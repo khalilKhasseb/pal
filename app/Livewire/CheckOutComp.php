@@ -85,7 +85,7 @@ class CheckOutComp extends Component
         $this->form->reset();
     }
 
-    public function checkoutEnabled() : bool
+    public function checkoutEnabled(): bool
     {
         // get seettings to check if are filled;
         $unFilledSettings = array_filter($this->getGateWaySettings()->toArray(), fn ($option) => is_null($option));
@@ -98,7 +98,7 @@ class CheckOutComp extends Component
 
         if (!$enabled) {
 
-            file_put_contents(base_path('checkout/unfield.json'), json_encode($unFilledSettings));
+            file_put_contents(base_path('unfield.json'), json_encode($unFilledSettings));
         }
 
         return $enabled;
