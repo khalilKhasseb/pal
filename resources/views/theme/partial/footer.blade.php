@@ -10,7 +10,7 @@
                             $contentbox = App\Models\Widget::location('bottom-footer')->get();
 
                         @endphp
-                        <div class="col-lg-4 col-sm-6">
+                        <div class="col-lg-3 col-sm-6">
                             <div class="footer-widget">
                                 @livewire('newsletter')
                             </div>
