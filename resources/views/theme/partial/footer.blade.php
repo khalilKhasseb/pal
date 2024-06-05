@@ -10,15 +10,14 @@
                             $contentbox = App\Models\Widget::location('bottom-footer')->get();
 
                         @endphp
-
-                      
-
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="footer-widget">
+                                @livewire('newsletter')
+                            </div>
+                        </div>
                         @foreach($footerMenus as $menu)
                         <div class="col-lg-3 col-sm-6">
                             <div class="footer-widgets">
-                                {{-- <div class="widgets-title">
-                                    <h3>Recent Photos</h3>
-                                </div> --}}
                                 <!-- .widgets-title -->
                                 <ul class="pages-menu">
                                     @foreach ($menu->items as $item)
@@ -26,7 +25,6 @@
                                         {!! ThemeRenderNaveItem::render($item , false , 'text-white h5  ') !!}
                                     </li>
                                     @endforeach
-
 
                                 </ul> <!-- .footer-instagram -->
                             </div>
@@ -37,7 +35,6 @@
                             @foreach ($contentbox as $box)
                                 {{-- @dd($box->component) --}}
                                 <div class="col-lg-3 col-sm-6 col-12">
-
 
                                     <x-dynamic-component :component="Str::of('widgets.' . $box->component)" :title="$box->title" :content="$box->content" />
                                     <!-- .footer-widgets -->

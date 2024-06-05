@@ -130,4 +130,8 @@ class PaymentResource extends Resource
             'index' => Pages\ManagePayments::route('/'),
         ];
     }
+
+    public static function canAccess() :bool {
+        return false ;
+    }
 }

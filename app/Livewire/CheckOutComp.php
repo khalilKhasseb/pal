@@ -90,7 +90,6 @@ class CheckOutComp extends Component
         // get seettings to check if are filled;
         $unFilledSettings = array_filter($this->getGateWaySettings()->toArray(), fn ($option) => is_null($option));
 
-
         // checkout correctly enabled
         $enabled = empty($unFilledSettings) && $this->settings->checkout_enabled;
 

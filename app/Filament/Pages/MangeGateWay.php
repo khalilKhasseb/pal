@@ -13,6 +13,16 @@ class MangeGateWay extends SettingsPage
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
 
     protected static string $settings = GateWaySettings::class;
+    public function getTitle(): string|\Illuminate\Contracts\Support\Htmlable {
+        return __('Manage Gatway');
+    }
+      public static function getNavigationGroup(): string {
+        return __('Settings');
+      }
+
+    public static function getNavigationLabel():string {
+        return __('Manage Gatway');
+    }
 
     public function form(Form $form): Form
     {

@@ -23,7 +23,7 @@ use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
-
+use Filamnet\Forms\Components as fc;
 //#######//
 
 class WidgetsForms
@@ -36,7 +36,6 @@ class WidgetsForms
         if (is_null($widget) || empty($widget)) return [];
 
         $widget = static::validate_widget_name($widget);
-
         if (!method_exists(__CLASS__, $widget)) return [];
 
         return [static::$widget($form)];
@@ -146,8 +145,9 @@ class WidgetsForms
                     ])
             ]);
     }
-    public static function gallary(?Form $form) {
-       return Select::make('content')
+    public static function gallary(?Form $form)
+    {
+        return Select::make('content')
             ->label(__('gallary'))
             ->options(Gallary::all()->pluck('title', 'id'));
     }
@@ -157,7 +157,17 @@ class WidgetsForms
         //load posts from tags
         // load spicific posts
         return Toggle::make('content')
-        ->label(__('Last posts'))
-        ->default('1');
+            ->label(__('Last posts'))
+            ->default('1');
+    }
+
+
+    public static function newsLetter()
+    {
+
+        // return [
+        //   TextInput::make('Tittle'),
+        //   TextInput::make('Descrition')
+        // ] ;
     }
 }

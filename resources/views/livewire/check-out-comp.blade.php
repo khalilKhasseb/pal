@@ -146,7 +146,6 @@
                             </div>
                         </div>
 
-
                         <button type="submit" class="btn btn-default w-25 d-flex justify-content-between"
                             style="margin-{{ app()->getLocale() === 'ar' ? 'right' : 'left' }}:auto">
                             <span>
@@ -290,13 +289,17 @@
 
                     },
                     closeModal() {
-                        this.modal.hide();
                         $wire.deletePayment(this.payment.id)
+                        this.modal.hide();
                     }
                 }
             })
         </script>
     @endscript
     @endif
+
+    <div>
+
+    </div>
 
 </div>
