@@ -5,25 +5,26 @@ namespace App\Theme;
 
 use LaraZeus\Sky\SkyPlugin;
 use App\Models\Blog\Tag;
+
 class ThemeRenderNaveItem
 {
 
 
 
-    public static function render(array $item, $sommod = true,string $class = '')
+    public static function render(array $item, $sommod = true, string $class = '')
     {
 
         $color = '';
-        $queryParmr= $sommod ? "?p=sommod" : '';
+        // $queryParmr= $sommod ? "?p=sommod" : '';
         if ($item['type'] === 'category') {
-            $category = SkyPlugin::get()->getModel('Tag')::whereIn('type',Tag::getTypes())->find($item['data']['category_id']) ?? '';
+            $category = SkyPlugin::get()->getModel('Tag')::whereIn('type', Tag::getTypes())->find($item['data']['category_id']) ?? '';
             $activeClass = (request()->routeIs('page', 'category')) ? $color : 'border-transparent';
             return '<a class="' . $class . ' ' . $activeClass . '"
             target="' . ($item['data']['target'] ?? '_self') . '"
             href="' . route('tags', [
                 'slug' => $category->slug,
                 'type' => $category->type
-            ]) .$queryParmr. '"
+            ]) . '"
         >' .
                 $item['label'] .
                 '</a>';
@@ -35,7 +36,7 @@ class ThemeRenderNaveItem
 
             return '<a class="' . $class . ' ' . $activeClass . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('page', $page) . $queryParmr.'"
+                    href="' . route('page', $page) . '"
                 >' .
                 $item['label'] .
                 '</a>';
@@ -45,7 +46,7 @@ class ThemeRenderNaveItem
 
             return '<a class="' . $class . ' ' . $activeClass . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('post', $post) .$queryParmr. '"
+                    href="' . route('post', $post) . '"
                 >' .
                 $item['label'] .
                 '</a>';
@@ -55,14 +56,14 @@ class ThemeRenderNaveItem
 
             return '<a class="' . $class . ' ' . $activeClass . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('library.tag', $tag->slug) .$queryParmr. '"
+                    href="' . route('library.tag', $tag->slug) . '"
                 >' .
                 $item['label'] .
                 '</a>';
-        } elseif($item['type'] === 'collection') {
+        } elseif ($item['type'] === 'collection') {
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route($item['data']['collection']) .'"
+                    href="' . route($item['data']['collection']) . '"
                 >' .
                 $item['label'] .
                 '</a>';
@@ -74,8 +75,7 @@ class ThemeRenderNaveItem
                 >' .
                 $item['label'] .
                 '</a>';
-        }
-         else {
+        } else {
             return '<a class="' . $class . '"
                     target="' . ($item['data']['target'] ?? '_self') . '"
                     href="' . $item['data']['url'] . '"

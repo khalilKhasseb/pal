@@ -40,7 +40,6 @@
                                 <ul>
 
                                     @isset($menu)
-                                      @dd($menu->items)
                                         @foreach ($menu->items as $item)
                                             <li>
                                                 {!! ThemeRenderNaveItem::render($item, $sommod) !!}
