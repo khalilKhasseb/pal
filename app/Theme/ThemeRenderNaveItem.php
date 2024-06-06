@@ -17,6 +17,7 @@ class ThemeRenderNaveItem
         $color = '';
         // $queryParmr= $sommod ? "?p=sommod" : '';
         if ($item['type'] === 'category') {
+            dd($item);
             $category = SkyPlugin::get()->getModel('Tag')::whereIn('type', Tag::getTypes())->find($item['data']['category_id']) ?? '';
             $activeClass = (request()->routeIs('page', 'category')) ? $color : 'border-transparent';
             return '<a class="' . $class . ' ' . $activeClass . '"
