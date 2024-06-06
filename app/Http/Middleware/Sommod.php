@@ -66,13 +66,31 @@ class Sommod
         $routeName = $request->route()->getName();
         if ($this->routeSommod($request)) {
             $this->setContentProvider('sommod', $routeName);
+            $this->handelSession('sommod');
         } elseif ($this->routeHome($request)) {
             $this->setContentProvider('council', $routeName);
+            $this->handelSession('council');
         } elseif ($this->routeBackEnd($request)) {
             $this->setContentProvider('admin', $routeName);
         }
     }
 
+    protected function handelSession(string $provider)
+    {
+
+        if ($provider === 'sommod') {
+            session()->put('sommod_load', true);
+            if (session()->has('council_load')) {
+                session()->remove('council_load');
+            }
+        }
+        if ($provider === 'council') {
+            session()->put('council_load', true);
+            if (session()->has('sommod_load')) {
+                session()->remove('sommod_load');
+            }
+        }
+    }
 
 
     private function routeSommod(Request $request): bool

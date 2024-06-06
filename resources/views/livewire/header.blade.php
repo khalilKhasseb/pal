@@ -4,8 +4,8 @@
         <div class="container">
             <div class="row">
                 @if (isset($header_settings) && $header_settings->top_header_enabled)
-                    @include('theme.partial.top-header' , [
-                        'items' => $header_settings->top_header_items
+                    @include('theme.partial.top-header', [
+                        'items' => $header_settings->top_header_items,
                     ])
                 @endif
             </div>
@@ -24,7 +24,7 @@
                         <div class="navbar-header">
 
 
-                            <x-theme.logo :route="route('theme.home')" :url="$_logo"  />
+                            <x-theme.logo :route="route('theme.home')" :url="$_logo" />
 
                             <button type="button" class="navbar-toggler collapsed d-lg-none" data-bs-toggle="collapse"
                                 data-bs-target="#bs-example-navbar-collapse-1"
@@ -43,19 +43,19 @@
 
                                         @foreach ($menu->items as $item)
                                             <li>
-                                                {!! ThemeRenderNaveItem::render($item , $sommod) !!}
+                                                {!! ThemeRenderNaveItem::render($item, $sommod) !!}
 
                                                 @if (count($item['children']) > 0)
                                                     <ul class="sub-menu">
                                                         @foreach ($item['children'] as $child_item)
                                                             <li>
-                                                                {!! ThemeRenderNaveItem::render($child_item ,$sommod) !!}
+                                                                {!! ThemeRenderNaveItem::render($child_item, $sommod) !!}
 
                                                                 @if (count($child_item['children']) > 0)
                                                                     <ul class="sub-sub-menu">
                                                                         @foreach ($child_item['children'] as $last_level_child)
                                                                             <li>
-                                                                                {!! ThemeRenderNaveItem::render($last_level_child , $sommod) !!}
+                                                                                {!! ThemeRenderNaveItem::render($last_level_child, $sommod) !!}
 
                                                                             </li>
                                                                         @endforeach
@@ -70,10 +70,17 @@
 
                                     @endisset
 
-                                    @if($settings->checkout_enabled)
-                                     <li>
-                                        <a href="{{route('checkout')}}">{{__('Payment')}}</a>
-                                     </li>
+                                    @if ($settings->checkout_enabled)
+                                        <li>
+                                            <a href="{{ route('checkout') }}">{{ __('Payment') }}</a>
+                                        </li>
+                                    @endif
+
+                                    @if (!$header_settings->top_header_enabled)
+                                        <li><a
+                                                href="{{ route('local', ['local' => app()->getLocale() === 'ar' ? 'en' : 'ar']) }}">
+                                                {{ app()->getLocale() === 'ar' ? 'en' : 'ar' }}
+                                            </a></li>
                                     @endif
                                 </ul>
 

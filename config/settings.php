@@ -1,5 +1,6 @@
 <?php
 
+use App\Settings\ContentSettings;
 use App\Settings\SiteSetting;
 use App\Settings\HeaderSetting;
 use App\Settings\GateWaySettings;
@@ -13,7 +14,8 @@ return [
     'settings' => [
         SiteSetting::class,
         HeaderSetting::class,
-        GateWaySettings::class
+        GateWaySettings::class,
+        ContentSettings::class,
     ],
 
     /*

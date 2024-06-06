@@ -6,6 +6,7 @@ use App\Models\Panel;
 use App\Models\Post;
 use Livewire\Component;
 use App\Settings\SiteSetting;
+use App\Settings\ContentSettings;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Layout;
 use App\Models\Scopes\PanelScope;
@@ -15,6 +16,7 @@ class Home extends Component
 {
 
     public Collection $siteSetting;
+    public Collection $contentSettings;
 
     public Collection $gallaries;
 
@@ -57,7 +59,9 @@ class Home extends Component
             ->get();
 
         $this->gallaries = \App\Models\Gallary::showInSlider()->get();
-        $this->serviceBlocks = \App\Models\ServiceBlock::all();
+
+        $this->contentSettings = app(ContentSettings::class)->toCollection();
+        // $this->serviceBlocks = \App\Models\ServiceBlock::all();
     }
     public function render()
     {

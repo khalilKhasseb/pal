@@ -1,10 +1,10 @@
    <!-- Start Recent Project Section -->
-   @props(['posts'])
+   @props(['posts' ,'subHeading'])
    @use(Illuminate\Support\Str)
    <div class="container">
     <div class="section-header">
         <h2>{{__('News')}}</h2>
-        <p>{{__('Professionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.')}}</p>
+        <p>{{$subHeading}}</p>
     </div>
     <div class="row">
         @foreach($posts as $post)

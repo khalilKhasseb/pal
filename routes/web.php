@@ -6,6 +6,7 @@ use App\Http\Controllers\GoogleApiAuthController;
 use App\Livewire\Home;
 use LaraZeus\Sky\Livewire\Post;
 use LaraZeus\Sky\Livewire\Posts;
+use Illuminate\Http\Request;
 
 
 /*
@@ -169,7 +170,10 @@ Route::get('attachment/{media}', App\Http\Controllers\DownloadMedia::class)->nam
 Route::get('checkout' , App\Livewire\CheckOutComp::class)->name('checkout');
 Route::post('payment/callback' , App\Http\Controllers\PaymentCallbackController::class)->name('payment.callback');
 
-
+Route::get('/{local}' , function(Request $request , $local) {
+    session()->put('lang' , $local);
+    return back();
+})->name('local');
 /**
  * First try to copy file from remote path to a give destnation
  * Destination will be stroage folder of laravel

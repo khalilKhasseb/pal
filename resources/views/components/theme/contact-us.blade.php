@@ -1,4 +1,7 @@
  <!-- Start Contact us Section -->
+ @props([
+    'subHeading'
+ ])
  <section class="bg-contact-home" id="contact">
     <div class="container">
         @if(session()->has('message'))
@@ -8,7 +11,7 @@
             <div class="contact-us">
                 <div class="section-header">
                     <h2>{{__('Get in Touch')}}</h2>
-                    <p>{{__('Professionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.')}}</p>
+                    <p>{{$subHeading}}</p>
                 </div>
                 <!-- .section-header -->
                 <div class="row">

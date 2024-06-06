@@ -1,16 +1,18 @@
+@php
+    $local = app()->getLocale();
+@endphp
 <div>
-
     <x-theme.slide :gallaries="$gallaries" />
-    <x-theme.hero-content />
-    <x-theme.project :posts="$recent" />
+    <x-theme.hero-content :content-settings="$contentSettings" />
+    <x-theme.project :sub-heading="$contentSetting["news_$local"]" :posts="$recent" />
     {{-- <x-theme.count /> --}}
     {{-- <x-theme.service :serviceBlocks="$serviceBlocks" /> --}}
     {{-- <x-theme.focus /> --}}
     {{-- <x-theme.campaian /> --}}
     {{-- <x-theme.collection /> --}}
     {{-- <x-theme.event /> --}}
-    @if($sommod)
-    <x-theme.sponser :partners="$sponsers" />
+    @if (session()->has('sommod_load'))
+        <x-theme.sponser :sub-heading="$contentSettings["partners_$local"]" :partners="$sponsers" />
     @endif
-    <x-theme.contact-us />
+    <x-theme.contact-us :sub-heading="$contentSettings['contact_' . $local]" />
 </div>
