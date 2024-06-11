@@ -171,7 +171,7 @@ Route::get('attachment/{media}', App\Http\Controllers\DownloadMedia::class)->nam
 Route::get('checkout', App\Livewire\CheckOutComp::class)->name('checkout');
 Route::post('payment/callback', App\Http\Controllers\PaymentCallbackController::class)->name('payment.callback');
 
-Route::get('/{local}', function (Request $request, $local) {
+Route::get('lang/{local}', function (Request $request, $local) {
     session()->put('lang', $local);
     return back();
 })->name('local');

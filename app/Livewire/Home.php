@@ -14,7 +14,6 @@ use App\Models\Scopes\PanelScope;
 #[Layout('layouts.theme-layout')]
 class Home extends Component
 {
-
     public Collection $siteSetting;
     public Collection $contentSettings;
 
