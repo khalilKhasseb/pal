@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
             SupportedProject::class,
             InititivesSeeder::class,
 
+            LibrarySeeder::class,
+
             PostSeeder::class,
             ProductSeeder::class,
             EventSeeder::class,

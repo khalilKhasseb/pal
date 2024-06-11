@@ -7,6 +7,8 @@ use Filament\Forms;
 use Filament\Forms\Components as fc;
 use Filament\Forms\Form;
 use Filament\Pages\SettingsPage;
+use Filament\Facades\Filament;
+
 
 class MangeContent extends SettingsPage
 {
@@ -61,5 +63,10 @@ class MangeContent extends SettingsPage
 
                     ])->columns(2)
             ]);
+    }
+
+    public static function canAccess(): bool
+    {
+        return Filament::getCurrentPanel()->getId() === 'admin';
     }
 }

@@ -18,6 +18,18 @@ class SupportedProjectType extends Model
     {
         return $this->belongsToMany(Supporter::class, 'supporters_supported_projects_types', 'supported_project_type_id', 'supporter_id');
     }
+    public static function findFromString(string $name, string $locale = null)
+    {
+        $locale = $locale ?? static::getLocale();
 
+        return static::query()
+            ->where("name->{$locale}", $name)
+            ->get();
+    }
+
+    public static function getLocale()
+    {
+        return app()->getLocale();
+    }
 
 }

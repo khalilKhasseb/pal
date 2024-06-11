@@ -18,6 +18,7 @@ class InitiativesPage extends Component
         ->with('supporters.media')
         ->get();
 
+
         $this->pageTitle = __('Initiatives');
     }
     public function render()

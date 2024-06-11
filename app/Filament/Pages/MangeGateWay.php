@@ -7,6 +7,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Pages\SettingsPage;
 use Filament\Forms\Components as FC;
+use Filament\Facades\Filament;
 
 class MangeGateWay extends SettingsPage
 {
@@ -55,4 +56,10 @@ class MangeGateWay extends SettingsPage
 
             ]);
     }
+
+    public static function canAccess(): bool
+    {
+        return Filament::getCurrentPanel()->getId() === 'admin';
+    }
+
 }

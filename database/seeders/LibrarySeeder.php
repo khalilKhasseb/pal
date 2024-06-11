@@ -18,7 +18,7 @@ class LibrarySeeder extends Seeder
         $rows = SimpleExcelReader::create('imports/memebr_library_en_ar.csv')->getRows();
 
         $local = app()->getLocale();
-        
+
         $rows->each(function ($row) use ($local) {
 
             $tag = Tag::findOrCreateFromString($row['tag_name_' . $local], 'library');
@@ -44,6 +44,8 @@ class LibrarySeeder extends Seeder
 
 
             $library->tags()->attach($tag);
+
+            $library->panels()->attach([1,2]);
         });
         //first create library tags and set translation for library tags
 
