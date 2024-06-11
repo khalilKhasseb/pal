@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleApiAuthController;
@@ -167,13 +168,16 @@ Route::post('/contact', App\Http\Controllers\ContactController::class)->name('co
 Route::get('attachment/{media}', App\Http\Controllers\DownloadMedia::class)->name('downloadAttachment');
 
 
-Route::get('checkout' , App\Livewire\CheckOutComp::class)->name('checkout');
-Route::post('payment/callback' , App\Http\Controllers\PaymentCallbackController::class)->name('payment.callback');
+Route::get('checkout', App\Livewire\CheckOutComp::class)->name('checkout');
+Route::post('payment/callback', App\Http\Controllers\PaymentCallbackController::class)->name('payment.callback');
 
-Route::get('/{local}' , function(Request $request , $local) {
-    session()->put('lang' , $local);
+Route::get('/{local}', function (Request $request, $local) {
+    session()->put('lang', $local);
     return back();
 })->name('local');
+
+
+Route::get('dashboard/library', [DashboardController::class, 'getTagItemsBySlug'])->name('library.getBySlug');
 /**
  * First try to copy file from remote path to a give destnation
  * Destination will be stroage folder of laravel
@@ -184,14 +188,14 @@ Route::get('/{local}' , function(Request $request , $local) {
  */
 
 Route::get('rel/{type}', function (Request $request) {
-     $relations = ['MorphToMany'] ;
+    $relations = ['MorphToMany'];
     $reflectorCalss = new ReflectionClass(App\Models\Panel::class);
     // return type = mo
-    $methods = collect($reflectorCalss->getMethods())->filter(function ($method) use($relations) {
+    $methods = collect($reflectorCalss->getMethods())->filter(function ($method) use ($relations) {
         // $class_basename = class_basename($method->getReturnType())
         $returnType = $method->getReturnType();
         if ($returnType) {
-           return  in_array(class_basename($returnType->getName()) , $relations) ;
+            return  in_array(class_basename($returnType->getName()), $relations);
         }
     });
     // dd(collect(class_basename($reflectorCalss->getMethods())[0]->getReturnType()));

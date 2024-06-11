@@ -1,10 +1,11 @@
 @php
     $local = app()->getLocale();
+    // dd($recent);
 @endphp
 <div>
     <x-theme.slide :gallaries="$gallaries" />
     <x-theme.hero-content :content-settings="$contentSettings" />
-    <x-theme.project :sub-heading="$contentSetting["news_$local"]" :posts="$recent" />
+    <x-theme.project :sub-heading="$contentSettings['news_'.$local]" :posts="$recent" />
     {{-- <x-theme.count /> --}}
     {{-- <x-theme.service :serviceBlocks="$serviceBlocks" /> --}}
     {{-- <x-theme.focus /> --}}

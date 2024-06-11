@@ -20,17 +20,18 @@ class HeaderBGCast implements SettingsCast
         //dd($payload);
         $payload = strval($payload);
 
-        $this->ensuerIsAfile($payload);
+        // $this->ensuerIsAfile($payload);
 
         return $payload;
     }
 
     public function set($payload)
     {
+        // dd($payload);
         // cast payload
         // $payloadValue = json_decode($payload, true)[app()->getLocale()];
         $cover = DB::table('settings')->where('name', 'header_bg')->first();
-        $cover_path = json_decode($cover->payload);
+        $cover_path = $payload;
 
 
         // $path = Str::remove("\"", $site_logo->payload);

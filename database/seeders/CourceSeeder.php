@@ -21,10 +21,13 @@ class CourceSeeder extends Seeder
             $img = $cource['img'];
             unset ($cource['img']);
             unset ($cource['panel']);
-            
+
             $c = Cource::create($cource);
             $c->panels()->attach($panel === 'sommod' ? 2 : 1);
-            $c->addMediaFromUrl($img)->toMediaCollection('cources');
+            try{
+
+                $c->addMediaFromUrl($img)->toMediaCollection('cources');
+            }catch(\Exception $excpetion){}
             return $cource;
         }, $cources);
 

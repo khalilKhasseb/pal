@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\SystemUser;
 use Illuminate\Database\Seeder;
 use Database\Seeders\SkySeeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,27 +15,32 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
+        SystemUser::create([
+            'name' => "khalil",
+            'email' => 'k@k.com',
+            'password' => Hash::make(1),
+        ]);
 
         $this->call([
 
-             //RolesSeeder::class,
-             //PanelsSeeder::class,
-            // SupportedPorjectTypeSeeder::class,
-            // SupportedProject::class,
-            // InititivesSeeder::class,
+            RolesSeeder::class,
+            PanelsSeeder::class,
+            SupportedPorjectTypeSeeder::class,
+            SupportedProject::class,
+            InititivesSeeder::class,
 
-            // PostSeeder::class,
-            // ProductSeeder::class,
-            // EventSeeder::class,
-            // HallSeeder::class,
-            // AdministrationSeeder::class,
+            PostSeeder::class,
+            ProductSeeder::class,
+            EventSeeder::class,
+            HallSeeder::class,
+            AdministrationSeeder::class,
 
             SupporterSeeder::class,
             OutReachSeeder::class,
             CourceSeeder::class,
 
             PartnerSeeder::class,
+            FaqsSeeder::class
 
         ]);
     }

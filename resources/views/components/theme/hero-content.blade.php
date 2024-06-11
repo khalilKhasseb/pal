@@ -21,8 +21,8 @@
                             <p>
                                 {{ $content }}
                             </p>
-                            {{-- <a href="#" class="btn btn-default">{{ __('More') }}</a> --}}
-                            {{-- <a href="#" class="btn btn-default">{{ __('Join us') }}</a> --}}
+                            <a href="#" class="btn btn-default">{{ __('More') }}</a>
+                            <a href="#" class="btn btn-default">{{ __('Join us') }}</a>
                         </div>
                         <!-- .about-greenforest-content -->
                     </div>

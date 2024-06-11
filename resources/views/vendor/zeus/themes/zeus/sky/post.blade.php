@@ -111,7 +111,7 @@
                                 <!-- .meta-box -->
                                 <div class="blog-content">
                                     <h4>{{ $post->title }}</h4>
-
+                                     
                                     {!! $post->getContent() !!}
 
                                     @if (!is_null($post->post_meta))

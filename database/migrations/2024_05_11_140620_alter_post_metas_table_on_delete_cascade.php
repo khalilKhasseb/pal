@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if(Schema::hasTable('post_metas')) {
-            Schema::table('post_metas', function (BluePrint $table) {
+        if(Schema::hasTable('post_meta')) {
+            Schema::table('post_meta', function (BluePrint $table) {
                 $table->unsignedBigInteger('post_id')->nullable();
                 $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete()->cascadeOnUpdate();
             });
         }
-       
+
     }
 
     /**

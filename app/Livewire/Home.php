@@ -49,6 +49,7 @@ class Home extends Component
             ->orderBy('published_at', 'desc')
             ->get();
 
+
         $this->sponsers = config('zeus-sky.models.Post')::query()
             // ->sommod(false)
             ->partner()

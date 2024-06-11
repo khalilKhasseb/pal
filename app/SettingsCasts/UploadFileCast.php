@@ -25,22 +25,13 @@ class UploadFileCast implements SettingsCast
     public function set($payload)
     {
         // cast payload
-        // $payloadValue = json_decode($payload, true)[app()->getLocale()];
 
-        // check if is null
-
-        //if(is_null($payloadValue)) return $payload ;
-
-        // if not null do save and delete
-
-        // get path
 
         $site_logo = DB::table('settings')->where('name', 'site_logo')->first();
 
         // $path = Str::remove("\"", $site_logo->payload);
-        $path = json_decode($site_logo->payload);
+        $path = $site_logo->payload;
 
-        // dd($path , $payloadValue);
 
 
 

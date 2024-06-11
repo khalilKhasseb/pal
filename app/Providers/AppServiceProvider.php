@@ -47,8 +47,7 @@ class AppServiceProvider extends ServiceProvider
                     'front.sommod.home' => ('Sommod Home'),
                 ])
         ]);
-        
-
+            
         SkyPlugin::get()->itemType(__('Collection'), [
             Select::make('collection')
                 ->searchable()

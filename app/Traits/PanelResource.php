@@ -13,8 +13,11 @@ trait PanelResource
 {
     protected static function booted(): void
     {
-        $content_provider = json_decode(Storage::get('content_provider.json'));
+        parent::booted();
 
+        $content_provider = json_decode(Storage::get('content_provider.json'));
+        if(is_null($content_provider)) return ;
+        // dd($content_provider);
         if ($content_provider->provider === 'admin') {
             static::withoutGlobalScope(ContentProviderScope::class);
             static::addGlobalScope(PanelScope::class);

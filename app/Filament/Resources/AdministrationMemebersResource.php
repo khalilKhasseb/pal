@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AdministrationMemebersResource\Pages;
 use App\Filament\Resources\AdministrationMemebersResource\RelationManagers\LinksRelationManager;
+use App\Filament\Resources\PostResource\RelationManagers\PostMetaRelationManager;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
 use App\Traits\PostResourceTrait;
@@ -23,15 +24,18 @@ class AdministrationMemebersResource extends Resource
 
 
 
-    public static function getPostType() : string {
+    public static function getPostType(): string
+    {
         return 'administration';
     }
 
-    public static function getLabel() :string {
+    public static function getLabel(): string
+    {
         return __('Administration');
     }
 
-    public static function getPostSlugLabel() : string {
+    public static function getPostSlugLabel(): string
+    {
         return __('Administration');
     }
     public static function getPluralLabel(): string
@@ -40,7 +44,8 @@ class AdministrationMemebersResource extends Resource
     }
 
 
-    public static function getRoute() : string {
+    public static function getRoute(): string
+    {
         return 'administration.view';
     }
 
@@ -58,12 +63,14 @@ class AdministrationMemebersResource extends Resource
         return static::getModel()::administration()->count();
     }
 
-    public static function getRelations(): array  {
+    public static function getRelations(): array
+    {
 
         return [
             LinksRelationManager::class,
+            PostMetaRelationManager::class,
         ];
-      }
+    }
 
     public static function getPages(): array
     {
@@ -74,7 +81,8 @@ class AdministrationMemebersResource extends Resource
         ];
     }
 
-    public static function canAccess() : bool {
+    public static function canAccess(): bool
+    {
         return filament()->getCurrentPanel()->getId() === 'admin';
     }
 }

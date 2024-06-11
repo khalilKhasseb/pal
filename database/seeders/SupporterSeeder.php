@@ -14,9 +14,9 @@ class SupporterSeeder extends Seeder
      */
     public function run(): void
     {
-        
-     // attach supporter to inititaive 
-     // attach supported projects and types 
+
+     // attach supporter to inititaive
+     // attach supported projects and types
 
         $supporters = CSVParser::parse(base_path('imports/supporters.csv'));
 
@@ -32,7 +32,11 @@ class SupporterSeeder extends Seeder
             $sup->supported_projects()->attach([fake()->numberBetween(1, 3), fake()->numberBetween(1, 3), fake()->numberBetween(1, 3)]);
             $sup->initiatives()->attach($initiative->id);
             $sup->panels()->attach($panel);
-            $sup->addMediaFromUrl($img)->toMediaCollection('supporters');
+            try{
+
+                $sup->addMediaFromUrl($img)->toMediaCollection('supporters');
+            }catch(\Exception $exception){}
+
         }
 
     }

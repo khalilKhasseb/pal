@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('post_metas', function (Blueprint $table) {
+        Schema::table('post_meta', function (Blueprint $table) {
             //$table->dropConstrainedForeignIdFor(App\Models\Post::class , 'post_id');
             $table->dropColumn('post_id');
             //$table->unsignedBigInteger('post_id')->nullable();
@@ -23,9 +23,9 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        
 
-        
+
+
 
     }
 };

@@ -26,7 +26,8 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4",
         "nztim/mailchimp": "^5.4",
-        "owenvoke/blade-fontawesome": "^2.6"
+        "owenvoke/blade-fontawesome": "^2.6",
+        "spatie/simple-excel": "^3.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.11",

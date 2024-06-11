@@ -6,6 +6,8 @@ use App\Classes\CSVParser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Post;
+use Exception;
+
 class PartnerSeeder extends Seeder
 {
     /**
@@ -15,8 +17,8 @@ class PartnerSeeder extends Seeder
     {
         $partners = CSVParser::parse(base_path('imports/partners.csv'));
 
-        foreach($partners as $partner) {
-            $post =Post::create([
+        foreach ($partners as $partner) {
+            $post = Post::create([
                 'title' => $partner['title'],
                 'content' => $partner['content'],
                 'post_type' => $partner['post_type'],
@@ -27,10 +29,12 @@ class PartnerSeeder extends Seeder
             ]);
 
             $post->panels()->attach($partner['panel']);
-            $post->addMediaFromUrl($partner['img'])->toMediaCollection('posts');
 
+            try {
 
+                $post->addMediaFromUrl($partner['img'])->toMediaCollection('posts');
+            } catch (Exception $exception) {
+            }
         }
-
     }
 }

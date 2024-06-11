@@ -6,6 +6,9 @@ use App\Classes\CSVParser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Post;
+use App\Models\PostMeta;
+use Spatie\SimpleExcel\SimpleExcelReader;
+use Illuminate\Support\Facades\DB;
 
 class PostSeeder extends Seeder
 {
@@ -14,57 +17,60 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        // handle 
-        $posts = CSVParser::parse('imports/posts-ar.csv');  
-        
-        foreach ($posts as $post) {
-           
-            $_p = Post::create([
-                'title' => $post['title'] ,
-                'slug' => str($post['title'])->slug(),
-                'description' => fake(app()->getLocale())->sentence(),
-                'post_type' => $post['post_type'],
-                'content' => $post['content'],
-                'user_id' => $post['user_id'],
-                'featured_image' => null,
-                'published_at' => now(),
-            ]);
+        $rows = SimpleExcelReader::create('imports/posts-en-ar.csv')->getRows();
+        $local = app()->getLocale();
 
-            $_p->panels()->attach($post['panel']);
+        $rows->each(function ($row) use ($local) {
+            DB::transaction(function () use ($row, $local) {
+                $post = Post::create([
+                    'title' => $row['title_' . $local],
+                    'slug' => str($row['title_' . $local])->slug(),
+                    'description' => fake(app()->getLocale())->sentence(),
+                    'post_type' => 'post',
+                    'content' => $row['content_' . $local],
+                    'user_id' => 1,
+                    'featured_image' => null,
+                    'published_at' => isset($row['publish_date']) ? $row['publish_date'] : now(),
+                ]);
 
-            $_p->addMediaFromUrl($post['featured_image'])->toMediaCollection('posts');
+                // set translation
+                $post->setTranslation('title', 'en', $row['title_en'])->save();
+                $post->setTranslation('content', 'en', $row['content_en'])->save();
+                // post meta
+                $post_meta_keys = array_filter(array_keys($row), fn ($meta) => str_contains($meta, 'post_meta'));
+                if (!empty($post_meta_keys)) :
+                    foreach ($post_meta_keys as $key) {
+                        // $key = str_contains($key, $local) ? str_replace("_" . $local, "", $key) : $key;
+                        if (str_contains($key, $local)) {
+                            $key =  str_replace("_" . $local, "", $key);
+                            $post_meta = PostMeta::create([
+                                "key" => str(substr($key, strpos($key, ":") + 1))->value(),
+                                "value" => $row[$key . "_" . $local]
+                            ]);
 
-        }
 
+                            $post_meta->setTranslation('key', 'en', $key . "_en");
+                            $post_meta->setTranslation('value', 'en', $row[$key . "_en"]);
+                            $post->post_meta()->save($post_meta);
+                        }
+                    }
+                endif;
+                // attach panel
+                $post->panels()->attach($row['panel']);
+                if (isset($row['img'])) {
+
+
+                    try {
+                        $post->addMediaFromUrl($row['img'])->toMediaCollection('posts');
+                    } catch (\Exception $exception) {
+                    }
+                }
+            });
+        });
+      
     }
 
-    private function parse_csv() : array{
-        $data = [];
-        $file = fopen(base_path('posts-ar.csv') , 'r');
-
-        // loop to get data 
-        $row = 0;
-        while(!feof($file)) {
-            $csv_file = fgetcsv($file, 1000, ','); 
-            if(!empty($csv_file)) {
-                // check for fist entry to map to props 
-                if($row == 0 ) {
-                    $data['attribute'] = $csv_file;
-                }else {
-                    // map vlues to new keys
-                    //$data[] = $csv_file;
-                    $item = [];
-                   foreach($csv_file as $key => $value) {
-                        $item[$data['attribute'][$key]] = $value;  
-                   }
-                    $data[] = $item;
-                 }  
-            }
-            $row++;
-        }
-        fclose($file);
-        unset($data['attribute']);
-        // dd($data);
-        return $data;
+    public function parse_post_meta($meta)
+    {
     }
 }

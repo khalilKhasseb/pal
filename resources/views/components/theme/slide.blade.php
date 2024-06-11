@@ -17,7 +17,7 @@
 
         $stickyPosts = \App\Models\Post::sticky()->get();
 
-    @endphp
+        @endphp
     <section class="bg-slider-option">
         <div class="slider-option slider-two">
             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">

@@ -41,6 +41,12 @@ class Post extends Model
         return $this->belongsTo(config('auth.providers.system_users.database.model', config('auth.providers.system_users.model')), 'user_id', 'id');
     }
 
+    public function scopePan(Builder $builder) {
+         $builder->whereHas('panels',function($builder){
+            return $builder->where('panels.id' , 2);
+         });
+    }
+
 
 
     // Post meta relation

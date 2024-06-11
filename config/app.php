@@ -10,7 +10,7 @@ return [
      */
 
 
-     'content_provider' => 'admin',
+    'content_provider' => 'admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -194,6 +194,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        // "SimpleExcelReader" =>  Spatie\SimpleExcel\SimpleExcelReader::class
+
     ])->toArray(),
 
 ];
