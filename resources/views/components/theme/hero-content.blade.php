@@ -8,7 +8,7 @@
     $content = $sommod ? $contentSettings[$s . '_about_' . $local] : $contentSettings[$c . '_about_' . $local];
 @endphp
 {{-- @dd($contentSettings) --}}
-<section class="bg-about-greenforest">
+<section class="bg-about-greenforest s">
     <div class="container">
         <div class="row">
             <div class="about-greenforest">
