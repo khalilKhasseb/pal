@@ -26,6 +26,6 @@ class UploadFileCast implements SettingsCast
     public function set($payload)
     {
 
-        return  $this->setSettingPropMedia($payload);
+        return  $this->setSettingPropMedia( $payload);
     }
 }

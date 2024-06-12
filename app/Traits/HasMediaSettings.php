@@ -14,7 +14,7 @@ trait HasMediaSettings
         return $this->settingProp;
     }
 
-    public function setSettingPropMedia(string $payload)
+    public function setSettingPropMedia(string | null $payload)
     {
         // first get setting prop database value
 
