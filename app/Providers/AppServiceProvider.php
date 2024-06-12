@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
                     'front.sommod.home' => ('Sommod Home'),
                 ])
         ]);
-            
+
         SkyPlugin::get()->itemType(__('Collection'), [
             Select::make('collection')
                 ->searchable()
@@ -64,7 +64,9 @@ class AppServiceProvider extends ServiceProvider
                         'cource' => __('Cources'),
                         'initiative' => __('Initiatives'),
                         'blogs' => __('All News'),
-                        'dashboard' => __('Library')
+                        'dashboard' => __('Library'),
+                        'faq' => __('Faqs'),
+
                     ];
                 })
         ], 'collection');
