@@ -56,7 +56,7 @@ class PostSeeder extends Seeder
                     }
                 endif;
                 // attach panel
-                $post->panels()->attach($row['panel']);
+                $post->panels()->attach([1,2]);
                 if (isset($row['img'])) {
 
 
@@ -67,7 +67,7 @@ class PostSeeder extends Seeder
                 }
             });
         });
-      
+
     }
 
     public function parse_post_meta($meta)

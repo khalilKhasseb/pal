@@ -3,5 +3,7 @@
 'route' => '/'
 ])
 
-<a class="navbar-brand" href="{{$route}}"><img src="{{asset('storage/'.$url)}}" alt="logo"
-        class="img-responsive" /></a>
+<a class="navbar-brand" href="{{$route}}">
+    <img src="{{asset('storage/'.$url)}}" alt="logo"
+        class="img-responsive" />
+    </a>

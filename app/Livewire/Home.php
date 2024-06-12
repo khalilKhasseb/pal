@@ -10,6 +10,7 @@ use App\Settings\ContentSettings;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Layout;
 use App\Models\Scopes\PanelScope;
+use App\Models\Scopes\ContentProviderScope;
 
 #[Layout('layouts.theme-layout')]
 class Home extends Component
@@ -58,7 +59,7 @@ class Home extends Component
             ->orderBy('published_at', 'desc')
             ->get();
 
-        $this->gallaries = \App\Models\Gallary::showInSlider()->get();
+        $this->gallaries = \App\Models\Gallary::withoutGlobalScope(ContentProviderScope::class)->showInSlider()->get();
 
         $this->contentSettings = app(ContentSettings::class)->toCollection();
         // $this->serviceBlocks = \App\Models\ServiceBlock::all();

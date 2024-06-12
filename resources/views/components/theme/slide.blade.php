@@ -1,4 +1,5 @@
 @props(['gallaries' => null])
+@use(App\Models\Scopes\ContentProviderScope)
 <!-- Start Slider Section -->
 @if ($gallaries !== null)
     @php
@@ -15,7 +16,7 @@
             }
         }
 
-        $stickyPosts = \App\Models\Post::sticky()->get();
+        $stickyPosts = \App\Models\Post::withoutGlobalScope(ContentProviderScope::class)->sticky()->get();
 
         @endphp
     <section class="bg-slider-option">
