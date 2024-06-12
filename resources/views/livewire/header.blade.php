@@ -23,9 +23,11 @@
                     <div class="main-menu-bottom">
                         <div class="navbar-header">
 
-
-                            <x-theme.logo :route="route('theme.home')" :url="$_logo" />
-
+                            @if (session()->has('sommod_load'))
+                                <x-theme.logo :route="route('front.sommod.home')" :url="$_logo" />
+                            @else
+                                <x-theme.logo :route="route('theme.home')" :url="$_logo" />
+                            @endif
                             <button type="button" class="navbar-toggler collapsed d-lg-none" data-bs-toggle="collapse"
                                 data-bs-target="#bs-example-navbar-collapse-1"
                                 aria-controls="bs-example-navbar-collapse-1" aria-expanded="false">

@@ -36,6 +36,8 @@ class Sommod
         }
         $this->setProvider($request);
 
+
+
         return $request;
     }
     protected function setContentProvider($provider, $source): void
@@ -83,12 +85,14 @@ class Sommod
             if (session()->has('council_load')) {
                 session()->remove('council_load');
             }
+            return;
         }
         if ($provider === 'council') {
             session()->put('council_load', true);
             if (session()->has('sommod_load')) {
                 session()->remove('sommod_load');
             }
+            return;
         }
     }
 

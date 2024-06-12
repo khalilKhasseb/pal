@@ -30,6 +30,12 @@ class MangeContent extends SettingsPage
                             ->label(__('About us Arabic')),
                         fc\Textarea::make('c_about_en')
                             ->label(__('About us Englis')),
+                        fc\FileUpload::make('c_about_img')
+                            ->label(__('Image for about us'))
+                            ->image()
+                            ->imageEditor()
+                            ->disk('public')
+                            ->directory('site')->columnSpanFull(),
                     ])->columns(2),
                 fc\Section::make(__('About us : Sommod'))
                     ->schema([
@@ -37,8 +43,14 @@ class MangeContent extends SettingsPage
                             ->label(__('About us Arabic')),
                         fc\Textarea::make('s_about_en')
                             ->label(__('About us Englis')),
+                        fc\FileUpload::make('s_about_img')
+                            ->label(__('Image for about us'))
+                            ->image()
+                            ->imageEditor()
+                            ->disk('public')
+                            ->directory('site')->columnSpanFull(),
 
-                    ]),
+                    ])->columns(2),
                 fc\Section::make(__('Section Sub Header content'))
                     ->schema([
                         fc\Textarea::make('news_ar')

@@ -58,7 +58,7 @@ class Home extends Component
             ->limit(config('zeus-sky.recentPostsLimit'))
             ->orderBy('published_at', 'desc')
             ->get();
-
+           
         $this->gallaries = \App\Models\Gallary::withoutGlobalScope(ContentProviderScope::class)->showInSlider()->get();
 
         $this->contentSettings = app(ContentSettings::class)->toCollection();

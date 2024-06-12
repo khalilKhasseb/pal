@@ -20,20 +20,23 @@ class Header extends Component
 
     public bool $sommod = false;
 
-    public function mount() {
+    public function mount()
+    {
 
         $handel = json_decode(Storage::get('content_provider.json'))->provider === 'sommod'
-        ? 'main-sommod-header-menu'
-        :'main-header-menu';
+            ? 'main-sommod-header-menu'
+            : 'main-header-menu';
 
         $this->menu = \LaraZeus\Sky\SkyPlugin::get()->getModel('Navigation')::fromHandle($handel);
     }
     public function render()
     {
-         $header_settings = app(HeaderSetting::class);
-         $_logo = app(SiteSetting::class)->site_logo;
-
-        return view('livewire.header', compact('header_settings' , '_logo'));
-
+        $header_settings = app(HeaderSetting::class);
+        $settings = app(SiteSetting::class);
+        $_logo = $settings->site_logo;
+        if (session()->has('sommod_load')) {
+            $_logo = $settings->sommod_logo;
+        }
+        return view('livewire.header', compact('header_settings', '_logo'));
     }
 }

@@ -14,6 +14,7 @@ class SiteSetting extends Settings
     public mixed $site_description;
 
     public  $site_logo;
+    public  string | null $sommod_logo;
 
     public $header_bg;
 
@@ -28,7 +29,8 @@ class SiteSetting extends Settings
     public static function casts(): array
     {
         return [
-            'site_logo' => UploadFileCast::class,
+            'site_logo' => new UploadFileCast('site_logo'),
+            'sommod_logo' => new UploadFileCast('sommod_logo'),
             'header_bg' => HeaderBGCast::class,
             'site_name' => SiteNameCast::class,
             // "comments_enabled" => CommentsCast::class,

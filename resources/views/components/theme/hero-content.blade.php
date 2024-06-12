@@ -6,6 +6,7 @@
     $title = $sommod ? __('About Sommod Project') : __('About Council');
     $local = app()->getLocale();
     $content = $sommod ? $contentSettings[$s . '_about_' . $local] : $contentSettings[$c . '_about_' . $local];
+    $aboutImg = $sommod ? $contentSettings[$s . '_about_img'] : $contentSettings[$c . '_about_img'];
 @endphp
 {{-- @dd($contentSettings) --}}
 <section class="bg-about-greenforest">
@@ -29,7 +30,7 @@
                     <!-- .col-lg-8 -->
                     <div class="col-lg-4">
                         <div class="about-greenforest-img">
-                            <img src="/images/home02/about-greenforet-img.jpg" alt="about-greenforet-img"
+                            <img src="{{ asset("storage/$aboutImg") }}" alt="about-greenforet-img"
                                 class="img-responsive" />
                         </div>
                         <!-- .about-greenforest-img -->

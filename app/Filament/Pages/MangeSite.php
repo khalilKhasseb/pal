@@ -86,18 +86,24 @@ class MangeSite extends SettingsPage
                                     ->image()
                                     ->imageEditor()
                                     ->disk('public')
+                                    ->directory('site'),
+                                FileUpload::make('sommod_logo')
+                                    ->label(__("Sommod Logo"))
+                                    ->image()
+                                    ->imageEditor()
+                                    ->disk('public')
                                     ->directory('site')
-                            ]),
+                            ])->columns(3),
 
-                        ]),
+                    ]),
 
-                  Section::make(__('Features'))
-                  ->schema([
-                    Toggle::make('comments_enabled')
-                    ->label(__('Enable comments')),
-                    Toggle::make('checkout_enabled')
-                    ->label(__('Enabel Checkout'))
-                  ])->columns(4)
+                Section::make(__('Features'))
+                    ->schema([
+                        Toggle::make('comments_enabled')
+                            ->label(__('Enable comments')),
+                        Toggle::make('checkout_enabled')
+                            ->label(__('Enabel Checkout'))
+                    ])->columns(4)
 
             ]);
     }
