@@ -75,9 +75,9 @@
                                             like_post() {
                                                 axios.get('{{ route('ajax.like_post', $post->slug) }}')
                                                     .then(r => {
-
+                                        
                                                         if (r.data) this.likes = r.data.likes
-
+                                        
                                                     })
                                                     .catch(e => console.log(e))
                                             },
@@ -85,17 +85,17 @@
                                                 if (this.liked) {
                                                     axios.get('{{ route('ajax.like_post', $post->slug) }}')
                                                         .then(r => {
-
+                                        
                                                             if (r.data) {
                                                                 this.likes = r.data.likes
                                                                 this.liked = r.data.liked
                                                             }
-
+                                        
                                                         })
                                                         .catch(e => console.log(e))
                                                 }
                                             }
-
+                                        
                                         }">
                                             <button style="background:transparent" x-on:click="like_post"
                                                 class="btn-transperent">
@@ -111,7 +111,7 @@
                                 <!-- .meta-box -->
                                 <div class="blog-content">
                                     <h4>{{ $post->title }}</h4>
-                                     
+
                                     {!! $post->getContent() !!}
 
                                     @if (!is_null($post->post_meta))
@@ -130,6 +130,10 @@
                                                 @endforeach
                                             </ul>
                                         </div>
+                                    @endif
+
+                                    @if (!is_null($post->gallary))
+                                        <x-theme.gallary :gallary="$post->gallary->getMedia('gallary')" />
                                     @endif
 
                                     @if (!$post->getMedia('attachments')->isEmpty())
