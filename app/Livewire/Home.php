@@ -6,15 +6,17 @@ use App\Models\Panel;
 use App\Models\Post;
 use Livewire\Component;
 use App\Settings\SiteSetting;
+use App\Settings\ContentSettings;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Layout;
 use App\Models\Scopes\PanelScope;
+use App\Models\Scopes\ContentProviderScope;
 
 #[Layout('layouts.theme-layout')]
 class Home extends Component
 {
-
     public Collection $siteSetting;
+    public Collection $contentSettings;
 
     public Collection $gallaries;
 
@@ -22,25 +24,23 @@ class Home extends Component
 
     public Collection $recent;
     public Collection $sponsers;
+
+    public bool $sommod = false;
     public function mount()
     {
-        //dd(app(SiteSetting::class));
-        //$this->siteSetting = ->toCollection();
-
         $this->loadContent();
-          
-
     }
 
-    protected function loadContent() {
-         //Posts
+    protected function loadContent()
+    {
+        //Posts
         //Navigation items
-        $load = str_contains(str_replace('/', '', request()->getRequestUri()),'home-sommod' );
-        
- 
+        // $load = str_contains(str_replace('/', '', request()->getRequestUri()), 'home-sommod');
+
+        // $this->sommod = $load;
         $this->recent = config('zeus-sky.models.Post')::query()
             ->withoutGlobalScopes([PanelScope::class])
-            ->sommod($load)
+            //->sommod($load)
             ->posts()
             ->published()
             ->whereDate('published_at', '<=', now())
@@ -49,18 +49,20 @@ class Home extends Component
             ->orderBy('published_at', 'desc')
             ->get();
 
-         $this->sponsers = config('zeus-sky.models.Post')::query()
-            ->sommod($load)
+
+        $this->sponsers = config('zeus-sky.models.Post')::query()
+            // ->sommod(false)
             ->partner()
             ->published('partner')
             ->with(['tags', 'author', 'media'])
             ->limit(config('zeus-sky.recentPostsLimit'))
             ->orderBy('published_at', 'desc')
-            ->get();   
+            ->get();
+           
+        $this->gallaries = \App\Models\Gallary::withoutGlobalScope(ContentProviderScope::class)->showInSlider()->get();
 
-        $this->gallaries = \App\Models\Gallary::showInSlider()->get();
-        $this->serviceBlocks = \App\Models\ServiceBlock::all();
-
+        $this->contentSettings = app(ContentSettings::class)->toCollection();
+        // $this->serviceBlocks = \App\Models\ServiceBlock::all();
     }
     public function render()
     {

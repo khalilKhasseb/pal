@@ -1,17 +1,13 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Theme\ContentController;
 use App\Http\Controllers\GoogleApiAuthController;
 use App\Livewire\Home;
-use App\Http\Controllers\Google\FormsController;
-use App\Models\GoogleForm;
-use Illuminate\Http\Request;
-use Intervention\Image\Laravel\Facades\Image;
 use LaraZeus\Sky\Livewire\Post;
 use LaraZeus\Sky\Livewire\Posts;
-use LaraZeus\Sky\Livewire\Tags;
+use Illuminate\Http\Request;
 
 
 /*
@@ -29,7 +25,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class , 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 /*
@@ -58,7 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 
@@ -79,8 +75,8 @@ Route::prefix('/')->name('theme.')->group(function () {
 
     Route::get('/', Home::class)->name('home');
 
- 
-    Route::get('/post-single', fn() => view('theme.pages.post'));
+
+    Route::get('/post-single', fn () => view('theme.pages.post'));
 });
 
 
@@ -120,6 +116,14 @@ Route::prefix('events')->name('event')->group(function () {
 });
 
 
+Route::prefix('supporters')->name('supporters')->group(function () {
+    Route::get('/', function () {
+    });
+});
+
+Route::prefix('partners')->name('partners')->group(function () {
+    Route::get('/', Posts::class);
+});
 
 Route::prefix('administration')->name('administration')->group(function () {
     Route::get('/', App\Livewire\AdminstrationComp::class);
@@ -127,7 +131,7 @@ Route::prefix('administration')->name('administration')->group(function () {
     Route::get('/{slug}', App\Livewire\SingleAdministration::class)->name('.view');
 });
 
-Route::prefix('partner')->name('partners')->group(function () {
+Route::prefix('partner')->name('partner')->group(function () {
     Route::get('/', Posts::class);
     Route::get('/{slug}', Post::class)->name('.view');
 });
@@ -152,87 +156,47 @@ Route::prefix('hall')->name('hall')->group(function () {
 });
 
 Route::prefix('initiative')->name('initiative')->group(function () {
-    Route::get('/', Posts::class);
+    Route::get('/', App\Livewire\InitiativesPage::class);
     Route::get('/{slug}', Post::class)->name('.view');
 });
 
+Route::get('/faqs', App\Livewire\FaqPage::class)->name('faq');
+
+Route::get('gallary', App\Livewire\GallaryPage::class);
 Route::post('/contact', App\Http\Controllers\ContactController::class)->name('contact');
 
+Route::get('attachment/{media}', App\Http\Controllers\DownloadMedia::class)->name('downloadAttachment');
 
+
+Route::get('checkout', App\Livewire\CheckOutComp::class)->name('checkout');
+Route::post('payment/callback', App\Http\Controllers\PaymentCallbackController::class)->name('payment.callback');
+
+Route::get('lang/{local}', function (Request $request, $local) {
+    session()->put('lang', $local);
+    return back();
+})->name('local');
+
+
+Route::get('dashboard/library', [DashboardController::class, 'getTagItemsBySlug'])->name('library.getBySlug');
 /**
- * First try to copy file from remote path to a give destnation 
- * Destination will be stroage folder of laravel 
+ * First try to copy file from remote path to a give destnation
+ * Destination will be stroage folder of laravel
  * if any errors abort operation and log to a log file with erros
  * send email with logs
- * 
- * attache media to model for each post model 
+ *
+ * attache media to model for each post model
  */
-Route::get('/img', function (Request $request) {
-    $url = 'https://www.palgbc.org/img/news/news266.jpg';
 
-    $posts = App\Models\Post::all();
-
-    $posts->map(function ($post) use ($url) {
-        // cehck if fimg not null 
-        if (!is_null($post->featured_image) && count($post->getMedia('posts')) === 0) {
-
-            $url = $post->featured_image;
-
-        }
-        $post->addMediaFromUrl($url)
-            ->withResponsiveImages()
-            ->toMediaCollection('posts');
-
-        $post->featured_image = null;
-        $post->save();
-        return $post;
-    });
-
-
-});
-
-Route::get('/umedia/{id}', function (Request $request) {
-       $url = 'https://www.palgbc.org/panel/img/couNews/344419951_892054171892029_8435259809089718114_n%20(1).jpg';
-
-    $post = App\Models\Post::find($request->id); 
-
-    // chcck if has media 
-
-    if($post->hasMedia('posts')) {
-
-        $post->clearMediaCollection('posts');
-        $meida = $post->addMediaFromUrl($url)
-        ->withResponsiveImages()
-        ->toMediaCollection('posts');
-
-       
-    }
- });
-
-Route::get('/mediadelete', function (Request $request) {
-
-    // load modal 
-
-    $posts = App\Models\Post::all();
-
-    $posts = $posts->each(function ($post) {
-
-        // check if has media 
-        if ($post->hasMedia('posts')) {
-            // pefrom delete media 
-            $post->clearMediaCollection('posts');
-            // $media = $post->getMedia('posts');
-            return $post;
+Route::get('rel/{type}', function (Request $request) {
+    $relations = ['MorphToMany'];
+    $reflectorCalss = new ReflectionClass(App\Models\Panel::class);
+    // return type = mo
+    $methods = collect($reflectorCalss->getMethods())->filter(function ($method) use ($relations) {
+        // $class_basename = class_basename($method->getReturnType())
+        $returnType = $method->getReturnType();
+        if ($returnType) {
+            return  in_array(class_basename($returnType->getName()), $relations);
         }
     });
-
-    foreach ($posts as $post) {
-        dump($post->hasMedia('posts'));
-    }
-
-
+    // dd(collect(class_basename($reflectorCalss->getMethods())[0]->getReturnType()));
 });
-
-
-
-

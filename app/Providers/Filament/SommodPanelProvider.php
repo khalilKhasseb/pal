@@ -44,12 +44,12 @@ class SommodPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Sommod/Widgets'), for: 'App\\Filament\\Sommod\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                //Widgets\FilamentInfoWidget::class,
             ])->userMenuItems([
                 MenuItem::make()
-                ->label(__('Concile'))
-                ->url(fn() => route('filament.admin.pages.dashboard'))
-             ])
+                    ->label(__('Concile'))
+                    ->url(fn () => route('filament.admin.pages.dashboard'))
+            ])
             ->authGuard('system')
             ->middleware([
                 EncryptCookies::class,
@@ -61,12 +61,14 @@ class SommodPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                \App\Http\Middleware\Sommod::class
+
             ])
             ->authMiddleware([
                 Authenticate::class,
             ])->plugins([
 
-                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['en', 'ar']),
+                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar','en']),
                 SkyPlugin::make()
                     ->navigationGroupLabel('Blog'),
 

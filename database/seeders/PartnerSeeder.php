@@ -6,6 +6,9 @@ use App\Classes\CSVParser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Post;
+use Exception;
+use Spatie\SimpleExcel\SimpleExcelReader;
+
 class PartnerSeeder extends Seeder
 {
     /**
@@ -13,24 +16,59 @@ class PartnerSeeder extends Seeder
      */
     public function run(): void
     {
-        $partners = CSVParser::parse(base_path('imports/partners.csv'));
-         
-        foreach($partners as $partner) {
-            $post =Post::create([
-                'title' => $partner['title'],
-                'content' => $partner['content'],
-                'post_type' => $partner['post_type'],
-                'slug' => str($partner['title'])->slug(),
+        $local = app()->getLocale();
+        $transLocal = $local === 'ar'  ? 'en' : $local;
+        $rows = SimpleExcelReader::create('imports/partners.csv')->getRows();
+
+        $rows->each(function ($row) use ($local, $transLocal) {
+            $post = Post::create([
+                'title' => $row['title_' . $local],
+                'content' => $row['content_' . $local],
+                'post_type' => 'partner',
+                'slug' => str($row['title_'.$local])->slug('-', 'en'),
                 'user_id' => 1,
                 'featured_image' => null,
                 'published_at' => now(),
             ]);
+            // set translation
 
-            $post->panels()->attach($partner['panel']);
-            $post->addMediaFromUrl($partner['img'])->toMediaCollection('posts');
+            array_map(function ($attr) use ($transLocal, $post, $row) {
+                if (array_key_exists($attr . "_$transLocal", $row)) {
+                    $post->setTranslation($attr, $transLocal, $row[$attr . "_$transLocal"])->save();
+                }
+            }, $post->getTranslatableAttributes());
+            $post->panels()->attach([1, 2]);
+            $post->addMediaFromUrl($row['img'])->toMediaCollection('posts');
+        });
 
-            
-        }
-        
+
+
+
+
+
+
+
+
+        // $partners = CSVParser::parse(base_path('imports/partners.csv'));
+
+        // foreach ($partners as $partner) {
+        //     $post = Post::create([
+        //         'title' => $partner['title'],
+        //         'content' => $partner['content'],
+        //         'post_type' => $partner['post_type'],
+        //         'slug' => str($partner['title'])->slug(),
+        //         'user_id' => 1,
+        //         'featured_image' => null,
+        //         'published_at' => now(),
+        //     ]);
+
+        //     $post->panels()->attach($partner['panel']);
+
+        //     try {
+
+        //         $post->addMediaFromUrl($partner['img'])->toMediaCollection('posts');
+        //     } catch (Exception $exception) {
+        //     }
+        // }
     }
 }

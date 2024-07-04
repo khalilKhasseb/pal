@@ -12,11 +12,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Facades\Filament;
 
 class SystemUserResource extends Resource
 {
     protected static ?string $model = SystemUser::class;
-   
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     public static function form(Form $form): Form
     {
@@ -104,4 +105,10 @@ class SystemUserResource extends Resource
     public static function getNavigationGroup() : string {
         return __('Users');
    }
+
+   public static function canAccess(): bool
+   {
+       return Filament::getCurrentPanel()->getId() === 'admin';
+   }
+
 }

@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Facades\Filament;
 
 class UserResource extends Resource
 {
@@ -32,7 +33,7 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-               
+
                 Forms\Components\DateTimePicker::make('email_verified_at')->disabled(),
                 Forms\Components\TextInput::make('password')
                 ->label(__('Password'))
@@ -50,7 +51,7 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-           
+
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->disabled()
                     ->dateTime()
@@ -101,5 +102,11 @@ class UserResource extends Resource
     {
         return __('Users');
     }
+
+    public static function canAccess(): bool
+    {
+        return Filament::getCurrentPanel()->getId() === 'admin';
+    }
+
 
 }

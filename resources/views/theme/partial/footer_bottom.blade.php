@@ -3,7 +3,7 @@
         <div class="row">
             <div class="footer-bottom">
                 <div class="copyright-txt">
-                    <p>&copy; {{date('Y')}}. Develped By <a href="#" title="Al-Amin(Web Designer)">@nebula</a></p>
+                    <p>&copy; {{date('Y')}}. <span>{{config('app.name')}}</span></p>
 
                 </div>
                 <!-- .copyright-txt -->
@@ -11,9 +11,9 @@
                     <ul class="social-icon-rounded">
                         @php
                         $links = App\Models\Widget::location('footer')->type('link')->get();
-
                         @endphp
                         @if(!is_null($links) && $links->count() > 0)
+
                         @foreach ($links[0]->content as $link )
 
                         <li>

@@ -10,11 +10,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Translatable\HasTranslations;
 use Spatie\Image\Enums\Fit;
 use Spatie\Image\Enums\CropPosition;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
-
+use App\Traits\PanelResource;
 class Supporter extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia ,HasTranslations;
+    use HasFactory, InteractsWithMedia ,HasTranslations ,PanelResource;
 
     protected $fillable = [
         'name',
@@ -35,8 +34,8 @@ class Supporter extends Model implements HasMedia
 
 
     protected $table = 'supporters';
-   
- 
+
+
     public function initiatives() : BelongsToMany {
         return $this->belongsToMany(Initiative::class , 'initiativies_suporters' , 'supporter_id' ,'initiative_id' );
     }
@@ -49,13 +48,7 @@ class Supporter extends Model implements HasMedia
         return $this->belongsToMany(SupportedProjectType::class, 'supporters_supported_projects_types', 'supporter_id', 'supported_project_type_id');
     }
 
-    public function panels(): MorphToMany
-    {
-        return $this->morphToMany(
-            Panel::class,
-            'resourcables'
-        );
-    }
+
 
 
     public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void
@@ -65,7 +58,7 @@ class Supporter extends Model implements HasMedia
             ->performOnCollections('thumbnail')
             ->crop(380, 300, CropPosition::Center);
 
-      
+
         $this->addMediaConversion('thumb-cropped-original')
             ->performOnCollections('supporters')
             ->fit(Fit::Fill, 380, 300, false, '#333');

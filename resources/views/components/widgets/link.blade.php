@@ -5,7 +5,7 @@
 'icon' => null
 ])
 
-<a @class([ 'flex' ,'items-center' , 'justify-center p-2' ]) href="https://{{$target}}">
+<a @class([ 'd-flex' ,'align-items-center' , 'justify-content-center p-2' ]) href="{{$target    }}">
     {{!is_null($title) ?: $title}}
     @if($icon_only)
     <x-icon name="{{$icon}}" />

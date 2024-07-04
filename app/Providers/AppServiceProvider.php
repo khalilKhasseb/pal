@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
             Select::make('category_id')
                 ->searchable()
                 ->options(function () {
-                    return SkyPlugin::get()->getModel('Tag')::getWithType('category')->pluck('name', 'id');
+                    return SkyPlugin::get()->getModel('Tag')::whereIn('type' ,SkyPlugin::get()->getModel('Tag')::getTypes())->pluck('name', 'id');
                 })
         ], 'category');
 
@@ -64,7 +64,9 @@ class AppServiceProvider extends ServiceProvider
                         'cource' => __('Cources'),
                         'initiative' => __('Initiatives'),
                         'blogs' => __('All News'),
-                        'dashboard' => __('Library')
+                        'dashboard' => __('Library'),
+                        'faq' => __('Faqs'),
+
                     ];
                 })
         ], 'collection');

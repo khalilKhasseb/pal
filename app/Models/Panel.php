@@ -9,6 +9,7 @@ use App\Models\Blog\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Builder;
 
 class Panel extends Model
 {
@@ -63,6 +64,37 @@ class Panel extends Model
             'resourcables'
         );
     }
+
+    public function gallaries(): MorphToMany
+    {
+        return $this->morphedByMany(
+            Gallary::class,
+            'resourcables'
+        );
+    }
+
+    public function courcsess(): MorphToMany
+    {
+        return $this->morphedByMany(
+            Cource::class,
+            'resourcables'
+        );
+    }
+
+    public function initiatives(): MorphToMany
+    {
+        return $this->morphedByMany(
+            Initiative::class,
+            'resourcables'
+        );
+    }
+    public function supporters(): MorphToMany
+    {
+        return $this->morphedByMany(
+            Supporter::class,
+            'resourcables'
+        );
+    }
     public static function findByName(string $name)
     {
         return static::query()
@@ -70,7 +102,13 @@ class Panel extends Model
             ->first();
     }
 
-   
+    public function scopePanelByName(Builder $query,string $name) : Builder {
+        return $query->where('panel_id' , $name) ;
+    }
+
+
+
+
 }
 
 class_alias('App\Models\Panel', 'PanelModel');

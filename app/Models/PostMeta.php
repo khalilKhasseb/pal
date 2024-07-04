@@ -11,6 +11,7 @@ class PostMeta extends Model
 {
     use HasFactory , HasTranslations;
 
+    protected $table = 'post_meta';
     protected $fillable = ['post_id', 'key', 'value', 'icon'];
 
     protected $translatable = ['key', 'value'];

@@ -24,6 +24,28 @@ return [
         'faq' => 'faq',
     ],
 
+
+    'post_types' => [
+        'activity',
+        'administration',
+        'event',
+        'hall',
+        'partner',
+        'product',
+        'service'
+    ],
+
+    'tags_type' => [
+        'activity',
+        'administration',
+        'event',
+        'hall',
+        'partner',
+        'product',
+        'service',
+        'gallary',
+    ],
+
     /**
      * you can overwrite any model and use your own
      * you can also configure the model per panel in your panel provider using:

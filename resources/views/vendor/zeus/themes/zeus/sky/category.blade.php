@@ -1,17 +1,9 @@
-{{-- <div>
-    @unless($posts->isEmpty())
-    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        @foreach($posts as $post)
-        @include($skyTheme.'.partial.sticky')
-        @endforeach
-    </div>
-    @endunless
-</div> --}}
+
 
 <!-- Start Blog Section -->
 @use(Illuminate\Pagination\Paginator)
 @php
-$current_page = empty(request()->query()) ? 1 : (int) request()->query()['page'] ;
+$current_page =  !isset(request()->query()['page']) || empty(request()->query()) ? 1 : (int) request()->query()['page'] ;
 $per_page = 15;
 
 $offset = ($current_page * $per_page) - $per_page ;
@@ -36,7 +28,11 @@ $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
 
 <x-slot name="breadcrumbs">
     <li class="">
-        <a href="{{ route('blogs') }}">{{ __('All news') }}</a>
+        @php
+        $route = request()->is('content/category/*') ? 'blogs' : $tag->type ;
+        // dd($route);
+        @endphp
+        <a href="{{ route($route) }}">{{ __((string) str($tag->type)->plural()->ucfirst()) }}</a>
         {{-- @svg('iconpark-rightsmall-o','fill-current w-4 h-4 mx-3 rtl:rotate-180') --}}
     </li>
     <li class="">

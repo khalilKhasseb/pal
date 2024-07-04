@@ -1,7 +1,9 @@
 <?php
 
+use App\Settings\ContentSettings;
 use App\Settings\SiteSetting;
 use App\Settings\HeaderSetting;
+use App\Settings\GateWaySettings;
 
 return [
 
@@ -12,6 +14,8 @@ return [
     'settings' => [
         SiteSetting::class,
         HeaderSetting::class,
+        GateWaySettings::class,
+        ContentSettings::class,
     ],
 
     /*
@@ -39,8 +43,8 @@ return [
      */
     'repositories' => [
         'database' => [
-            // 'type' => Spatie\LaravelSettings\SettingsRepositories\DatabaseSettingsRepository::class,
-            'type' => App\Classes\DatabaseSettingsRepository::class,
+            'type' => Spatie\LaravelSettings\SettingsRepositories\DatabaseSettingsRepository::class,
+            // 'type' => App\Classes\DatabaseSettingsRepository::class,
             'model' => App\Models\SettingsPropertyWithMedia::class,
             // 'model' => null,
             'table' => null,

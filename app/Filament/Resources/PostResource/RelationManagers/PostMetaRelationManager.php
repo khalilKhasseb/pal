@@ -23,15 +23,16 @@ class PostMetaRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\TextInput::make('key')
+                    ->label(__('Title'))
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('value')
+                    ->label(__('Value'))
                     ->required()
                     ->maxLength(255),
                 IconPicker::make('icon')
                     ->label(__('Icon'))
-                ]);
-            
+            ]);
     }
 
     public function table(Table $table): Table

@@ -1,19 +1,32 @@
-<div class="header-top">
-    <ul class="flex justify-between">
-        @foreach ($items as $item )
-
-
-        <li class="flex items-center justify-between top_header_item" style="--color:{{$item['color']}}">
-            <x-icon name="{{$item['icon']}}" />
-            <span>{{$item['item']}}</span>
-        </li>
-        {{--
-        <li><i class="flaticon-vibrating-phone"></i> Phone : +88017 923 970 659</li> --}}
-        {{-- <li><i class="flaticon-placeholder"></i> Address : Sute 07 Sahara Center</li> --}}
+<div class="header-top d-flex align-items-center justify-content-end">
+    <ul style="margin-{{app()->getLocale() == 'ar' ? 'left' : 'right'}}: auto" class="justify-content-between d-flex">
+        @foreach ($items as $item)
+            <li class="ms-2 justify-content-between align-items-center d-flex top_header_item"
+                style="--color:{{ $item['color'] }}">
+                <x-icon width="30px" style="fill:var(--color)" name="{{ $item['icon'] }}" />
+                <span>{{ $item['item'] }}</span>
+            </li>
         @endforeach
     </ul>
-    <div class="donate-option">
-        <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> {{__('Subscribe')}}</a>
+
+    <div class="donate-option d-flex justify-content-end" style="background: black">
+        {{-- <a href="{{ route('login') }}"><i class="fa fa-heart" aria-hidden="true"></i> {{ __('Login') }}</a>
+        @if ($settings->checkout_enabled)
+            <a class="" href="{{ route('checkout') }}"><i class="fa fa-heart" aria-hidden="true"></i>
+                {{ __('Payment') }}</a>
+        @endif --}}
+    </div>
+
+    <div style="background-color:#53a92c" class="px-2 py-2 align-self-end">
+        <a
+            class="font-bold lang-switch d-flex align-items-center justify-content-start text-light"
+            href="{{ route('local', ['local' => app()->getLocale() === 'ar' ? 'en' : 'ar']) }}">
+            <span style="text-transform: uppercase" class="inline-block px-2">{{ app()->getLocale() === 'ar' ? 'en' : 'ar' }}
+
+            </span>
+            <i class="fa fa-language" aria-hidden="true"></i>
+
+        </a>
     </div>
     <!-- .donate-option -->
 </div>

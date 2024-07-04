@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-       
+
         return $panel
             ->default()
             ->id('admin')
@@ -48,7 +48,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+            //    Widgets\FilamentInfoWidget::class,
             ])
             ->userMenuItems([
                MenuItem::make()
@@ -71,6 +71,8 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                \App\Http\Middleware\Sommod::class
+
             ])
             ->authMiddleware([
                 Authenticate::class,

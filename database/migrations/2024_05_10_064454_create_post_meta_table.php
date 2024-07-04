@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post_metas', function (Blueprint $table) {
+        Schema::create('post_meta', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(App\Models\Post::class);
             $table->string('key');

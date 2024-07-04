@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if(Schema::hasTable('post_metas')) {
-            Schema::table('post_metas', function (Blueprint $table) {
-                $table->dropForeign('post_metas_post_id_foreign');
+        if(Schema::hasTable('post_meta')) {
+            Schema::table('post_meta', function (Blueprint $table) {
+                $table->dropForeign('post_meta_post_id_foreign');
                 // dd($table);
                 $table->dropColumn('post_id');
             });
         }
-        
+
     }
 
     /**

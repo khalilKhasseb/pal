@@ -1,164 +1,123 @@
    <!-- Start Recent Project Section -->
-   @props(['posts'])
-   <section class="bg-recent-project">
-    <div class="container">
-        <div class="row">
-            <div class="recent-project">
-                <div class="section-header">
-                    <h2>{{__('Recent Post')}}</h2>
-                    <p>مجلس الفلسطيني للأبنية الخضراء هو مؤسسة أهلية غير حكومية وغير ربحية تأسست منتصف العام 2011، وهو جزء من المجلس العالمي للأبنية الخضراء وشبكة مجالس الشرق الأوسط وشمال أفريقيا MENA.</p>
-                </div>
-                <!-- .section-header -->
-
-                {{-- <div id="filters" class="button-group ">
-                    <button class="button is-checked" data-filter="*">show all</button>
-                    <button class="button" data-filter=".cat-1">environment</button>
-                    <button class="button" data-filter=".cat-2">recycling</button>
-                    <button class="button" data-filter=".cat-3">ecology</button>
-                    <button class="button" data-filter=".cat-4">climate</button>
-                </div> --}}
-                <div class="portfolio-items">
-                @if($posts !== null)
-                @foreach ($posts as $post )
-                    
-                    <div class="item cat-1" data-category="transition">
-                        <div class="item-inner">
-                            <div class="portfolio-img">
-                                <div class="overlay-project"></div>
-                                <!-- .overlay-project -->
-                                <img src="{{$post->image()}}" alt="recent-project-img-1">
-                                <ul class="project-link-option">
-                                    <li class="project-link"><a href="project_single.html"><i class="fa fa-link" aria-hidden="true"></i></a></li>
-                                    <li class="project-search"><a href="{{$post->image()}}" data-rel="lightcase:myCollection"><i class="fa fa-search-plus" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- /.portfolio-img -->
-                            <div class="recent-project-content">
-                                <h4><a  href={{route('post' , ['slug' => $post->slug])}}>{!! Str::substr($post->title, 0, 30) !!}</a></h4>
-                                <p>{{__('Posted by')}} : <span><a href="#">{{$post->author->name}}</a></span></p>
-                            </div>
-                            <!-- .latest-port-content -->
-                        </div>
-                        <!-- .item-inner -->
-                    </div>
-                    <!-- .items -->
-                @endforeach
-                    @endif
-
-                    {{-- <div class="item cat-2 " data-category="metalloid">
-                        <div class="item-inner">
-                            <div class="portfolio-img">
-                                <div class="overlay-project"></div>
-                                <!-- .overlay-project -->
-                                <img src="images/home02/recent-project-img-2.jpg" alt="recent-project-img-2">
-                                <ul class="project-link-option">
-                                    <li class="project-link"><a href="project_single.html"><i class="fa fa-link" aria-hidden="true"></i></a></li>
-                                    <li class="project-search"><a href="images/home02/recent-project-img-2.jpg" data-rel="lightcase:myCollection"><i class="fa fa-search-plus" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- /.portfolio-img -->
-                            <div class="recent-project-content">
-                                <h4><a href="project_single.html">Helping Young Planting</a></h4>
-                                <p>By : <span><a href="#">Green Forest</a></span></p>
-                            </div>
-                            <!-- .latest-port-content -->
-                        </div>
-                        <!-- .item-inner -->
-                    </div>
-                    <!-- .items -->
-
-                    <div class="item cat-3 " data-category="post-transition">
-                        <div class="item-inner">
-                            <div class="portfolio-img">
-                                <div class="overlay-project"></div>
-                                <!-- .overlay-project -->
-                                <img src="images/home02/recent-project-img-3.jpg" alt="recent-project-img-3">
-                                <ul class="project-link-option">
-                                    <li class="project-link"><a href="project_single.html"><i class="fa fa-link" aria-hidden="true"></i></a></li>
-                                    <li class="project-search"><a href="images/home02/recent-project-img-3.jpg" data-rel="lightcase:myCollection"><i class="fa fa-search-plus" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- /.portfolio-img -->
-                            <div class="recent-project-content">
-                                <h4><a href="project_single.html">Need Solar Panels</a></h4>
-                                <p>By : <span><a href="#">Green Forest</a></span></p>
-                            </div>
-                            <!-- .latest-port-content -->
-                        </div>
-                        <!-- .item-inner -->
-                    </div>
-                    <!-- .items -->
-
-                    <div class="item cat-2" data-category="post-transition">
-                        <div class="item-inner">
-                            <div class="portfolio-img">
-                                <div class="overlay-project"></div>
-                                <!-- .overlay-project -->
-                                <img src="images/home02/recent-project-img-4.jpg" alt="recent-project-img-4">
-                                <ul class="project-link-option">
-                                    <li class="project-link"><a href="project_single.html"><i class="fa fa-link" aria-hidden="true"></i></a></li>
-                                    <li class="project-search"><a href="images/home02/recent-project-img-4.jpg" data-rel="lightcase:myCollection"><i class="fa fa-search-plus" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- /.portfolio-img -->
-                            <div class="recent-project-content">
-                                <h4><a href="project_single.html">Save The Ozone Layer</a></h4>
-                                <p>By : <span><a href="#">Green Forest</a></span></p>
-                            </div>
-                            <!-- .latest-port-content -->
-                        </div>
-                        <!-- .item-inner -->
-                    </div>
-                    <!-- .items -->
-                    <div class="item cat-4" data-category="transition">
-                        <div class="item-inner">
-                            <div class="portfolio-img">
-                                <div class="overlay-project"></div>
-                                <!-- .overlay-project -->
-                                <img src="images/home02/recent-project-img-5.jpg" alt="recent-project-img-5">
-                                <ul class="project-link-option">
-                                    <li class="project-link"><a href="project_single.html"><i class="fa fa-link" aria-hidden="true"></i></a></li>
-                                    <li class="project-search"><a href="images/home02/recent-project-img-5.jpg" data-rel="lightcase:myCollection"><i class="fa fa-search-plus" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- /.portfolio-img -->
-                            <div class="recent-project-content">
-                                <h4><a href="project_single.html">Save Water From Polution</a></h4>
-                                <p>By : <span><a href="#">Green Forest</a></span></p>
-                            </div>
-                            <!-- .latest-port-content -->
-                        </div>
-                        <!-- .item-inner -->
-                    </div>
-                    <!-- .items -->
-                    <div class="item cat-1" data-category="alkali">
-                        <div class="item-inner">
-                            <div class="portfolio-img">
-                                <div class="overlay-project"></div>
-                                <!-- .overlay-project -->
-                                <img src="images/home02/recent-project-img-6.jpg" alt="recent-project-img-6">
-                                <ul class="project-link-option">
-                                    <li class="project-link"><a href="project_single.html"><i class="fa fa-link" aria-hidden="true"></i></a></li>
-                                    <li class="project-search"><a href="images/home02/recent-project-img-6.jpg" data-rel="lightcase:myCollection"><i class="fa fa-search-plus" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- /.portfolio-img -->
-                            <div class="recent-project-content">
-                                <h4><a href="project_single.html">Make Plants Alive</a></h4>
-                                <p>By : <span><a href="#">Green Forest</a></span></p>
-                            </div>
-                            <!-- .latest-port-content -->
-                        </div>
-                        <!-- .item-inner -->
-                    </div> --}}
-                    <!-- .items -->
-                </div>
-                <!-- .isotope-items -->
-            </div>
-            <!-- .recent-project -->
-        </div>
-        <!-- .row -->
+   @props(['posts' ,'subHeading'])
+   @use(Illuminate\Support\Str)
+   <div class="container">
+    <div class="section-header">
+        <h2>{{__('News')}}</h2>
+        <p>{{$subHeading}}</p>
     </div>
-    <!-- .container -->
-</section>
-<!-- End Recent Project Section -->
+    <div class="row">
+        @foreach($posts as $post)
+
+        <div class="col-12 col-sm-6 col-lg-4">
+
+            <div class="blog-items">
+                <div class="blog-img">
+                    <a href="{{ route('post', $post->slug) }}">
+
+                     <img src="{{ $post->image()}}" alt="blog-img-1" class="img-responsive" />
+
+                    </a>
+                </div>
+                <!-- .blog-img -->
+                <div class="blog-content-box">
+                    <div class="blog-content">
+                        <h4><a href="{{ route('post', $post->slug) }}">{!! Str::substr($post->title, 0, 30) !!}</a></h4>
+                        @if ($post->description !== null)
+                            <p>
+                                {!! Str::substr($post->description, 0, 15) !!}
+                            </p>
+                        @endif
+                    </div>
+                    <!-- .blog-content -->
+                    <div class="meta-box">
+                        <ul class="meta-post">
+                            <li>
+                                <i class="fa fa-calendar" aria-hidden="true">
+                                </i> {{ optional($post->published_at)->diffForHumans() ?? '' }}
+                            </li>
+                            <li x-data="{
+                                likes: @js($post->likes),
+                                post_id: @js($post->id),
+                                liked: @js($post->checkIfHasLikeForThisIp(request()->getClientIp())),
+                                like_post() {
+                                    axios.get('{{ route('ajax.like_post', $post->slug) }}')
+                                        .then(r => {
+                                            console.log(r)
+                                            if (r.data) {
+                                                this.likes = r.data.likes
+                                                this.liked = r.data.liked
+                                            }
+                                        })
+                                        .catch(e => console.log(e))
+                                }
+
+                            }">
+                                <button style="background:transparent" x-on:click="like_post" class="btn-transparent">
+                                    <i x-bind:style="liked && 'color:red'" x-bind:class="`fa fa-heart-o`"
+                                        aria-hidden="true"></i> <span x-text="likes === null ? 0 : likes"></span>
+                                </button>
+
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-user-o"
+                                        aria-hidden="true"></i>
+                                    {{ $post->author->name }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- .meta-box -->
+                </div>
+                <!-- .blog-content-box -->
+            </div>
+            <!-- .blog-items -->
+        </div>
+        @endforeach
+
+
+    </div>
+@php
+ $query =request()->is('home-sommod') ? '?p=sommod' : ''
+@endphp
+    <a href="{{route('blogs')}}{{$query}}" class="btn btn-default d-block" style="margin:0 auto ; width:200px">{{__('More News')}}</a>
+
+   </div>
+
+   <!-- .col-md-4 -->
+
+   {{-- <article class="mt-6" itemscope itemtype="https://schema.org/Movie">
+       <div class="px-6 pb-6 mx-auto bg-white dark:bg-gray-800 rounded-[2rem] rounded-bl-none rounded-tr-none shadow-md">
+           <div class="flex items-center justify-between">
+               <span class="mt-2 text-sm font-light text-gray-600 dark:text-gray-200">{{
+                   optional($post->published_at)->diffForHumans() ?? '' }}</span>
+               <div>
+                   @unless ($post->tags->isEmpty())
+                   @each($skyTheme.'.partial.category', $post->tags->where('type','category'), 'category')
+                   @endunless
+               </div>
+           </div>
+           <aside class="mt-2">
+               <a href="{{ route('post',$post->slug) }}"
+                   class="text-2xl font-bold text-gray-700 md:text-3xl dark:text-gray-200 hover:underline">
+                   {!! $post->title !!}
+               </a>
+               @if ($post->description !== null)
+               <p class="mt-2 text-gray-600 dark:text-gray-200">
+                   {!! $post->description !!}
+               </p>
+               @endif
+           </aside>
+           <div class="flex items-center justify-between mt-4">
+               <a href="{{ route('post',$post->slug) }}" class="text-blue-500 dark:text-blue-200 hover:underline">Read
+                   more</a>
+               <div>
+                   <a class="flex items-center gap-2">
+                       <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->author) }}" alt="avatar"
+                           class="hidden object-cover w-8 h-8 rounded-full sm:block">
+                       <p class="text-gray-700 dark:text-gray-200 hover:underline">{{ $post->author->name ?? '' }}</p>
+                   </a>
+               </div>
+           </div>
+       </div>
+   </article> --}}

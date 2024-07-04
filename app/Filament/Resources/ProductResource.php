@@ -11,7 +11,7 @@ use App\Traits\PostResourceTrait;
 use Filament\Resources\Concerns\Translatable;
 use LaraZeus\Sky\SkyPlugin;
 use App\Models\Post;
-
+use App\Filament\Resources\AdministrationMemebersResource\RelationManagers\LinksRelationManager;
 class ProductResource extends Resource
 {
     use Translatable, PostResourceTrait;
@@ -67,12 +67,12 @@ class ProductResource extends Resource
         return parent::getEloquentQuery()->product();
     }
 
-    // public static function getRelations(): array
-    // {
-    //     return [
-    //         //
-    //     ];
-    // }
+    public static function getRelations(): array
+    {
+        return [
+            LinksRelationManager::class,
+        ];
+    }
 
     public static function getPages(): array
     {

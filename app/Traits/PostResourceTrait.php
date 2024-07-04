@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace App\Traits;
 //Laravel
 use Illuminate\Database\Eloquent\Builder;
@@ -57,8 +58,9 @@ use Illuminate\Support\Str;
 //others
 use App\Models\Scopes\PanelScope;
 
-trait PostResourceTrait {
-    
+trait PostResourceTrait
+{
+
     protected static $post_type = 'post';
 
 
@@ -68,7 +70,7 @@ trait PostResourceTrait {
             Tabs::make('post_tabs')->schema([
                 Tabs\Tab::make(__('Title & Content'))->schema([
                     TextInput::make('title')
-                        ->label(static::getLabel()." ".__('Title'))
+                        ->label(static::getLabel() . " " . __('Title'))
                         ->required()
                         ->maxLength(255)
                         ->live(onBlur: true)
@@ -76,21 +78,26 @@ trait PostResourceTrait {
                             $set('slug', Str::slug($state));
                         }),
                     config('zeus-sky.editor')::component()
-                    ->label(__("Post Content")),
+                        ->label(__("Post Content")),
+
                     Select::make('google_form_id')
                         ->relationship(name: 'form', titleAttribute: 'name')
                         ->preload(),
-                    Repeater::make('post_meta')
-                    ->label(__("Custom fields"))
-                        ->relationship()
+                    Section::make(__('Custom fields'))
                         ->schema([
-                            TextInput::make('key')
-                            ->label(__('Title')),
-                            TextInput::make('value')
-                            ->label(__('Value')),
-                            IconPicker::make('icon')
-                            ->label(__('Icon'))
-                        ])
+                            Repeater::make('post_meta')
+                                ->label(__("Fields"))
+                                ->relationship()
+                                ->schema([
+                                    TextInput::make('key')
+                                        ->label(__('Title')),
+                                    TextInput::make('value')
+                                        ->label(__('Value')),
+                                    IconPicker::make('icon')
+                                        ->label(__('Icon'))
+                                ])
+                        ]),
+
                 ]),
                 Tabs\Tab::make(__('SEO'))->schema([
                     Hidden::make('user_id')
@@ -104,14 +111,14 @@ trait PostResourceTrait {
                     Textarea::make('description')
                         ->maxLength(255)
                         ->label(__('Description'))
-                        ->hint(__('Write an excerpt for your ').static::getLabel()),
+                        ->hint(__('Write an excerpt for your ') . static::getLabel()),
 
                     TextInput::make('slug')
-                        ->unique(ignorable: fn(?Post $record): ?Post => $record)
+                        ->unique(ignorable: fn (?Post $record): ?Post => $record)
                         ->required()
                         ->maxLength(255)
                         ->label(__("Slug")),
-                    
+
 
                     // Select::make('parent_id')
                     //     ->options(
@@ -122,10 +129,10 @@ trait PostResourceTrait {
                     //     )
                     //     ->label(__('Parent')),
 
-                    // TextInput::make('ordering')
-                    //     ->integer()
-                    //     ->label(__('Order'))
-                    //     ->default(1),
+                    TextInput::make('ordering')
+                        ->integer()
+                        ->label(__('Order'))
+                        ->default(1),
                 ]),
                 Tabs\Tab::make(__('Tags'))->schema([
                     Placeholder::make(__('Tags and Categories')),
@@ -136,6 +143,9 @@ trait PostResourceTrait {
                     SpatieTagsInput::make('category')
                         ->type('category')
                         ->label(__('Categories')),
+                    SpatieTagsInput::make(static::getPostType())
+                        ->type(static::getPostType())
+                        ->label(__('Type Category')),
                 ]),
 
                 Tabs\Tab::make(__('Visibility'))->schema([
@@ -149,7 +159,7 @@ trait PostResourceTrait {
 
                     TextInput::make('password')
                         ->label(__('Password'))
-                        ->visible(fn(Get $get): bool => $get('status') === 'private'),
+                        ->visible(fn (Get $get): bool => $get('status') === 'private'),
 
                     DateTimePicker::make('published_at')
                         ->label(__('published at'))
@@ -182,11 +192,11 @@ trait PostResourceTrait {
                         ->collection('posts')
                         ->disk(SkyPlugin::get()->getUploadDisk())
                         ->directory(SkyPlugin::get()->getUploadDirectory())
-                        ->visible(fn(Get $get) => $get('featured_image_type') === 'upload')
+                        ->visible(fn (Get $get) => $get('featured_image_type') === 'upload')
                         ->label(''),
                     TextInput::make('featured_image')
                         ->label(__('featured image url'))
-                        ->visible(fn(Get $get) => $get('featured_image_type') === 'url')
+                        ->visible(fn (Get $get) => $get('featured_image_type') === 'url')
                         ->url(),
                     Section::make()
                         ->label(__('Thumbnail'))
@@ -198,51 +208,42 @@ trait PostResourceTrait {
                                 ->directory(SkyPlugin::get()->getUploadDirectory())
                                 ->live()
                                 ->afterStateHydrated(function ($state, ?\LaraZeus\Sky\Models\Post $record, Get $get, Set $set, string $operation) {
-                                    // state is null on create , empty array on edit 
-                                    // do clear thubnail collection when adding a custom thubnail 
-                        
+                                    // state is null on create , empty array on edit
+                                    // do clear thubnail collection when adding a custom thubnail
                                     $has_thmb = $get('has_thumb') === null ? false : $get('has_thumb');
 
-                                    // dd($state, $record);
-                        
                                     if ($operation === 'edit') {
                                     }
                                     if ($operation === 'create') {
                                     }
-
-
-
-                                    if (is_null($state) || empty ($state) && is_null($record) || !$has_thmb) {
-
+                                    if (is_null($state) || empty($state) && is_null($record) || !$has_thmb) {
                                         $has_thmb = $has_thmb;
                                     }
-
-                                    if (!is_null($state) && is_array($state) && !empty ($state) && !$has_thmb) {
-                                        // has thumb
-                                        //      if(!is_null($record)) {
-                                        //         if($record->has_thumb) {
-                                        //             // get media url 
-                                        //             $media = $record->getMedia('posts')[0]->getPath('thumb-cropped-original');
-                        
-
-
-                                        //         }
-                                        // }
-                        
+                                    if (!is_null($state) && is_array($state) && !empty($state) && !$has_thmb) {
                                         $has_thmb = true;
                                     }
-
-                                    // dd($has_thmb);
-                        
                                     $set('has_thumb', $has_thmb);
-
-                                    //dd($state, $operation , $record);
                                 }),
                             Checkbox::make('has_thumb')
                                 ->label('Has thmbnail')
                                 ->required()
                         ])
                 ]),
+
+                Tabs\Tab::make(__('Attachment'))
+                    ->schema([
+                        SpatieMediaLibraryFileUpload::make('attachments')
+                            ->label(__('Attachments'))
+                            ->acceptedFileTypes(['application/msword', 'application/pdf', 'text/plain'])
+                            ->minSize(1)
+                            ->maxSize(1024 * 4)
+                            ->multiple()
+                            ->preserveFilenames()
+                            ->collection('attachments')
+                            ->directory('attachments')
+                            ->dehydrated(false)
+
+                    ])
             ])->columnSpan(2),
         ]);
     }
@@ -255,7 +256,7 @@ trait PostResourceTrait {
                     ->sortable(['title'])
                     ->searchable(['title'])
                     ->toggleable()
-                    ->view('zeus::filament.columns.page-title'),
+                    ->view('zeus::filament.columns.post-title'),
 
                 ViewColumn::make('status_desc')
                     ->label(__('Status'))
@@ -263,7 +264,7 @@ trait PostResourceTrait {
                     ->searchable(['status'])
                     ->toggleable()
                     ->view('zeus::filament.columns.status-desc')
-                    ->tooltip(fn(Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
+                    ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
                 SpatieTagsColumn::make('tags')
                     ->label(__('Post Tags'))
                     ->toggleable(isToggledHiddenByDefault: false)
@@ -272,6 +273,10 @@ trait PostResourceTrait {
                     ->label(__('Post Category'))
                     ->toggleable()
                     ->type('category'),
+                SpatieTagsColumn::make(static::getPostType())
+                    ->label(__('Type Category'))
+                    ->toggleable()
+                    ->type(static::getPostType()),
                 TextColumn::make('panels.panel_name')
                     ->label(__('Panel')),
 
@@ -291,7 +296,7 @@ trait PostResourceTrait {
                     ->options(SkyPlugin::get()->getModel('PostStatus')::pluck('label', 'name')),
                 Filter::make('password')
                     ->label(__('Password Protected'))
-                    ->query(fn(Builder $query): Builder => $query->whereNotNull('password')),
+                    ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
             ]);
     }
     public static function getActions(): array
@@ -302,14 +307,14 @@ trait PostResourceTrait {
                 ->color('warning')
                 ->icon('heroicon-o-arrow-top-right-on-square')
                 ->label(__('Open'))
-                ->url(fn(Post $record): string => route(static::getRoute(), ['slug' => $record]))
+                ->url(fn (Post $record): string => route(static::getRoute(), ['slug' => $record]))
                 ->openUrlInNewTab(),
             DeleteAction::make('delete'),
             ForceDeleteAction::make(),
             RestoreAction::make(),
         ];
 
-       
+
 
         return [ActionGroup::make($action)];
     }

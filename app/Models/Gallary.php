@@ -8,12 +8,14 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Traits\PanelResource;
 class Gallary extends Model implements HasMedia
 {
     use InteractsWithMedia , HasTranslations;
 
     use HasFactory;
+    use PanelResource;
     protected $fillable = ['title' , 'show_in_slider'];
 
     protected $translatable = ['title'];
@@ -23,5 +25,10 @@ class Gallary extends Model implements HasMedia
     public function scopeShowInSlider(Builder $builder) : Builder {
         return $builder->where('show_in_slider', 1);
     }
+
+    public function posts() : HasMany {
+        return $this->hasMany(Post::class,'gallary_id' , 'id');
+    }
+
 
 }

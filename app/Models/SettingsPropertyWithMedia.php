@@ -9,7 +9,7 @@ use Spatie\Translatable\HasTranslations;
 
 class SettingsPropertyWithMedia extends Model
 {
-    use HasTranslations;
-    public $translatable = ['payload'];
+    // use HasTranslations;
+    // public $translatable = ['payload'];
 
 }

@@ -4,6 +4,13 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
 return [
+    /**
+     * Content provider for each panel
+     *
+     */
+
+
+    'content_provider' => 'admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -96,7 +103,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -187,6 +194,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        // "SimpleExcelReader" =>  Spatie\SimpleExcel\SimpleExcelReader::class
+
     ])->toArray(),
 
 ];
