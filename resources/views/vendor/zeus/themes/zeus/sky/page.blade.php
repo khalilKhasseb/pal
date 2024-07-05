@@ -119,8 +119,9 @@
                                             src="{{ $post->form->responder_uri }}" width="100%" height="1200px">
                                         </iframe>
                                     @endif
+                                    
                                     @if (!is_null($post->gallary))
-                                        <x-theme.gallary :gallary="$post->gallary->getMedia('gallary')" />
+                                        <x-theme.gallary :gallary="$post->gallary->getMedia('*')" />
                                     @endif
                                 </div>
                                 <!-- .blog-content -->
