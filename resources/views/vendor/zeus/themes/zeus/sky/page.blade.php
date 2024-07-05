@@ -85,7 +85,7 @@
                                 <!-- .meta-box -->
                                 <div class="blog-content">
                                     <h4 class="text-center">{{ $post->title }}</h4>
-
+              @dd($post->getContent())
                                     {!! $post->getContent() !!}
                                     @if (!is_null($post->gallary))
                                         <x-theme.post-gallary :gallary="$post->gallary" :slug="$post->slug" />
