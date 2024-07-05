@@ -10,7 +10,6 @@
 
     $dest = $sommod ? $contentSettings['s_destintaion'] : $contentSettings['c_destintaion'];
 
-    dd($dest);
 @endphp
 {{-- @dd($contentSettings) --}}
 <section class="bg-about-greenforest">
@@ -26,7 +25,7 @@
                             <p>
                                 {{ $content }}
                             </p>
-                            <a href="{{route('post', ['slug' => $dest])}}" class="btn btn-default">{{ __('More') }}</a>
+                            <a href="{{!empty($dest) ? route('post', ['slug' => $dest]) : '#'}}" class="btn btn-default">{{ __('More') }}</a>
                             {{-- <a href="#" class="btn btn-default">{{ __('Join us') }}</a> --}}
                         </div>
                         <!-- .about-greenforest-content -->
