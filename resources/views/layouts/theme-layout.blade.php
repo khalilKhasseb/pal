@@ -94,6 +94,9 @@
             content: "*";
             color:red
         }
+        .navbar-brand{
+            max-width:100px
+        }
     </style>
     @vite('resources/js/app.js')
 </head>
