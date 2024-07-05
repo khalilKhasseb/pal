@@ -21,6 +21,10 @@ class SiteSetting extends Settings
     public  $comments_enabled;
 
     public bool $checkout_enabled;
+
+    public string|null $ar_site_name;
+    public string|null $ar_site_description;
+
     public static function group(): string
     {
         return 'generalSetting';

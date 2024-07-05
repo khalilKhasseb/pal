@@ -67,8 +67,15 @@ class MangeSite extends SettingsPage
                                 TextInput::make('site_name')
                                     ->label(__("Site name"))
                                     ->suffixIcon('heroicon-m-globe-alt'),
+                                TextInput::make('ar_site_name')
+                                    ->label(__("Ar Site name"))
+                                    ->suffixIcon('heroicon-m-globe-alt'),
+
                                 TextInput::make('site_description')
                                     ->label(__('Site description'))
+                                    ->suffixIcon('heroicon-o-document-text'),
+                                TextInput::make('ar_site_description')
+                                    ->label(__('AR Site description'))
                                     ->suffixIcon('heroicon-o-document-text'),
 
                             ]),

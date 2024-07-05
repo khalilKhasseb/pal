@@ -7,9 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @php
-        $siteTitle = !is_null($settings->site_name) ? $settings->site_name : config('app.name', 'Palgpc');
+        //$siteTitle = !is_null($settings->site_name) ? $settings->site_name : config('app.name', 'Palgpc');
+        $siteTitle =  app()->getLocale()  === 'ar' 
+        ? $settings->ar_site_name  
+        : (!is_null($settings->site_name) ? $settings->site_name : config('app.name', 'Palgpc'));
+
+        $description =  app()->getLocale()  === 'ar' 
+        ? $settings->ar_site_description  
+        : (!is_null($settings->site_description) ? $settings->site_description : config('app.name', 'Palgpc'));
+
     @endphp
     <meta name="application-name" content="{{ $siteTitle }}">
+    <meta name="description" content="{{$description}}" >
     <title>{{ $siteTitle }}</title>
     <!-- Seo Tags -->
     <x-seo::meta />
