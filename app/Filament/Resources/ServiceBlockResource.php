@@ -16,6 +16,7 @@ use Filament\Forms\Set;
 
 class ServiceBlockResource extends Resource
 {
+    use \App\Traits\ConcielAccess;
     protected static ?string $model = ServiceBlock::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

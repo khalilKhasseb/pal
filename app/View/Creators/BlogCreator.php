@@ -37,7 +37,7 @@ class BlogCreator
 
         $popularTags =
         DB::select('SELECT taggables.tag_id ,tags.name ,tags.slug,tags.type,count(*) FROM taggables
-        inner join tags on taggables.tag_id = tags.id
+        inner join tags on taggables.tag_id = tags.id and tags.type != "library"
          group by taggables.tag_id,tags.name');
 
         $popularTags = collect($popularTags)->map(function ($tag) {

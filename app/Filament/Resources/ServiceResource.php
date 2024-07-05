@@ -17,6 +17,7 @@ use LaraZeus\Sky\SkyPlugin;
 use App\Traits\PostResourceTrait;
 class ServiceResource extends Resource
 {
+    // use \App\Traits\ConcielAccess;
     use Translatable, PostResourceTrait;
 
     protected static ?string $model = Post::class;

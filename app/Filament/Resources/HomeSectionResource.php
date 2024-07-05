@@ -21,6 +21,7 @@ use App\Classes\WidgetsForms;
 
 class HomeSectionResource extends Resource
 {
+    use \App\Traits\ConcielAccess;
     protected static ?string $model = HomeSection::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

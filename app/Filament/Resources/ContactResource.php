@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ContactResource extends Resource
 {
+    use \App\Traits\ConcielAccess;
     protected static ?string $model = Contact::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -78,5 +79,6 @@ class ContactResource extends Resource
     {
         return __('Theme content');
     }
+
 
 }
