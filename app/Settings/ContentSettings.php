@@ -20,6 +20,9 @@ class ContentSettings extends Settings
     public string | null $partners_ar;
     public string | null $partners_en;
 
+    public string|null $s_destintaion;
+    public string|null $c_destintaion;
+
     // public string | null $sommodLogo;
     public string | null $c_about_img;
     public string | null $s_about_img;

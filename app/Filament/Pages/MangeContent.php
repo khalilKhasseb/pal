@@ -30,6 +30,12 @@ class MangeContent extends SettingsPage
                             ->label(__('About us Arabic')),
                         fc\Textarea::make('c_about_en')
                             ->label(__('About us Englis')),
+                        fc\Select::make('c_destintaion')
+                            ->label('Destenation')
+                            ->options(function () {
+                                $posts = \App\Models\Post::page()->get()->pluck('title', 'slug');
+                                return $posts;  
+                        }),    
                         fc\FileUpload::make('c_about_img')
                             ->label(__('Image for about us'))
                             ->image()
@@ -43,7 +49,13 @@ class MangeContent extends SettingsPage
                             ->label(__('About us Arabic')),
                         fc\Textarea::make('s_about_en')
                             ->label(__('About us Englis')),
-                        fc\FileUpload::make('s_about_img')
+                        fc\Select::make('s_destintaion')
+                            ->label('Destenation')
+                            ->options(function () {
+                                $posts = \App\Models\Post::page()->get()->pluck('title', 'slug');
+                                return $posts;
+                            }),
+                            fc\FileUpload::make('s_about_img')
                             ->label(__('Image for about us'))
                             ->image()
                             ->imageEditor()

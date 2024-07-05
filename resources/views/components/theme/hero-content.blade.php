@@ -7,6 +7,8 @@
     $local = app()->getLocale();
     $content = $sommod ? $contentSettings[$s . '_about_' . $local] : $contentSettings[$c . '_about_' . $local];
     $aboutImg = $sommod ? $contentSettings[$s . '_about_img'] : $contentSettings[$c . '_about_img'];
+
+    $dest = $sommod ? $contentSettings['s_destintaion'] : $contentSettings['c_destintaion'];
 @endphp
 {{-- @dd($contentSettings) --}}
 <section class="bg-about-greenforest">
@@ -22,8 +24,8 @@
                             <p>
                                 {{ $content }}
                             </p>
-                            <a href="#" class="btn btn-default">{{ __('More') }}</a>
-                            <a href="#" class="btn btn-default">{{ __('Join us') }}</a>
+                            <a href="{{route('post', ['slug' => $dest])}}" class="btn btn-default">{{ __('More') }}</a>
+                            {{-- <a href="#" class="btn btn-default">{{ __('Join us') }}</a> --}}
                         </div>
                         <!-- .about-greenforest-content -->
                     </div>
