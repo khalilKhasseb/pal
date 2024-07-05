@@ -132,7 +132,10 @@ class Post extends Model
     }
     public function getContent(): string
     {
-        dd($this->content);
+        if(is_array($this->content)) {
+            $this->content = json_encode($this->content);
+        }
         return $this->parseContent(config('zeus-sky.editor')::render($this->content));
     }
+    //yuKLB.4YrDT8
 }
