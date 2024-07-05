@@ -344,7 +344,16 @@ body.rtl .shop-grid-view .collection-content {
     margin-left: initial !important;
     margin-right: auto;
 }
+body.rtl .menu-item-has-children>a::after {
+    left: 5px;
+}
 
+@media screen and (min-width: 992px) { 
 
+   body.rtl .sub-sub-menu {
+        left:0 ;
+        right: 100%;
+    }
+}
 
 

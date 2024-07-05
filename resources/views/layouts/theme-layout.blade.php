@@ -57,7 +57,7 @@
             href="{{ asset('css/template/style.css') }}?11ssdasad23" media="all" />
         @if (app()->getLocale() === 'ar')
             <link data-layout="front" rel="stylesheet" type="text/css"
-                href="{{ asset('css/template/rtl.css') }}?23dsadswdsa" media="all" />
+                href="{{ asset('css/template/rtl.css') }}?23dsadswdssa" media="all" />
         @endif
         <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/responsive.css') }}"
             media="all" />
