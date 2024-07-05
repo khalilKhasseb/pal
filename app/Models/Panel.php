@@ -19,14 +19,13 @@ class Panel extends Model
 
     // this modal will have many resurcable
 
-    public function posts(): MorphToMany
+    public function posts($type = null): MorphToMany
     {
-
         return $this
             ->morphedByMany(
                 Post::class,
                 'resourcables',
-            );
+            )->where('post_type'  , $type);
         /**
          * This panel has many resource get all resource for a given type
          * Return all resource for this panel
