@@ -9,6 +9,8 @@
     $aboutImg = $sommod ? $contentSettings[$s . '_about_img'] : $contentSettings[$c . '_about_img'];
 
     $dest = $sommod ? $contentSettings['s_destintaion'] : $contentSettings['c_destintaion'];
+
+    dd($dest);
 @endphp
 {{-- @dd($contentSettings) --}}
 <section class="bg-about-greenforest">
