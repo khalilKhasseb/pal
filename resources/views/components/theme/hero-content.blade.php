@@ -25,7 +25,7 @@
                             <p>
                                 {{ $content }}
                             </p>
-                            <a href="{{!empty($dest) ? route('post', ['slug' => $dest]) : '#'}}" class="btn btn-default">{{ __('More') }}</a>
+                            <a href="{{!empty($dest) ? route('page', ['slug' => $dest]) : '#'}}" class="btn btn-default">{{ __('More') }}</a>
                             {{-- <a href="#" class="btn btn-default">{{ __('Join us') }}</a> --}}
                         </div>
                         <!-- .about-greenforest-content -->
