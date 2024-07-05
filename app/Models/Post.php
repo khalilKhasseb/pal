@@ -130,4 +130,9 @@ class Post extends Model
             ->performOnCollections('posts')
             ->fit(Fit::Fill, 380, 300, false, '#333');
     }
+    public function getContent(): string
+    {
+        dd($this->content);
+        return $this->parseContent(config('zeus-sky.editor')::render($this->content));
+    }
 }
