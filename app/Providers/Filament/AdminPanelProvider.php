@@ -36,6 +36,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Green,
             ])
+            ->font('Zain')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandName('Nebula Systems')
             ->discoverResources(in: app_path('Filament/Sommod/Resources'), for: 'App\\Filament\\Sommod\\Resources')
@@ -52,8 +53,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->userMenuItems([
                MenuItem::make()
-               ->label(__('Sommod'))
-               ->url(fn() => route('filament.sommod.pages.dashboard'))
+               ->label(__('Somoud'))
+               ->url(fn() => route('filament.somoud.pages.dashboard'))
             ])->navigationGroups([
                     __('Blog'),
                     __('Theme content'),

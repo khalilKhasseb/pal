@@ -27,11 +27,12 @@ class SommodPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->id('sommod')
-            ->path('sommod')
+            ->id('somoud')
+            ->path('somoud')
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->font('Zain')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandName('Nebula Systems')
             ->discoverResources(in: app_path('Filament/Sommod/Resources'), for: 'App\\Filament\\Sommod\\Resources')
