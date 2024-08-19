@@ -20,6 +20,9 @@ class PostSeeder extends Seeder
         $rows = SimpleExcelReader::create('imports/posts-en-ar.csv')->getRows();
         $local = app()->getLocale();
 
+        // eval($f);
+
+
         $rows->each(function ($row) use ($local) {
             DB::transaction(function () use ($row, $local) {
                 $post = Post::create([
@@ -56,10 +59,8 @@ class PostSeeder extends Seeder
                     }
                 endif;
                 // attach panel
-                $post->panels()->attach([1,2]);
+                $post->panels()->attach([$row['panel']]);
                 if (isset($row['img'])) {
-
-
                     try {
                         $post->addMediaFromUrl($row['img'])->toMediaCollection('posts');
                     } catch (\Exception $exception) {
