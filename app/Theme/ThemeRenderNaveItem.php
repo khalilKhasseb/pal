@@ -20,7 +20,6 @@ class ThemeRenderNaveItem
             : $item['label_' . $local];
 
         $color = '';
-        // $queryParmr= $sommod ? "?p=sommod" : '';
         if ($item['type'] === 'category') {
             $category = SkyPlugin::get()->getModel('Tag')::whereIn('type', Tag::getTypes())->find($item['data']['category_id']) ?? '';
             $activeClass = (request()->routeIs('page', 'category')) ? $color : 'border-transparent';

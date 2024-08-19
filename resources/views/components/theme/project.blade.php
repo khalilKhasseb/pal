@@ -80,7 +80,7 @@
 @php
  $query =request()->is('home-sommod') ? '?p=sommod' : ''
 @endphp
-    <a href="{{route('blogs')}}{{$query}}" class="btn btn-default d-block" style="margin:0 auto ; width:200px">{{__('More News')}}</a>
+    <a href="{{route('blogs')}}" class="btn btn-default d-block" style="margin:0 auto ; width:200px">{{__('More News')}}</a>
 
    </div>
 
