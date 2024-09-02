@@ -46,7 +46,8 @@ class Sommod
         $content_provider_file_path = storage_path('app/content_provider.json');
         $content_provider = json_encode([
             'provider' => $provider,
-            'source' => $source
+            'source' => $source,
+            
         ]);
         // validate file if not exists
 
@@ -67,21 +68,21 @@ class Sommod
     {
         $routeName = $request->route()->getName();
         if ($this->routeSommod($request)) {
-            $this->setContentProvider('sommod', $routeName);
-            $this->handelSession('sommod');
+            $this->setContentProvider('somoud', $routeName);
+            $this->handelSession('somoud');
         } elseif ($this->routeHome($request)) {
             $this->setContentProvider('council', $routeName);
             $this->handelSession('council');
         } elseif ($this->routeBackEnd($request)) {
-            $this->setContentProvider('admin', $routeName);
+            $this->setContentProvider(filament()->getCurrentPanel()->getId(), $routeName);
         }
     }
 
     protected function handelSession(string $provider)
     {
 
-        if ($provider === 'sommod') {
-            session()->put('sommod_load', true);
+        if ($provider === 'somoud') {
+            session()->put('somoud_load', true);
             if (session()->has('council_load')) {
                 session()->remove('council_load');
             }
@@ -89,8 +90,8 @@ class Sommod
         }
         if ($provider === 'council') {
             session()->put('council_load', true);
-            if (session()->has('sommod_load')) {
-                session()->remove('sommod_load');
+            if (session()->has('somoud_load')) {
+                session()->remove('somoud_load');
             }
             return;
         }
@@ -99,7 +100,7 @@ class Sommod
 
     private function routeSommod(Request $request): bool
     {
-        return $request->route()->getName() === 'front.sommod.home';
+        return $request->route()->getName() === 'front.somoud.home';
     }
     private function routeHome(Request $request): bool
     {
@@ -107,7 +108,9 @@ class Sommod
     }
 
     private function routeBackEnd(Request $request): bool
-    {
+    {    // check if sommoad panle is loaded 
+
+        
         return str_contains($request->route()->getName(), 'filament');
     }
 }

@@ -3,28 +3,18 @@
 namespace App\Models\Blog;
 
 use App\Models\Panel;
-use App\Models\Scopes\PanelScope;
+// use App\Models\Scopes\PanelScope;
+use App\Traits\PanelResource;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use \LaraZeus\Sky\Models\Tag as Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Builder;
-
+// use App\Traits\PanelResource;
 class Tag extends Model
 {
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope(new PanelScope);
-    }
-
-    public function panels(): MorphToMany
-    {
-        return $this->morphToMany(
-            Panel::class,
-            'resourcables'
-        );
-    }
+   use PanelResource;
+    
 
     public function parent(): BelongsTo
     {
@@ -34,4 +24,5 @@ class Tag extends Model
     {
         return $this->hasMany(self::class, 'parent_id');
     }
+   
 }

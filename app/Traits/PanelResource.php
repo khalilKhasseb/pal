@@ -18,12 +18,12 @@ trait PanelResource
         $content_provider = json_decode(Storage::get('content_provider.json'));
         if(is_null($content_provider)) return ;
         // dd($content_provider);
-        if ($content_provider->provider === 'admin') {
+        if(str_contains($content_provider->source , 'filament')) {
             static::withoutGlobalScope(ContentProviderScope::class);
             static::addGlobalScope(PanelScope::class);
-        } elseif (
-            $content_provider->provider === 'sommod'
-            || $content_provider->provider === 'council'
+        }
+         elseif (
+            !str_contains($content_provider->source, 'filament')
         ) {
             static::withoutGlobalScope(PanelScope::class);
             static::addGlobalScope(ContentProviderScope::class);

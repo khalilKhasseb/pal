@@ -16,9 +16,9 @@ class PanelScope implements Scope
     public function apply(Builder $builder, Model $model): void
     {
 
-        $panelName  = Filament::getCurrentPanel()->getId() !== 'admin' ? Filament::getCurrentPanel()->getId() : '';
+        // $panelName  = Filament::getCurrentPanel()->getId() !== 'admin' ? Filament::getCurrentPanel()->getId() : '';
 
-        $panel = Panel::findByName($panelName);
+        $panel = Panel::findById(Filament::getCurrentPanel()->getId());
         if (null !== $panel) {
 
             $builder->whereHas('panels', function (Builder $query) use ($panel) {

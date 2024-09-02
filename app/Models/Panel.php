@@ -101,6 +101,12 @@ class Panel extends Model
             ->first();
     }
 
+    public static function findById(string $id) {
+        return static::query()
+            ->where('panel_id', $id)
+            ->first();
+    }
+
     public function scopePanelByName(Builder $query,string $name) : Builder {
         return $query->where('panel_id' , $name) ;
     }
