@@ -8,8 +8,9 @@
     </li>
 </x-slot>
 
+
 <div class="container">
-    <div` x-data="{
+    <div x-data="{
         // show_1: false,
         //show_2: false,
         show: {},

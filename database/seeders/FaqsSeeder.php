@@ -44,36 +44,23 @@ class FaqsSeeder extends Seeder
             $tagParent->setTranslation('name',$transLocal , $row['parent_tag_' . $transLocal])
                 ->setTranslation('slug', $transLocal, str($row['parent_tag_' . $transLocal])->slug('-', $transLocal))
                 ->save();
-
+      
                 $tagChild = Tag::findOrCreateFromString($row['child_tag_'.$local], 'faq');
 
             $tagChild->setTranslation('name', $transLocal , $row['child_tag_' . $transLocal])
                 ->setTranslation('slug', $transLocal, str($row['child_tag_' . $transLocal])->slug('-', $transLocal))
                 ->save();
 
+            $tagParent->panels()->attach([1, 2]);  
+            $tagChild->panels()->attach([1, 2]);  
 
             $tagParent->children()->save($tagChild);
+
             $f->attachTags([$tagParent, $tagChild]);
 
             $f->panels()->attach([1, 2]);
         });
     }
 
-    //     $question = 'question';
-    //     $answer = 'answer';
-
-    //     $faqs = CSVParser::parse(base_path('imports/faqs-ar.csv'));
-
-    //     foreach ($faqs as $faq) {
-    //         $_faqModel = Faq::create([
-    //             'question' => $faq['question'],
-    //             'answer' => $faq['answer']
-    //         ]);
-
-    //         $tagParent = Tag::findOrCreateFromString($faq['parent'], 'faq');
-    //         $tagChild = Tag::findOrCreateFromString($faq['child'], 'faq');
-    //         $tagParent->children()->save($tagChild);
-    //         $_faqModel->attachTags([$tagParent, $tagChild]);
-    //     }
-    // }
+   
 }

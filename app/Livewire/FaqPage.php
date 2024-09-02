@@ -34,6 +34,7 @@ class FaqPage extends Component
         $model = SkyPlugin::get()->getModel('Faq');
         $cats = SkyPlugin::get()->getModel('Tag')::with('children')->where('type', 'faq')
             ->get();
+       
         seo()
             ->site(config('zeus.site_title', 'Laravel'))
             ->title(__('FAQ') . ' - ' . config('zeus.site_title'))
