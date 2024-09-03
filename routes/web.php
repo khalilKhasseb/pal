@@ -200,3 +200,5 @@ Route::get('rel/{type}', function (Request $request) {
     });
     // dd(collect(class_basename($reflectorCalss->getMethods())[0]->getReturnType()));
 });
+
+
