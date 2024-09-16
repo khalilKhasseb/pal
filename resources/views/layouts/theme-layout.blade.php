@@ -124,7 +124,7 @@
         @if (
             !is_null(Route::current()) &&
                 Route::current()->getName() !== 'theme.home' &&
-                Route::current()->getName() !== 'front.sommod.home')
+                Route::current()->getName() !== 'front.somoud.home')
 
             <!-- Start Page Header Section -->
             <section style="--header-bg:url({{ Storage::url($settings->header_bg) }})" class="bg-page-header">

@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
             Select::make('sommod_routes')
                 ->label(__('Sommod Routes'))
                 ->options([
-                    'front.sommod.home' => ('Sommod Home'),
+                    'front.somoud.home' => __('Somoud Home'),
                 ])
         ]);
 

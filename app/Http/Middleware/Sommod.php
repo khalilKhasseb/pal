@@ -67,6 +67,7 @@ class Sommod
     protected function setProvider(Request $request): void
     {
         $routeName = $request->route()->getName();
+        // dd($routeName);
         if ($this->routeSommod($request)) {
             $this->setContentProvider('somoud', $routeName);
             $this->handelSession('somoud');

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Faq extends Model
 {
-    use HasTags;
+    // use HasTags;
     use PanelResource;
 
     public static function getTagClassName(): string

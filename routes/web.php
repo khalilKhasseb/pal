@@ -85,7 +85,7 @@ Route::prefix('/ajax')->name('ajax.')->group(function () {
     Route::get('/dislike-post/{post:slug}', [App\Http\Controllers\Theme\ContentController::class, 'dislike_post'])->name('dislike_post');
 });
 
-Route::get('/home-sommod', Home::class)->name('front.sommod.home');
+Route::get('/home-sommod', Home::class)->name('front.somoud.home');
 
 
 // Route::get('/{id}/posts', [App\Http\Controllers\Theme\ContentController::class, 'author_posts'])->name('author_posts');
