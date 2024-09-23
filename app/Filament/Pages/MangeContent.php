@@ -52,7 +52,7 @@ class MangeContent extends SettingsPage
                         fc\Select::make('s_destintaion')
                             ->label('Destenation')
                             ->options(function () {
-                                $posts = \App\Models\Panel::panelByName('sommod')->first()->posts('page')->get()->pluck('title', 'slug');
+                                $posts = \App\Models\Panel::panelByName('somoud')->first()->posts('page')->get()->pluck('title', 'slug');
                                 return $posts;
                             }),
                             fc\FileUpload::make('s_about_img')

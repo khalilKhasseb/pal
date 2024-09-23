@@ -1,6 +1,6 @@
 @props(['contentSettings'])
 @php
-    $sommod = session()->has('sommod_load');
+    $sommod = session()->has('somoud_load');
     $s = 's';
     $c = 'c';
     $title = $sommod ? __('About Sommod Project') : __('About Council');
@@ -9,6 +9,7 @@
     $aboutImg = $sommod ? $contentSettings[$s . '_about_img'] : $contentSettings[$c . '_about_img'];
 
     $dest = $sommod ? $contentSettings['s_destintaion'] : $contentSettings['c_destintaion'];
+
 
 @endphp
 {{-- @dd($contentSettings) --}}

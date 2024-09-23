@@ -33,14 +33,9 @@ class Home extends Component
 
     protected function loadContent()
     {
-        //Posts
-        //Navigation items
-        // $load = str_contains(str_replace('/', '', request()->getRequestUri()), 'home-sommod');
-
-        // $this->sommod = $load;
+        
         $this->recent = config('zeus-sky.models.Post')::query()
             ->withoutGlobalScopes([PanelScope::class])
-            //->sommod($load)
             ->posts()
             ->published()
             ->whereDate('published_at', '<=', now())
@@ -51,7 +46,6 @@ class Home extends Component
 
 
         $this->sponsers = config('zeus-sky.models.Post')::query()
-            // ->sommod(false)
             ->partner()
             ->published('partner')
             ->with(['tags', 'author', 'media'])
@@ -62,36 +56,9 @@ class Home extends Component
         $this->gallaries = \App\Models\Gallary::withoutGlobalScope(ContentProviderScope::class)->showInSlider()->get();
 
         $this->contentSettings = app(ContentSettings::class)->toCollection();
-        // $this->serviceBlocks = \App\Models\ServiceBlock::all();
     }
     public function render()
     {
-
-        // $recent = config('zeus-sky.models.Post')::query()
-        //     ->withoutGlobalScopes([PanelScope::class])
-        //     ->sommod()
-        //     ->posts()
-        //     ->published()
-        //     ->whereDate('published_at', '<=', now())
-        //     ->with(['tags', 'author', 'media'])
-        //     ->limit(config('zeus-sky.recentPostsLimit'))
-        //     ->orderBy('published_at', 'desc')
-        //     ->get();
-
-        // $sponsers = config('zeus-sky.models.Post')::query()
-        //     ->partner()
-        //     ->published('partner')
-        //     ->with(['tags', 'author', 'media'])
-        //     ->limit(config('zeus-sky.recentPostsLimit'))
-        //     ->orderBy('published_at', 'desc')
-        //     ->get();
-
-
-
-        return view('livewire.home')
-            //->with('recentPosts', $recent)
-            // ->with('sponsers', $sponsers)
-
-        ;
+        return view('livewire.home');
     }
 }

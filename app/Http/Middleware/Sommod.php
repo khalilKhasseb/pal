@@ -31,6 +31,7 @@ class Sommod
         $source = $request->route()->getName();
         $content_provider_source = $this->getContentProvider()['source'];
 
+        
         if ($source === $content_provider_source) {
             return $request;
         }
