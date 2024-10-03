@@ -23,9 +23,9 @@ class Header extends Component
     public function mount()
     {
 
-        $handel = json_decode(Storage::get('content_provider.json'))->provider === 'somoud'
-            ? 'main-sommod-header-menu'
-            : 'main-header-menu';
+        // $handel = json_decode(Storage::get('content_provider.json'))->provider === 'somoud'
+        //     ? 'main-sommod-header-menu'
+        //     : 'main-header-menu';
 
         $this->menu = \LaraZeus\Sky\SkyPlugin::get()->getModel('Navigation')::fromHandle('main-header-menu');
     }
