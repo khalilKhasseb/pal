@@ -59,7 +59,7 @@ class Sommod
     {
         if (file_exists(storage_path('app/content_provider.json'))) {
           
-            return json_decode(Storage::get('content_provider.json'), true);
+            return json_decode(Storage::disk('local')->get('content_provider.json'), true);
         }
 
         throw new \Exception('File content provider not exisits');
