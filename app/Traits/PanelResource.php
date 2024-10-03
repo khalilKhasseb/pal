@@ -17,7 +17,7 @@ trait PanelResource
     
         if (app()->runningInConsole())
             return;
-        $content_provider = json_decode(Storage::get('content_provider.json'));
+        $content_provider = json_decode(Storage::disk('local')->get('content_provider.json'));
         if(is_null($content_provider)){
             dd($content_provider);
             return;  
