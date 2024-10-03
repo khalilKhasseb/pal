@@ -38,6 +38,8 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Green,
             ])
+            ->favicon(asset('fv/favicon.ico'))
+            ->brandLogo(asset('brandLogo.jpg'))
             ->font('Zain')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandName('Nebula Systems')

@@ -30,8 +30,10 @@ class SommodPanelProvider extends PanelProvider
             ->id('somoud')
             ->path('somoud')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Fuchsia,
             ])
+            ->favicon(asset('fv/favicon.ico'))
+            ->brandLogo(asset('somoud.png'))
             ->font('Zain')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandName('Nebula Systems')
