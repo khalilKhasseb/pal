@@ -14,7 +14,7 @@ class ContentProviderScope implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-        $provider = json_decode(Storage::get('content_provider.json'))->provider;
+        $provider = json_decode(Storage::disk('local')->get('content_provider.json'))->provider;
 
         if ($provider === 'council') :
             $provider = 'admin';
