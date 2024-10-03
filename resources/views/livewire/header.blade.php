@@ -23,8 +23,8 @@
                     <div class="main-menu-bottom">
                         <div class="navbar-header">
 
-                            @if (session()->has('sommod_load'))
-                                <x-theme.logo :route="route('front.sommod.home')" :url="$_logo" />
+                            @if (session()->has('somoud_load'))
+                                <x-theme.logo :route="route('front.somoud.home')" :url="$_logo" />
                             @else
                                 <x-theme.logo :route="route('theme.home')" :url="$_logo" />
                             @endif

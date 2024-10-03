@@ -58,7 +58,7 @@ class Sommod
     protected function getContentProvider(): array | \Exception
     {
         if (file_exists(storage_path('app/content_provider.json'))) {
-
+          
             return json_decode(Storage::get('content_provider.json'), true);
         }
 

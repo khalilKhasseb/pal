@@ -1,5 +1,8 @@
 @use(App\Theme\ThemeRenderNaveItem)
-
+@use(LaraZeus\Sky\SkyPlugin)
+@php
+    $footerMenus = SkyPlugin::get()->getModel('Navigation')::where('handle', 'like', '%footer-%')->get();
+@endphp
 <footer>
     <div class="bg-footer-top">
         <div class="container">
@@ -7,36 +10,32 @@
                 <div class="footer-top">
                     <div class="row">
                         @php
-                            $contentbox = App\Models\Widget::location('bottom-footer')->get();
+                            $contentbox = App\Models\Widget::location('bottom-footer')->limit(3)->get();
 
                         @endphp
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="footer-widget">
+                       
+                        @if (!$footerMenus->isEmpty())
+                            @foreach ($footerMenus as $menu)
+                                <div class="col-lg-3 col-sm-6">
+                                    <div class="footer-widgets">
+                                        <!-- .widgets-title -->
+                                        <ul class="pages-menu">
+                                            @foreach ($menu->items as $item)
+                                                <li>
+                                                    {!! ThemeRenderNaveItem::render($item, false, 'text-white h5  ') !!}
+                                                </li>
+                                            @endforeach
 
-                                @livewire('newsletter')
-                            </div>
-                        </div>
-                        @foreach($footerMenus as $menu)
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="footer-widgets">
-                                <!-- .widgets-title -->
-                                <ul class="pages-menu">
-                                    @foreach ($menu->items as $item)
-                                    <li>
-                                        {!! ThemeRenderNaveItem::render($item , false , 'text-white h5  ') !!}
-                                    </li>
-                                    @endforeach
-
-                                </ul> <!-- .footer-instagram -->
-                            </div>
-                            <!-- .footer-widgets -->
-                        </div>
-                        @endforeach
+                                        </ul> <!-- .footer-instagram -->
+                                    </div>
+                                    <!-- .footer-widgets -->
+                                </div>
+                            @endforeach
+                        @endif
                         @if (!empty($contentbox) || !is_null($contentbox))
                             @foreach ($contentbox as $box)
                                 {{-- @dd($box->component) --}}
                                 <div class="col-lg-3 col-sm-6 col-12">
-
                                     <x-dynamic-component :component="Str::of('widgets.' . $box->component)" :title="$box->title" :content="$box->content" />
                                     <!-- .footer-widgets -->
                                 </div>
@@ -44,15 +43,7 @@
 
                         @endif
 
-                        <!-- .col-lg-3 -->
 
-
-                        <!-- .col-lg-3 -->
-
-                        <!-- .col-lg-3 -->
-                        {{--
-                             --}}
-                        <!-- .col-lg-3 -->
                     </div>
                     <!-- .row -->
                 </div>

@@ -79,6 +79,6 @@ class ServiceResource extends Resource
 
     public static function canAccess(): bool
     {
-        return filament()->getCurrentPanel()->getId() === 'admin';
+        return true;
     }
 }

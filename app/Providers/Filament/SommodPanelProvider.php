@@ -21,7 +21,7 @@ use LaraZeus\Sky\SkyPlugin;
 use Filament\SpatieLaravelTranslatablePlugin;
 use Filament\Navigation\MenuItem;
 use Filament\Facades\Filament;
-
+use App\Classes\ExtraNavFields;
 class SommodPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -47,10 +47,10 @@ class SommodPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
                 //Widgets\FilamentInfoWidget::class,
             ])->userMenuItems([
-                MenuItem::make()
-                    ->label(__('Concile'))
-                    ->url(fn () => route('filament.admin.pages.dashboard'))
-            ])
+                    MenuItem::make()
+                        ->label(__('Concile'))
+                        ->url(fn() => route('filament.admin.pages.dashboard'))
+                ])
             ->authGuard('system')
             ->middleware([
                 EncryptCookies::class,
@@ -69,10 +69,13 @@ class SommodPanelProvider extends PanelProvider
                 Authenticate::class,
             ])->plugins([
 
-                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar','en']),
-                SkyPlugin::make()
-                    ->navigationGroupLabel('Blog'),
+                    SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar', 'en']),
+                    SkyPlugin::make()
+                        ->navigationGroupLabel('Blog'),
 
-            ]);
+                ])
+            ->bootUsing(function ($panel) {
+                ExtraNavFields::initFields();
+            });
     }
 }

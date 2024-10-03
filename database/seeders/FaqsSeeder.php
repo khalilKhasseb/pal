@@ -51,8 +51,8 @@ class FaqsSeeder extends Seeder
                 ->setTranslation('slug', $transLocal, str($row['child_tag_' . $transLocal])->slug('-', $transLocal))
                 ->save();
 
-            $tagParent->panels()->attach([1, 2]);  
-            $tagChild->panels()->attach([1, 2]);  
+            $tagParent->panels()->sync([1, 2]);  
+            $tagChild->panels()->sync([1, 2]);  
 
             $tagParent->children()->save($tagChild);
 

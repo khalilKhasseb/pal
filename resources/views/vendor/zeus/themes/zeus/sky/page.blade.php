@@ -118,11 +118,11 @@
                                         <iframe id="{{ $post->form->id }}" title="{{ $post->form->name }}"
                                             src="{{ $post->form->responder_uri }}" width="100%" height="1200px">
                                         </iframe>
-                                    @endif
-                                    
-                                    @if (!is_null($post->gallary))
+                                     @endif
+                                  
+                                    {{-- @if (!is_null($post->gallary))
                                         <x-theme.gallary :gallary="$post->gallary->getMedia('*')" />
-                                    @endif
+                                    @endif --}}
                                 </div>
                                 <!-- .blog-content -->
                                 <div class="single-blog-bottom">

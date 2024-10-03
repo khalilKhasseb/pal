@@ -89,7 +89,11 @@ class SupportersResource extends Resource
                                     ->collection('supporters')
 
                             ])
-                    ])->columnSpanFull()
+                    ])->columnSpanFull(),
+                FC\Select::make(__('Panel'))
+                    ->multiple()
+                    ->relationship('panels', titleAttribute: 'panel_name')
+                    ->preload()
             ]);
     }
 

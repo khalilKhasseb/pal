@@ -36,7 +36,7 @@ class DashboardController extends Controller
 
         $libraries->each(function ($lib) {
             $lib->files = $lib->getFiles();
-            return $lib ;
+            return $lib;
         });
 
         return response()->json($libraries);

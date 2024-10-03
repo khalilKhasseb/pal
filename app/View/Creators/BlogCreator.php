@@ -36,18 +36,30 @@ class BlogCreator
         $db = env('DB_DATABASE');
 
         $popularTags =
-        DB::select('SELECT taggables.tag_id ,tags.name ,tags.slug,tags.type,count(*) FROM taggables
+            DB::select('SELECT taggables.tag_id ,tags.name ,tags.slug,tags.type,count(*) as count FROM taggables
         inner join tags on taggables.tag_id = tags.id and tags.type != "library"
          group by taggables.tag_id,tags.name');
 
+        // dd($popularTags);
         $popularTags = collect($popularTags)->map(function ($tag) {
+            $name = json_decode($tag->name, true);
+            $slug = json_decode($tag->slug, true);
+            $local = app()->getLocale();
+            // dd($name[$local]);
+            $local = app()->getLocale();
+            $opsiteLocal = $local === 'en' ? 'ar' : $local;
 
-            $tag->name = json_decode($tag->name);
-            $tag->slug = json_decode($tag->slug);
+            $tag->name = $name[
+                array_key_exists($local, $name)
+                ? $local
+                : $opsiteLocal
+            ];
+            $tag->slug = $slug[
+                array_key_exists($local, $slug)
+                ? $local
+                : $opsiteLocal
+            ];
 
-            // dd($tag->name->en);
-            $tag->name = $tag->name->{app()->getLocale()} ?? $tag->name->en;
-            $tag->slug = $tag->slug->{app()->getLocale()} ?? $tag->slug->en;
             return $tag;
         });
 

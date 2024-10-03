@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Builder;
 // use App\Traits\PanelResource;
 class Tag extends Model
 {
-   use PanelResource;
-    
+    use PanelResource;
 
+   
     public function parent(): BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_id');
@@ -24,5 +24,5 @@ class Tag extends Model
     {
         return $this->hasMany(self::class, 'parent_id');
     }
-   
+
 }

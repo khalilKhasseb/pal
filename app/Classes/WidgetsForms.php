@@ -147,9 +147,10 @@ class WidgetsForms
     }
     public static function gallary(?Form $form)
     {
+        
         return Select::make('content')
             ->label(__('gallary'))
-            ->options(Gallary::all()->pluck('title', 'id'));
+            ->options(Gallary::all()->pluck('title', 'id')->toArray());
     }
 
     public static function news()

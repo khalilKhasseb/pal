@@ -13,7 +13,7 @@ use Spatie\Image\Enums\CropPosition;
 use App\Traits\PanelResource;
 class Supporter extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia ,HasTranslations ,PanelResource;
+    use HasFactory, InteractsWithMedia, HasTranslations, PanelResource;
 
     protected $fillable = [
         'name',
@@ -36,19 +36,19 @@ class Supporter extends Model implements HasMedia
     protected $table = 'supporters';
 
 
-    public function initiatives() : BelongsToMany {
-        return $this->belongsToMany(Initiative::class , 'initiativies_suporters' , 'supporter_id' ,'initiative_id' );
+    public function initiatives(): BelongsToMany
+    {
+        return $this->belongsToMany(Initiative::class, 'initiativies_suporters', 'supporter_id', 'initiative_id');
     }
 
-    public function supported_projects() : BelongsToMany {
+    public function supported_projects(): BelongsToMany
+    {
         return $this->belongsToMany(SupportedProject::class, 'supporters_supported_projects', 'supporter_id', 'supported_project_id');
     }
     public function supported_project_types(): BelongsToMany
     {
         return $this->belongsToMany(SupportedProjectType::class, 'supporters_supported_projects_types', 'supporter_id', 'supported_project_type_id');
     }
-
-
 
 
     public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void

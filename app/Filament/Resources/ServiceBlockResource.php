@@ -20,6 +20,10 @@ class ServiceBlockResource extends Resource
     protected static ?string $model = ServiceBlock::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function canAccess(): bool
+    {
+        return false;
+    }
 
     public static function form(Form $form): Form
     {

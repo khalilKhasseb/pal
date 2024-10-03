@@ -57,6 +57,7 @@ use Illuminate\Support\Str;
 
 //others
 use App\Models\Scopes\PanelScope;
+use Illuminate\Database\Eloquent\Model;
 
 trait PostResourceTrait
 {
@@ -80,6 +81,10 @@ trait PostResourceTrait
                     config('zeus-sky.editor')::component()
                         ->label(__("Post Content")),
 
+                    Select::make(__('Panel'))
+                    ->multiple()
+                    ->relationship('panels' , titleAttribute:'panel_name')
+                    ->preload(),    
                     Select::make('google_form_id')
                         ->relationship(name: 'form', titleAttribute: 'name')
                         ->preload(),
@@ -317,5 +322,10 @@ trait PostResourceTrait
 
 
         return [ActionGroup::make($action)];
+    }
+
+    protected function afterCreate(?Model $record) :void {
+        dd($record->tags);
+        //$record->tags()->panels()->sync()
     }
 }

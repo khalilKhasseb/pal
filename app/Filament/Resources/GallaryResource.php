@@ -29,6 +29,9 @@ class GallaryResource extends Resource
                 Forms\Components\TextInput::make('title')
                 ->label(__('Title'))
                 ->required(),
+                Forms\Components\Select::make('panel')
+                ->multiple()
+                ->relationship('panels' , titleAttribute:'panel_name'),
                 Forms\Components\Toggle::make('show_in_slider')
                 ->label(__('Show in slider')),
                 SpatieMediaLibraryFileUpload::make('gallary')

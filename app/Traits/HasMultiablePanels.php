@@ -7,6 +7,7 @@ use Filament\Facades\Filament;
 use App\Models\Panel;
 use Illuminate\Support\Arr;
 use Illuminate\Validation\ValidationException;
+use App\Models\Blog\Tag;
 
 trait HasMultiablePanels
 {
@@ -47,16 +48,19 @@ trait HasMultiablePanels
         $this->data = $originalData;
 
         $record->save();
+        $panel = Panel::findByName(Filament::getCurrentPanel()->getId());
 
-        $record = $this->attachPanel($record);
+        $record = $this->attachPanel($record, $panel);
+
+        // $this->asingRecordTagsInputToPanel($record, $panel->id);
 
         return $record;
     }
 
-    private static function  attachPanel(Model $record): Model
+    private static function attachPanel(Model $record, $panel): Model
     {
 
-        $panel = Panel::findByName(Filament::getCurrentPanel()->getId());
+        // $panel = Panel::findByName(Filament::getCurrentPanel()->getId());
 
         // try to load method from record name
 
@@ -71,5 +75,31 @@ trait HasMultiablePanels
         // $panel->posts()->attach($record->id);
 
         return $record;
+    }
+
+
+
+    protected function asingRecordTagsInputToPanel(?Model $record, $panel): void
+    {
+        if ($record->isRelation('tags')) {
+            
+            if (!$record->tags->isEmpty()) {
+
+                $record->tags->each(function ($tag) use ($panel) {
+
+                    $panel->tags()->syncWithoutDetaching($tag->id);
+                    
+                });
+            }
+        }
+    }
+
+    protected function afterCreate(): void
+    {
+        $panel = Panel::findByName(Filament::getCurrentPanel()->getId());
+        
+        
+
+        $this->asingRecordTagsInputToPanel($this->getRecord(), $panel);
     }
 }

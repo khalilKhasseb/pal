@@ -23,6 +23,8 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use LaraZeus\Sky\SkyPlugin;
 use Filament\Navigation\MenuItem;
 use Filament\Facades\Filament;
+use App\Classes\ExtraNavFields;
+
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -83,6 +85,10 @@ class AdminPanelProvider extends PanelProvider
                 SkyPlugin::make()
                     ->navigationGroupLabel( __('Blog')),
 
-            ])->default();
+            ])->bootUsing(function ($panel) {
+                    ExtraNavFields::initFields();
+                })
+            ->default()
+            ;
     }
 }

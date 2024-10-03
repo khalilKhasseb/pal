@@ -8,14 +8,13 @@ use App\Models\Scopes\PanelScope;
 use App\Models\Scopes\ContentProviderScope;
 use App\Models\Panel;
 use Illuminate\Support\Facades\Storage;
-
 trait PanelResource
 {
     protected static function booted(): void
     {
         parent::booted();
 
-       
+    
         if (app()->runningInConsole())
             return;
         $content_provider = json_decode(Storage::get('content_provider.json'));
@@ -31,6 +30,10 @@ trait PanelResource
             static::withoutGlobalScope(PanelScope::class);
             static::addGlobalScope(ContentProviderScope::class);
         }
+
+        static::deleted(function ($record) {
+            $record->panels()->detach();
+        });
     }
 
     public function panels(): MorphToMany

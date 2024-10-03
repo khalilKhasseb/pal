@@ -1,6 +1,6 @@
 @props(['gallary', 'slug'])
 
-<div class="mt-5">
+<div class="my-5">
 
     <!-- Breathing in, I calm body and mind. Breathing out, I smile. - Thich Nhat Hanh -->
     <div class="container">

@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Spatie\Translatable\HasTranslations;
+use App\Traits\PanelResource;
 
 class Widget extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations, PanelResource;
     protected $fillable = ['title', 'location', 'content', 'component', 'type'];
-
+    protected $translatable = ['title', 'content'];
     protected $casts = [
         'content' => 'array'
     ];

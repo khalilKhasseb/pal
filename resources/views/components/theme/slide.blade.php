@@ -16,17 +16,19 @@
             }
         }
 
-        $stickyPosts = \App\Models\Post::withoutGlobalScope(ContentProviderScope::class)->sticky()->get();
-
-        @endphp
+        $stickyPosts = \App\Models\Post::withoutGlobalScope(ContentProviderScope::class)
+            ->sticky()
+            ->get();
+ 
+    @endphp
     <section class="bg-slider-option">
         <div class="slider-option slider-two">
-            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div id="HeroContentSlider" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
 
                     @unless ($stickyPosts->isEmpty())
                         @foreach ($stickyPosts as $post)
-                            <div class="carousel-item" data-bs-interval="1000">
+                            <div class="carousel-item" data-bs-interval="10000">
 
                                 <div class="slider-item">
                                     <img src="{{ $post->image() }}" alt="{{ $post->title }}">
@@ -56,7 +58,7 @@
                         @endforeach
                     @endunless
                     @foreach ($i as $item)
-                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="1000">
+                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="10000">
 
                             <div class="slider-item">
                                 <img src="{{ $item->getUrl() }}" alt="bg-slider-2">
@@ -70,12 +72,12 @@
 
                 </div>
                 <button class="left carousel-control carousel-control-prev" type="button"
-                    data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    data-bs-target="#HeroContentSlider" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="right carousel-control carousel-control-next" type="button"
-                    data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    data-bs-target="#HeroContentSlider" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>

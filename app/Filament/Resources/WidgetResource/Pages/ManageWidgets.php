@@ -8,12 +8,16 @@ use Filament\Resources\Pages\ManageRecords;
 
 class ManageWidgets extends ManageRecords
 {
+    use ManageRecords\Concerns\Translatable;
+
     protected static string $resource = WidgetResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+               ,
+            Actions\LocaleSwitcher::make(),
         ];
     }
 }

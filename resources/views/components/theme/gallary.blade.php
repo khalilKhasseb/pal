@@ -1,7 +1,7 @@
 @props(['gallary'])
 
 <div>
-    <div class="gallary-wrapper">
+    <div class="gallary-wrapper mb-5">
 
 
         @foreach ($gallary as $media)

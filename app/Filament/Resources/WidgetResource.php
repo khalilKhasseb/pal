@@ -38,14 +38,21 @@ use Filament\Facades\Filament;
 // tables
 use Filament\Tables\Columns\TextColumn;
 //#####//
+use Filament\Resources\Concerns\Translatable;
 
 class WidgetResource extends Resource
 {
+    use Translatable;
     protected static ?string $model = Widget::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static Form  $formInncatnce;
+
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 
     public static function getLabel() : string {
         return __("Widget");
@@ -87,6 +94,10 @@ class WidgetResource extends Resource
                                 'homepage' => __('Homepage'),
                                 'bottom-footer' => __('Bottom footer')
                             ]),
+                            Select::make(__('Panel'))
+                            ->multiple()
+                            ->relationship('panels' ,titleAttribute:'panel_name')
+                            ->preload(),
 
                         // dynmic compoennts
                         Grid::make(1)
