@@ -6,19 +6,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     @php
         //$siteTitle = !is_null($settings->site_name) ? $settings->site_name : config('app.name', 'Palgpc');
-        $siteTitle =  app()->getLocale()  === 'ar' 
-        ? $settings->ar_site_name  
-        : (!is_null($settings->site_name) ? $settings->site_name : config('app.name', 'Palgpc'));
+        $siteTitle =
+            app()->getLocale() === 'ar'
+                ? $settings->ar_site_name
+                : (!is_null($settings->site_name)
+                    ? $settings->site_name
+                    : config('app.name', 'Palgpc'));
 
-        $description =  app()->getLocale()  === 'ar' 
-        ? $settings->ar_site_description  
-        : (!is_null($settings->site_description) ? $settings->site_description : config('app.name', 'Palgpc'));
+        $description =
+            app()->getLocale() === 'ar'
+                ? $settings->ar_site_description
+                : (!is_null($settings->site_description)
+                    ? $settings->site_description
+                    : config('app.name', 'Palgpc'));
 
     @endphp
     <meta name="application-name" content="{{ $siteTitle }}">
-    <meta name="description" content="{{$description}}" >
+    <meta name="description" content="{{ $description }}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('fv/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('fv/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('fv/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{asset('fv/site.webmanifest')}}">
+    <link rel="mask-icon" href="{{asset('fv/safari-pinned-tab.svg')}}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
     <title>{{ $siteTitle }}</title>
     <!-- Seo Tags -->
     <x-seo::meta />
@@ -68,8 +84,8 @@
             <link data-layout="front" rel="stylesheet" type="text/css"
                 href="{{ asset('css/template/rtl.css') }}?23dsadswdssa" media="all" />
         @endif
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/responsive.css') }}"
-            media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css"
+            href="{{ asset('css/template/responsive.css') }}" media="all" />
     @endif
 
 
@@ -95,16 +111,18 @@
             font-style: normal;
         }
 
-        :required{
+        :required {
             position: relative;
 
         }
+
         .required:after {
             content: "*";
-            color:red
+            color: red
         }
-        .navbar-brand{
-            max-width:100px
+
+        .navbar-brand {
+            max-width: 100px
         }
     </style>
     @vite('resources/js/app.js')
