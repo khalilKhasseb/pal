@@ -27,7 +27,7 @@ class Header extends Component
             ? 'main-sommod-header-menu'
             : 'main-header-menu';
 
-        $this->menu = \LaraZeus\Sky\SkyPlugin::get()->getModel('Navigation')::fromHandle($handel);
+        $this->menu = \LaraZeus\Sky\SkyPlugin::get()->getModel('Navigation')::fromHandle('main-header-menu');
     }
     public function render()
     {
