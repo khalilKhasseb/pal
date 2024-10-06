@@ -41,10 +41,11 @@ class Post extends Model
         return $this->belongsTo(config('auth.providers.system_users.database.model', config('auth.providers.system_users.model')), 'user_id', 'id');
     }
 
-    public function scopePan(Builder $builder) {
-         $builder->whereHas('panels',function($builder){
-            return $builder->where('panels.id' , 2);
-         });
+    public function scopePan(Builder $builder)
+    {
+        $builder->whereHas('panels', function ($builder) {
+            return $builder->where('panels.id', 2);
+        });
     }
 
 
@@ -86,29 +87,34 @@ class Post extends Model
         return $this->likes()->count() > 0;
     }
 
-    public function image($collection = 'posts'): Collection | string | null
+    public function image($collection = 'posts'): Collection|string|null
     {
-        $thumbnail = null;
-        #check for event thubmnail media collection
+        // Check if the thumbnail collection is empty and no custom thumb exists
         if ($this->getMedia('thumbnail')->isEmpty() && !$this->has_thumb) {
-            #which means we have to load thumb from origin image conversions
-            if (!$this->getMedia($collection)->isEmpty()) {
-                $thumb_url = $this->getMedia($collection)[0]->getUrl('thumb-cropped-original');
-                $thumbnail = $thumb_url;
-                return $thumbnail;
-            } else {
-                $thumbnail = parent::image();
-            }
-        } elseif (!$this->getMedia('thumbnail')->isEmpty() && $this->has_thumb) {
-            #load thumb from thumbnail collection conerstion
-            $thumb_url = $this->getMedia('thumbnail')[0]->getUrl('thumb-cropped');
-            $thumbnail = $thumb_url;
-        } else {
-            $thumbnail = parent::image();
-        }
-        return $thumbnail;
-    }
+            // Try to load the thumb from the specified media collection (default 'posts')
+            $media = $this->getMedia($collection)->first();
+            if ($media) {
+                $thumbPath = parse_url($media->getUrl('thumb-cropped-original'), PHP_URL_PATH);
+                $thumbFullPath = base_path('public' . $thumbPath);
 
+                // Check if the cropped thumbnail file exists, fallback if it doesn't
+                if (file_exists($thumbFullPath)) {
+                    return $media->getUrl('thumb-cropped-original');
+                }
+
+                // Fallback to parent image if thumb doesn't exist
+                return parent::image();
+            }
+        }
+
+        // If a custom thumb exists in the 'thumbnail' collection, return its URL
+        if ($this->getMedia('thumbnail')->isNotEmpty() && $this->has_thumb) {
+            return $this->getMedia('thumbnail')->first()->getUrl('thumb-cropped');
+        }
+
+        // Final fallback: return the parent image if no thumbnail or media is available
+        return parent::image();
+    }
 
 
     public function gallary(): BelongsTo
@@ -123,21 +129,19 @@ class Post extends Model
             ->performOnCollections('thumbnail')
             ->crop(380, 300, CropPosition::Center);
 
-        // $this->addMediaConversion('thumb-cropped-original')
-        //     ->performOnCollections('posts')
-        //     ->crop(380, 300, CropPosition::Center);
+        
         $this->addMediaConversion('thumb-cropped-original')
             ->performOnCollections('posts')
             ->fit(Fit::Fill, 380, 300, false, '#333');
     }
     public function getContent(): string
     {
-        if(is_array($this->content)) {
+        if (is_array($this->content)) {
             $this->content = json_encode($this->content);
         }
         return $this->parseContent(config('zeus-sky.editor')::render($this->content));
     }
 
-   
+
     //yuKLB.4YrDT8
 }

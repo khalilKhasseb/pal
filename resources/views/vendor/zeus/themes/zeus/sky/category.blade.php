@@ -18,7 +18,6 @@ $hasMorePages = $totalPages > $current_page ;
 // for example if we have
 $paginiator->hasMorePagesWhen($hasMorePages)->withPath(request()->path());
 // $paginiator->path('blog') ;
-
 @endphp
 
 

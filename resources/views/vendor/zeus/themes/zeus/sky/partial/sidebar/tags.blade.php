@@ -3,8 +3,8 @@
      <h4 class="sidebar-widget-title">{{ __('Popular Tags') }}</h4>
      <div class="widget-content">
          <div class="tag-cloud">
+          
              @foreach ($papular_tags as $tag)
-
                  @if ($tag->type !== null && $tag->type !== 'faq')
                      <a href="{{ route('tags', [
                          'type' => $tag->type,
