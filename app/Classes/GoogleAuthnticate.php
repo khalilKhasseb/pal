@@ -131,7 +131,9 @@ class GoogleAuthnticate
 
     public static function get_credinital()
     {
-        return config('google.auth_config_path');
+        
+        
+        //return config('google.auth_config_path');
     }
 
     protected static function get_token($email = null): Model | null

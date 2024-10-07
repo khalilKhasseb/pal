@@ -2,18 +2,9 @@
 
 namespace App\Providers;
 
-// use Filament\Facades\Filament;
-// use Filament\Navigation\NavigationGroup;
 
 use Illuminate\Support\ServiceProvider;
-// use LaraZeus\Sky\Filament\Resources\PageResource;
-use LaraZeus\Sky\SkyPlugin;
-use Filament\Facades\Filament;
-use Filament\Forms\Components\Select;
-use App\Classes\GoogleFormsApi;
-use App\Classes\GoogleAuthnticate;
-use Google\Service\Drive;
-use Google\Service\Forms;
+use FilamentTiptapEditor\TiptapEditor;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
+        TiptapEditor::configureUsing(function (TiptapEditor $tiptapEditor) {
+            $tiptapEditor->blocks([
+                \App\TipTapEditorBlocks\Tabs::class
+            ]);
+        });
     }
 
     /**
