@@ -133,7 +133,7 @@ class GoogleAuthnticate
     {
         
         
-        //return config('google.auth_config_path');
+        return config('google.auth_config_path');
     }
 
     protected static function get_token($email = null): Model | null
