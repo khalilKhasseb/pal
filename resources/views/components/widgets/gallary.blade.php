@@ -23,5 +23,6 @@
         </div>
     @endif
     <!-- .footer-instagram -->
+    <div class="clr"></div>
 </div>
 <!-- .footer-widgets -->
