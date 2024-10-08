@@ -24,11 +24,11 @@
                        <div class="blog-content-box">
                            <div class="blog-content">
                                <h4><a href="{{ route('post', $post->slug) }}">{!! $post->title !!}</a></h4>
-                               @if ($post->description !== null)
+                               {{-- @if ($post->description !== null)
                                    <p>
                                        {!! Str::substr($post->description, 0, 15) !!}
                                    </p>
-                               @endif
+                               @endif --}}
                            </div>
                            <!-- .blog-content -->
                            <div class="meta-box">
@@ -61,11 +61,11 @@
                                        </button>
 
                                    </li>
-                                   <li>
+                                   {{-- <li>
                                        <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i>
                                            {{ $post->author->name }}
                                        </a>
-                                   </li>
+                                   </li> --}}
                                </ul>
                            </div>
                            <!-- .meta-box -->
@@ -78,9 +78,7 @@
 
 
        </div>
-       @php
-           $query = request()->is('home-sommod') ? '?p=sommod' : '';
-       @endphp
+       
        <a href="{{ route('blogs') }}" class="btn btn-default d-block"
            style="margin:0 auto ; width:200px">{{ __('More News') }}</a>
 

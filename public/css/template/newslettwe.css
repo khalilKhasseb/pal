@@ -1,0 +1,36 @@
+.newsletter-wraaper {
+    position: relative;
+    padding: 100px 0;
+    z-index: 11;
+}
+
+.newsletter-wraaper::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url("../../images/pngegg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom left;
+
+    filter: blur(4px);
+    z-index: -2;
+}
+.newsletter-wraaper::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.newsletter-wraaper .form-control {
+    padding: .375rem .75rem;
+}
