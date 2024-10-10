@@ -793,3 +793,10 @@ html.dark .dt-container .dt-paging .dt-paging-button:active {
 *[dir=rtl] .dt-length label{ 
     margin-right: 14px;
 }
+
+.this-year {
+    background-color: rgb(42, 188, 42) !important;
+}
+.this-year td {
+    color: white;
+}

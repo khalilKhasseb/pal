@@ -20,7 +20,6 @@ class ListDays extends Component
     public $envDays;
     public function mount() {
         $this->envDays = \App\Models\EnviromentalDay::all();
-        ;
     }
 
 

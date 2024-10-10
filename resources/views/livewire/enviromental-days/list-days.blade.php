@@ -43,15 +43,19 @@
                         <th>{{ __('Title') }}</th>
                         <th>{{ __('Month') }}</th>
                         <th>{{ __('Day') }}</th>
+                        <th>{{__('This Year')}}</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($envDays as $day)
-                        <tr>
+                    @foreach ($envDays as $day) 
+               
+
+                        <tr class="{{$day->isThisYear() ? 'this-year' : ''}}">
                             <td>{{ $day->title }}</td>
                             <td>{{ __($day->month) }}</td>
                             <td>{{ $day->day }}</td>
+                            <td>{{$day->completeDate}}</td>
 
                         </tr>
                     @endforeach
