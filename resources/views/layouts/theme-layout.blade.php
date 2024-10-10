@@ -27,11 +27,11 @@
     <meta name="application-name" content="{{ $siteTitle }}">
     <meta name="description" content="{{ $description }}">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('fv/apple-touch-icon.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('fv/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('fv/favicon-16x16.png')}}">
-    <link rel="manifest" href="{{asset('fv/site.webmanifest')}}">
-    <link rel="mask-icon" href="{{asset('fv/safari-pinned-tab.svg')}}" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('fv/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('fv/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('fv/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('fv/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('fv/safari-pinned-tab.svg') }}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
@@ -39,6 +39,13 @@
     <!-- Seo Tags -->
     <x-seo::meta />
     <!-- Seo Tags -->
+
+
+
+
+    <link href="{{asset('css/template/datatables.css')}}" rel="stylesheet">
+
+
     @if (app()->getLocale() === 'ar')
         <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
         <link data-layout="front" rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,9 +61,8 @@
     @endif
 
 
-   <link rel="stylesheet" href="{{asset('css/template/newslettwe.css')}}?12">
-    @livewireStyles
-    {{-- @filamentStyles --}}
+    <link rel="stylesheet" href="{{ asset('css/template/newslettwe.css') }}?12">
+
     @stack('styles')
     @stack('th3_scripts')
 
@@ -81,8 +87,8 @@
             media="all" />
 
         <!-- own style css -->
-        <link data-layout="front" rel="stylesheet" type="text/css"
-            href="{{ asset('css/template/style.css') }}?v1.0.0" media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?v1.0.0"
+            media="all" />
         @if (app()->getLocale() === 'ar')
             <link data-layout="front" rel="stylesheet" type="text/css"
                 href="{{ asset('css/template/rtl.css') }}?v1.0.0" media="all" />
@@ -215,6 +221,9 @@
 
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery-2.2.3.min.js') }}"></script>
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/bootstrap.min.js') }}"></script>
+     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+     {{-- <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script> --}}
+
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.easing.1.3.js') }}"></script>
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.waypoints.min.js') }}"></script>
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.counterup.min.js') }}"></script>
@@ -227,6 +236,7 @@
     {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.isotope.js') }}"></script> --}}
     {{-- <script type="text/javascript" src="{{asset('js/template/custom.map.js')}}"></script> --}}
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.js') }}"></script>
+
     @stack('scripts_comp')
     <!-- Map Api -->
     {{-- <script data-layout="front" async defer

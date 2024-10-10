@@ -20,13 +20,13 @@ class EventSeeder extends Seeder
 
         // getRows
         $local = app()->getLocale();
-        $transLocal = $local === 'ar'  ? 'en' : $local;
+        $transLocal = $local === 'ar' ? 'en' : $local;
         $rows = SimpleExcelReader::create('imports/events.csv')->getRows();
 
         // map throw each row to inser entites
 
         $rows->each(function ($row) use ($local, $transLocal) {
-            $post_meta_keys = collect(array_filter(array_keys($row), fn ($key) => str_contains($key, 'post_meta')));
+            $post_meta_keys = collect(array_filter(array_keys($row), fn($key) => str_contains($key, 'post_meta')));
 
             DB::transaction(function () use ($row, $local, $transLocal, $post_meta_keys) {
 
@@ -75,7 +75,7 @@ class EventSeeder extends Seeder
                             ->save();
 
                         $post->post_meta()->save($post_meta);
-                    } elseif (!str_contains($key, "_".$local) && !str_contains($key, "_".$transLocal)) {
+                    } elseif (!str_contains($key, "_" . $local) && !str_contains($key, "_" . $transLocal)) {
                         $trimedKey = substr($key, strlen('post_meta') + 1);
                         $post_meta = PostMeta::create([
                             'key' => $trimedKey,
@@ -94,37 +94,4 @@ class EventSeeder extends Seeder
         });
     }
 
-
-
-    // return
-    //     $events = CSVParser::parse(base_path('imports/events-ar.csv'));
-    // $meta = CSVParser::parse(base_path('imports/events-meta-ar.csv'));
-    // for ($i = 0; $i < count($events); $i++) {
-    //     $events[$i]['post_meta'] = $meta[$i];
-    // }
-
-    // foreach ($events as $event) {
-    //     $post = Post::create([
-    //         'title' => $event['title'],
-    //         'slug' => str($event['title'])->slug(2),
-    //         'description' => fake(app()->getLocale())->sentence(),
-    //         'post_type' => $event['post_type'],
-    //         'content' => $event['content'],
-    //         'user_id' => 1,
-    //         'featured_image' => null,
-    //         'published_at' => now(),
-    //     ]);
-
-    //     $post->panels()->attach(2);
-
-    //     $post->addMediaFromUrl($event['img'])->toMediaCollection('posts');
-
-    //     foreach ($event['post_meta'] as $key => $value) {
-    //         $post->post_meta()->save(PostMeta::create([
-    //             'key' => $key,
-    //             'value' => $value
-    //         ]));
-    //     }
-    //   }
-    // }
 }

@@ -126,14 +126,14 @@
                                 </div>
                                 <!-- .blog-content -->
                                 <div class="single-blog-bottom">
-                                    <ul class="tags">
+                                    {{-- <ul class="tags">
                                         <li><i class="fa fa-tags" aria-hidden="true"></i> {{ __('Tags') }} :</li>
                                         @unless ($post->tags->isEmpty())
                                             @foreach ($post->tags->where('type', 'tag') as $tag)
                                                 @include($skyTheme . '.partial.tag')
                                             @endforeach
                                         @endunless
-                                    </ul>
+                                    </ul> --}}
                                     <!-- .author-option -->
                                     <div class="event-share-option d-flex justify-items-start align-items-center">
 

@@ -28,6 +28,7 @@
 
                                         </ul> <!-- .footer-instagram -->
                                     </div>
+                                    
                                     <!-- .footer-widgets -->
                                 </div>
                             @endforeach
