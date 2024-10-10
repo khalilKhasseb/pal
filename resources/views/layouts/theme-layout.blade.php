@@ -87,7 +87,7 @@
             media="all" />
 
         <!-- own style css -->
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?v1.0.0"
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}"
             media="all" />
         @if (app()->getLocale() === 'ar')
             <link data-layout="front" rel="stylesheet" type="text/css"
