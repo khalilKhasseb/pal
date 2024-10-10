@@ -1318,7 +1318,8 @@ section{
 		display: block;
 		visibility: hidden;
 		opacity: 0;
-		width: 240px;
+		/* width: 240px; */
+		width: 100%;
 		top: 100px;
 		padding: 0;
 		margin: 0;
