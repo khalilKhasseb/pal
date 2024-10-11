@@ -17,7 +17,7 @@
     <div class="container">
         @if (session()->has('somoud_load'))
             <div class="brands-partner d-flex align-items-center justify-content-end pt-4">
-                <div style="margin-{{app()->getLocale() === 'ar' ? 'right' : 'left'}}:auto">
+                <div style="margin-{{app()->getLocale() === 'ar' ? 'left' : 'right'}}:auto">
                     <x-theme.logo :route="route('front.somoud.home')" :url="$_logo" />
                 </div>
 
