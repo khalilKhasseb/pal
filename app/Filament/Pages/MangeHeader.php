@@ -65,8 +65,10 @@ class MangeHeader extends SettingsPage
                                 Repeater::make('top_header_items')
                                 ->label((__("Top header items")))
                                     ->schema([
-                                        TextInput::make('item')
-                                        ->label(__("Item")),
+                                        TextInput::make('title_ar')
+                                        ->label(__("Title Arabic")),
+                                        TextInput::make('title_en')
+                                            ->label(__("Title English")),
                                         IconPicker::make('icon')
                                         ->label(__('Icon')),
                                         ColorPicker::make('color')

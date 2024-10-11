@@ -1,5 +1,6 @@
 @php
-    $rtl = app()->getLocale() === 'ar';
+    $locale = app()->getLocale();
+    $rtl = $locale === 'ar';
 @endphp
 <div class="header-top d-flex align-items-center justify-content-end">
     <ul style="margin-{{app()->getLocale() == 'ar' ? 'left' : 'right'}}: auto" class="justify-content-between d-flex">
@@ -7,7 +8,7 @@
             <li class="m{{$rtl ? 'e' : 's'}}-2 justify-content-between align-items-center d-flex top_header_item"
                 style="--color:{{ $item['color'] }}">
                 <x-icon width="30px" style="fill:var(--color)" name="{{ $item['icon'] }}" />
-                <span>{{ $item['item'] }}</span>
+                <span>{{ $item['title_'.$locale] }}</span>
             </li>
         @endforeach
     </ul>
