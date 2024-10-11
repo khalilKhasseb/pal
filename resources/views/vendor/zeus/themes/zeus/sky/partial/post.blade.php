@@ -13,11 +13,11 @@
         <div class="blog-content-box">
             <div class="blog-content">
                 <h4 class="h-6 fs-1"><a href="{{ route('post', $post->slug) }}">{!! $post->title !!}</a></h4>
-                @if ($post->description !== null)
+                {{-- @if ($post->description !== null)
                     <p>
                         {!! Str::substr($post->description, 0, 15) !!}
                     </p>
-                @endif
+                @endif --}}
             </div>
             <!-- .blog-content -->
             <div class="meta-box">
