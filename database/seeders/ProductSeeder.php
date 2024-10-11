@@ -15,12 +15,17 @@ class ProductSeeder extends Seeder
      * Run the database seeds.
      */
 
+    protected $post_type = 'product';
+    protected $file_name = 'products.csv';
+
+    protected $panels = [1, 2];
     public function run(): void
     {
         // get products as roew
+        
         $local = app()->getLocale();
 
-        $rows = SimpleExcelReader::create('imports/products.csv')->getRows();
+        $rows = SimpleExcelReader::create("imports/{$this->file_name}")->getRows();
 
         $rows->each(function ($row) use ($local) {
             // create post memeber
@@ -32,7 +37,7 @@ class ProductSeeder extends Seeder
                 'title' => $row['title_' . $local],
                 'slug' => str($row['title_' . $local])->slug(),
                 'description' => fake(app()->getLocale())->sentence(),
-                'post_type' => 'product',
+                'post_type' => $this->post_type,
                 'content' => $row['content_' . $local],
                 'user_id' => 1,
                 'featured_image' => null,
@@ -73,7 +78,7 @@ class ProductSeeder extends Seeder
             });
 
             // AttachPanel
-            $post->panels()->attach($row['panel']);
+            $post->panels()->attach($this->panels);
 
             // attach media
 
