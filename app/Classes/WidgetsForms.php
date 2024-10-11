@@ -171,4 +171,13 @@ class WidgetsForms
         //   TextInput::make('Descrition')
         // ] ;
     }
+
+
+    // public static function links (?Form $form) {
+    //     return Select::make('links')
+    //         ->label(__('Links'))
+    //         ->multiple()
+    //         ->relationship('links', titleAttribute: 'title')
+    //         ->preload();
+    // }
 }

@@ -14,11 +14,21 @@
         <!-- .container -->
     </div>
     <!-- .bg-header-top -->
-
+    <div class="container">
+        @if (session()->has('somoud_load'))
+            <div class="brands-partner d-flex align-items-center justify-content-end pt-4">
+                <div style="width:80px" class="extra-logo mx-4"><img class="block" src="{{ asset('images/extra/c.png') }}"
+                        alt="Councsile Brand Logo"></div>
+                <div style="width:50px" class="extra-logo"><img class="block" src="{{ asset('images/extra/s.jpg') }}"
+                        alt="Arabic Investment Box"></div>
+            </div>
+        @endif
+    </div>
     <!-- Start Menu -->
     <div class="py-2 bg-main-menu menu-scroll">
         <div class="container">
             <div class="row">
+
                 <div class="main-menu">
                     <div class="main-menu-bottom">
                         <div class="navbar-header">

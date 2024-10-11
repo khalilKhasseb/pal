@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\Translatable\HasTranslations;
 use App\Traits\PanelResource;
 
@@ -27,5 +29,9 @@ class Widget extends Model
     {
 
         $query->where('component', $type);
+    }
+
+    public function links() : MorphMany {
+        return $this->morphMany(Links::class , 'linkable');
     }
 }
