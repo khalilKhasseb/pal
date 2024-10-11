@@ -8,7 +8,7 @@
             <li class="m{{$rtl ? 'e' : 's'}}-2 justify-content-between align-items-center d-flex top_header_item"
                 style="--color:{{ $item['color'] }}">
                 <x-icon width="30px" style="fill:var(--color)" name="{{ $item['icon'] }}" />
-                <span>{{ $item['title_'.$locale] }}</span>
+                <span class="inline-block m{{$rtl ? 'e' : 's'}}-2">{{ $item['title_'.$locale] }}</span>
             </li>
         @endforeach
     </ul>
