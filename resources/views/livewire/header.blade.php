@@ -17,6 +17,10 @@
     <div class="container">
         @if (session()->has('somoud_load'))
             <div class="brands-partner d-flex align-items-center justify-content-end pt-4">
+                <div style="margin-{{app()->getLocale() === 'ar' ? 'right' : 'left'}}:auto">
+                    <x-theme.logo :route="route('front.somoud.home')" :url="$_logo" />
+                </div>
+
                 <div style="width:80px" class="extra-logo mx-4"><img class="block" src="{{ asset('images/extra/c.png') }}"
                         alt="Councsile Brand Logo"></div>
                 <div style="width:50px" class="extra-logo"><img class="block" src="{{ asset('images/extra/s.jpg') }}"
@@ -33,9 +37,7 @@
                     <div class="main-menu-bottom">
                         <div class="navbar-header">
 
-                            @if (session()->has('somoud_load'))
-                                <x-theme.logo :route="route('front.somoud.home')" :url="$_logo" />
-                            @else
+                            @if (!session()->has('somoud_load'))
                                 <x-theme.logo :route="route('theme.home')" :url="$_logo" />
                             @endif
                             <button type="button" class="navbar-toggler collapsed d-lg-none" data-bs-toggle="collapse"
