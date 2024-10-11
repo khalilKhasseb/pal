@@ -145,9 +145,9 @@ trait PostResourceTrait
                         ->type('tag')
                         ->label(__('Tags')),
 
-                    SpatieTagsInput::make('category')
-                        ->type('category')
-                        ->label(__('Categories')),
+                    // SpatieTagsInput::make('category')
+                    //     ->type('category')
+                    //     ->label(__('Categories')),
                     SpatieTagsInput::make(static::getPostType())
                         ->type(static::getPostType())
                         ->label(__('Type Category')),
@@ -278,10 +278,10 @@ trait PostResourceTrait
                     ->label(__('Post Category'))
                     ->toggleable()
                     ->type('category'),
-                SpatieTagsColumn::make(static::getPostType())
-                    ->label(__('Type Category'))
-                    ->toggleable()
-                    ->type(static::getPostType()),
+                // SpatieTagsColumn::make(static::getPostType())
+                //     ->label(__('Type Category'))
+                //     ->toggleable()
+                //     ->type(static::getPostType()),
                 TextColumn::make('panels.panel_name')
                     ->label(__('Panel')),
 

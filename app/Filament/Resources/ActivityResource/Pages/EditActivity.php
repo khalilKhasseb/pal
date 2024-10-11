@@ -9,7 +9,8 @@ use Filament\Actions\LocaleSwitcher;
 
 class EditActivity extends EditRecord
 {
-    use EditRecord\Concerns\Translatable;
+    use EditRecord\Concerns\Translatable,
+        \App\Traits\EditResourceHasPanels;
 
     protected static string $resource = ActivityResource::class;
 

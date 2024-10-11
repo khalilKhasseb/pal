@@ -9,7 +9,9 @@ use Filament\Actions\LocaleSwitcher;
 
 class EditPartners extends EditRecord
 {
-    use EditRecord\Concerns\Translatable;
+    use EditRecord\Concerns\Translatable,
+        \App\Traits\EditResourceHasPanels;
+
     protected static string $resource = PartnersResource::class;
 
     protected function getHeaderActions(): array

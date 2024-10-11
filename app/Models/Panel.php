@@ -116,4 +116,4 @@ class Panel extends Model
 
 }
 
-class_alias('App\Models\Panel', 'PanelModel');
+// class_alias('App\Models\Panel', 'PanelModel');
