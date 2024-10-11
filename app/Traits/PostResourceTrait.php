@@ -82,9 +82,9 @@ trait PostResourceTrait
                         ->label(__("Post Content")),
 
                     Select::make(__('Panel'))
-                    ->multiple()
-                    ->relationship('panels' , titleAttribute:'panel_name')
-                    ->preload(),    
+                        ->multiple()
+                        ->relationship('panels', titleAttribute: 'panel_name')
+                        ->preload(),
                     Select::make('google_form_id')
                         ->relationship(name: 'form', titleAttribute: 'name')
                         ->preload(),
@@ -119,7 +119,7 @@ trait PostResourceTrait
                         ->hint(__('Write an excerpt for your ') . static::getLabel()),
 
                     TextInput::make('slug')
-                        ->unique(ignorable: fn (?Post $record): ?Post => $record)
+                        ->unique(ignorable: fn(?Post $record): ?Post => $record)
                         ->required()
                         ->maxLength(255)
                         ->label(__("Slug")),
@@ -164,7 +164,7 @@ trait PostResourceTrait
 
                     TextInput::make('password')
                         ->label(__('Password'))
-                        ->visible(fn (Get $get): bool => $get('status') === 'private'),
+                        ->visible(fn(Get $get): bool => $get('status') === 'private'),
 
                     DateTimePicker::make('published_at')
                         ->label(__('published at'))
@@ -197,11 +197,11 @@ trait PostResourceTrait
                         ->collection('posts')
                         ->disk(SkyPlugin::get()->getUploadDisk())
                         ->directory(SkyPlugin::get()->getUploadDirectory())
-                        ->visible(fn (Get $get) => $get('featured_image_type') === 'upload')
+                        ->visible(fn(Get $get) => $get('featured_image_type') === 'upload')
                         ->label(''),
                     TextInput::make('featured_image')
                         ->label(__('featured image url'))
-                        ->visible(fn (Get $get) => $get('featured_image_type') === 'url')
+                        ->visible(fn(Get $get) => $get('featured_image_type') === 'url')
                         ->url(),
                     Section::make()
                         ->label(__('Thumbnail'))
@@ -269,19 +269,16 @@ trait PostResourceTrait
                     ->searchable(['status'])
                     ->toggleable()
                     ->view('zeus::filament.columns.status-desc')
-                    ->tooltip(fn (Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
+                    ->tooltip(fn(Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
                 SpatieTagsColumn::make('tags')
                     ->label(__('Post Tags'))
                     ->toggleable(isToggledHiddenByDefault: false)
                     ->type('tag'),
                 SpatieTagsColumn::make('category')
                     ->label(__('Post Category'))
-                    ->toggleable()
-                    ->type('category'),
-                // SpatieTagsColumn::make(static::getPostType())
-                //     ->label(__('Type Category'))
-                //     ->toggleable()
-                //     ->type(static::getPostType()),
+                    ->toggleable() 
+                    ->type(self::getTagType()),
+                
                 TextColumn::make('panels.panel_name')
                     ->label(__('Panel')),
 
@@ -301,7 +298,7 @@ trait PostResourceTrait
                     ->options(SkyPlugin::get()->getModel('PostStatus')::pluck('label', 'name')),
                 Filter::make('password')
                     ->label(__('Password Protected'))
-                    ->query(fn (Builder $query): Builder => $query->whereNotNull('password')),
+                    ->query(fn(Builder $query): Builder => $query->whereNotNull('password')),
             ]);
     }
     public static function getActions(): array
@@ -312,7 +309,7 @@ trait PostResourceTrait
                 ->color('warning')
                 ->icon('heroicon-o-arrow-top-right-on-square')
                 ->label(__('Open'))
-                ->url(fn (Post $record): string => route(static::getRoute(), ['slug' => $record]))
+                ->url(fn(Post $record): string => route(static::getRoute(), ['slug' => $record]))
                 ->openUrlInNewTab(),
             DeleteAction::make('delete'),
             ForceDeleteAction::make(),
@@ -324,8 +321,17 @@ trait PostResourceTrait
         return [ActionGroup::make($action)];
     }
 
-    protected function afterCreate(?Model $record) :void {
+    protected function afterCreate(?Model $record): void
+    {
         dd($record->tags);
         //$record->tags()->panels()->sync()
+    }
+
+    protected static function getTagType(): string
+    {
+        return match (static::getPostType()) {
+            'post' => 'category',
+            default => static::getPostType()
+        };
     }
 }

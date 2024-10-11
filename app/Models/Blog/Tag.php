@@ -25,4 +25,10 @@ class Tag extends Model
         return $this->hasMany(self::class, 'parent_id');
     }
 
+    public function service(): MorphToMany
+    {
+        return $this->morphedByMany(config('zeus-sky.models.Post'), 'taggable');
+    }
+
+
 }
