@@ -14,7 +14,7 @@
         <!-- .container -->
     </div>
     <!-- .bg-header-top -->
-    <div class="container">
+    <div class="container border-bottom rounded">
         @if (session()->has('somoud_load'))
             <div class="brands-partner d-flex align-items-center justify-content-end pt-4">
                 <div style="margin-{{app()->getLocale() === 'ar' ? 'left' : 'right'}}:auto">
@@ -34,7 +34,7 @@
             <div class="row">
 
                 <div class="main-menu">
-                    <div class="main-menu-bottom">
+                    <div class="main-menu-bottom" @if(session()->has('somoud_load')) style="justify-content:center !important" @endif>
                         <div class="navbar-header">
 
                             @if (!session()->has('somoud_load'))
