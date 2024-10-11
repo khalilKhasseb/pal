@@ -17,12 +17,15 @@
     <div class="container border-bottom rounded">
         @if (session()->has('somoud_load'))
             <div class="brands-partner d-flex align-items-center justify-content-end pt-4">
-                <div style="margin-{{app()->getLocale() === 'ar' ? 'left' : 'right'}}:auto">
+                <div style="margin-{{ app()->getLocale() === 'ar' ? 'left' : 'right' }}:auto">
                     <x-theme.logo :route="route('front.somoud.home')" :url="$_logo" />
                 </div>
 
-                <div style="width:80px" class="extra-logo mx-4"><img class="block" src="{{ asset('images/extra/c.png') }}"
-                        alt="Councsile Brand Logo"></div>
+                <div style="width:80px" class="extra-logo mx-4">
+                    <a href="{{ route('theme.home') }}">
+                        <img class="block" src="{{ asset('images/extra/c.png') }}" alt="Councsile Brand Logo">
+                    </a>
+                </div>
                 <div style="width:50px" class="extra-logo"><img class="block" src="{{ asset('images/extra/s.jpg') }}"
                         alt="Arabic Investment Box"></div>
             </div>
@@ -34,7 +37,8 @@
             <div class="row">
 
                 <div class="main-menu">
-                    <div class="main-menu-bottom" @if(session()->has('somoud_load')) style="justify-content:center !important" @endif>
+                    <div class="main-menu-bottom"
+                        @if (session()->has('somoud_load')) style="justify-content:center !important" @endif>
                         <div class="navbar-header">
 
                             @if (!session()->has('somoud_load'))
