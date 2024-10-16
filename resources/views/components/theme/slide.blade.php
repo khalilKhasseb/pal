@@ -22,6 +22,8 @@
  
     @endphp
     <section class="bg-slider-option">
+    <div class="container">
+    
         <div class="slider-option slider-two">
             <div id="HeroContentSlider" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -82,7 +84,11 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+        
         </div>
+    
+    
+    </div>
     </section>
     <!-- End Slider Section -->
 @endif
