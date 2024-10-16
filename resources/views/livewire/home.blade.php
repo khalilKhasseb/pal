@@ -18,5 +18,6 @@
         <x-theme.sponser :sub-heading="$contentSettings['partners_' . $local]" :partners="$sponsers" />
     @endif
 
-    <x-theme.contact-us :sub-heading="$contentSettings['contact_' . $local]" />
+    {{-- <x-theme.contact-us :sub-heading="$contentSettings['contact_' . $local]" /> --}}
 </div>
+, bnm01 02bpnnph;;p9098

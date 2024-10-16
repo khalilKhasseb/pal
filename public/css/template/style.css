@@ -1122,6 +1122,9 @@ section{
 	margin: 0;
 	padding: 124px 0 104px 0;
 }
+#HeroContentSlider{
+	max-height: 400px;
+}
 .page-title h2{
 	color: #fff;
 	/* line-height: 23px; */
