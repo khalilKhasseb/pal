@@ -20,4 +20,3 @@
 
     {{-- <x-theme.contact-us :sub-heading="$contentSettings['contact_' . $local]" /> --}}
 </div>
-, bnm01 02bpnnph;;p9098
