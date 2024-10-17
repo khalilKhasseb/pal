@@ -91,7 +91,7 @@
             media="all" />
         @if (app()->getLocale() === 'ar')
             <link data-layout="front" rel="stylesheet" type="text/css"
-                href="{{ asset('css/template/rtl.css') }}?v1.0.0" media="all" />
+                href="{{ asset('css/template/rtl.css') }}" media="all" />
         @endif
         <link data-layout="front" rel="stylesheet" type="text/css"
             href="{{ asset('css/template/responsive.css') }}" media="all" />
