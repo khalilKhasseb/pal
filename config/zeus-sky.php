@@ -64,7 +64,7 @@ return [
         \LaraZeus\Sky\Classes\BoltParser::class,
     ],
 
-    'recentPostsLimit' => 5,
+    'recentPostsLimit' => 6,
 
     'searchResultHighlightCssClass' => 'highlight',
 
