@@ -68,7 +68,7 @@ return [
 
     'searchResultHighlightCssClass' => 'highlight',
 
-    'skipHighlightingTerms' => ['iframe'],
+    'skipHighlightingTerms' => ['iframe'], 
 
     'defaultFeaturedImage' => config('app.asset_url') . '/images/palceholder.jpg',
 

@@ -116,6 +116,11 @@ class Post extends Model
         return parent::image();
     }
 
+    public function cover() {
+
+        return $this->getFirstMediaUrl('post_cover') ?? null;
+    }
+
 
     public function gallary(): BelongsTo
     {

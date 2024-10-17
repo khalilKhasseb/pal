@@ -1,6 +1,12 @@
 @use(Illuminate\Support\Str)
+
+@if (!is_null($post->cover()))
+    <x-slot name="headerbg">
+        {{$post->cover()}}
+    </x-slot>
+@endif
 <x-slot name="header">
-    <h2 class="capitalize">{{ $post->title }}</h2>
+    <h3 class="capitalize">{{ $post->title }}</h3>
 </x-slot>
 
 <x-slot name="breadcrumbs">

@@ -87,7 +87,7 @@
             media="all" />
 
         <!-- own style css -->
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css')?aa }}"
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?aa"
             media="all" />
         @if (app()->getLocale() === 'ar')
             <link data-layout="front" rel="stylesheet" type="text/css"
@@ -152,9 +152,8 @@
             !is_null(Route::current()) &&
                 Route::current()->getName() !== 'theme.home' &&
                 Route::current()->getName() !== 'front.somoud.home')
-
             <!-- Start Page Header Section -->
-            <section style="--header-bg:url({{ Storage::url($settings->header_bg) }})" class="bg-page-header d-flex justify-content-center align-items-end">
+            <section style="--header-bg:url({{isset($headerbg) ? $headerbg : Storage::url($settings->header_bg)}})" class="bg-page-header d-flex justify-content-center align-items-end">
                 <div class="page-header-overlay w-100">
                     <div class="container">
                         <div class="row">
