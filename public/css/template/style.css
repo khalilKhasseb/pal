@@ -1113,7 +1113,7 @@ section{
 	background-size: cover;
 	background-position: 50% 50%;
 	height: 248px;
-	
+
 }
 .page-header-overlay{
 	/* background: rgba(124, 182, 69, 0.61); */ 
@@ -1122,6 +1122,7 @@ section{
 	text-align: center;
 	border-bottom: none;
 	margin: 0;
+	background-color: #333;
 	/* padding: 124px 0 104px 0; */
 }
 #HeroContentSlider{
