@@ -154,7 +154,7 @@
                 Route::current()->getName() !== 'front.somoud.home')
 
             <!-- Start Page Header Section -->
-            <section style="--header-bg:url({{ Storage::url($settings->header_bg) }})" class="bg-page-header">
+            <section style="--header-bg:url({{ Storage::url($settings->header_bg) }})" class="bg-page-header d-flex jusitfy-content-center align-items-end">
                 <div class="page-header-overlay">
                     <div class="container">
                         <div class="row">
