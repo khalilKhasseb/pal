@@ -33,10 +33,23 @@ class Home extends Component
 
     protected function loadContent()
     {
-        
-        $this->recent = config('zeus-sky.models.Post')::query()
-            ->withoutGlobalScopes([PanelScope::class])
-            ->posts()
+
+
+        $recentQuery = config('zeus-sky.models.Post')::query();
+
+        if (session()->has('council_load')) {
+            $recentQuery->withoutGlobalScopes();
+        }
+
+        // $this->recent = config('zeus-sky.models.Post')::query() ;
+
+        if (session()->has('council_load')) {
+            $recentQuery->withoutGlobalScopes();
+        }
+            
+
+            
+          $this->recent  =  $recentQuery->posts()
             ->published()
             ->whereDate('published_at', '<=', now())
             ->with(['tags', 'author', 'media'])
