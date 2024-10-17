@@ -15,7 +15,7 @@
 {{-- @dd($contentSettings) --}}
 <section class="bg-about-greenforest">
     <div class="container">
-        <div class="row">
+        <div class="">
             <div class="about-greenforest">
                 <div class="row">
                     <div class="col-lg-8">
