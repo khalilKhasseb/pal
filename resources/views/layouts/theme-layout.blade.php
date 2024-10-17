@@ -43,7 +43,7 @@
 
 
 
-    <link href="{{asset('css/template/datatables.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/template/datatables.css') }}" rel="stylesheet">
 
 
     @if (app()->getLocale() === 'ar')
@@ -90,8 +90,8 @@
         <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?aa"
             media="all" />
         @if (app()->getLocale() === 'ar')
-            <link data-layout="front" rel="stylesheet" type="text/css"
-                href="{{ asset('css/template/rtl.css') }}" media="all" />
+            <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}"
+                media="all" />
         @endif
         <link data-layout="front" rel="stylesheet" type="text/css"
             href="{{ asset('css/template/responsive.css') }}" media="all" />
@@ -153,7 +153,11 @@
                 Route::current()->getName() !== 'theme.home' &&
                 Route::current()->getName() !== 'front.somoud.home')
             <!-- Start Page Header Section -->
-            <section style="--header-bg:url({{isset($headerbg) ? $headerbg : Storage::url($settings->header_bg)}})" class="bg-page-header d-flex justify-content-center align-items-end">
+            <section style="--header-bg:url({{ isset($headerbg) ? $headerbg : Storage::url($settings->header_bg) }})"
+                class="bg-page-header d-flex justify-content-center align-items-end position-relative">
+                @isset($coverinfo)
+                    {{ $coverinfo }}
+                @endisset
                 <div class="page-header-overlay w-100">
                     <div class="container">
                         <div class="row">
@@ -219,9 +223,11 @@
 
 
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery-2.2.3.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/bootstrap.min.js') }}"></script>
-     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-     {{-- <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script> --}}
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    {{-- <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script> --}}
 
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.easing.1.3.js') }}"></script>
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.waypoints.min.js') }}"></script>

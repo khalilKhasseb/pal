@@ -1,8 +1,13 @@
 @use(Illuminate\Support\Str)
 
-@if (!is_null($post->cover()))
+@if (!is_null($post->coverInfo))
     <x-slot name="headerbg">
-        {{$post->cover()}}
+        {{ $post->coverInfo->cover() }}
+    </x-slot>
+
+    <x-slot name='coverinfo'>
+        <a href="{{$post->coverInfo->source}}" data-bs-toggle="tooltip" class="position-absolute top-0  {{app()->getLocale() === 'ar' ? 'me-2 end-0' : 'ms-2 start-0'}}"
+            title="{{ $post->coverInfo->description }}"><span class="badge bg-info text-dark">{{ $post->coverInfo->title }}</span></a>
     </x-slot>
 @endif
 <x-slot name="header">

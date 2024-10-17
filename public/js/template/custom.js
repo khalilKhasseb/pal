@@ -3,6 +3,7 @@
  	"use strict";
 	$(document).ready(function() {
 
+
 		//jQuery for page scrolling feature - requires jQuery Easing plugin
 		$('a.page-scroll').on('click', function(event) {
 			var $anchor = $(this);
@@ -10,7 +11,7 @@
 				scrollTop: $($anchor.attr('href')).offset().top
 			}, 1500, 'easeInOutExpo');
 			event.preventDefault();
-		});
+		}); 
 
 
 		// ul child item
@@ -302,6 +303,21 @@
         });
 
 
+
+		//ToolTips 
+
+		(function initlizeToolTips() {
+			const tooltipTriggerList = [].slice.call(
+                document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            );
+            const tooltipList = tooltipTriggerList.map(function (
+                tooltipTriggerEl
+            ) {
+				return new bootstrap.Tooltip(tooltipTriggerEl, {
+					container:'body'
+				});
+            });
+		})();	
 
 
         // jQuery(document).ready(function(){

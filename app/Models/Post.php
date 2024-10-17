@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use LaraZeus\Sky\Models\Post as Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -119,6 +120,10 @@ class Post extends Model
     public function cover() {
 
         return $this->getFirstMediaUrl('post_cover') ?? null;
+    }
+
+    public function coverInfo():HasOne{
+        return $this->hasOne(CoverInfo::class);
     }
 
 
