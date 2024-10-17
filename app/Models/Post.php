@@ -133,6 +133,11 @@ class Post extends Model
         $this->addMediaConversion('thumb-cropped-original')
             ->performOnCollections('posts')
             ->fit(Fit::Fill, 380, 300, false, '#333');
+
+        $this->addMediaConversion('fit-slider')
+            ->performOnCollections('posts')
+            ->fit(Fit::Fill, 1200, 400, false, '#333');
+
     }
     public function getContent(): string
     {
@@ -143,5 +148,5 @@ class Post extends Model
     }
 
 
-    //yuKLB.4YrDT8
+    
 }

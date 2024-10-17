@@ -272,6 +272,13 @@ body.rtl .footer-instagram a {
     float: right;
 }
 
+
+body.rtl .slider-content-area {
+    left: initial !important;
+    right: 10%;
+
+}
+
 .sidebar-widget-title:after,
 .comments-title:after{
     left: initial !important;

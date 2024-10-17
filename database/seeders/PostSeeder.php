@@ -7,6 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Post;
 use App\Models\PostMeta;
+use Illuminate\Support\Carbon;
 use Spatie\SimpleExcel\SimpleExcelReader;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +21,10 @@ class PostSeeder extends Seeder
         $rows = SimpleExcelReader::create('imports/posts-en-ar.csv')->getRows();
         $local = app()->getLocale();
 
-        // eval($f);
+
+        $a =   $rows->filter(fn($row) => Carbon::create($row['publish_date'])->year >= 2022);
+     
+    
 
 
         $rows->each(function ($row) use ($local) {
