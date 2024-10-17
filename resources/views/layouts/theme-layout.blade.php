@@ -158,7 +158,7 @@
                 <div class="page-header-overlay w-100">
                     <div class="container">
                         <div class="row">
-                            <div class="page-header py-5 md-col-6 mx-auto rounded-top">
+                            <div class="page-header py-5 col-md-6 mx-auto rounded-top">
 
 
                                 @if (isset($header))
