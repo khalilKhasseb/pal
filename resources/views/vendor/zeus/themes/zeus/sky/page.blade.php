@@ -4,8 +4,10 @@
     </x-slot>
 
     <x-slot name='coverinfo'>
-        <a href="{{$post->coverInfo->source}}" data-bs-toggle="tooltip" class="position-absolute top-0  {{app()->getLocale() === 'ar' ? 'me-2 end-0' : 'ms-2 start-0'}}"
-            title="{{ $post->coverInfo->description }}"><span class="badge bg-info text-dark">{{ $post->coverInfo->title }}</span></a>
+        <a href="{{ $post->coverInfo->source }}" data-bs-toggle="tooltip"
+            class="position-absolute top-0  {{ app()->getLocale() === 'ar' ? 'me-2 end-0' : 'ms-2 start-0' }}"
+            title="{{ $post->coverInfo->description }}"><span
+                class="badge bg-info text-dark">{{ $post->coverInfo->title }}</span></a>
     </x-slot>
 @endif
 
@@ -129,8 +131,8 @@
                                         <iframe id="{{ $post->form->id }}" title="{{ $post->form->name }}"
                                             src="{{ $post->form->responder_uri }}" width="100%" height="1200px">
                                         </iframe>
-                                     @endif
-                                  
+                                    @endif
+
                                     {{-- @if (!is_null($post->gallary))
                                         <x-theme.gallary :gallary="$post->gallary->getMedia('*')" />
                                     @endif --}}
@@ -158,47 +160,51 @@
                             </div>
                             <!-- .blog-content-box -->
                         </div>
-                        @if ($settings->comments_enabled)
-                            <div class="comments-option" x-data="{
-                                comments: @js($post->comments)
-                            }">
-                                <h4 class="comments-title">
-                                    {{ $post->comments->count() > 0 ? $post->comments->count : '' }}
-                                    {{ __('comments') }}</h4>
+                        @if ($post->has_contact_form)
+                            <x-theme.contact-us :sub-heading="__(
+                                'Professionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.',
+                            )" />
+                            @endif @if ($settings->comments_enabled)
+                                <div class="comments-option" x-data="{
+                                    comments: @js($post->comments)
+                                }">
+                                    <h4 class="comments-title">
+                                        {{ $post->comments->count() > 0 ? $post->comments->count : '' }}
+                                        {{ __('comments') }}</h4>
 
-                                @foreach ($post->comments as $comment)
-                                    @if (!empty($comment->comment) && !empty($comment->comment))
-                                        <div class="comments-items">
-                                            <div class="comments-image">
-                                                <img src="{{ config('theme.defaultCommentAuthorImage') }}"
-                                                    alt="comments-author-img" />
-                                            </div>
-                                            <!-- .comments-image -->
-                                            <div class="comments-content">
-                                                <div class="comments-author-title">
-                                                    <div class="comments-author-name">
-                                                        <h4><a href="#">{{ $comment->name }}</a> -
-                                                            <small>{{ optional($comment->created_at)->diffForHumans() }}</small>
-                                                        </h4>
-                                                    </div>
-                                                    {{-- <div class="reply-icon">
+                                    @foreach ($post->comments as $comment)
+                                        @if (!empty($comment->comment) && !empty($comment->comment))
+                                            <div class="comments-items">
+                                                <div class="comments-image">
+                                                    <img src="{{ config('theme.defaultCommentAuthorImage') }}"
+                                                        alt="comments-author-img" />
+                                                </div>
+                                                <!-- .comments-image -->
+                                                <div class="comments-content">
+                                                    <div class="comments-author-title">
+                                                        <div class="comments-author-name">
+                                                            <h4><a href="#">{{ $comment->name }}</a> -
+                                                                <small>{{ optional($comment->created_at)->diffForHumans() }}</small>
+                                                            </h4>
+                                                        </div>
+                                                        {{-- <div class="reply-icon">
                                             <h6><i class="fa fa-reply-all"></i><a href="#"> Reply</a></h6>
                                         </div> --}}
+                                                    </div>
+                                                    <!-- .comments-author-title -->
+                                                    <p>{{ $comment->comment }}</p>
                                                 </div>
-                                                <!-- .comments-author-title -->
-                                                <p>{{ $comment->comment }}</p>
+                                                <!-- .comments-content -->
                                             </div>
-                                            <!-- .comments-content -->
-                                        </div>
-                                        <!-- .comments-items -->
-                                    @endif
-                                @endforeach
+                                            <!-- .comments-items -->
+                                        @endif
+                                    @endforeach
 
-                            </div>
-                            <!-- .comments-option -->
+                                </div>
+                                <!-- .comments-option -->
 
-                            @livewire('comment', ['post' => $post])
-                        @endif
+                                @livewire('comment', ['post' => $post])
+                            @endif
                     </div>
 
                     {{-- <div class="col-lg-4">

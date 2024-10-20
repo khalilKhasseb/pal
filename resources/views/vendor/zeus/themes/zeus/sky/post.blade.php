@@ -6,8 +6,10 @@
     </x-slot>
 
     <x-slot name='coverinfo'>
-        <a href="{{$post->coverInfo->source}}" data-bs-toggle="tooltip" class="position-absolute top-0  {{app()->getLocale() === 'ar' ? 'me-2 end-0' : 'ms-2 start-0'}}"
-            title="{{ $post->coverInfo->description }}"><span class="badge bg-info text-dark">{{ $post->coverInfo->title }}</span></a>
+        <a href="{{ $post->coverInfo->source }}" data-bs-toggle="tooltip"
+            class="position-absolute top-0  {{ app()->getLocale() === 'ar' ? 'me-2 end-0' : 'ms-2 start-0' }}"
+            title="{{ $post->coverInfo->description }}"><span
+                class="badge bg-info text-dark">{{ $post->coverInfo->title }}</span></a>
     </x-slot>
 @endif
 <x-slot name="header">
@@ -194,7 +196,12 @@
                             </div>
                             <!-- .blog-content-box -->
                         </div>
+                                                @if ($post->has_contact_form)
+                            <x-theme.contact-us :sub-heading="__('Professionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.')" />
+                        @endif
 
+
+                       <div class="com">
                         @if ($settings->comments_enabled)
 
                             <div class="comments-option" x-data="{
@@ -236,7 +243,12 @@
 
                             @livewire('comment', ['post' => $post])
                         @endif
+                       </div>
+
+                       
                     </div>
+
+                    
 
                     <div class="col-lg-4">
 

@@ -39,4 +39,15 @@ trait EditResourceHasPanels
         $record->panels->attach($panel->id);
         return $record;
     }
+    protected function afterFill(): void
+    {
+    }
+
+    // protected function mutateFormDataBeforeSave(array $data): array
+    // {
+    //     dd($data);
+    //     return $data;
+    // }
+
+
 }
