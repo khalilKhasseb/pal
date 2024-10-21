@@ -2285,6 +2285,7 @@ section{
 }
 .blog-content{
 	padding: 31px 20px 25px 18px;
+	height: 120px;
 }
 
 .blog-content h4 a{
