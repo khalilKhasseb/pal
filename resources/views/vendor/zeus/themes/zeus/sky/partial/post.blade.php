@@ -24,7 +24,7 @@
                 <ul class="meta-post">
                     <li>
                         <i class="fa fa-calendar" aria-hidden="true">
-                        </i> {{ optional($post->published_at)->diffForHumans() ?? '' }}
+                        </i> {{ optional($post->published_at)->format('Y-m-d') ?? '' }}
                     </li>
                     <li x-data="{
                         likes: @js($post->likes),

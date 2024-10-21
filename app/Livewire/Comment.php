@@ -16,12 +16,16 @@ class Comment extends Component
 
     public Post $post;
 
+    public  $comments; 
+
     // public string $post_id ;
 
     public function mount(Post $post = null)
     {
 
         $this->post = $post;
+
+        $this->comments = $this->post->comments;
     }
 
     public function render()

@@ -6,10 +6,10 @@
     </x-slot>
 
     <x-slot name='coverinfo'>
-        <a href="{{ $post->coverInfo->source }}" data-bs-toggle="tooltip"
+        <a href="{{ optional($post->coverInfo)->source }}" data-bs-toggle="tooltip"
             class="position-absolute top-0  {{ app()->getLocale() === 'ar' ? 'me-2 end-0' : 'ms-2 start-0' }}"
-            title="{{ $post->coverInfo->description }}"><span
-                class="badge bg-info text-dark">{{ $post->coverInfo->title }}</span></a>
+            title="{{optional($post->coverInfo)->description }}"><span
+                class="badge bg-info text-dark">{{ optional($post->coverInfo)->title }}</span></a>
     </x-slot>
 @endif
 <x-slot name="header">
@@ -78,7 +78,7 @@
                                     <!-- .author-option -->
                                     <ul class="meta-post">
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i>
-                                            {{ optional($post->published_at)->diffForHumans() ?? '' }}
+                                            {{ optional($post->published_at)->format('Y-d-m') ?? '' }}
                                             <!-- 22.04.2017 -->
                                         </li>
                                         <li x-data="{
@@ -196,59 +196,27 @@
                             </div>
                             <!-- .blog-content-box -->
                         </div>
-                                                @if ($post->has_contact_form)
-                            <x-theme.contact-us :sub-heading="__('Professionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.')" />
+                        @if ($post->has_contact_form)
+                            <x-theme.contact-us :sub-heading="__(
+                                'Professionally mesh enterprise wide imperatives without world class paradigms.Dynamically deliver ubiquitous leadership awesome skills.',
+                            )" />
                         @endif
 
 
-                       <div class="com">
-                        @if ($settings->comments_enabled)
+                        <div class="com">
+                            @if ($settings->comments_enabled)
 
-                            <div class="comments-option" x-data="{
-                                comments: @js($post->comments)
-                            }">
-                                <h4 class="comments-title"> {{ strtoupper(__('comments')) }}
-                                    {{ $post->comments->count() !== 0 ? '-' . $post->comments->count() : '' }}</h4>
 
-                                @foreach ($post->comments as $comment)
-                                    @if (!empty($comment->comment) && !empty($comment->comment))
-                                        <div class="comments-items">
-                                            <div class="comments-image">
-                                                <img src="{{ config('theme.defaultCommentAuthorImage') }}"
-                                                    alt="comments-author-img" />
-                                            </div>
-                                            <!-- .comments-image -->
-                                            <div class="comments-content">
-                                                <div class="comments-author-title">
-                                                    <div class="comments-author-name">
-                                                        <h4><a href="#">{{ $comment->name }}</a> -
-                                                            <small>{{ optional($comment->created_at)->diffForHumans() }}</small>
-                                                        </h4>
-                                                    </div>
-                                                    {{-- <div class="reply-icon">
-                                            <h6><i class="fa fa-reply-all"></i><a href="#"> Reply</a></h6>
-                                        </div> --}}
-                                                </div>
-                                                <!-- .comments-author-title -->
-                                                <p>{{ $comment->comment }}</p>
-                                            </div>
-                                            <!-- .comments-content -->
-                                        </div>
-                                        <!-- .comments-items -->
-                                    @endif
-                                @endforeach
+                                <!-- .comments-option -->
 
-                            </div>
-                            <!-- .comments-option -->
+                                @livewire('comment', ['post' => $post])
+                            @endif
+                        </div>
 
-                            @livewire('comment', ['post' => $post])
-                        @endif
-                       </div>
 
-                       
                     </div>
 
-                    
+
 
                     <div class="col-lg-4">
 

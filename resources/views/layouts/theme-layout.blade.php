@@ -9,15 +9,17 @@
 
     @php
         //$siteTitle = !is_null($settings->site_name) ? $settings->site_name : config('app.name', 'Palgpc');
+        $locale = app()->getLocale() ;
+        $rtl    = $locale === 'ar' ;
         $siteTitle =
-            app()->getLocale() === 'ar'
+            $rtl
                 ? $settings->ar_site_name
                 : (!is_null($settings->site_name)
                     ? $settings->site_name
                     : config('app.name', 'Palgpc'));
 
         $description =
-            app()->getLocale() === 'ar'
+            $rtl
                 ? $settings->ar_site_description
                 : (!is_null($settings->site_description)
                     ? $settings->site_description
@@ -46,7 +48,7 @@
     <link href="{{ asset('css/template/datatables.css') }}" rel="stylesheet">
 
 
-    @if (app()->getLocale() === 'ar')
+    @if ($rtl)
         <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
         <link data-layout="front" rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link data-layout="front"
@@ -89,7 +91,7 @@
         <!-- own style css -->
         <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?1"
             media="all" />
-        @if (app()->getLocale() === 'ar')
+        @if ($rtl)
             <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}"
                 media="all" />
         @endif
@@ -137,7 +139,7 @@
     @vite('resources/js/app.js')
 </head>
 
-<body class="{{ app()->getLocale() === 'ar' ? 'rtl' : '' }} " id="page-top" data-spy="scroll">
+<body class="{{ $rtl ? 'rtl' : '' }} " id="page-top" data-spy="scroll">
     <div class="box-layout">
 
 
@@ -153,42 +155,45 @@
                 Route::current()->getName() !== 'theme.home' &&
                 Route::current()->getName() !== 'front.somoud.home')
             <!-- Start Page Header Section -->
-            <section style="--header-bg:url({{ isset($headerbg) ? $headerbg : Storage::url($settings->header_bg) }})"
-                class="bg-page-header d-flex justify-content-center align-items-end position-relative">
-                @isset($coverinfo)
-                    {{ $coverinfo }}
-                @endisset
-                <div class="page-header-overlay w-100">
-                    <div class="container">
-                        <div class="row">
-                            <div class="page-header py-5 col-md-6 mx-auto rounded-top">
+            <div class="container">
+                <section
+                    style="--header-bg:url({{ isset($headerbg) ? $headerbg : Storage::url($settings->header_bg) }})"
+                    class="bg-page-header d-flex justify-content-center align-items-center position-relative">
+                    @isset($coverinfo)
+                        {{ $coverinfo }}
+                    @endisset
+                    <div class="page-header-overlay w-100">
+                        <div class="container">
+                            <div class="row">
+                                <div class="page-header py-5 col-md-5 m{{$rtl ? 's' : 'e'}}-auto rounded-top">
 
 
-                                @if (isset($header))
-                                    <div class="page-title">
-                                        {{ $header }}
-                                    </div>
-                                @endif
-                                <!-- .page-title -->
+                                    @if (isset($header))
+                                        <div class="page-title">
+                                            {{ $header }}
+                                        </div>
+                                    @endif
+                                    <!-- .page-title -->
 
-                                @if (isset($breadcrumbs))
-                                    <div class="page-header-content">
-                                        <ol class="breadcrumb">
-                                            {{ $breadcrumbs }}
+                                    @if (isset($breadcrumbs))
+                                        <div class="page-header-content">
+                                            <ol class="breadcrumb">
+                                                {{ $breadcrumbs }}
 
-                                        </ol>
-                                    </div>
-                                @endif
-                                <!-- .page-header-content -->
+                                            </ol>
+                                        </div>
+                                    @endif
+                                    <!-- .page-header-content -->
+                                </div>
+                                <!-- .page-header -->
                             </div>
-                            <!-- .page-header -->
+                            <!-- .row -->
                         </div>
-                        <!-- .row -->
+                        <!-- .container -->
                     </div>
-                    <!-- .container -->
-                </div>
-                <!-- .page-header-overlay -->
-            </section>
+                    <!-- .page-header-overlay -->
+                </section>
+            </div>
             <!-- End Page Header Section -->
             <!-- End page header -->
         @endif
