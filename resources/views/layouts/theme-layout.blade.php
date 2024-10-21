@@ -89,7 +89,7 @@
             media="all" />
 
         <!-- own style css -->
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?1"
+        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?12"
             media="all" />
         @if ($rtl)
             <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}"
