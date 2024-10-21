@@ -14,19 +14,17 @@ trait PanelResource
     {
         parent::booted();
 
-    
         if (app()->runningInConsole())
             return;
         $content_provider = json_decode(Storage::disk('local')->get('content_provider.json'));
-        if(is_null($content_provider)){
-            
-            return;  
-        } 
-        if(str_contains($content_provider->source , 'filament')) {
+        if (is_null($content_provider)) {
+
+            return;
+        }
+        if (str_contains($content_provider->source, 'filament')) {
             static::withoutGlobalScope(ContentProviderScope::class);
             static::addGlobalScope(PanelScope::class);
-        }
-         elseif (
+        } elseif (
             !str_contains($content_provider->source, 'filament')
         ) {
             static::withoutGlobalScope(PanelScope::class);

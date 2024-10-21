@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 use Filament\Facades\Filament;
+use App\Models\Post; // Make sure to import your model
 
 class PanelScope implements Scope
 {
@@ -16,16 +17,18 @@ class PanelScope implements Scope
     public function apply(Builder $builder, Model $model): void
     {
     
-        // $panelName  = Filament::getCurrentPanel()->getId() !== 'admin' ? Filament::getCurrentPanel()->getId() : '';
-
+    
         $panel = Panel::findById(Filament::getCurrentPanel()->getId());
-
+       
         if (null !== $panel) {
 
             $builder->whereHas('panels', function (Builder $query) use ($panel) {
 
                 return $query->whereIn('panels.id', $panel);
             });
+
+           
+
         }
     }
 }
