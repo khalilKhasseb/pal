@@ -11,7 +11,7 @@
         </div>
         <!-- .blog-img -->
         <div class="blog-content-box">
-            <div class="blog-content">
+            <div class="blog-content h-content-fixed">
                 <h4 class="h-6 fs-1"><a href="{{ route('post', $post->slug) }}">{!! $post->title !!}</a></h4>
                 {{-- @if ($post->description !== null)
                     <p>
