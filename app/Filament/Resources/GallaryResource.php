@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Resources\Concerns\Translatable;
-
+use TomatoPHP\FilamentMediaManager\Form\MediaManagerInput;
 class GallaryResource extends Resource
 {
     use Translatable;
@@ -34,10 +34,11 @@ class GallaryResource extends Resource
                 ->relationship('panels' , titleAttribute:'panel_name'),
                 Forms\Components\Toggle::make('show_in_slider')
                 ->label(__('Show in slider')),
-                SpatieMediaLibraryFileUpload::make('gallary')
+                MediaManagerInput::make('gallary')
                 ->label(__('Gallary Images'))
-                ->multiple()
-                ->collection('gallary')
+                ->schema(\App\Classes\MediaManagerInputForm::schema())
+                //->multiple()
+                // ->collection('gallary')
             ]);
     }
 

@@ -117,7 +117,6 @@ class GoogleAuthnticate
     public static function makeAuthnticateUrl(array $scope = [])
     {
         // $client = static::makeClient($scope);
-
         $client = new Client;
         $client->setAuthConfig(static::get_credinital());
         $client->setRedirectUri(config('google.redirect_uri'));

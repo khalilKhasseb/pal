@@ -27,11 +27,13 @@
         "livewire/livewire": "^3.4",
         "nztim/mailchimp": "^5.4",
         "owenvoke/blade-fontawesome": "^2.6",
-        "spatie/simple-excel": "^3.6"
+        "spatie/simple-excel": "^3.6",
+        "tomatophp/filament-media-manager": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.11",
         "fakerphp/faker": "^1.9.1",
+        "larastan/larastan": "^2.0",
         "laravel/breeze": "^1.29",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",

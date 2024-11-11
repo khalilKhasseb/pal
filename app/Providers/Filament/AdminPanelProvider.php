@@ -86,6 +86,7 @@ class AdminPanelProvider extends PanelProvider
                 SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar', 'en']),
                 SkyPlugin::make()
                     ->navigationGroupLabel( __('Blog')),
+                    \TomatoPHP\FilamentMediaManager\FilamentMediaManagerPlugin::make(),
 
             ])->bootUsing(function ($panel) {
                     ExtraNavFields::initFields();

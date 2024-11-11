@@ -58,6 +58,7 @@ use Illuminate\Support\Str;
 //others
 use App\Models\Scopes\PanelScope;
 use Illuminate\Database\Eloquent\Model;
+use TomatoPHP\FilamentMediaManager\Form\MediaManagerInput;
 
 trait PostResourceTrait
 {
@@ -70,6 +71,7 @@ trait PostResourceTrait
         return $form->schema([
             Tabs::make('post_tabs')->schema([
                 Tabs\Tab::make(__('Title & Content'))->schema([
+                    
                     TextInput::make('title')
                         ->label(static::getLabel() . " " . __('Title'))
                         ->required()
@@ -276,9 +278,9 @@ trait PostResourceTrait
                     ->type('tag'),
                 SpatieTagsColumn::make('category')
                     ->label(__('Post Category'))
-                    ->toggleable() 
+                    ->toggleable()
                     ->type(self::getTagType()),
-                
+
                 TextColumn::make('panels.panel_name')
                     ->label(__('Panel')),
 
