@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 
+use Filament\Forms\Form;
 use Illuminate\Support\ServiceProvider;
 use FilamentTiptapEditor\TiptapEditor;
+use LaraZeus\Sky\Filament\Resources\TagResource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+    //  $r = TagResource::form(app(Form::class));
+        
+        
         TiptapEditor::configureUsing(function (TiptapEditor $tiptapEditor) {
             $tiptapEditor->blocks([
                 \App\TipTapEditorBlocks\Tabs::class

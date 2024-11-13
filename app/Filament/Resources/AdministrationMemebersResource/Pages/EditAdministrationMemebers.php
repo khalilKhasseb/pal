@@ -9,7 +9,8 @@ use Filament\Actions\LocaleSwitcher;
 
 class EditAdministrationMemebers extends EditRecord
 {
-    use EditRecord\Concerns\Translatable;
+    use EditRecord\Concerns\Translatable,   
+        \App\Traits\EditResourceHasPanels;
 
     protected static string $resource = AdministrationMemebersResource::class;
 

@@ -63,7 +63,7 @@ use TomatoPHP\FilamentMediaManager\Form\MediaManagerInput;
 trait PostResourceTrait
 {
 
-    protected static $post_type = 'post';
+    // protected static $post_type = 'post';
 
 
     public static function form(Form $form): Form
@@ -71,7 +71,7 @@ trait PostResourceTrait
         return $form->schema([
             Tabs::make('post_tabs')->schema([
                 Tabs\Tab::make(__('Title & Content'))->schema([
-                    
+
                     TextInput::make('title')
                         ->label(static::getLabel() . " " . __('Title'))
                         ->required()
@@ -121,20 +121,10 @@ trait PostResourceTrait
                         ->hint(__('Write an excerpt for your ') . static::getLabel()),
 
                     TextInput::make('slug')
-                        ->unique(ignorable: fn(?Post $record): ?Post => $record)
+                        ->unique(ignorable:fn(?Post $record) :?Post=>$record)
                         ->required()
                         ->maxLength(255)
-                        ->label(__("Slug")),
-
-
-                    // Select::make('parent_id')
-                    //     ->options(
-                    //         SkyPlugin::get()->getModel('Post')::where('post_type', static::getPostType())->pluck(
-                    //             'title',
-                    //             'id'
-                    //         )
-                    //     )
-                    //     ->label(__('Parent')),
+                        ->label(__('Post Slug')),
 
                     TextInput::make('ordering')
                         ->integer()
@@ -147,11 +137,10 @@ trait PostResourceTrait
                         ->type('tag')
                         ->label(__('Tags')),
 
-                    // SpatieTagsInput::make('category')
-                    //     ->type('category')
-                    //     ->label(__('Categories')),
+
                     SpatieTagsInput::make(static::getPostType())
                         ->type(static::getPostType())
+
                         ->label(__('Type Category')),
                 ]),
 
@@ -323,14 +312,10 @@ trait PostResourceTrait
         return [ActionGroup::make($action)];
     }
 
-    protected function afterCreate(?Model $record): void
-    {
-        dd($record->tags);
-        //$record->tags()->panels()->sync()
-    }
 
     protected static function getTagType(): string
     {
+
         return match (static::getPostType()) {
             'post' => 'category',
             default => static::getPostType()

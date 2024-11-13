@@ -28,7 +28,7 @@ use App\Classes\ExtraNavFields;
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
-    {
+     {
 
         return $panel
             ->default()
@@ -85,7 +85,9 @@ class AdminPanelProvider extends PanelProvider
 
                 SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar', 'en']),
                 SkyPlugin::make()
-                    ->navigationGroupLabel( __('Blog')),
+                    ->navigationGroupLabel( __('Blog'))
+                   
+                    ,
                     \TomatoPHP\FilamentMediaManager\FilamentMediaManagerPlugin::make(),
 
             ])->bootUsing(function ($panel) {
