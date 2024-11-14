@@ -2334,6 +2334,10 @@ section{
 	transform: scale(1.05, 1.05);
 }
 
+.blog-items .blog-content {
+	height: 171px;
+}
+
 
 
 /*===========================

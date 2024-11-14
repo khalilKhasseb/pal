@@ -3,8 +3,10 @@ namespace App\Classes;
 use Filament\Forms\Components\Select;
 use LaraZeus\Sky\SkyPlugin;
 
-class ExtraNavFields {
-  public static function initFields() : void {
+class ExtraNavFields
+{
+    public static function initFields(): void
+    {
         SkyPlugin::get()->itemType(__('Catoery'), [
             Select::make('category_id')
                 ->searchable()
@@ -39,11 +41,12 @@ class ExtraNavFields {
                         'blogs' => __('All News'),
                         'dashboard' => __('Library'),
                         'faq' => __('Faqs'),
+                        'expert' => __('Experts')
 
                     ];
                 })
         ], 'collection');
 
 
-    } 
+    }
 }

@@ -81,6 +81,7 @@ trait PostResourceTrait
                             $set('slug', Str::slug($state));
                         }),
                     config('zeus-sky.editor')::component()
+                      
                         ->label(__("Post Content")),
 
                     Select::make(__('Panel'))

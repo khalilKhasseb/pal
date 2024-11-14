@@ -11,7 +11,7 @@
             <div class="contact-us">
                 <div class="section-header">
                     <h2>{{__('Get in Touch')}}</h2>
-                    <p>{{$subHeading}}</p>
+                    {{-- <p>{{$subHeading}}</p> --}}
                 </div>
                 <!-- .section-header -->
                 <div class="row">
