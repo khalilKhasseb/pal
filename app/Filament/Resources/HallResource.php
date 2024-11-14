@@ -25,10 +25,13 @@ class HallResource extends Resource
 
         return SkyPlugin::get()->getModel('Post');
     }
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()->halls();
-    }
+    // public static function getEloquentQuery(): Builder
+    // {
+    //     // dd(get_class_methods(parent::getEloquentQuery()));
+    //     // return parent::getEloquentQuery()
+    //     // //->withGlobalScope('panel' , new \App\Models\Scopes\PanelScope)
+    //     // ->halls();
+    // }
 
     public static function getNavigationLabel(): string
     {

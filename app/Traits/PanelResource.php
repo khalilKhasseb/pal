@@ -14,15 +14,16 @@ trait PanelResource
     {
         parent::booted();
 
-        if (app()->runningInConsole())
-            return;
+        
+        // if (app()->runningInConsole())
+        //     return;
         $content_provider = json_decode(Storage::disk('local')->get('content_provider.json'));
         if (is_null($content_provider)) {
 
             return;
         }
         if (str_contains($content_provider->source, 'filament')) {
-            static::withoutGlobalScope(ContentProviderScope::class);
+            static::withoutGlobalScope(ContentProviderScope::class);    
             static::addGlobalScope(PanelScope::class);
         } elseif (
             !str_contains($content_provider->source, 'filament')
@@ -31,9 +32,11 @@ trait PanelResource
             static::addGlobalScope(ContentProviderScope::class);
         }
 
-        static::deleted(function ($record) {
-            $record->panels()->detach();
-        });
+        
+
+        // static::deleted(function ($record) {
+        //     $record->panels()->detach();
+        // });
     }
 
     public function panels(): MorphToMany

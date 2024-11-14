@@ -19,7 +19,7 @@ trait EditResourceHasPanels
 
         // check if has panels 
         if (!$this->hasPanels($record))
-            $record = $this->assingPanel($record);
+            $record = $this->asingPanels($record);
 
         // asing tags to panels 
 
@@ -36,7 +36,7 @@ trait EditResourceHasPanels
     protected function asingPanels(Model $record): Model
     {
         $panel = \App\Models\Panel::findByName(filament()->getCurrentPanel()->getId())->id;
-        $record->panels->attach($panel->id);
+        $record->panels()->attach($panel);
         return $record;
     }
  

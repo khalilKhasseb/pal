@@ -38,15 +38,9 @@ class Home extends Component
         $recentQuery = config('zeus-sky.models.Post')::query();
 
         if (session()->has('council_load')) {
-            $recentQuery->withoutGlobalScopes();
+            $recentQuery->withoutGlobalScope(\App\Models\Scopes\ContentProviderScope::class);
         }
 
-        // $this->recent = config('zeus-sky.models.Post')::query() ;
-
-
-        if (session()->has('council_load')) {
-            $recentQuery->withoutGlobalScopes();
-        }
             
 
             

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 use Filament\Facades\Filament;
 use App\Models\Post; // Make sure to import your model
-
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PanelScope implements Scope
 {
     /**
@@ -16,18 +16,21 @@ class PanelScope implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-    
-    
+
         $panel = Panel::findById(Filament::getCurrentPanel()->getId());
-       
+
         if (null !== $panel) {
 
-            $builder->whereHas('panels', function (Builder $query) use ($panel) {
+            $builder->
+                whereHas('panels', function (Builder $query) use ($panel, $model) {
 
-                return $query->whereIn('panels.id', $panel);
-            });
+                    return $query->whereIn('panels.id', $panel);
+                });
 
-           
+
+
+
+
 
         }
     }

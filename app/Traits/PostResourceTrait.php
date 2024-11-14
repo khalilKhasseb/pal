@@ -321,4 +321,7 @@ trait PostResourceTrait
             default => static::getPostType()
         };
     }
+   
+
+
 }
