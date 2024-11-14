@@ -94,7 +94,7 @@ class Post extends Model
         if ($this->getMedia('thumbnail')->isEmpty() && !$this->has_thumb) {
             // Try to load the thumb from the specified media collection (default 'posts')
             $media = $this->getMedia($collection)->first();
-            if ($media) {
+            if ($media && $media->hasGeneratedConversion('thumb-cropped-original')) {
                 $thumbPath = parse_url($media->getUrl('thumb-cropped-original'), PHP_URL_PATH);
                 $thumbFullPath = base_path('public' . $thumbPath);
 
