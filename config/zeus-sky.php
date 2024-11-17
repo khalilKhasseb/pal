@@ -71,7 +71,7 @@ return [
 
     'skipHighlightingTerms' => ['iframe'], 
 
-    'defaultFeaturedImage' => config('app.asset_url') . '/images/palceholder.jpg',
+    'defaultFeaturedImage' => config('app.asset_url') . '/logo1.png',
 
     /**
      * the default editor for pages and posts, Available:
