@@ -63,7 +63,7 @@
     @endif
 
 
-    <link rel="stylesheet" href="{{ asset('css/template/newslettwe.css') }}?12221">
+    <link rel="stylesheet" href="{{ asset('css/template/newsletter.css') }}?12221">
 
     @stack('styles')
     @stack('th3_scripts')
