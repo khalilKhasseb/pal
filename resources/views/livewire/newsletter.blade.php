@@ -1,4 +1,4 @@
-<div class="newsletter-wraaper" style="--bg-image: url('{{ asset($settings->subscription_background) }}');">
+<div class="newsletter-wraaper" style="--bg-image: url('{{ asset('storage/'.$settings->subscription_background) }}');">
     {{-- Stop trying to control. --}}
 
     {{-- @dd($settings->subscription_background) --}}
