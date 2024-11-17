@@ -1,5 +1,7 @@
-<div class="newsletter-wraaper">
+<div class="newsletter-wraaper" style="--bg-image: url('{{ asset($settings->subscription_background) }}');">
     {{-- Stop trying to control. --}}
+
+    {{-- @dd($settings->subscription_background) --}}
     <div class="container">
         <div class="newsletter py-5  ">
 

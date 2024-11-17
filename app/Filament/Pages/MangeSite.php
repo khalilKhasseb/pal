@@ -99,6 +99,12 @@ class MangeSite extends SettingsPage
                                     ->image()
                                     ->imageEditor()
                                     ->disk('public')
+                                    ->directory('site'),
+                                FileUpload::make('subscription_background')
+                                    ->label(__("subscription background"))
+                                    ->image()
+                                    ->imageEditor()
+                                    ->disk('public')
                                     ->directory('site')
                             ])->columns(3),
 

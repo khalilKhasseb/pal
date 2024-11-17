@@ -2,6 +2,8 @@
     position: relative;
     padding: 100px 0;
     z-index: 11;
+    /* --backimg: url(../images/newsletter-bg.jpg); */
+    /* --bg-image: var(--backimg); */
 }
 
 .newsletter-wraaper::after {
@@ -11,7 +13,7 @@
     bottom: 0;
     height: 99%;
     width: 100%;
-    background-image: url("../../images/pngegg.png");
+    background-image: var(--bg-image);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom left;

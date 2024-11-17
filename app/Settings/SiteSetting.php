@@ -25,6 +25,8 @@ class SiteSetting extends Settings
     public string|null $ar_site_name;
     public string|null $ar_site_description;
 
+    public string|null $subscription_background;
+
     public static function group(): string
     {
         return 'generalSetting';
@@ -35,6 +37,7 @@ class SiteSetting extends Settings
         return [
             'site_logo' => new UploadFileCast('site_logo'),
             'sommod_logo' => new UploadFileCast('sommod_logo'),
+            'subscription_background' => new UploadFileCast('subscription_background'),
             'header_bg' => HeaderBGCast::class,
             'site_name' => SiteNameCast::class,
             // "comments_enabled" => CommentsCast::class,
