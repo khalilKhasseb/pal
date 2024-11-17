@@ -144,7 +144,7 @@
     "Post Content": "محتوى التدوينة",
     "SEO": "تحسين محركات البحث",
     "SEO Settings": "الاعدادات لتحسين محركات البحث",
-    "Tags and Categories": "التصنيفات والأوسمة",
+    "Tags and Categories": "التصنيفات  و الأوسمة",
     "Tags and Categories Options": "اعدادات التصنيفات والأوسمة",
     "Categories": "التصنيفات",
     "visibility": "المشاهدة",
@@ -259,9 +259,9 @@
     "December": "ديسمبر",
     "Day": "يوم",
     "Month": "شهر",
-    "Enviromental Days" : "مناسبات بيئية",
-    "Enviromental Day" : "مناسبة بيئية",
-    
+    "Enviromental Days": "مناسبات بيئية",
+    "Enviromental Day": "مناسبة بيئية",
+    "General Tags": "تصنيفات عامة",
     "No data available in table": "لا توجد بيانات متاحة في الجدول",
     "Showing _START_ to _END_ of _TOTAL_ entries": "عرض _START_ إلى _END_ من _TOTAL_ مدخلات",
     "Showing 0 to 0 of 0 entries": "عرض 0 إلى 0 من 0 مدخلات",
@@ -276,6 +276,7 @@
     "Previous": "السابق",
     "Order by this column": "ترتيب بواسطة هذا العمود",
     "Reverse order this column": "ترتيب عكسي بواسطة هذا العمود",
-     "This Year" : "هذه السنة"
-
+    "This Year": "هذه السنة",
+    "Experts": "الخبراء",
+    "Expert": "خبير"
 }

@@ -44,6 +44,7 @@ return [
         'product',
         'service',
         'gallary',
+        'expert'
     ],
 
     /**

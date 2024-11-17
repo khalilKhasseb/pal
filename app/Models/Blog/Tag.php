@@ -30,5 +30,7 @@ class Tag extends Model
         return $this->morphedByMany(config('zeus-sky.models.Post'), 'taggable');
     }
 
+    
+
 
 }

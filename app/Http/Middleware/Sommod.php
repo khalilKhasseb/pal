@@ -24,14 +24,14 @@ class Sommod
 
     protected function validateSource($request): Request
     {
-        if (!file_exists(storage_path('app' . DIRECTORY_SEPARATOR . "content_provider.json"))) :
+        if (!file_exists(storage_path('app' . DIRECTORY_SEPARATOR . "content_provider.json"))):
             $this->setProvider($request);
             return $request;
         endif;
         $source = $request->route()->getName();
         $content_provider_source = $this->getContentProvider()['source'];
 
-        
+
         if ($source === $content_provider_source) {
             return $request;
         }
@@ -48,17 +48,17 @@ class Sommod
         $content_provider = json_encode([
             'provider' => $provider,
             'source' => $source,
-            
+
         ]);
         // validate file if not exists
 
         file_put_contents($content_provider_file_path, $content_provider);
     }
 
-    protected function getContentProvider(): array | \Exception
+    protected function getContentProvider(): array|\Exception
     {
         if (file_exists(storage_path('app/content_provider.json'))) {
-          
+
             return json_decode(Storage::disk('local')->get('content_provider.json'), true);
         }
 
@@ -112,7 +112,7 @@ class Sommod
     private function routeBackEnd(Request $request): bool
     {    // check if sommoad panle is loaded 
 
-        
+
         return str_contains($request->route()->getName(), 'filament');
     }
 }

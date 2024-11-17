@@ -23,6 +23,8 @@ class ExpertResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $slug = 'exprts';
+
 
     public static function getLabel(): string
     {
@@ -43,33 +45,11 @@ class ExpertResource extends Resource
 
         return SkyPlugin::get()->getModel('Post');
     }
-    // public static function form(Form $form): Form
-    // {
-    //     return $form
-    //         ->schema([
-    //             //
-    //         ]);
-    // }
-
-    // public static function table(Table $table): Table
-    // {
-    //     return $table
-    //         ->columns([
-    //             //
-    //         ])
-    //         ->filters([
-    //             //
-    //         ])
-    //         ->actions([
-    //             Tables\Actions\EditAction::make(),
-    //         ])
-    //         ->bulkActions([
-    //             Tables\Actions\BulkActionGroup::make([
-    //                 Tables\Actions\DeleteBulkAction::make(),
-    //             ]),
-    //         ]);
-    // }
-
+   
+    public static function getModelLabel(): string
+    {
+        return __('Expert');
+    }
     public static function getPostType():string {
         return 'expert';
     }

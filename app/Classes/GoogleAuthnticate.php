@@ -22,124 +22,82 @@ use Google\Service\Drive;
 use Google\Service\Forms;
 use Illuminate\Support\Facades\Redirect;
 
+
 class GoogleAuthnticate
 {
-    public static $credinital_file_path  = 'clientapi.json';
+    protected static string $credinital_file_path = 'clientapi.json';
 
-    protected Model $model;
-    public static function makeClient(array $scope = []): Client | \Illuminate\Routing\Redirector | \Illuminate\Http\RedirectResponse
+    protected static string $token_model = \App\Models\Token::class;
+
+    public static function createClient(array $scopes = []): Client
     {
-       
-        if (empty($scope)) {
-            $scope = [
-                Drive::DRIVE_READONLY,
-                Forms::FORMS_BODY_READONLY,
-                Forms::FORMS_RESPONSES_READONLY
-            ];
-        }
-
-        $client = new Client;
-        $client->setAuthConfig(static::get_credinital());
+        $client = new Client();
+        $client->setAuthConfig(self::getCredentials());
         $client->setRedirectUri(config('google.redirect_uri'));
-
-        $client->setScopes($scope);
-
-        $client->setAccessType(config('google.access_type'));
-        // validate token expiration and validatiy
-        $client =  self::setAccessToken($client);
-        
-        return $client;
-    }
-
-
-    protected static function setAccessToken(Client $client): Client
-    {
-
-        !$client->isAccessTokenExpired()
-            ? $client->setAccessToken(self::get_token()->toArray())
-            : $client->setAccessToken(self::fetchAccessTokenWithRefreshToken($client, self::getRefreshToken())->toArray());
-        return $client;
-    }
-
-
-    public static function makeClinetToAuthnticate(array $scope = [])
-    {
-       
-        if (empty($scope)) {
-            $scope = [
-                Drive::DRIVE_READONLY,
-                Forms::FORMS_BODY_READONLY,
-                Forms::FORMS_RESPONSES_READONLY
-            ];
-        }
-
-        $client = new Client;
-        $client->setAuthConfig(static::get_credinital());
-        $client->setRedirectUri(config('google.redirect_uri'));
-
-        $client->setScopes($scope);
-
+        $client->setScopes($scopes ?? [
+            Drive::DRIVE_READONLY,
+            Forms::FORMS_BODY_READONLY,
+            Forms::FORMS_RESPONSES_READONLY,
+        ]);
         $client->setAccessType(config('google.access_type'));
 
-        return $client;
+        return self::validateToken($client);
     }
 
-
-    protected static function fetchAccessTokenWithRefreshToken(Client $client, string | null $refresh_token): Token
+    protected static function validateToken(Client $client): Client
     {
+        if (!$client->isAccessTokenExpired()) {
+            return $client;
+        }
+          
+        if(self::getRefreshToken() === null) {
+            return $client;
+        }
 
+         $client->setAccessToken(self::fetchAccessTokenWithRefreshToken($client, self::getRefreshToken())->toArray());
+
+        return $client; 
+    }
+
+    /**
+     * Fetches a fresh access token with a given refresh token.
+     * 
+     * @param Client $client An instance of Google Client
+     * @param string|null $refresh_token The refresh token to be used
+     * 
+     * @return Model The updated token model
+     */
+    protected static function fetchAccessTokenWithRefreshToken(Client $client, string | null $refresh_token): Model
+    {
         $access_token =  $client->fetchAccessTokenWithRefreshToken($refresh_token);
         $tokenModel = static::get_token();
         $access_token['code'] = $tokenModel->code;
 
-
         $tokenModel->update($access_token);
 
         return $tokenModel;
-    }
-
-    protected static function validate_token(Client $client): bool
-    {
-
-        return $client->isAccessTokenExpired();
-    }
-
-
+    }  
 
     protected static function getRefreshToken(): string | null
     {
-
-        // return json_decode(file_get_contents(base_path('refresh_token.json')), true)['refresh_token'];
-       return self::get_token()->refresh_token;
+        return self::get_token()->refresh_token ?? null;
     }
 
-
-    public static function makeAuthnticateUrl(array $scope = [])
+    public static function makeAuthnticateUrl(array $scope = []): string
     {
-        // $client = static::makeClient($scope);
-        $client = new Client;
-        $client->setAuthConfig(static::get_credinital());
-        $client->setRedirectUri(config('google.redirect_uri'));
-
-        $client->setScopes($scope);
-
-        $client->setAccessType(config('google.access_type'));
+        $client = static::createClient($scope);
         return $client->createAuthUrl($scope);
     }
 
-
-    public static function get_credinital()
+    protected static function getCredentials()
     {
-        
-        
         return config('google.auth_config_path');
     }
 
     protected static function get_token($email = null): Model | null
     {
-       
-        if (is_null($email)) return app(config('google.token_model'))->first();
+        if (is_null($email)) return app(static::$token_model)->first();
 
-        return app(config('google.token_model'))->where('account_email', $email)->first();
+        return app(static::$token_model)->where('account_email', $email)->first();
     }
 }

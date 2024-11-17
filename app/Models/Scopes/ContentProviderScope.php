@@ -10,19 +10,21 @@ use Illuminate\Support\Facades\Storage;
 class ContentProviderScope implements Scope
 {
     /**
-     * Apply the scope to a given Eloquent query builder.
+     * Apply the scope to a given Eloquent query builder with enhanced logic.
      */
     public function apply(Builder $builder, Model $model): void
     {
-         
-        $provider = json_decode(Storage::disk('local')->get('content_provider.json'))->provider;
+        $provider = json_decode(Storage::disk('local')->get('content_provider.json'))->provider ?? 'default';
 
-        if ($provider === 'council') :
+        if ($provider === 'council') {
             $provider = 'admin';
-        endif;
+        }
 
         $builder->whereHas('panels', function (Builder $query) use ($provider) {
-            return $query->where('panels.panel_id', $provider);
+            $query->where('panels.panel_id', $provider);
+
+            // Additional conditions can be added here for enhanced logic
+            //$query->where('panels.is_active', true);
         });
     }
 }

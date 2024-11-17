@@ -18,13 +18,12 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $rows = SimpleExcelReader::create('imports/posts-en-ar.csv')->getRows();
+        $rows = SimpleExcelReader::create('imports/all-news-updates/all-news.csv')->getRows();
         $local = app()->getLocale();
 
 
         $a =   $rows->filter(fn($row) => Carbon::create($row['publish_date'])->year >= 2022);
      
-    
 
 
         $rows->each(function ($row) use ($local) {

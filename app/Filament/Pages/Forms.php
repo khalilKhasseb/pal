@@ -68,7 +68,7 @@ class Forms extends Page implements HasTable
     {
         if (Filament::auth()->user()->hasGoogleTokens()) {
             // dd(filament()->auth()->user());
-            $this->service = new GoogleFormsApi(GoogleAuthnticate::makeClient([
+            $this->service = new GoogleFormsApi(GoogleAuthnticate::createClient([
                 Drive::DRIVE_READONLY,
                 Google_Service_Forms::FORMS_BODY_READONLY,
                 Google_Service_Forms::FORMS_RESPONSES_READONLY

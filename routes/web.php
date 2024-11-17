@@ -130,6 +130,12 @@ Route::prefix('administration')->name('administration')->group(function () {
 
     Route::get('/{slug}', App\Livewire\SingleAdministration::class)->name('.view');
 });
+Route::prefix('experts')->name('experts')->group(function () {
+    Route::get('/', App\Livewire\AdminstrationComp::class);
+
+    Route::get('/{slug}', App\Livewire\SingleAdministration::class)->name('.view');
+});
+
 
 Route::prefix('partner')->name('partner')->group(function () {
     Route::get('/', Posts::class);

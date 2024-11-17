@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 //Laravel
+use App\Models\Panel;
 use Illuminate\Database\Eloquent\Builder;
 //end
 
@@ -24,6 +25,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Toggle;
+
 use Guava\FilamentIconPicker\Forms\IconPicker;
 use Filament\Forms\Components\SpatieTagsInput;
 
@@ -68,6 +71,11 @@ trait PostResourceTrait
 
     public static function form(Form $form): Form
     {
+
+
+
+
+
         return $form->schema([
             Tabs::make('post_tabs')->schema([
                 Tabs\Tab::make(__('Title & Content'))->schema([
@@ -81,17 +89,27 @@ trait PostResourceTrait
                             $set('slug', Str::slug($state));
                         }),
                     config('zeus-sky.editor')::component()
-                      
+
                         ->label(__("Post Content")),
 
                     Select::make(__('Panel'))
                         ->multiple()
+                        ->default(
+                            array_slice(Panel::find(1)->pluck('id', 'panel_name')->toArray(), 0, 1, true)
+                        )
                         ->relationship('panels', titleAttribute: 'panel_name')
                         ->preload(),
                     Select::make('google_form_id')
                         ->relationship(name: 'form', titleAttribute: 'name')
                         ->preload(),
-                    Section::make(__('Custom fields'))
+                    Toggle::make('post_meta_enable')
+                        ->label('Enable Custom Fields')
+                        ->live()
+                        ->afterStateUpdated(function (Set $set, $state) {
+
+                        }),
+                    Section::make("post_meta_section")
+                        ->heading(__('Custom fields'))
                         ->schema([
                             Repeater::make('post_meta')
                                 ->label(__("Fields"))
@@ -104,7 +122,11 @@ trait PostResourceTrait
                                     IconPicker::make('icon')
                                         ->label(__('Icon'))
                                 ])
-                        ]),
+                        ])
+                        ->hidden(function (Get $get): bool {
+                            return !$get('post_meta_enable');
+                        })
+                        ->live(),
 
                 ]),
                 Tabs\Tab::make(__('SEO'))->schema([
@@ -122,7 +144,7 @@ trait PostResourceTrait
                         ->hint(__('Write an excerpt for your ') . static::getLabel()),
 
                     TextInput::make('slug')
-                        ->unique(ignorable:fn(?Post $record) :?Post=>$record)
+                        ->unique(ignorable: fn(?Post $record): ?Post => $record)
                         ->required()
                         ->maxLength(255)
                         ->label(__('Post Slug')),
@@ -136,13 +158,13 @@ trait PostResourceTrait
                     Placeholder::make(__('Tags and Categories')),
                     SpatieTagsInput::make('tags')
                         ->type('tag')
-                        ->label(__('Tags')),
+                        ->label(__('General Tags')),
 
 
                     SpatieTagsInput::make(static::getPostType())
                         ->type(static::getPostType())
 
-                        ->label(__('Type Category')),
+                        ->label(__('Categories')),
                 ]),
 
                 Tabs\Tab::make(__('Visibility'))->schema([
@@ -262,10 +284,10 @@ trait PostResourceTrait
                     ->toggleable()
                     ->view('zeus::filament.columns.status-desc')
                     ->tooltip(fn(Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
-                SpatieTagsColumn::make('tags')
-                    ->label(__('Post Tags'))
-                    ->toggleable(isToggledHiddenByDefault: false)
-                    ->type('tag'),
+                // SpatieTagsColumn::make('tags')
+                //     ->label(__('Post Tags'))
+                //     ->toggleable(isToggledHiddenByDefault: false)
+                //     ->type('tag'),
                 SpatieTagsColumn::make('category')
                     ->label(__('Post Category'))
                     ->toggleable()
@@ -322,7 +344,7 @@ trait PostResourceTrait
             default => static::getPostType()
         };
     }
-   
+
 
 
 }

@@ -28,7 +28,7 @@ use App\Classes\ExtraNavFields;
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
-     {
+    {
 
         return $panel
             ->default()
@@ -53,18 +53,18 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-            //    Widgets\FilamentInfoWidget::class,
+                //    Widgets\FilamentInfoWidget::class,
             ])
             ->userMenuItems([
-               MenuItem::make()
-               ->label(__('Somoud'))
-               ->url(fn() => route('filament.somoud.pages.dashboard'))
+                MenuItem::make()
+                    ->label(__('Somoud'))
+                    ->url(fn() => route('filament.somoud.pages.dashboard'))
             ])->navigationGroups([
                     __('Blog'),
                     __('Theme content'),
                     __('Users'),
                     __('Settings'),
-            ])
+                ])
             ->authGuard('system')
             ->middleware([
                 EncryptCookies::class,
@@ -83,17 +83,31 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])->plugins([
 
-                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar', 'en']),
-                SkyPlugin::make()
-                    ->navigationGroupLabel( __('Blog'))
-                   
+                    SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar', 'en']),
+                    SkyPlugin::make()
+                        ->navigationGroupLabel(__('Blog'))
+                        ->tagTypes([
+                            'tag' => 'Tag',
+                            'category' => 'Category',
+                            'library' => 'Library',
+                            'faq' => 'Faq',
+                            'product' => 'Product',
+                            'service' => 'Service',
+                            'hall' => 'Hall',
+                            'activity' => 'Activity',
+                            'administration' => 'Administration',
+                            'partner' => 'Partner',
+                            'gallary' => 'Gallary',
+                            'expert'  => 'Expert',
+                        ])
+
                     ,
                     \TomatoPHP\FilamentMediaManager\FilamentMediaManagerPlugin::make(),
 
-            ])->bootUsing(function ($panel) {
+                ])->bootUsing(function ($panel) {
                     ExtraNavFields::initFields();
                 })
             ->default()
-            ;
+        ;
     }
 }

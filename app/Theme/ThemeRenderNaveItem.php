@@ -11,81 +11,73 @@ class ThemeRenderNaveItem
 
 
 
-    public static function render(array $item, $sommod = true, string $class = '')
-    {
-        $local = app()->getLocale();
+    public static function render(array $item, bool $isSommod = true, string $cssClass = ''): string
+{
+    $locale = app()->getLocale();
 
-        $label = $item['label_' . $local] === null || empty($item['label_' . $local])
-            ? ($local === 'ar' ? $item['label_en'] : $item['label_ar'])
-            : $item['label_' . $local];
+    $label = $item['label_' . $locale] ?? ($locale === 'ar' ? $item['label_en'] : $item['label_ar']);
 
-        $color = '';
-        if ($item['type'] === 'category') {
-            $category = SkyPlugin::get()->getModel('Tag')::whereIn('type', Tag::getTypes())->find($item['data']['category_id']) ?? '';
-            $activeClass = (request()->routeIs('page', 'category')) ? $color : 'border-transparent';
-            return '<a class="' . $class . ' ' . $activeClass . '"
-            target="' . ($item['data']['target'] ?? '_self') . '"
-            href="' . route('tags', [
-                'slug' => $category->slug,
-                'type' => $category->type
-            ]) . '"
-        >' .
-                $label .
-                '</a>';
-        }
-        if ($item['type'] === 'page-link' || $item['type'] === 'page_link') {
-            $page = SkyPlugin::get()->getModel('Post')::page()->whereDate('published_at', '<=', now())->find($item['data']['page_id']) ?? '';
+    $activeColor = '';
+    $activeClass = 'border-transparent';
 
-            $activeClass = (request()->routeIs('page')) ? $color : 'border-transparent';
+    switch ($item['type']) {
+        case 'category':
+            $category = SkyPlugin::get()->getModel('Tag')::whereIn('type', Tag::getTypes())->find($item['data']['category_id']);
+            if ($category) {
+                $activeClass = request()->routeIs(['page', 'category']) ? $activeColor : $activeClass;
+                return self::generateLink($cssClass, $activeClass, $item['data']['target'] ?? '_self', route('tags', ['slug' => $category->slug, 'type' => $category->type]), $label);
+            }
+            break;
 
-            return '<a class="' . $class . ' ' . $activeClass . '"
-                    target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('page', $page) . '"
-                >' .
-                $label .
-                '</a>';
-        } elseif ($item['type'] === 'post-link' || $item['type'] === 'post_link') {
-            $post = SkyPlugin::get()->getModel('Post')::find($item['data']['post_id']) ?? '';
-            $activeClass = (request()->routeIs('post')) ? $color : 'border-transparent';
+       
+        case 'page_link':
+            $page = SkyPlugin::get()->getModel('Post')::page()->whereDate('published_at', '<=', now())->find($item['data']['page_id']);
+            if ($page) {
+                $activeClass = request()->routeIs('page') ? $activeColor : $activeClass;
+                return self::generateLink($cssClass, $activeClass, $item['data']['target'] ?? '_self' , route('page', $page), $label);
+            }
+            break;
 
-            return '<a class="' . $class . ' ' . $activeClass . '"
-                    target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('post', $post) . '"
-                >' .
-                $label .
-                '</a>';
-        } elseif ($item['type'] === 'library-link' || $item['type'] === 'library_link') {
-            $tag = SkyPlugin::get()->getModel('Tag')::find($item['data']['library_id']) ?? '';
-            $activeClass = (str(request()->url())->contains($tag->library->first()->slug)) ? $color : 'border-transparent';
+        case 'post_link':
+            $post = SkyPlugin::get()->getModel('Post')::find($item['data']['post_id']);
+            if ($post) {
+                $activeClass = request()->routeIs('post') ? $activeColor : $activeClass;
+                return self::generateLink($cssClass, $activeClass, $item['data']['target'] ?? '_self', route('post', $post), $label);
+            }
+            break;
 
-            return '<a class="' . $class . ' ' . $activeClass . '"
-                    target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route('library.tag', $tag->slug) . '"
-                >' .
-                $label .
-                '</a>';
-        } elseif ($item['type'] === 'collection') {
-            return '<a class="' . $class . '"
-                    target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route($item['data']['collection']) . '"
-                >' .
-                $label .
-                '</a>';
-        } elseif ($item['type'] === 'sommod-routes') {
+       
+        case 'library_link':
+            $tag = SkyPlugin::get()->getModel('Tag')::find($item['data']['library_id']);
+            if ($tag) {
+                $activeClass = str(request()->url())->contains($tag->library->first()->slug) ? $activeColor : $activeClass;
+                return self::generateLink($cssClass, $activeClass, $item['data']['target'] ?? '_self', route('library.tag', $tag->slug), $label);
+            }
+            break;
 
-            return '<a class="' . $class . '"
-                    target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . route($item['data']['sommod_routes']) . '"
-                >' .
-                $label .
-                '</a>';
-        } else {
-            return '<a class="' . $class . '"
-                    target="' . ($item['data']['target'] ?? '_self') . '"
-                    href="' . $item['data']['url'] . '"
-                >' .
-                $label .
-                '</a>';
-        }
+        case 'collection':
+            return self::generateLink($cssClass, '', $item['data']['target'] ?? '_self', route($item['data']['collection']), $label);
+
+        case 'sommod-routes':
+            return self::generateLink($cssClass, '', $item['data']['target'] ?? '_self', route($item['data']['sommod_routes']), $label);
+
+        default:
+            return self::generateLink($cssClass, '', $item['data']['target'] ?? '_self', $item['data']['url'], $label);
     }
+
+    return '';
+}
+
+private static function generateLink(string $cssClass, string $activeClass, ?string $target, string $url, string $label): string
+{
+    
+    return sprintf(
+        '<a class="%s %s" target="%s" href="%s">%s</a>',
+        $cssClass,
+        $activeClass,
+        $target ?? '_self',
+        $url,
+        $label
+    );
+}
 }
