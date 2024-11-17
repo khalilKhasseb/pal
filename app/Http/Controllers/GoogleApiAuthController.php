@@ -43,14 +43,14 @@ class GoogleApiAuthController extends Controller
      * Will redircet back to same page where authnticate happens
      * @return \Illuminate\Http\RedirectResponse | \Illuminate\Routing\Redirector
      */
-    public function callback(Request $request)
+    public function callback(Request $request)  
     {
 
         // first step validate if token present in database
         
         $tokenData = [];
         $tokenInDatabase = !is_null(Filament::auth()->user()->googleTokens()->where('active', 1)->first());
-        $client = GoogleAuthnticate::makeClinetToAuthnticate();
+        $client = GoogleAuthnticate::createClient();
 
         if ($request->has('code')) {
             // which means we successfuly authnitcated and retrive a code to use to fetchaccesstoken
@@ -82,7 +82,7 @@ class GoogleApiAuthController extends Controller
 
 
 
-        // return redirect() ;
+         return redirect() ;
     }
 
     public function refreshToken(Request $request)
@@ -92,7 +92,7 @@ class GoogleApiAuthController extends Controller
         $refresh_token = json_decode(file_get_contents(base_path('refresh_token.json')), true)['refresh_token'];
 
         // dd($refresh_token);
-        $client = GoogleAuthnticate::makeClient();
+        $client = GoogleAuthnticate::createClient();
 
         $token = $client->fetchAccessTokenWithRefreshToken($refresh_token);
 
