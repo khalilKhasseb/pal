@@ -3,6 +3,9 @@
  	"use strict";
 	$(document).ready(function() {
 
+		$(".select-2").select2({
+            theme: "bootstrap-5",
+        });
 
 		//jQuery for page scrolling feature - requires jQuery Easing plugin
 		$('a.page-scroll').on('click', function(event) {

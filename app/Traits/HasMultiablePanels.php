@@ -12,6 +12,13 @@ use App\Models\Blog\Tag;
 trait HasMultiablePanels
 {
 
+    /**
+     * Handles creating a record in the database.
+     *
+     * @param array $data The form data.
+     *
+     * @return Model The created record.
+     */
     protected function handleRecordCreation(array $data): Model
     {
         $record = app(static::getModel());
@@ -46,60 +53,75 @@ trait HasMultiablePanels
         }
 
         $this->data = $originalData;
-
         $record->save();
-        $panel = Panel::findByName(Filament::getCurrentPanel()->getId());
+        if (!filled($originalData['panels'])) {
+            $panel = Panel::findByName(Filament::getCurrentPanel()->getId());
+            $record = $this->attachPanel($record, $panel);
+            // dd($record->panels);
 
-        $record = $this->attachPanel($record, $panel);
+            return $record;
 
-        // $this->asingRecordTagsInputToPanel($record, $panel->id);
+        }
 
         return $record;
     }
 
+        /**
+         * Attach panel to the record.
+         *
+         * @param  Model  $record
+         * @param  mixed  $panel
+         * @return Model
+         */
     private static function attachPanel(Model $record, $panel): Model
     {
-
-        // $panel = Panel::findByName(Filament::getCurrentPanel()->getId());
-
         // try to load method from record name
-
         $recordName = str(class_basename($record))->lcfirst()->plural()->value();
-
         if (method_exists($panel, $recordName)) {
-
             $panel->$recordName()->attach($record->id);
         }
-        // eles return $record without attaching record to panel which means there is no method exists on the panel
-        // go to add method ;
-        // $panel->posts()->attach($record->id);
 
         return $record;
     }
 
 
 
+    /**
+     * Sync record tags to panel tags.
+     *
+     * @param  Model|null  $record
+     * @param  mixed  $panel
+     * @return void
+     */
     protected function asingRecordTagsInputToPanel(?Model $record, $panel): void
     {
-        if ($record->isRelation('tags')) {
-            
-            if (!$record->tags->isEmpty()) {
 
-                $record->tags->each(function ($tag) use ($panel) {
+        if (!$record->tags->isEmpty()) {
 
-                    $panel->tags()->syncWithoutDetaching($tag->id);
-                    
-                });
-            }
+            $record->tags->each(function ($tag) use ($panel) {
+
+                $panel->tags()->syncWithoutDetaching($tag->id);
+
+            });
         }
+
     }
 
+    /**
+     * After create record.
+     *
+     * If the record is instance of MorphToMany tags, we sync tags to panel tags.
+     *
+     * @return void
+     */
     protected function afterCreate(): void
     {
-        $panel = Panel::findByName(Filament::getCurrentPanel()->getId());
-        
-        
 
-        $this->asingRecordTagsInputToPanel($this->getRecord(), $panel);
+        if ($this->getRecord()->isRelation('tags')) {
+
+            $panel = Panel::findByName(Filament::getCurrentPanel()->getId());
+
+            $this->asingRecordTagsInputToPanel($this->getRecord(), $panel);
+        }
     }
 }

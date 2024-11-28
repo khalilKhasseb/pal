@@ -10,6 +10,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditSupporters extends EditRecord
 {
     use EditRecord\Concerns\Translatable;
+    use \App\Traits\EditResourceHasPanels;    
     protected static string $resource = SupportersResource::class;
 
     protected function getHeaderActions(): array

@@ -5,6 +5,8 @@
  */
 
 import axios from "axios";
+
+// import * as select2 from 'select2';
 // import Alpine from "alpinejs";
 
 // Alpine.start();

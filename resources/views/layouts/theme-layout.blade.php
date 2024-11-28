@@ -9,21 +9,19 @@
 
     @php
         //$siteTitle = !is_null($settings->site_name) ? $settings->site_name : config('app.name', 'Palgpc');
-        $locale = app()->getLocale() ;
-        $rtl    = $locale === 'ar' ;
-        $siteTitle =
-            $rtl
-                ? $settings->ar_site_name
-                : (!is_null($settings->site_name)
-                    ? $settings->site_name
-                    : config('app.name', 'Palgpc'));
+        $locale = app()->getLocale();
+        $rtl = $locale === 'ar';
+        $siteTitle = $rtl
+            ? $settings->ar_site_name
+            : (!is_null($settings->site_name)
+                ? $settings->site_name
+                : config('app.name', 'Palgpc'));
 
-        $description =
-            $rtl
-                ? $settings->ar_site_description
-                : (!is_null($settings->site_description)
-                    ? $settings->site_description
-                    : config('app.name', 'Palgpc'));
+        $description = $rtl
+            ? $settings->ar_site_description
+            : (!is_null($settings->site_description)
+                ? $settings->site_description
+                : config('app.name', 'Palgpc'));
 
     @endphp
     <meta name="application-name" content="{{ $siteTitle }}">
@@ -46,7 +44,12 @@
 
 
     <link href="{{ asset('css/template/datatables.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
 
     @if ($rtl)
         <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,8 +92,8 @@
             media="all" />
 
         <!-- own style css -->
-        <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/style.css') }}?1oasss34"
-            media="all" />
+        <link data-layout="front" rel="stylesheet" type="text/css"
+            href="{{ asset('css/template/style.css') }}?1oasss34" media="all" />
         @if ($rtl)
             <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}"
                 media="all" />
@@ -165,7 +168,7 @@
                     <div class="page-header-overlay w-100">
                         <div class="container">
                             <div class="row">
-                                <div class="page-header py-5 col-md-5 m{{$rtl ? 's' : 'e'}}-auto rounded-top">
+                                <div class="page-header py-5 col-md-5 m{{ $rtl ? 's' : 'e' }}-auto rounded-top">
 
 
                                     @if (isset($header))
@@ -231,6 +234,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/bootstrap.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     {{-- <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script> --}}
 

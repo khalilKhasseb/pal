@@ -10,8 +10,9 @@ use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
 
-use Filament\Forms\Components\TextInput;
 
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -49,7 +50,16 @@ class InitiativesResource extends Resource
                         $set('slug', Str::slug($state));
                     }),
                     TextInput::make('slug')
-                    ->label('Slug')
+                    ->label('Slug'),
+                Select::
+                    make('panels')
+                    ->label(__('Panel'))
+                    ->multiple()
+                    ->default(
+                        array_slice(\App\Models\Panel::find(1)->pluck('id', 'panel_name')->toArray(), 0, 1, true)
+                    )
+                    ->relationship('panels', titleAttribute: 'panel_name')
+                    ->preload(),
             ]);
     }
 

@@ -31,47 +31,55 @@ class CourceResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make(__('Cource info'))
-                ->schema([
-                    Forms\Components\Select::make('google_form_id')
-                    ->label(__('Form'))
-                      ->relationship(name:'google_form' , titleAttribute:'name')
-                       ->searchable()
-                       ->preload(),
-                    Forms\Components\TextInput::make('title')
-                        ->label(__('Title'))
-                        ->required()
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('location')
-                       ->label(__('Location'))
-                        ->required()
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('trainer')
-                        ->label(__('Trainer'))
-                        ->required()
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('target_audince')
-                        ->label(__('Target audince'))
-                        ->required()
-                        ->maxLength(255),
-                    Forms\Components\TextInput::make('partners')
-                    ->label(__('Partners'))
-                        ->maxLength(255),
+                    ->schema([
+                        Forms\Components\Select::make('google_form_id')
+                            ->label(__('Form'))
+                            ->relationship(name: 'google_form', titleAttribute: 'name')
+                            ->searchable()
+                            ->preload(),
+                        Forms\Components\TextInput::make('title')
+                            ->label(__('Title'))
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('location')
+                            ->label(__('Location'))
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('trainer')
+                            ->label(__('Trainer'))
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('target_audince')
+                            ->label(__('Target audince'))
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('partners')
+                            ->label(__('Partners'))
+                            ->maxLength(255),
                         Forms\Components\TextInput::make('hours')
-                        ->label(__('Hours'))
-                        ->required()
-                        ->numeric(),
-                    Forms\Components\DateTimePicker::make('start_date')
-                    ->label(__('Start date'))
-                        ->required(),
-                    Forms\Components\DateTimePicker::make('end_date')
-                    ->label(__('End date')),
-                    Forms\Components\TextInput::make('fees')
-                    ->label(__("Fees"))
-                        ->maxLength(255),
+                            ->label(__('Hours'))
+                            ->required()
+                            ->numeric(),
+                        Forms\Components\DateTimePicker::make('start_date')
+                            ->label(__('Start date'))
+                            ->required(),
+                        Forms\Components\DateTimePicker::make('end_date')
+                            ->label(__('End date')),
+                        Forms\Components\TextInput::make('fees')
+                            ->label(__("Fees"))
+                            ->maxLength(255),
+                        // Forms\Components\Select::make('panels')
+                        //     ->label(__('Panel'))
+                        //     ->multiple()
+                        //     ->relationship('panels', titleAttribute: 'panel_name')
+                        //     ->default(
+                        //         array_slice(\App\Models\Panel::findByName(filament()->getCurrentPanel()->getId())->pluck('id', 'panel_name')->toArray(), 0, 1, true)
+                        //     )
+                        //     ->preload()
 
-                ])->columns(3),
+                    ])->columns(3),
                 Forms\Components\Fieldset::make(__('Scolership'))
-                ->schema([
+                    ->schema([
                         Forms\Components\Toggle::make('scholership')
                             ->label(__('Scolership'))
                             ->live()
@@ -80,11 +88,11 @@ class CourceResource extends Resource
                         Forms\Components\TextInput::make('scholership_link')
                             ->label(__('Scholership link'))
                             ->visible(fn(Get $get) => $get('scholership')),
-                ])->columns(2),
+                    ])->columns(2),
 
 
-                 Forms\Components\Section::make()
-                 ->schema([
+                Forms\Components\Section::make()
+                    ->schema([
                         Forms\Components\RichEditor::make('content')
                             ->label(__('Summary'))
                             ->required()
@@ -96,7 +104,7 @@ class CourceResource extends Resource
                             ->maxLength(65535),
 
 
-                 ])->columns(2),
+                    ])->columns(2),
 
             ]);
     }
@@ -155,8 +163,9 @@ class CourceResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
-             TernaryFilter::make('scholership'),
+                TernaryFilter::make('scholership'),
 
             ])
             ->actions([
@@ -170,11 +179,13 @@ class CourceResource extends Resource
     }
 
 
-    public static function getNavigationLabel() :string {
+    public static function getNavigationLabel(): string
+    {
         return __('Cources');
     }
 
-    public static function getModelLabel():string {
+    public static function getModelLabel(): string
+    {
         return __('Cource');
     }
     public static function getPluralLabel(): string

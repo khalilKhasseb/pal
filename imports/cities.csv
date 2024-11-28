@@ -1,0 +1,504 @@
+state_en,name_en,state_ar,name_ar
+Jerusalem,Jerusalem,القدس,القدس
+Jerusalem,"Abu Dis
+",القدس,أبو ديس
+Jerusalem,Umm Lisun,القدس,أُم ليسون
+Jerusalem,Ishua',القدس,إشوع
+Jerusalem,Bir Nabala,القدس,بئر نبالا
+Jerusalem,Battir,القدس,بتّير
+Jerusalem,Biddu,القدس,بدّو
+Jerusalem,Al Briej,القدس,البريج
+Jerusalem,Bayt Umm al-Mays,القدس,بيت أم الميس
+Jerusalem,"Beit Ijza
+",القدس,بيت إجزا
+Jerusalem,Beit Iksa,القدس, بيت إكسا
+Jerusalem,Bayt Thul,القدس, بيت ثول
+Jerusalem,Beit Jimal,القدس,بيت جمال
+Jerusalem,Beit Hanina,القدس,بيت حنينا
+Jerusalem,Beit Duqqu,القدس,بيت دقّو
+Jerusalem,Bayt Saqiya,القدس, بيت ساقية
+Jerusalem,Beit Surik,القدس,بيت سوريك
+Jerusalem,Beit Safafa,القدس,بيت صفافا
+Jerusalem,Bayt 'Itab,القدس,بيت عطاب
+Jerusalem,"Beit 'Anan
+",القدس,بيت عنان
+Jerusalem,Bayt Mahsir,القدس,بيت محسير
+Jerusalem,Bayt Naqquba,القدس,بيت نقّوبا
+Jerusalem, Jaba',القدس,جبع
+Jerusalem,Judayra,القدس,جديره
+Jerusalem,Jerash,القدس,جرش
+Jerusalem,al-Jura,القدس,الجورة
+Jerusalem,Al Jib,القدس,الجيب
+Jerusalem,Hazmieh,القدس,الحازمية
+Jerusalem,Hizma,القدس,حزما
+Jerusalem,Khan al Ahmar ,القدس,الخان الاحمر
+Jerusalem,Khirbat Ism Allah,القدس,خربة إسم الله
+Jerusalem,Khirbat al-Tannur ,القدس,خربة التنور
+Jerusalem, Khirbat al-Za'rura,القدس,خربة الزعرورة
+Jerusalem,alShaykh Sa'ad,القدس,خربة الشيخ سعد
+Jerusalem,Khirbat al-'Umur,القدس,خربة العمور
+Jerusalem,Khirbat al-Lawz,القدس,خربة اللوز
+Jerusalem,Khirbat al Makhrum,القدس,خربة المخروم
+Jerusalem,Dayr Aban,القدس,دير آبان
+Jerusalem,Dayr al-Shaykh,القدس,دير الشيخ
+Jerusalem,Dayr al-Hawa,القدس,دير الهوا
+Jerusalem,Deir Rafat,القدس,دير رفات
+Jerusalem,Dayr 'Amr,القدس,دير عمرو
+Jerusalem,Mar Saba,القدس,دير مار سابا
+Jerusalem,Ras Abu 'Ammar,القدس,رأس أبو عمار
+Jerusalem,Al Ram,القدس,الرامّ
+Jerusalem,Rafat,القدس,رفات
+Jerusalem,Saris,القدس,ساريس
+Jerusalem,Sufla,القدس,سفلى
+Jerusalem,Sawahira Sharqiya,القدس,السواحرة الشرقية
+Jerusalem,Sawahira Gharbiyya,القدس,السواحره الغربية
+Jerusalem,Sharafat,القدس,شرفات
+Jerusalem,Shu'afat,القدس,شعفاط
+Jerusalem,Shaikh Badr,القدس,الشيخ بدر
+Jerusalem,Sar'a,القدس,صرعة
+Jerusalem,Sataf,القدس,صطاف
+Jerusalem,Suba,القدس,صوبا
+Jerusalem,Sur Baher,القدس,صور باهر
+Jerusalem,Al-Ubeidiya,القدس,العبيديّه
+Jerusalem,Arab al Rashaydih,القدس,عرب الرشايدة
+Jerusalem,Artuf,القدس,عرتوف
+Jerusalem,Islin,القدس,عسلن
+Jerusalem,Ush al Ghurab,القدس,عش الغراب
+Jerusalem,Aqqur,القدس,عقور
+Jerusalem,Anata,القدس,عناتا
+Jerusalem,Al-Eizariya,القدس,العيزريه
+Jerusalem,Ayn Rafat,القدس,عين رفات
+Jerusalem,Ayn Karim,القدس,عين كارم
+Jerusalem,Ayn Naquba,القدس,عين نقوبه
+Jerusalem,Qalunya,القدس,قالونيا
+Jerusalem,Al Qabu,القدس,القبو
+Jerusalem,Al Qubayba,القدس,القبيبه
+Jerusalem,Abu Gous,القدس,أبو غوش
+Jerusalem,Al Qastal,القدس,القسطل
+Jerusalem,Qatanna,القدس,قطنّه
+Jerusalem,Qalandiya,القدس,قلنديه
+Jerusalem,Qamra,القدس,قمرة
+Jerusalem,Kasla,القدس,كسلا
+Jerusalem,Kafr 'Aqab,القدس,كفر عقب
+Jerusalem,Lifta,القدس,لفتا
+Jerusalem,Al-Maliha,القدس,المالحه
+Jerusalem,Shu'fat Camp,القدس,مخيّم شعفاط
+Jerusalem,Qalandiya Camp,القدس,مخيّم قلنديا
+Jerusalem,Mikhmas,القدس,مُخماس
+Jerusalem, Al Nabi Samuel,القدس,النبي صموئيل
+Jerusalem,Nitaf,القدس,نطاف
+Jerusalem,Wahat al-Salam,القدس,واحة السلام
+Jerusalem,Al Walaja,القدس,الولجة
+Jerusalem,Al Walaja Al Jadeida,القدس,الولجة الجديدة
+Jerusalem,Illar,القدس,علار
+Jenin,Jenin,جنين,جنين
+Jenin,Kafr Dan,جنين,كفردان
+Jenin,Ya'bad,جنين,يعبد
+Jenin,"Silat ad-Dhahr
+",جنين,سيلة الظهر
+Jenin,Qabatiya,جنين,قباطية
+Jenin,Arraba,جنين,عرابة
+Jenin,Burqin,جنين,برقين
+Jenin,"Silat al-Harithiya
+",جنين,سيلة الحارثية
+Jenin,Zababdeh,جنين,الزبابدة
+Jenin,Faqqua,جنين,فقوعة
+Jenin,Al-Yamun,جنين,اليامون
+Jenin,"Kafr Ra'i
+",جنين,كفر راعي
+Jenin,"Meithalun
+",جنين,ميثلون
+Jenin,Jaba',جنين,جبع
+Tubas,Tubas,طوباس,طوباس
+Tubas,Aqqaba,طوباس,عقابة
+Tubas,Tammun,طوباس,طمون
+Tubas,Bardala,طوباس,بردلا
+Tubas,"Ein al-Beida
+",طوباس,عين البيضة
+Tubas,Kardala,طوباس,كردلا
+Tubas,Ras al-Far'a,طوباس,راس الفارعة
+Tubas,Tayasir,طوباس,تياسير
+Tubas,"Wadi al-Far'a
+",طوباس,وادي الفارعة
+Tubas,Far'a Camp,طوباس,مخيم الفارعة
+Tulkarm,Tulkarm,طولكرم,طولكرم
+Tulkarm,Far'oun,طولكرم,فرعون
+Tulkarm,Shufa,طولكرم,شوفة
+Tulkarm,Izbet Shufa,طولكرم,عزبة شوفة
+Tulkarm,Anabta,طولكرم,عنبتا
+Tulkarm,"Kafr Rumman
+",طولكرم,كفر رمان
+Tulkarm,"Kafr al-Labad
+",طولكرم,كفر اللبد
+Tulkarm,"Beit Lid
+",طولكرم,بيت ليد
+Tulkarm,Bal'a,طولكرم,بلعا
+Tulkarm,"Al Haffasi
+",طولكرم,الحفاصي
+Tulkarm,Ramin,طولكرم,رامين
+Tulkarm,Saffarin,طولكرم,سفارين
+Tulkarm,Deir al-Ghusun,طولكرم,دير الغصون
+Tulkarm,"Al Masqufa
+",طولكرم,المسقوفة
+Tulkarm,"Al-Jarushiya
+",طولكرم,الجاروشية
+Tulkarm,Illar,طولكرم,علار
+Tulkarm,Qaffin,طولكرم,قفين
+Tulkarm,Saida,طولكرم,صيدا
+Tulkarm,Attil,طولكرم,عتيل
+Tulkarm,Zeita,طولكرم,زيتا
+Tulkarm,"Baqa ash-Sharqiyya
+",طولكرم,باقة الشرقية
+Tulkarm,"An-Nazla al-Gharbiya
+",طولكرم,النزلة الغربية
+Tulkarm,"An-Nazla ash-Sharqiya
+",طولكرم,النزلة الشرقية
+Tulkarm,"An-Nazla al-Wusta
+",طولكرم,النزلة الوسطى
+Tulkarm,Nazlat Abu Nar,طولكرم,نزلة أبو نار
+Tulkarm,Nazlat 'Isa,طولكرم,نزلة عيسى
+Tulkarm,Al-Aqaba,طولكرم,عكابا
+Tulkarm,"Kafr Zibad
+",طولكرم,كفر زيباد
+Tulkarm,"Kafr Sur
+",طولكرم,كفر صور
+Tulkarm,"Kafr Abbush
+",طولكرم,كفر عبوش
+Tulkarm,Kafr Jammal,طولكرم,كفر جمال
+Tulkarm,Kur,طولكرم,كور
+Tulkarm,Al-Ras,طولكرم,الراس
+Tulkarm,Jubara,طولكرم,جبارة
+Tulkarm,"Qaqun
+",طولكرم,قاقون
+Tulkarm,Izbet Shufa ,طولكرم,عزبة الخلال
+Tulkarm,al-azab,طولكرم,العزب
+Tulkarm,Al-Rashed,طولكرم, الرشيد
+Tulkarm,Shweika,طولكرم, شويكة
+Tulkarm,Thannabah,طولكرم, ذنابة
+Tulkarm,Irtah,طولكرم, ارتاح
+Tulkarm,Iktaba,طولكرم, اكتابا
+Tulkarm,Kafa,طولكرم, كفا
+Tulkarm,Tulkarm Camp,طولكرم,مخيم طولكرم
+Tulkarm,Nur Shams Camp,طولكرم,مخيم نور شمس
+Nablus,Nablus,نابلس,نابلس
+Nablus,Qabalan,نابلس,قبلان
+Nablus,"Beit Iba
+",نابلس,بيت ايبا
+Nablus,Aqraba,نابلس,عقربا
+Nablus,"Beit Furik
+",نابلس,بيت فوريك
+Nablus,Beit Dajan,نابلس,بيت دجن
+Nablus,Beita,نابلس,بيتا
+Nablus,Almasakin Alshaebia,نابلس,المساكن الشعبية
+Nablus,Rujeib,نابلس,روجيب
+Nablus,Huwara,نابلس,حوارة
+Nablus,"Asira ash-Shamaliya
+",نابلس,عصيرة الشمالية
+Nablus,Sebastia,نابلس,سبسطية
+Nablus,Jamma'in,نابلس,جماعين
+Nablus,"As-Sawiya
+",نابلس,الساوية
+Nablus,Al'Aqrabaniyya,نابلس,العقربانية
+Nablus,"Al-Lubban ash-Sharqiya
+",نابلس,اللبن الشرقية
+Nablus,An-Naqura aljanubia,نابلس,الناقورة الجنوبية
+Nablus,Ijnisinya,نابلس,إجنسنيا
+Nablus,Osarin,نابلس,أوصرين
+Nablus,Yatma,نابلس,يتما
+Nablus,Burqa,نابلس,برقة
+Nablus,Bizzariya,نابلس,بزاريا
+Nablus,Burin,نابلس,بورين
+Nablus,"Beit Imrin
+",نابلس,بيت امرين
+Nablus,"Beit Iba
+",نابلس,بيت ايبا
+Nablus,"Beit Wazan
+",نابلس,بيت وزن
+Nablus,Tell,نابلس,تل
+Nablus,Talfit,نابلس,تلفيت
+Nablus,Jalud,نابلس,جالود
+Nablus,"Jurish
+",نابلس,جوريش
+Nablus,Duma,نابلس,دوما
+Nablus,Deir al-Hatab,نابلس,دير الحطب
+Nablus,Deir Sharaf,نابلس,دير شرف
+Nablus,Rafidia,نابلس,رفيديا
+Nablus,"Zawata
+",نابلس,زواتا
+Nablus,Zeita Jamma'in,نابلس,زيتا جماعين
+Nablus,Salem,نابلس,سالم
+Nablus,Sarra,نابلس,صرة
+Nablus,Talluza,نابلس,طلوزة
+Nablus,Azmut,نابلس,عزموط
+Nablus,Asira al-Qibliya,نابلس,عصيرة القبلية
+Nablus,Awarta,نابلس,عورتا
+Nablus,Urif,نابلس,عوريف
+Nablus,Einabus,نابلس,عينابوس
+Nablus,Qusra,نابلس,قُصرة
+Nablus,Qaryut,نابلس,قريوت
+Nablus,Qusin,نابلس,قوصين
+Nablus,Kafr Qallil,نابلس,كفر كليل
+Nablus,Madama,نابلس,مادما
+Nablus,Majdal Bani Fadil,نابلس,مجدل بني فاضل
+Nablus,Nisf Jubeil,نابلس,نصف جبيل
+Nablus,Yasid,نابلس,ياصيد
+Nablus,Askar camp,نابلس,مخيم عسكر
+Nablus,"Ein Beit al-Ma'
+",نابلس,مخيم عين بيت الماء
+Nablus,Balata,نابلس,مخيم بلاطة
+Qalqilya,Qalqilya,قلقيلية,قلقيلية
+Qalqilya,Azzun,قلقيلية, عزون
+Qalqilya,"Azzun Atma
+",قلقيلية, عزون عتمة
+Qalqilya,"Kafr Laqif
+",قلقيلية, كفر لاقف
+Qalqilya,Nabi Ilyas,قلقيلية, النبي إلياس
+Qalqilya,Aslah,قلقيلية, عسلة
+Qalqilya,Sir,قلقيلية,صير
+Qalqilya,Jayyous,قلقيلية, جيوس
+Qalqilya,Falameh,قلقيلية, فلامية
+Qalqilya,Hableh,قلقيلية, حبلة
+Qalqilya,"Ras Atiya
+",قلقيلية, راس عطية
+Qalqilya,"Ras at-Tira
+",قلقيلية, راس طيرة
+Qalqilya,Eizbat Salman,قلقيلية, عزبة سلمان
+Qalqilya,al-Mudawwar,قلقيلية, المدور
+Qalqilya,Izbat Al Ashqar,قلقيلية, عزبة الأشقر
+Qalqilya,Izbat Abdul ATI Al Ashqar,قلقيلية, عزبة الطبيب
+Qalqilya,Ad-Dab'a,قلقيلية, مغارة الضبعة
+Qalqilya,Hajjah,قلقيلية,حجة
+Qalqilya,"Baqat al-Hatab
+",قلقيلية, باقة الحطب
+Qalqilya,"Immatain
+",قلقيلية, إماتين
+Qalqilya,"Kafr Thulth
+",قلقيلية, كفر ثلث
+Qalqilya,Kafr Jammal,قلقيلية, كفر جمال
+Qalqilya,"Kafr Abbush
+",قلقيلية, كفر عبوش
+Qalqilya,Kafr Qaddum,قلقيلية,كفر قدوم
+Qalqilya,"Kafr Zibad
+",قلقيلية, كفر زيباد
+Qalqilya,Jit,قلقيلية, جيت
+Qalqilya,Jinsafut,قلقيلية, جينصافوط
+Qalqilya,"Izbat Jal'ud
+",قلقيلية, عزبة جلعود
+Qalqilya,Sanniriya,قلقيلية, سنيريا
+Qalqilya,Beit Amin,قلقيلية, بيت أمين  
+Qalqilya,Wadi ar Rasha,قلقيلية, واد الرشا
+Qalqilya,Al-Funduq,قلقيلية, الفندق
+Qalqilya,"Arab ar-Ramadin al Janubi
+",قلقيلية, عرب الرماضين الجنوبي
+Qalqilya,"Arab ar-Ramadin ash-Shamali
+",قلقيلية,عرب الرماضين الشمالي
+Qalqilya,Fara'ata,قلقيلية, فرعتا
+Salfit,Salfit,سلفيت,سلفيت
+Salfit,Iskaka,سلفيت,اسكاكا
+Salfit,Yasuf,سلفيت,ياسوف
+Salfit,Marda,سلفيت,مردة
+Salfit,Qira,سلفيت,قيرة
+Salfit,Kifl Haris,سلفيت,كفل حارس
+Salfit,Haris,سلفيت,حارس
+Salfit,Deir Istiya,سلفيت,دير استيا
+Salfit,Biddya,سلفيت,بديا
+Salfit,Az-Zawiya,سلفيت,الزاوية
+Salfit,Qarawat Bani Hassan,سلفيت,قراوة بني حسان
+Salfit,Sarta,سلفيت,سرطة
+Salfit,Mas-ha,سلفيت,مسحة
+Salfit,Rafat,سلفيت,رافات
+Salfit,Deir Ballut,سلفيت,دير بلوط
+Salfit,Kafr ad-Dik,سلفيت,كفر الديك
+Salfit,Bruqin,سلفيت,بروقين
+Salfit,Farkha,سلفيت,فرخة
+Ramallah and Al-Bireh,Ramallah,رام الله والبيرة,رام الله
+Ramallah and Al-Bireh,Al-Bireh,رام الله والبيرة,البيرة
+Ramallah and Al-Bireh,Abu Qash,رام الله والبيرة,أبو قش
+Ramallah and Al-Bireh,Al-Zaitounah,رام الله والبيرة,الزيتونة 
+Ramallah and Al-Bireh,Al-Lubban Al-Gharbi,رام الله والبيرة,اللبن الغربي 
+Ramallah and Al-Bireh,Al-Janiya,رام الله والبيرة,الجانية
+Ramallah and Al-Bireh,Al-Mazra'a ash-Sharqiya,رام الله والبيرة,المزرعة الشرقية
+Ramallah and Al-Bireh,Al-Mughayyir,رام الله والبيرة,المغير
+Ramallah and Al-Bireh,Barqa,رام الله والبيرة,برقا
+Ramallah and Al-Bireh,Budrus,رام الله والبيرة,بدرس
+Ramallah and Al-Bireh,Beitin,رام الله والبيرة,بيتين
+Ramallah and Al-Bireh,Bir Nabala,رام الله والبيرة,بير نبالا
+Ramallah and Al-Bireh,Birzeit,رام الله والبيرة,بيرزيت
+Ramallah and Al-Bireh,Burham,رام الله والبيرة,برهام
+Ramallah and Al-Bireh,Turmus Ayya,رام الله والبيرة,ترمسعيا
+Ramallah and Al-Bireh,Jifna,رام الله والبيرة,جفنا
+Ramallah and Al-Bireh,Jiljilyya,رام الله والبيرة,جلجيليا
+Ramallah and Al-Bireh,Jammala,رام الله والبيرة,جمالا
+Ramallah and Al-Bireh,Jibiya,رام الله والبيرة,جيبيا
+Ramallah and Al-Bireh,Kharbata al-Misbah,رام الله والبيرة,خربتا المصباح 
+Ramallah and Al-Bireh,Kharbatha Bani Harith,رام الله والبيرة,خربثا بني حارث
+Ramallah and Al-Bireh,Khirbet Abu Falah,رام الله والبيرة,خربة أبو فلاح
+Ramallah and Al-Bireh,Dura al-Qar',رام الله والبيرة,دورا القرع
+Ramallah and Al-Bireh,Deir Abu Masha'al,رام الله والبيرة,دير أبو مشعل
+Ramallah and Al-Bireh,Deir Ibzi,رام الله والبيرة,دير إبزيع
+Ramallah and Al-Bireh,Deir as-Sudan,رام الله والبيرة,دير السودان 
+Ramallah and Al-Bireh,Deir Dibwan,رام الله والبيرة,دير دبوان 
+Ramallah and Al-Bireh,Deir 'Ammar,رام الله والبيرة,دير عمار
+Ramallah and Al-Bireh,Deir Ghassana,رام الله والبيرة,دير غسانة
+Ramallah and Al-Bireh,Deir Qaddis,رام الله والبيرة,دير قديس
+Ramallah and Al-Bireh,Deir Nidham,رام الله والبيرة,دير نظام
+Ramallah and Al-Bireh,Deir Jarir,رام الله والبيرة,دير جرير
+Ramallah and Al-Bireh,Ras Karkar,رام الله والبيرة,رأس كركر
+Ramallah and Al-Bireh,Rammun,رام الله والبيرة,رمون 
+Ramallah and Al-Bireh,Rantis,رام الله والبيرة,رنتيس
+Ramallah and Al-Bireh,Surda,رام الله والبيرة,سردا 
+Ramallah and Al-Bireh,Silwad,رام الله والبيرة,سلواد 
+Ramallah and Al-Bireh,Sinjil,رام الله والبيرة,سنجل
+Ramallah and Al-Bireh,Shabtin,رام الله والبيرة,شبتين 
+Ramallah and Al-Bireh,Shuqba,رام الله والبيرة,شقبا
+Ramallah and Al-Bireh,Safa,رام الله والبيرة,صفا
+Ramallah and Al-Bireh,Taibah,رام الله والبيرة,طيبة 
+Ramallah and Al-Bireh,Tira,رام الله والبيرة,طيرة
+Ramallah and Al-Bireh,Ein Yabrud,رام الله والبيرة,عين يبرود
+Ramallah and Al-Bireh,Aboud,رام الله والبيرة,عابود 
+Ramallah and Al-Bireh,Aarura,رام الله والبيرة,عارورة 
+Ramallah and Al-Bireh,Abwein,رام الله والبيرة,عبوين 
+Ramallah and Al-Bireh,Oejul,رام الله والبيرة,عجول 
+Ramallah and Al-Bireh,Atara,رام الله والبيرة,عطارة 
+Ramallah and Al-Bireh,Ein 'Arik,رام الله والبيرة,عين عريك
+Ramallah and Al-Bireh,Ein Qiniya,رام الله والبيرة,عين قينيا
+Ramallah and Al-Bireh,Ein Alkalaba,رام الله والبيرة,عين الكلبة
+Ramallah and Al-Bireh,Qibya,رام الله والبيرة,قبية
+Ramallah and Al-Bireh,Qarawat Bani Zeid,رام الله والبيرة,قراوة بني زيد
+Ramallah and Al-Bireh,Al-Midya,رام الله والبيرة,قرية المدية
+Ramallah and Al-Bireh,Kafr Ein,رام الله والبيرة,كفر عين
+Ramallah and Al-Bireh,Kafr Malik,رام الله والبيرة,كفر مالك 
+Ramallah and Al-Bireh,Kafr Ni'ma,رام الله والبيرة,كفر نعمة
+Ramallah and Al-Bireh,Kobar,رام الله والبيرة,كوبر
+Ramallah and Al-Bireh,Mukhmas Mazarie Alnuwbanii,رام الله والبيرة,مخماس مزارع النوباني
+Ramallah and Al-Bireh,Ni'lin,رام الله والبيرة,نعلين
+Jericho,Jericho,أريحا,أريحا
+Jericho,Al-Auja,أريحا,العوجا
+Jericho,An-Nuway'imah,أريحا,النويعمة
+Jericho,Jiftlik,أريحا,الجفتلك
+Jericho,az-Zubaidat,أريحا,الزبيدات
+Jericho,Nabi Mosa,أريحا,النبي موسى
+Jericho,Deir Qalt,أريحا,دير القلط
+Jericho,Deir Hijleh,أريحا,دير حجلة
+Jericho,Ein ad-Duyuk al-Foqa,أريحا,عين الديوك الفوقا
+Jericho,Fasayil,أريحا,فصايل
+Jericho,Marj Al-Ghazal,أريحا,مرج الغزال
+Jericho,Marj Najah,أريحا,مرج نعجة
+Jericho,Aqabat Jabr,أريحا,مخيم عقبة جبر
+Jericho,Ein Al Sultan,أريحا,مخيم عين السلطان
+Bethlehem,Bethlehem,بيت لحم,بيت لحم
+Bethlehem,Beit Sahour,بيت لحم,بيت ساحور
+Bethlehem,Beit Jala,بيت لحم,بيت جالا
+Bethlehem,Jab'a,بيت لحم,الجبعة
+Bethlehem,AlKhas,بيت لحم,الخاص
+Bethlehem,Ash-Shawawra,بيت لحم,الشواورة
+Bethlehem,Al Maasarah,بيت لحم,المعصرة
+Bethlehem,Minya,بيت لحم,المنيا
+Bethlehem,al-Walaja,بيت لحم,الولجة
+Bethlehem,Artas,بيت لحم,أرطاس
+Bethlehem,Umm Salamuna,بيت لحم,أم سلمونة
+Bethlehem,Beit Ta'mir,بيت لحم,بيت تعمر 
+Bethlehem,Jubbet ad-Dhib,بيت لحم,جبة الذيب
+Bethlehem,"Jurat ash-Sham'a
+",بيت لحم,جورة الشمعة
+Bethlehem,Husan,بيت لحم,حوسان
+Bethlehem,Khallet Al Haddad,بيت لحم,خلة الحداد
+Bethlehem,Khallet Al-Nu'man,بيت لحم,خلة النعمان
+Bethlehem,Khallet Sakariya,بيت لحم,خلة سكاريا
+Bethlehem,Dar Salah,بيت لحم,دار صلاح
+Bethlehem,Juhdum,بيت لحم,جهاثم
+Bethlehem,Al Hajjaylah District,بيت لحم,الحجيلة
+Bethlehem,Arab al-Rashayida,بيت لحم,عرب الرشايدة
+Bethlehem,Azazme,بيت لحم,العزازمة
+Bethlehem,Kisan,بيت لحم,كيسان
+Bethlehem,Marah Rabah,بيت لحم,مراح رباح
+Bethlehem,Menashiya,بيت لحم,المنشية
+Bethlehem,Marah Ma'alla,بيت لحم,مراح معلا
+Bethlehem,Nahalin,بيت لحم,نحالين
+Bethlehem,Hindaza,بيت لحم,هندازة
+Bethlehem,Wadi Umm Qalaa',بيت لحم,وادي أم قلعة
+Bethlehem,Khallet Al-Louz,بيت لحم,خلة اللوزة
+Bethlehem,Thahrt Al-Nada,بيت لحم,ظهرة الندى
+Bethlehem,Wadi Al-Nes,بيت لحم,وادي النيص
+Bethlehem,Khirbet al-Nakhlah,بيت لحم,خربة النخلة
+Bethlehem,Wadi Rahhal,بيت لحم,وادي رحال
+Bethlehem,Wadi Fukin,بيت لحم,وادي فوكين
+Bethlehem,Khirbet Beit Zakariyyah,بيت لحم,خربة بيت زكريا
+Bethlehem,Maraja',بيت لحم,مراجع
+Bethlehem,Al-Khidr,بيت لحم,الخضر
+Bethlehem,Doha,بيت لحم,الدوحة
+Bethlehem,"al-Ubeidiya
+",بيت لحم,العبيدية
+Bethlehem,Battir,بيت لحم,بتير
+Bethlehem,Beit Fajjar,بيت لحم,بيت فجار
+Bethlehem,Tuqu',بيت لحم,تقوع
+Bethlehem,Jannata,بيت لحم,جناتا
+Bethlehem,Za'atara,بيت لحم,زعترة
+Bethlehem,Aida Camp,بيت لحم,مخيم عايدة
+Bethlehem,Azza Camp,بيت لحم,مخيم العزة
+Bethlehem,Dheisha Camp,بيت لحم,مخيم الدهيشة
+Bethlehem,Wadi al-Arayis,بيت لحم, وادي العرايس
+Bethlehem,Al Hadaydah,بيت لحم,الحدايدة
+Bethlehem,"Khirbet Tuqu'
+",بيت لحم, خربة تقوع
+Bethlehem,"Khirbet al-Deir
+",بيت لحم,خربة الدير
+Bethlehem,Halkum,بيت لحم,الحلقوم
+Bethlehem,Asakra,بيت لحم,العساكرة
+Bethlehem,Rakhma,بيت لحم,رخمة
+Hebron,Hebron,الخليل,الخليل
+Hebron,Yatta,الخليل,يطا
+Hebron,Dura,الخليل, دورا
+Hebron,ad-Dhahiriya,الخليل,الظاهرية
+Hebron,Halhul,الخليل,حلحول
+Hebron,as-Samu,الخليل,السموع
+Hebron,"Bani Na'im
+",الخليل,بني نعيم
+Hebron,"Ajjur
+",الخليل, عجور
+Hebron,"Al-Dawayima
+",الخليل,الدوايمة
+Hebron,Bayt Jibrin,الخليل,بيت جبرين
+Hebron,Zikrin,الخليل,ذكرين
+Hebron,Tell es-Safi,الخليل,تل الصافي
+Hebron,Barqusya,الخليل,بركوسيا
+Hebron,Bani Na'im,الخليل,بني نعيم
+Hebron,Beit Awwa,الخليل,بيت عوا
+Hebron,Beit Ula,الخليل,بيت اولا
+Hebron,Beit Ummar,الخليل,بيت أمر
+Hebron,Deir Sammit,الخليل,دير سامت
+Hebron,Idhna,الخليل,إذنا
+Hebron,Khrssa,الخليل,خرسا
+Hebron,Nuba,الخليل,نوبا
+Hebron,Sa'ir,الخليل,سعير
+Hebron,Beit Kahil,الخليل,بيت كاحل
+Hebron,Surif,الخليل,صوريف
+Hebron,ar-Rihiya,الخليل,الريحية
+Hebron,Fawwar,الخليل,الفوار
+North Gaza,North Gaza,غزة الشمالية,غزة الشمالية
+North Gaza,Jabalia,غزة الشمالية,جباليا
+North Gaza,Beit Lahia,غزة الشمالية,بيت لاهيا
+North Gaza,Beit Hanoun,غزة الشمالية,بيت حانون
+Gaza,Gaza,غزة,غزة
+Gaza,Madinat al-Zahra,غزة,مدينة الزهراء
+Gaza,Al-Shati Camp,غزة,مخيم الشاطئ
+Gaza,Al Mughraqa,غزة,المغراقة
+Deir Al-Balah,Deir Al-Balah,دير البلح,دير البلح
+Deir Al-Balah,Maghazi,دير البلح,المغازي
+Deir Al-Balah,Az Zawayda,دير البلح,الزوايدة
+Khan Yunis,Khan Yunis,خان يونس,خان يونس
+Khan Yunis,Al Qarara,خان يونس,القرارة
+Khan Yunis,Al-Sattr Al-Gharbi,خان يونس,السطر الغربي
+Khan Yunis,Al-Sattr Al-Sharqi,خان يونس,السطر الشرقي
+Khan Yunis,Al-Kattebah,خان يونس,الكتيبة
+Khan Yunis,Al-Amal Neighbourhood,خان يونس,حي الأمل
+Khan Yunis,Abasan al-Kabira,خان يونس,عبسان الكبيرة
+Khan Yunis,Abasan al-Saghira,خان يونس,عبسان الصغيرة
+Khan Yunis,Khuza'a,خان يونس,خزاعة
+Khan Yunis,Al-Zannah,خان يونس,الزنة
+Khan Yunis,  Khan Yunis Refugee Camp,خان يونس,معسكر خانيونس للاجئين
+Khan Yunis,Al-Swafi,خان يونس,السوافي
+Khan Yunis,Jurt al-Lut,خان يونس,جورت اللوت
+Khan Yunis,"Bani Suheila
+",خان يونس,بني سهيلا
+Rafah,Rafah,رفح,رفح

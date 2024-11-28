@@ -71,12 +71,12 @@ class SupportersResource extends Resource
                                     ->schema([
                                         FC\Select::make('supported_porject')
                                             ->relationship(name: 'supported_projects', titleAttribute: 'name')
-                                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->name)
+                                            ->getOptionLabelFromRecordUsing(fn($record) => $record->name)
                                             ->preload()
                                             ->multiple(),
                                         FC\Select::make('supported_project_types')
                                             ->relationship(name: 'supported_project_types', titleAttribute: 'name')
-                                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->name)
+                                            ->getOptionLabelFromRecordUsing(fn($record) => $record->name)
                                             ->preload()
                                             ->multiple()
 
@@ -90,9 +90,13 @@ class SupportersResource extends Resource
 
                             ])
                     ])->columnSpanFull(),
-                FC\Select::make(__('Panel'))
+                FC\Select::make('panels')
+                    ->label(__('Panel'))
                     ->multiple()
                     ->relationship('panels', titleAttribute: 'panel_name')
+                    ->default(
+                        array_slice(\App\Models\Panel::find(1)->pluck('id', 'panel_name')->toArray(), 0, 1, true)
+                    )
                     ->preload()
             ]);
     }

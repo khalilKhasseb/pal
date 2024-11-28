@@ -13,10 +13,10 @@ use Spatie\Image\Enums\CropPosition;
 use App\Traits\PanelResource;
 class Cource extends Model implements HasMedia
 {
-    use HasFactory ,
-     InteractsWithMedia ,
-      HasTranslations,
-      PanelResource;
+    use HasFactory,
+        InteractsWithMedia,
+        HasTranslations;
+    //   PanelResource;
 
     protected $fillable = [
         'title',

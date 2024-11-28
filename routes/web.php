@@ -131,9 +131,9 @@ Route::prefix('administration')->name('administration')->group(function () {
     Route::get('/{slug}', App\Livewire\SingleAdministration::class)->name('.view');
 });
 Route::prefix('experts')->name('experts')->group(function () {
-    Route::get('/', App\Livewire\AdminstrationComp::class);
+    Route::get('/', App\Livewire\Experts::class);
 
-    Route::get('/{slug}', App\Livewire\SingleAdministration::class)->name('.view');
+    Route::get('/{expert}', App\Livewire\Expert::class)->name('.view');
 });
 
 

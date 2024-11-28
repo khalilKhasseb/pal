@@ -92,7 +92,9 @@ trait PostResourceTrait
 
                         ->label(__("Post Content")),
 
-                    Select::make(__('Panel'))
+                    Select::
+                        make('panels')
+                        ->label(__('Panel'))
                         ->multiple()
                         ->default(
                             array_slice(Panel::find(1)->pluck('id', 'panel_name')->toArray(), 0, 1, true)

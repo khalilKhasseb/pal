@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -28,8 +29,8 @@ class Supporter extends Model implements HasMedia
         'name',
         'location',
         'about',
-        'supported_porject',
-        'supported_project_type',
+        // 'supported_porject',
+        // 'supported_project_type',
     ];
 
 
@@ -49,6 +50,13 @@ class Supporter extends Model implements HasMedia
     {
         return $this->belongsToMany(SupportedProjectType::class, 'supporters_supported_projects_types', 'supporter_id', 'supported_project_type_id');
     }
+
+    // public function panels(): MorphToMany{
+    //     return $this->morphToMany(
+    //         Panel::class,
+    //         'resourcables'
+    //     );
+    // }
 
 
     public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void

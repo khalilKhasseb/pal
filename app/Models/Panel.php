@@ -72,8 +72,16 @@ class Panel extends Model
         );
     }
 
+    /**
+     * @deprecated type issue now method name is cources
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
     public function courcsess(): MorphToMany
     {
+        return $this->cources();
+    }
+
+    public function cources(): MorphToMany {
         return $this->morphedByMany(
             Cource::class,
             'resourcables'

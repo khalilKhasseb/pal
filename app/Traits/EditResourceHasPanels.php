@@ -13,7 +13,7 @@ trait EditResourceHasPanels
     }
     protected function validateRecordPanel(?Model $record)
     {
-        // validate relation 
+        // validate relation. Its a must to throw an error if not exists and inform to add it to the form modal. 
         if (!$record->isRelation('panels'))
             return;
 
@@ -21,11 +21,15 @@ trait EditResourceHasPanels
         if (!$this->hasPanels($record))
             $record = $this->asingPanels($record);
 
-        // asing tags to panels 
+        // asing tags to panels after validating if a record has even tags or not
+        if ($record->isRelation('tags') && !$record->tags->isEmpty()) {
+            
+            $record->panels->each(function ($panel) use ($record) {
+                $panel->tags()->syncWithoutDetaching($record->tags);
+            });
+        }
 
-        $record->panels->each(function ($panel) use ($record) {
-            $panel->tags()->syncWithoutDetaching($record->tags);
-        });
+
     }
 
     private function hasPanels(Model $record): bool
@@ -39,7 +43,7 @@ trait EditResourceHasPanels
         $record->panels()->attach($panel);
         return $record;
     }
- 
+
 
     // protected function mutateFormDataBeforeSave(array $data): array
     // {

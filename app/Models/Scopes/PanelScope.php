@@ -27,11 +27,6 @@ class PanelScope implements Scope
                     return $query->whereIn('panels.id', $panel);
                 });
 
-
-
-
-
-
         }
     }
 }
