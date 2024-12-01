@@ -8,6 +8,7 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditHomeSection extends EditRecord
 {
+    use \App\Traits\InteractWithRecordOverwrite;
     protected static string $resource = HomeSectionResource::class;
 
     protected function getHeaderActions(): array

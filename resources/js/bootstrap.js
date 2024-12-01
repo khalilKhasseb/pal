@@ -6,6 +6,7 @@
 
 import axios from "axios";
 
+import * as select2 from '../../node_modules/select2/dist/js/select2.full.js';
 // import * as select2 from 'select2';
 // import Alpine from "alpinejs";
 
@@ -15,6 +16,8 @@ import axios from "axios";
 // window.Alpine = Alpine;
 
 window.axios = axios;
+
+window.select2 = select2;
 
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 

@@ -9,6 +9,7 @@ use App\Models\Expert;
 
 class EditExpert extends EditRecord
 {
+    use \App\Traits\InteractWithRecordOverwrite;
     protected static string $resource = ExpertResource::class;
 
     protected function getRedirectUrl(): ?string

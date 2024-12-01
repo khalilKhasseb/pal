@@ -9,7 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditGallary extends EditRecord
 {
     use EditRecord\Concerns\Translatable;
-
+    use \App\Traits\InteractWithRecordOverwrite;
     protected static string $resource = GallaryResource::class;
 
     protected function getHeaderActions(): array

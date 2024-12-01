@@ -9,7 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditInitiatives extends EditRecord
 {
     use EditRecord\Concerns\Translatable;
-
+    use \App\Traits\InteractWithRecordOverwrite;
     protected static string $resource = InitiativesResource::class;
 
     protected function getHeaderActions(): array

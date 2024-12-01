@@ -8,6 +8,7 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditSystemUser extends EditRecord
 {
+    use \App\Traits\InteractWithRecordOverwrite;
     protected static string $resource = SystemUserResource::class;
 
     protected function getHeaderActions(): array

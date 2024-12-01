@@ -5,7 +5,11 @@
 
 		$(".select-2").select2({
             theme: "bootstrap-5",
-        });
+		});
+		
+		 document.addEventListener("livewire:init", (e) => {
+             console.log("Livewire loaded", e);
+         });
 
 		//jQuery for page scrolling feature - requires jQuery Easing plugin
 		$('a.page-scroll').on('click', function(event) {
@@ -323,81 +327,10 @@
 		})();	
 
 
-        // jQuery(document).ready(function(){
-	    //     jQuery(".bg-1").click(function(){
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/01.jpg) no-repeat fixed","background-size":"cover" });
-	    //         jQuery("body").addClass("boxed");
-	    //     });
-	    //     jQuery(".bg-2").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/02.jpg) no-repeat fixed","background-size":"cover"});
-	    //     });
-	    //     jQuery(".bg-3").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/03.jpg) no-repeat fixed","background-size":"cover" });
-	    //     });
-	    //     jQuery(".bg-4").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/04.jpg) no-repeat fixed","background-size":"cover"});
-	    //     });
-	    //     jQuery(".bg-5").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/05.jpg) no-repeat fixed","background-size":"cover"});
-	    //     });
-	    //     jQuery(".bg-6").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/06.jpg) no-repeat fixed","background-size":"cover"});
-	    //     });
-	    //     jQuery(".bg-7").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/07.jpg) no-repeat fixed","background-size":"cover"});
-	    //     });
-	    //     jQuery(".bg-8").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/08.jpg) no-repeat fixed","background-size":"cover"});
-	    //     });
-	    // });
-
-	    // jQuery(document).ready(function(){
-	    //     jQuery(".pt-1").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/pt-image/01.png) repeat fixed"});
-	    //     });
-	    //     jQuery(".pt-2").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/pt-image/02.png) repeat fixed"});
-	    //     });
-	    //     jQuery(".pt-3").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/pt-image/03.png) repeat fixed" });
-	    //     });
-	    //     jQuery(".pt-4").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/pt-image/04.png) repeat fixed"});
-	    //     });
-	    //     jQuery(".pt-5").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/pt-image/05.png) repeat fixed"});
-	    //     });
-	    //     jQuery(".pt-6").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/pt-image/06.png) repeat fixed"});
-	    //     });
-	    //     jQuery(".pt-7").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/pt-image/07.png) repeat fixed"});
-	    //     });
-	    //     jQuery(".pt-8").click(function(){
-	    //         jQuery("body").addClass("boxed");
-	    //         jQuery("body").css({"background":"url(https://www.codexcoder.com/images/auror/pt-image/08.png) repeat fixed"});
-	    //     });
-	    // });
-
-
-
-
 	});
 
+
+	
 
 	
 

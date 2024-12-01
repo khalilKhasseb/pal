@@ -8,6 +8,7 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditLinks extends EditRecord
 {
+    use \App\Traits\InteractWithRecordOverwrite;
     protected static string $resource = LinksResource::class;
 
     protected function getHeaderActions(): array

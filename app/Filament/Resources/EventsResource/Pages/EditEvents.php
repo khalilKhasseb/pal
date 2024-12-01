@@ -11,14 +11,14 @@ class EditEvents extends EditRecord
 {
     use EditRecord\Concerns\Translatable,
         \App\Traits\EditResourceHasPanels;
-
+    use \App\Traits\InteractWithRecordOverwrite;
     protected static string $resource = EventsResource::class;
 
-        protected function getHeaderActions(): array
-        {
-            return [
-                //Actions\DeleteAction::make(),
-                LocaleSwitcher::make(),
-            ];
-        }
+    protected function getHeaderActions(): array
+    {
+        return [
+            //Actions\DeleteAction::make(),
+            LocaleSwitcher::make(),
+        ];
+    }
 }

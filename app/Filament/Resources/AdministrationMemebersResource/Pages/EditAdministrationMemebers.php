@@ -11,7 +11,7 @@ class EditAdministrationMemebers extends EditRecord
 {
     use EditRecord\Concerns\Translatable,   
         \App\Traits\EditResourceHasPanels;
-
+    use \App\Traits\InteractWithRecordOverwrite;
     protected static string $resource = AdministrationMemebersResource::class;
 
     protected function getHeaderActions(): array

@@ -11,6 +11,7 @@ class EditCource extends EditRecord
 {
     use EditRecord\Concerns\Translatable;
     use \App\Traits\EditResourceHasPanels;
+    use \App\Traits\InteractWithRecordOverwrite;
     protected static string $resource = CourceResource::class;
 
     protected  function getHeaderActions(): array

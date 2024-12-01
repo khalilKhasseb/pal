@@ -9,7 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditDeleteTest extends EditRecord
 {
     protected static string $resource = DeleteTestResource::class;
-
+    use \App\Traits\InteractWithRecordOverwrite;
     protected function getHeaderActions(): array
     {
         return [

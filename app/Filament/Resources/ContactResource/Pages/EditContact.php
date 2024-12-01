@@ -8,6 +8,7 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditContact extends EditRecord
 {
+    use \App\Traits\InteractWithRecordOverwrite;
     protected static string $resource = ContactResource::class;
 
     protected function getHeaderActions(): array
