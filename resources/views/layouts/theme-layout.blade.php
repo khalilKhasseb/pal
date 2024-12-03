@@ -41,7 +41,7 @@
     <!-- Seo Tags -->
 
 
-    
+
 
 
     <link href="{{ asset('css/template/datatables.css') }}" rel="stylesheet">
@@ -143,6 +143,7 @@
 </head>
 
 <body class="{{ $rtl ? 'rtl' : '' }} " id="page-top" data-spy="scroll">
+
     <div class="box-layout">
 
 
@@ -213,6 +214,10 @@
 
     </div>
 
+    @if (isset($modal))
+        {{ $modal }}
+    @endif
+
     <!-- Start Pre-Loader-->
 
     {{-- <div id="loading">
@@ -234,7 +239,7 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script> --}}
 
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/bootstrap.min.js') }}"></script>
-    
+
     @vite('resources/js/app.js')
     {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 
@@ -254,7 +259,8 @@
     {{-- <script type="text/javascript" src="{{asset('js/template/custom.map.js')}}"></script> --}}
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.js') }}"></script>
 
-    
+
+
     @stack('scripts_comp')
     <!-- Map Api -->
     {{-- <script data-layout="front" async defer

@@ -65,6 +65,8 @@ class AdminPanelProvider extends PanelProvider
                     __('Users'),
                     __('Settings'),
                 ])
+            ->databaseNotifications()
+
             ->authGuard('system')
             ->middleware([
                 EncryptCookies::class,
@@ -98,7 +100,7 @@ class AdminPanelProvider extends PanelProvider
                             'administration' => 'Administration',
                             'partner' => 'Partner',
                             'gallary' => 'Gallary',
-                            'expert'  => 'Expert',
+                            'expert' => 'Expert',
                         ])
 
                     ,

@@ -54,7 +54,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single' , 'daily'],
             'ignore_exceptions' => false,
         ],
 
@@ -125,6 +125,13 @@ return [
 
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
+        ],
+
+        'frontend' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/forntend.log'),
+            
+            'ignore_exceptions' => false,
         ],
     ],
 

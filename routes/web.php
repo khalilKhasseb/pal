@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -183,6 +184,11 @@ Route::get('lang/{local}', function (Request $request, $local) {
 })->name('local');
 
 
+Route::prefix('ajax')->name('ajax.')->group(function () {
+    Route::post('/sendExpertEmail', [AjaxController::class, 'sendExpertEmail'])->name('sendExpertEmail');
+    Route::post('/requestCertificate', [AjaxController::class, 'requestCertificate'])->name('requestCertificate');
+    Route::post('/logError' , [AjaxController::class, 'logError'])->name('logError');   
+});
 Route::get('dashboard/library', [DashboardController::class, 'getTagItemsBySlug'])->name('library.getBySlug');
 /**
  * First try to copy file from remote path to a give destnation

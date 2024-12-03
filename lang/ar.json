@@ -278,5 +278,23 @@
     "Reverse order this column": "ترتيب عكسي بواسطة هذا العمود",
     "This Year": "هذه السنة",
     "Experts": "الخبراء",
-    "Expert": "خبير"
+    "Date of Birth": "تاريخ الميلاد",
+    "Gender": "الجنس",
+    "PhD Degree": "درجة الدكتوراه",
+    "University": "الجامعة",
+    "Graduation Year": "سنة التخرج",
+    "Major": "التخصص",
+    "Request for Certificate": "طلب شهادة",
+    "Verified": "مؤكد",
+    "Sir Name Arabic": "اسم السيد بالعربية",
+    "Sir Name English": "اسم السيد بالإنجليزية",
+    "Profile": "الملف الشخصي",
+    "Certificates": "الشهادات",
+
+    "Certificate": "الشهادة",
+    "Certifying Authority": "الجهة المصدقة",
+    "Authenticate Certificate URL": "رابط التحقق من الشهادة",
+    "Attachement Certification": "الشهادة المرفقة",
+    "Certification Experience": "خبرة الشهادة"
+
 }
