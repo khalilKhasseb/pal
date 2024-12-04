@@ -34,7 +34,7 @@
                         <div class="col-xs-12 col-sm-3 center">
                             <span class="profile-picture">
                                 <img class="editable img-responsive" alt=" Avatar" id="avatar2"
-                                    src="{{ $expert->hasMedia() ? $expert->getMedia('image')[0]->getUrl() : asset('logo1.png') }}">
+                                    src="{{ array_key_exists(0, $expert->getMedia('image')) ? $expert->getMedia('image')[0]->getUrl() : asset('logo1.png') }}">
                             </span>
 
                             <div class="space my-4"></div>
