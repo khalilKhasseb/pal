@@ -234,13 +234,14 @@
 
     <!-- End Pre-Loader -->
 
+     
 
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery-2.2.3.min.js') }}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script> --}}
 
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/bootstrap.min.js') }}"></script>
 
-    @vite('resources/js/app.js')
+    <script type="text/javascript" src={{asset('js/template/select2.min.js')}}></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
@@ -257,9 +258,9 @@
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.flexslider.js') }}"></script>
     {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.isotope.js') }}"></script> --}}
     {{-- <script type="text/javascript" src="{{asset('js/template/custom.map.js')}}"></script> --}}
+    @vite('resources/js/app.js')
+
     <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.js') }}"></script>
-
-
 
     @stack('scripts_comp')
     <!-- Map Api -->

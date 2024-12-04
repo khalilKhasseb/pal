@@ -11,6 +11,7 @@
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.2",
         "axios": "^1.6.4",
+        "jquery": "^3.7.1",
         "laravel-vite-plugin": "^1.0.0",
         "postcss": "^8.4.31",
         "postcss-nesting": "^12.1.2",
@@ -19,6 +20,7 @@
     },
     "dependencies": {
         "alpinejs": "^3.13.8",
+        "jquery.2": "^1.0.0",
         "select2": "^4.1.0-rc.0"
     }
 }
