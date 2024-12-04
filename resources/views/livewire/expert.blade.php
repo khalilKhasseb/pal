@@ -212,7 +212,7 @@
     </div>
 </div>
 @assets
-    <link rel="stylesheet" href="{{ asset('css/template/expert-profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/template/expert-profile.css') }}?212">
 @endassets
 
 <x-slot name="modal">
