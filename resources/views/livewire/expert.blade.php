@@ -182,14 +182,7 @@
                                     </div>
                                 </div>
 
-                                <div class="profile-info-row">
-                                    <div class="profile-info-name"> {{ __('Attachement Certification') }} </div>
-
-                                    {{-- <div class="profile-info-value">
-                                        <a href="{{ $certificate->attachment_certification }}"
-                                            target="_blank">{{ $certificate->attachment_certification }}</a>
-                                    </div> --}}
-                                </div>
+                                
 
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> {{ __('Certification Experience') }} </div>
@@ -199,7 +192,7 @@
                                     </div>
                                 </div>
                                 <div class="profile-info-row">
-                                    <div class="profile-info-name"> {{ __('Year Of Certification') }} </div>
+                                    <div class="profile-info-name"> {{ __('Year of Certification') }} </div>
 
                                     <div class="profile-info-value">
                                         <span>{{ $certificate->year_of_certification }}</span>
