@@ -25,6 +25,7 @@ class Expert extends Model implements HasMedia
         'graduation_year',
         'other_degrees',
         'first_name',
+        'first_name_en',
         'experience',
         'attachment_personal_photo',
         'agreement_check',

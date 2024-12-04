@@ -296,10 +296,10 @@
     "Certifying Authority": "الجهة المصدقة",
     "Authenticate Certificate URL": "رابط التحقق من الشهادة",
     "Attachement Certification": "الشهادة المرفقة",
-    "Certification Experience": "خبرة الشهادة",
+    "Certification Experience": "خبرة العمل بالشهادة (سنوات)",
     "Persoanl Images": "الصور الشخصية",
     "Sur Name (Arabic)": "اسم العائلة (عربي)",
-    "SUr Name (English)": "اسم العائلة (إنجليزي)",
+    "Sur Name (English)": "اسم العائلة (إنجليزي)",
     "Male": "ذكر",
     "Female": "أنثى",
     "Mobile Number": "رقم الهاتف المحمول",
@@ -309,12 +309,14 @@
     "Certificate Name": "اسم الشهادة",
     "Authentication URL": "رابط التحقق",
     "Attachment Certification": "مرفق الشهادة",
-    "Certification Experience (Years)": "خبرة الشهادة (سنوات)",
+    "Certification Experience (Years)": "خبرة العمل بالشهادة (سنوات)",
     "Academic Information": "المعلومات الأكاديمية",
     "Personal Information": "المعلومات الشخصية",
-    "Sir Name (Arabic)": "اسم السيد (عربي)",
-    "Sir Name (English)": "اسم السيد (إنجليزي)",
-    "Expert Information": "معلومات الخبير"
+    "Expert Information": "معلومات الخبير",
+    "Persoanl Information":"المعلومات الشخصية",
+    "International Green Certificates": "الشهادات الخضراء الدولية",
+    "First name (English)": "الاسم الاول (انجليزي)",
+    "Year of Certification": "سنة الحصول على الشهادة"
 
 
 }

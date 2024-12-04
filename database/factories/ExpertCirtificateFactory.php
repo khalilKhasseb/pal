@@ -23,6 +23,7 @@ class ExpertCirtificateFactory extends Factory
             'authenticate_certificate_url' => $this->faker->url,
             'attachment_certification' => $this->faker->imageUrl(), // Placeholder for certificate file
             'certification_experience' => $this->faker->numberBetween(0, 10), // Years of experience
+            'year_of_certification' => $this->faker->year,
             'expert_id' => Expert::factory(), // Generate a related expert
 
         ];

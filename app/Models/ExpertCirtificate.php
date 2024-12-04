@@ -17,6 +17,7 @@ class ExpertCirtificate extends Model
         'authenticate_certificate_url',
         'attachment_certification',
         'certification_experience',
+        'year_of_certification'
     ];
 
     public function expert()

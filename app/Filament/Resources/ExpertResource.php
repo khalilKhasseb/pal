@@ -29,20 +29,23 @@ class ExpertResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Personal Information')->schema([
+                Forms\Components\Section::make(__('Persoanl Information'))->schema([
 
                     MediaManagerInput::make('image')
                         ->label(__('Persoanl Images'))
-                        ->schema(\App\Classes\MediaManagerInputForm::schema()),
+                        ->schema(\App\Classes\MediaManagerInputForm::schema())
+                        ->columnSpanFull(),
 
                     Forms\Components\TextInput::make('first_name')
                         ->label(__('First name')),
+                    Forms\Components\TextInput::make('first_name_en')
+                        ->label(__('First name (English)')),
                     Forms\Components\TextInput::make('sir_name_ar')
-                        ->label('Sur Name (Arabic)')
+                        ->label(__('Sur Name (Arabic)'))
                         ->required(),
 
                     Forms\Components\TextInput::make('sir_name_en')
-                        ->label('SUr Name (English)')
+                        ->label(__('Sur Name (English)'))
                         ->required(),
 
                     Forms\Components\Select::make('gender')
@@ -50,25 +53,30 @@ class ExpertResource extends Resource
                             'male' => 'Male',
                             'female' => 'Female',
                         ])
+                        ->label(__('Gender'))
                         ->required(),
 
                     Forms\Components\TextInput::make('email')
+                        ->label(__('Email'))
                         ->email()
                         ->required(),
 
                     Forms\Components\TextInput::make('mobile_number')
-                        ->label('Mobile Number')
+                        ->label(__('Mobile Number'))
                         //->tel()
                         ->required(),
 
                     fc\Select::make('governorate_id')
+                        ->label(__('Governorate'))
                         ->relationship('governorate', titleAttribute: 'name')
                         ->getOptionLabelFromRecordUsing(fn($record) => $record->name)
                         ->preload()
                         ->searchable()
                         ->label(__('Governorate'))
+                        ->required()
                         ->live(),
                     fc\Select::make('city_id')
+                        ->label(__('City/Vilage'))
                         ->options(function (Get $get) {
                             if ($get('governorate_id') && Governorate::find($get('governorate_id'))) {
                                 return Governorate::find($get('governorate_id'))->cities->pluck('name', 'id');
@@ -79,33 +87,34 @@ class ExpertResource extends Resource
                         ->preload()
                         ->searchable()
                         ->label(__('City/Vilage'))
-                        ->required(),
+                    ,
 
 
                     Forms\Components\DatePicker::make('date_of_birth')
-                        ->label('Date of Birth')
+                        ->label(__('Date of Birth'))
                         ->required(),
                 ])->columns(2),
 
 
-                Forms\Components\Section::make('Academic Information')->schema([
+                Forms\Components\Section::make(__('Academic Information'))->schema([
                     Forms\Components\TextInput::make('university')
+                        ->label(__('University'))
                         ->required(),
 
                     Forms\Components\TextInput::make('ba_major')
-                        ->label('BA Major')
+                        ->label(__('BA Major'))
                         ->required(),
 
                     Forms\Components\TextInput::make('graduation_year')
-                        ->label('Graduation Year')
+                        ->label(__('Graduation Year'))
                         ->numeric()
                         ->required(),
                     Forms\Components\TextInput::make('other_degrees')
-                        ->label('Other Degrees'),
+                        ->label(__('Other Degrees')),
 
                 ])->columns(2),
 
-                Forms\Components\Repeater::make('certificates')
+                Forms\Components\Repeater::make(__('International Green Certificates'))
                     ->relationship('certificates') // Defines the relationship
                     ->schema([
                         Forms\Components\TextInput::make('certificate_name')
@@ -119,16 +128,22 @@ class ExpertResource extends Resource
                         Forms\Components\TextInput::make('authenticate_certificate_url')
                             ->label(__('Authentication URL')),
 
-                        Forms\Components\FileUpload::make('attachment_certification')
-                            ->label(__('Attachment Certification')),
+
 
                         Forms\Components\TextInput::make('certification_experience')
                             ->label(__('Certification Experience (Years)'))
                             ->numeric(),
+                        Forms\Components\TextInput::make('year_of_certification')
+                            ->label(__('Year of Certification'))
+                            ->numeric()
+                            ->required(),
+                        Forms\Components\FileUpload::make('attachment_certification')
+                            ->label(__('Attachment Certification'))
+                            ->required(),
                     ])
-                    ->label(__('Certificates'))
+                    ->label(__('International Green Certificates'))
                     ->required()
-                    ->columns(1)
+                    ->columnSpanFull()
                 , // Two columns layout for the fields
             ]);
     }
@@ -169,12 +184,12 @@ class ExpertResource extends Resource
                 \Filament\Infolists\Components\Fieldset::make(__('Expert Information'))
                     ->schema([
                         Infolists\Components\TextEntry::make('sir_name_ar')
-                            ->label(__('Sir Name (Arabic)')),
+                            ->label(__('Sur Name (Arabic)')),
                         Infolists\Components\TextEntry::make('first_name')
                             ->label(__('First name')),
 
                         Infolists\Components\TextEntry::make('sir_name_en')
-                            ->label(__('Sir Name (English)')),
+                            ->label(__('Sur Name (English)')),
 
                         Infolists\Components\TextEntry::make('gender')
                             ->label(__('Gender')),
