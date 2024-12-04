@@ -6,6 +6,6 @@ return new class extends SettingsMigration
 {
     public function up(): void
     {
-        $this->migrator->add(property: 'generalSetting.extra_logos', []);
+        $this->migrator->add(property: 'generalSetting.extra_logos',value:[]);
     }
 };

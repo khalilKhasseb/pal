@@ -41,7 +41,10 @@ class ExpertFactory extends Factory
     {
         return $this->afterCreating(function (Expert $expert) {
             // Ensure the 'fake' directory exists
-            Storage::makeDirectory('fake');
+            if (!Storage::exists('fake')) {
+
+                Storage::makeDirectory('fake');
+            }
 
             // Generate a random image in the 'fake' directory
             $imagePath = $this->faker->image(storage_path('app/fake'));

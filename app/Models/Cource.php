@@ -15,8 +15,8 @@ class Cource extends Model implements HasMedia
 {
     use HasFactory,
         InteractsWithMedia,
-        HasTranslations;
-    //   PanelResource;
+        HasTranslations,
+        PanelResource;
 
     protected $fillable = [
         'title',

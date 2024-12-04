@@ -28,7 +28,10 @@ class DatabaseSeeder extends Seeder
             SupportedPorjectTypeSeeder::class,
             SupportedProject::class,
             InititivesSeeder::class,
+            GovernoratesSeeder::class,
+            CitiesSeeder::class,
 
+            ExpertsSeeder::class, 
             LibrarySeeder::class,
 
             PostSeeder::class,
