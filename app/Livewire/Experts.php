@@ -45,6 +45,10 @@ class Experts extends Component
             });
         }
 
+        if ($this->selectedState && $this->selectedState == 'all') {
+            return $this->experts = Expert::all();
+        }
+
         if ($this->selectedState && $this->selectedState != '') {
             $experts = $experts->orWhereHas('governorate', function ($query) {
                 $query->where('slug', '=', $this->selectedState);

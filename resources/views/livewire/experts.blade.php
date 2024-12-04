@@ -13,6 +13,7 @@
                 <div class="col-4 my-5">
                     <select wire.igoner class="select-2 select-2-gov" name="state" style="width:100%;margin-bottom:20px"
                         wire:model.live="selectedState">
+                        <option value="all">{{__('All experts')}}</option>
                         @foreach ($governorates as $gov)
                             <option value="{{ $gov->slug }}">{{ $gov->name }}</option>
                         @endforeach
