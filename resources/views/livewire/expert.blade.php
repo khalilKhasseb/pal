@@ -198,6 +198,13 @@
                                         <span>{{ $certificate->certification_experience }}</span>
                                     </div>
                                 </div>
+                                <div class="profile-info-row">
+                                    <div class="profile-info-name"> {{ __('Year Of Certification') }} </div>
+
+                                    <div class="profile-info-value">
+                                        <span>{{ $certificate->year_of_certification }}</span>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
 
