@@ -171,7 +171,7 @@
 
                                     <div class="profile-info-value">
                                         <a href="{{ $certificate->authenticate_certificate_url }}"
-                                            target="_blank">{{__('Vist') }}</a>
+                                            target="_blank">{{__('Preview') }}</a>
                                     </div>
                                 </div>
 
