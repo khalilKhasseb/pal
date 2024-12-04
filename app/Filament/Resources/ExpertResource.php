@@ -35,12 +35,14 @@ class ExpertResource extends Resource
                         ->label(__('Persoanl Images'))
                         ->schema(\App\Classes\MediaManagerInputForm::schema()),
 
+                    Forms\Components\TextInput::make('first_name')
+                        ->label(__('First name')),
                     Forms\Components\TextInput::make('sir_name_ar')
-                        ->label('Sir Name (Arabic)')
+                        ->label('Sur Name (Arabic)')
                         ->required(),
 
                     Forms\Components\TextInput::make('sir_name_en')
-                        ->label('Sir Name (English)')
+                        ->label('SUr Name (English)')
                         ->required(),
 
                     Forms\Components\Select::make('gender')
@@ -98,8 +100,8 @@ class ExpertResource extends Resource
                         ->label('Graduation Year')
                         ->numeric()
                         ->required(),
-                    Forms\Components\TextInput::make('phd_degrees')
-                        ->label('PHD Degrees'),
+                    Forms\Components\TextInput::make('other_degrees')
+                        ->label('Other Degrees'),
 
                 ])->columns(2),
 
@@ -107,24 +109,24 @@ class ExpertResource extends Resource
                     ->relationship('certificates') // Defines the relationship
                     ->schema([
                         Forms\Components\TextInput::make('certificate_name')
-                            ->label('Certificate Name')
+                            ->label(__('Certificate Name'))
                             ->required(),
 
                         Forms\Components\TextInput::make('certifying_authority')
-                            ->label('Certifying Authority')
+                            ->label(__('Certifying Authority'))
                             ->required(),
 
                         Forms\Components\TextInput::make('authenticate_certificate_url')
-                            ->label('Authentication URL'),
+                            ->label(__('Authentication URL')),
 
                         Forms\Components\FileUpload::make('attachment_certification')
-                            ->label('Attachment Certification'),
+                            ->label(__('Attachment Certification')),
 
                         Forms\Components\TextInput::make('certification_experience')
-                            ->label('Certification Experience (Years)')
+                            ->label(__('Certification Experience (Years)'))
                             ->numeric(),
                     ])
-                    ->label('Certificates')
+                    ->label(__('Certificates'))
                     ->required()
                     ->columns(1)
                 , // Two columns layout for the fields
@@ -135,9 +137,9 @@ class ExpertResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('sir_name_en')->label('Sir Name (English)'),
-                Tables\Columns\TextColumn::make('email')->label('Email'),
-                Tables\Columns\TextColumn::make('mobile_number')->label('Mobile Number'),
+                Tables\Columns\TextColumn::make('sir_name_en')->label(__('Sir Name (English)')),
+                Tables\Columns\TextColumn::make('email')->label(__('Email')),
+                Tables\Columns\TextColumn::make('mobile_number')->label(__('Mobile Number')),
 
             ])
             ->filters([
@@ -162,75 +164,79 @@ class ExpertResource extends Resource
             ->schema([
 
                 \Filament\Infolists\Components\ImageEntry::make('image')
-                   ->getStateUsing(fn ($record) => $record?->getMedia('image')?->first()?->getUrl()) ,
+                    ->getStateUsing(fn($record) => $record?->getMedia('image')?->first()?->getUrl()),
 
-                \Filament\Infolists\Components\Fieldset::make('expert_information')
+                \Filament\Infolists\Components\Fieldset::make(__('Expert Information'))
                     ->schema([
                         Infolists\Components\TextEntry::make('sir_name_ar')
-                            ->label('Sir Name (Arabic)'),
+                            ->label(__('Sir Name (Arabic)')),
+                        Infolists\Components\TextEntry::make('first_name')
+                            ->label(__('First name')),
 
                         Infolists\Components\TextEntry::make('sir_name_en')
-                            ->label('Sir Name (English)'),
+                            ->label(__('Sir Name (English)')),
 
                         Infolists\Components\TextEntry::make('gender')
-                            ->label('Gender'),
+                            ->label(__('Gender')),
 
                         Infolists\Components\TextEntry::make('email')
-                            ->label('Email'),
+                            ->label(__('Email')),
 
                         Infolists\Components\TextEntry::make('mobile_number')
-                            ->label('Mobile Number'),
+                            ->label(__('Mobile Number')),
 
                         Infolists\Components\TextEntry::make('city_id')
-                            ->label('City or Village'),
+                            ->formatStateUsing(fn($record) => $record?->city?->name)
+                            ->label(__('City or Village')),
 
                         Infolists\Components\TextEntry::make('governorate')
-                            ->label('Governorate'),
+                            ->formatStateUsing(fn($record) => $record?->governorate?->name)
+                            ->label(__('Governorate')),
 
                         Infolists\Components\TextEntry::make('date_of_birth')
-                            ->label('Date of Birth'),
+                            ->label(__('Date of Birth')),
 
                     ]),
                 // Expert Information
-                \Filament\Infolists\Components\Fieldset::make('expert_education_information')
+                \Filament\Infolists\Components\Fieldset::make(__('Academic Information'))
                     ->schema([
                         Infolists\Components\TextEntry::make('university')
-                            ->label('University'),
+                            ->label(__('University')),
 
                         Infolists\Components\TextEntry::make('ba_major')
-                            ->label('BA Major'),
+                            ->label(__('BA Major')),
 
                         Infolists\Components\TextEntry::make('graduation_year')
-                            ->label('Graduation Year'),
-                        Infolists\Components\TextEntry::make('phd_degrees')
-                            ->label('PHD Degrees'),
+                            ->label(__('Graduation Year')),
+                        Infolists\Components\TextEntry::make('other_degrees')
+                            ->label(__('Other Degrees')),
 
                     ]),
 
                 // Certificates (Relationship)
-                \Filament\Infolists\Components\Section::make('certificates')
+                \Filament\Infolists\Components\Section::make(__('Certificates'))
                     ->schema(
                         [
                             Infolists\Components\RepeatableEntry::make('certificates')
                                 // ->relationship('certificates') // Ties the repeater to the certificates relation
                                 ->schema([
                                     Infolists\Components\TextEntry::make('certificate_name')
-                                        ->label('Certificate Name'),
+                                        ->label(__('Certificate Name')),
 
                                     Infolists\Components\TextEntry::make('certifying_authority')
-                                        ->label('Certifying Authority'),
+                                        ->label(__('Certifying Authority')),
 
                                     Infolists\Components\TextEntry::make('authenticate_certificate_url')
-                                        ->label('Authentication URL'),
+                                        ->label(__('Authentication URL')),
                                     //->url(),
 
                                     Infolists\Components\TextEntry::make('attachment_certification')
-                                        ->label('Attachment Certification'),
+                                        ->label(__('Attachment Certification')),
 
                                     Infolists\Components\TextEntry::make('certification_experience')
-                                        ->label('Certification Experience (Years)'),
+                                        ->label(__('Certification Experience (Years)')),
                                 ])
-                                ->label('Certificates')
+                                ->label(__('Certificates'))
                                 ->columns(2),
                         ]
                     ),

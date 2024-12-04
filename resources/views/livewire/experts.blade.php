@@ -43,7 +43,7 @@
                                 </h4>
                                 <p>{{ $expert->ba_major }}</p>
                                 <p>{{ $expert->governorate->name }}</p>
-                                <p>{{ $expert->city->name }}</p>
+                                <p>{{ $expert->certificates->implode('certificate_name', ', ') }}</p>
                             </div>
                             <!-- .volunteers-content -->
                         </div>

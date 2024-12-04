@@ -290,11 +290,31 @@
     "Sir Name English": "اسم السيد بالإنجليزية",
     "Profile": "الملف الشخصي",
     "Certificates": "الشهادات",
+    "Other Degrees" : "شهادات اخرى",
 
     "Certificate": "الشهادة",
     "Certifying Authority": "الجهة المصدقة",
     "Authenticate Certificate URL": "رابط التحقق من الشهادة",
     "Attachement Certification": "الشهادة المرفقة",
-    "Certification Experience": "خبرة الشهادة"
+    "Certification Experience": "خبرة الشهادة",
+    "Persoanl Images": "الصور الشخصية",
+    "Sur Name (Arabic)": "اسم العائلة (عربي)",
+    "SUr Name (English)": "اسم العائلة (إنجليزي)",
+    "Male": "ذكر",
+    "Female": "أنثى",
+    "Mobile Number": "رقم الهاتف المحمول",
+    "Governorate": "المحافظة",
+    "City/Vilage": "المدينة / القرية",
+    "BA Major": "التخصص",
+    "Certificate Name": "اسم الشهادة",
+    "Authentication URL": "رابط التحقق",
+    "Attachment Certification": "مرفق الشهادة",
+    "Certification Experience (Years)": "خبرة الشهادة (سنوات)",
+    "Academic Information": "المعلومات الأكاديمية",
+    "Personal Information": "المعلومات الشخصية",
+    "Sir Name (Arabic)": "اسم السيد (عربي)",
+    "Sir Name (English)": "اسم السيد (إنجليزي)",
+    "Expert Information": "معلومات الخبير"
+
 
 }
