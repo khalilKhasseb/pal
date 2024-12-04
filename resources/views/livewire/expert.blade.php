@@ -178,17 +178,17 @@
 
                                     <div class="profile-info-value">
                                         <a href="{{ $certificate->authenticate_certificate_url }}"
-                                            target="_blank">{{ $certificate->authenticate_certificate_url }}</a>
+                                            target="_blank">{{__('Vist') }}</a>
                                     </div>
                                 </div>
 
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> {{ __('Attachement Certification') }} </div>
 
-                                    <div class="profile-info-value">
+                                    {{-- <div class="profile-info-value">
                                         <a href="{{ $certificate->attachment_certification }}"
                                             target="_blank">{{ $certificate->attachment_certification }}</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="profile-info-row">
