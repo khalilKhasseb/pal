@@ -136,7 +136,7 @@
                                         @if ($expert->other_degrees)
                                             <span>{{ $expert->other_degrees }}</span>
                                         @else
-                                            <span>{{ __('No PhD Degree') }}</span>
+                                            <span>{{ __('No Other Degrees') }}</span>
                                         @endif
                                     </div>
                                 </div>
