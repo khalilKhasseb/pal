@@ -37,31 +37,74 @@ class ExpertFactory extends Factory
         ];
     }
 
+    /**
+     * Adds a media attachment to the Expert model after creation.
+     *
+     * This method ensures that a 'fake' directory exists before generating
+     * a random image to be used as a personal photo. The image is attached
+     * to the expert's media collection named 'image' and is cleaned up
+     * afterwards. Errors during file deletion are logged.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    // public function withMedia()
+    // {
+    //     return $this->afterCreating(function (Expert $expert) {
+    //         // Ensure the 'fake' directory exists
+    //         if (!Storage::exists('fake')) {
+
+    //             Storage::makeDirectory('fake');
+    //         }
+
+    //         // Generate a random image in the 'fake' directory
+    //         $imagePath = $this->faker->image(storage_path('app/fake'));
+
+    //         // Attach the image to the expert's media collection
+    //         $expert->addMedia($imagePath)
+    //             ->usingFileName('personal_photo.jpg')
+    //             ->toMediaCollection('image');
+
+    //         // Cleanup: Remove the temporary image file
+    //         try {
+    //             unlink($imagePath);
+    //         } catch (\Exception $e) {
+    //             \Log::error('Failed to delete temporary file: ' . $imagePath);
+    //         }
+    //     });
+
+    // }
+
     public function withMedia()
     {
         return $this->afterCreating(function (Expert $expert) {
-            // Ensure the 'fake' directory exists
-            if (!Storage::exists('fake')) {
-
-                Storage::makeDirectory('fake');
+            $fakeDirectory = storage_path('app/public/fake');
+            if (!is_dir($fakeDirectory)) {
+                mkdir($fakeDirectory, 0755, true);
             }
 
-            // Generate a random image in the 'fake' directory
-            $imagePath = $this->faker->image(storage_path('app/fake'));
+            $imageFileName = $this->faker->image($fakeDirectory, 300, 300, null, false);
+            $imagePath = $fakeDirectory . '/' . $imageFileName;
 
-            // Attach the image to the expert's media collection
-            $expert->addMedia($imagePath)
-                ->usingFileName('personal_photo.jpg')
-                ->toMediaCollection('image');
-
-            // Cleanup: Remove the temporary image file
             try {
-                unlink($imagePath);
+                if (is_file($imagePath)) {
+                    $expert->addMedia($imagePath)->toMediaCollection('image');
+                } else {
+                    \Log::error('Generated file is not valid: ' . $imagePath);
+                }
             } catch (\Exception $e) {
-                \Log::error('Failed to delete temporary file: ' . $imagePath);
+                \Log::error('Failed to add media: ' . $e->getMessage());
+            } finally {
+                if (is_file($imagePath)) {
+                    try {
+                        unlink($imagePath);
+                    } catch (\Exception $e) {
+                        \Log::error('Failed to delete temporary file: ' . $imagePath . ' Error: ' . $e->getMessage());
+                    }
+                } else {
+                    \Log::error('Temporary file not found for deletion: ' . $imagePath);
+                }
             }
         });
-
     }
 
 }

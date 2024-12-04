@@ -16,7 +16,7 @@ class ExpertsSeeder extends Seeder
     public function run(): void
     {
 
-        $experts = \App\Models\Expert::factory()
+        $experts = \App\Models\Expert::factory(10)
             ->withMedia()
             ->has(ExpertCirtificate::factory()->count(3), 'certificates')
             ->create(['gender' => 'male']);
