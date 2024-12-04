@@ -39,14 +39,7 @@
 
                             <div class="space my-4"></div>
 
-                            {{-- <button type="button" id="requestForCertificate" data-bs-toggle="modal"
-                                data-bs-target="#requestClientEmail" 
-                                data-bs-request-for-client-certifcate="1"
-                                
-                                class="btn btn-sm btn-block btn-success">
-                                <i class="ace-icon fa fa-plus-circle bigger-120"></i>
-                                <span class="bigger-110">{{ __('Request for Certificate') }}</span>
-                            </button> --}}
+    
 
                             <button role="button" type="button" data-bs-toggle="modal"
                                 data-bs-target="#requestClientEmail" data-bs-request-for-client-certifcate="0"
@@ -68,18 +61,18 @@
 
                             <div class="profile-user-info">
                                 <div class="profile-info-row">
-                                    <div class="profile-info-name"> {{ __('Sir Name Arabic') }} </div>
+                                    <div class="profile-info-name"> {{ __('Name In Arabic') }} </div>
 
                                     <div class="profile-info-value">
-                                        <span>{{ $expert->sir_name_ar }}</span>
+                                        <span>{{ $expert->sir_name_ar }} {{$expert->first_name}}</span>
                                     </div>
                                 </div>
 
                                 <div class="profile-info-row">
-                                    <div class="profile-info-name"> {{ __('Sir Name English') }} </div>
+                                    <div class="profile-info-name"> {{ __('Name In English') }} </div>
 
                                     <div class="profile-info-value">
-                                        <span>{{ $expert->sir_name_en }}</span>
+                                        <span>{{$expert->first_name}} {{ $expert->sir_name_en }}</span>
                                     </div>
                                 </div>
 
