@@ -888,3 +888,8 @@ span[data-type="mergeTag"]:is(.dark *) {
     --tw-bg-opacity: 1;
     background-color: rgba(var(--gray-800), var(--tw-bg-opacity, 1));
 }
+
+
+.tiptap-editor img {
+    width: initial;
+}
