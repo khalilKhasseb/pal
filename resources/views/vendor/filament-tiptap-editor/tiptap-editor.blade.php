@@ -32,9 +32,7 @@
             @php
                 $_this = new \ReflectionClass($this);
 
-                dd(
-                  $this->getPropertyValue($statePath)
-                )
+                
             @endphp
             
                 <div
