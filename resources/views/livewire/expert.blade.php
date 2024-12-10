@@ -21,7 +21,7 @@
 
                 <li>
                     <a data-bs-toggle="tab" href="#feed">
-                        <i class="orange ace-icon fa fa-rss bigger-120"></i>
+                        <i class="green ace-icon fa fa-certificate bigger-120"></i>
                         {{ __('Certificates') }}
                     </a>
                 </li>

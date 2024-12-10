@@ -7,6 +7,8 @@ use Filament\Forms\Form;
 use Illuminate\Support\ServiceProvider;
 use FilamentTiptapEditor\TiptapEditor;
 use LaraZeus\Sky\Filament\Resources\TagResource;
+use Filament\Support\Assets\Js;
+use Filament\Support\Facades\FilamentAsset;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,14 +17,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-    //  $r = TagResource::form(app(Form::class));
-        
-        
-        TiptapEditor::configureUsing(function (TiptapEditor $tiptapEditor) {
-            $tiptapEditor->blocks([
-                \App\TipTapEditorBlocks\Tabs::class
-            ]);
-        });
+        //  $r = TagResource::form(app(Form::class));
+
+
+
     }
 
     /**
@@ -30,7 +28,22 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        app()->setLocale('ar'); 
+        app()->setLocale('ar');
+
+        FilamentAsset::register([
+            // Js::make('alpine-lazy-load-assets', 'https://unpkg.com/alpine-lazy-load-assets@latest/dist/alpine-lazy-load-assets.cdn.js'),
+            Js::make('countdown-timer', asset('js/blocks/libs/countdown.min.js'))
+            
+        ]);
+
+        TiptapEditor::configureUsing(function (TiptapEditor $tiptapEditor) {
+            $tiptapEditor
+                ->collapseBlocksPanel()
+
+                ->blocks([
+                    \App\TiptapBlocks\CountdownTimer::class
+                ]);
+        });
     }
 
 }
