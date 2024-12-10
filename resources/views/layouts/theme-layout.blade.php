@@ -94,7 +94,7 @@
 
         <!-- own style css -->
         <link data-layout="front" rel="stylesheet" type="text/css"
-            href="{{ asset('css/template/style.css') }}?1oasss3w14" media="all" />
+            href="{{ asset('css/template/style.css') }}?{{random_int(10 , 1000)}}" media="all" />
         @if ($rtl)
             <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}"
                 media="all" />
