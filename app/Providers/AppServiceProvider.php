@@ -41,7 +41,8 @@ class AppServiceProvider extends ServiceProvider
                 ->collapseBlocksPanel()
 
                 ->blocks([
-                    \App\TiptapBlocks\CountdownTimer::class
+                    \App\TiptapBlocks\CountdownTimer::class,
+                    \App\TiptapBlocks\PdfView::class
                 ]);
         });
     }
