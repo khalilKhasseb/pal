@@ -8,7 +8,7 @@
     <x-slot name='coverinfo'>
         <a href="{{ optional($post->coverInfo)->source }}" data-bs-toggle="tooltip"
             class="position-absolute top-0 {{ app()->getLocale() === 'ar' ? 'me-2 end-0' : 'ms-2 start-0' }}"
-            title="{{optional($post->coverInfo)->description }}">
+            title="{{ optional($post->coverInfo)->description }}">
             <span class="badge bg-info text-dark">{{ optional($post->coverInfo)->title }}</span>
         </a>
     </x-slot>
@@ -59,10 +59,12 @@
                                 <div class="meta-box">
                                     <div class="event-author-option">
                                         <div class="event-author-img">
-                                            <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->author) }}" alt="avatar" />
+                                            <img src="{{ \Filament\Facades\Filament::getUserAvatarUrl($post->author) }}"
+                                                alt="avatar" />
                                         </div>
                                         <div class="event-author-name">
-                                            <p>{{ __('Posted by') }} : <a href="#">{{ $post->author->name ?? '' }}</a></p>
+                                            <p>{{ __('Posted by') }} : <a
+                                                    href="#">{{ $post->author->name ?? '' }}</a></p>
                                         </div>
                                     </div>
                                     <ul class="meta-post">
@@ -74,7 +76,16 @@
 
                                 <div class="blog-content">
                                     <h4>{{ $post->title }}</h4>
-                                    {!! $post->getContent() !!}
+
+                                    <div class="tiptap-editor">
+                                        <div class="tiptap-prosemirror-wrapper">
+                                            <div class="ProseMirror">
+                                                {!! $post->getContent() !!}
+                                            </div>
+
+                                        </div>
+                                    </div>
+
 
                                     @if (!is_null($post->post_meta))
                                         <div class="mt-2 single-date-option clearfix">
@@ -82,7 +93,8 @@
                                                 @foreach ($post->post_meta as $meta)
                                                     <li class="d-flex justify-items-start">
                                                         @if ($meta->icon !== null)
-                                                            <x-icon class="ps-2" width="20px" color="green" name="{{ $meta->icon }}" />
+                                                            <x-icon class="ps-2" width="20px" color="green"
+                                                                name="{{ $meta->icon }}" />
                                                         @endif
                                                         <span>{{ $meta->key }} : {{ $meta->value }} </span>
                                                     </li>
@@ -107,7 +119,9 @@
                                                 @foreach ($post->getMedia('attachments') as $media)
                                                     <tr>
                                                         <th>{{ $media->getDownloadFilename() }}</th>
-                                                        <td><a class="rounded btn-success btn" href="{{ route('downloadAttachment', $media) }}">{{ __('Download') }}</a></td>
+                                                        <td><a class="rounded btn-success btn"
+                                                                href="{{ route('downloadAttachment', $media) }}">{{ __('Download') }}</a>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -133,7 +147,9 @@
                         </div>
 
                         @if ($post->has_contact_form)
-                            <x-theme.contact-us :sub-heading="__('Professionally mesh enterprise wide imperatives without world class paradigms. Dynamically deliver ubiquitous leadership awesome skills.')" />
+                            <x-theme.contact-us :sub-heading="__(
+                                'Professionally mesh enterprise wide imperatives without world class paradigms. Dynamically deliver ubiquitous leadership awesome skills.',
+                            )" />
                         @endif
 
                         <div class="com">

@@ -103,6 +103,8 @@
             href="{{ asset('css/template/responsive.css') }}" media="all" />
     @endif
 
+    <link rel="stylesheet" href="{{asset('css/template/tiptap-overrides.css')}}">
+
 
     <style data-layout="front">
         .filament-tiptap-grid-builder {

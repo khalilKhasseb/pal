@@ -1158,6 +1158,11 @@ section{
 	color: #000;
 }
 
+.lead p {
+	font-size:  inherit !important;
+	
+}
+
 
 /*======================
 	End Global css

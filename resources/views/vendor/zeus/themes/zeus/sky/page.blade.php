@@ -98,7 +98,17 @@
                                 <!-- .meta-box -->
                                 <div class="blog-content">
                                     <h4 class="text-center">{{ $post->title }}</h4>
-                                    {!! $post->getContent() !!}
+
+                                    <div class="tiptap-editor">
+                                        <div class="tiptap-prosemirror-wrapper">
+                                            <div class="ProseMirror">
+                                                {!! $post->getContent() !!}
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
                                     @if (!is_null($post->gallary))
                                         <x-theme.post-gallary :gallary="$post->gallary" :slug="$post->slug" />
                                     @endif
