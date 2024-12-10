@@ -791,10 +791,10 @@ blockquote:after,
 	Custom btn Style
 =================================*/
 
-.btn {
+.btn,[data-as-button-theme="primary"] {
 	border-radius: 3px;
 }
-.btn-default {
+.btn-default,[data-as-button-theme="primary"] {
 	color: #53a92c;
 	font-size: 14px;
 	font-weight: 600;

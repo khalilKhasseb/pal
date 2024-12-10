@@ -28,6 +28,13 @@
                     x-load-css="[@js(\Filament\Support\Facades\FilamentAsset::getStyleHref('tiptap', 'awcodes/tiptap-editor'))]"
                 @endif
             >
+
+            @php
+                $_this = new \ReflectionClass($this);
+
+               
+            @endphp
+            
                 <div
                     wire:ignore
                     x-ignore
