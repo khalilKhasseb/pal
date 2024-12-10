@@ -597,12 +597,12 @@
     .ProseMirror
     .filament-tiptap-grid-builder
     .filament-tiptap-grid__column {
-    box-sizing: border-box;
-    border-style: dashed;
-    border-width: 1px;
-    border-color: rgba(var(--gray-400), 1);
-    padding: 0.5rem;
-    border-radius: 0.25rem;
+    /* box-sizing: border-box; */
+    /* border-style: dashed; */
+    /* border-width: 1px; */
+    /* border-color: rgba(var(--gray-400), 1); */
+    /* padding: 0.5rem; */
+    /* border-radius: 0.25rem; */
 }
 .tiptap-editor
     .ProseMirror
