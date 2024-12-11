@@ -132,7 +132,7 @@ Route::prefix('administration')->name('administration')->group(function () {
     Route::get('/{slug}', App\Livewire\SingleAdministration::class)->name('.view');
 });
 Route::prefix('experts')->name('experts')->group(function () {
-    Route::get('/', App\Livewire\Experts::class)->name('.list');
+    Route::get('/', App\Livewire\Experts::class);
 
     Route::get('/{expert}', App\Livewire\Expert::class)->name('.view');
 });
@@ -198,19 +198,5 @@ Route::get('dashboard/library', [DashboardController::class, 'getTagItemsBySlug'
  *
  * attache media to model for each post model
  */
-
-Route::get('rel/{type}', function (Request $request) {
-    $relations = ['MorphToMany'];
-    $reflectorCalss = new ReflectionClass(App\Models\Panel::class);
-    // return type = mo
-    $methods = collect($reflectorCalss->getMethods())->filter(function ($method) use ($relations) {
-        // $class_basename = class_basename($method->getReturnType())
-        $returnType = $method->getReturnType();
-        if ($returnType) {
-            return  in_array(class_basename($returnType->getName()), $relations);
-        }
-    });
-    // dd(collect(class_basename($reflectorCalss->getMethods())[0]->getReturnType()));
-});
 
 
