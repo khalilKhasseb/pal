@@ -11,7 +11,7 @@
             <div class="row">
 
                 <div class="col-4 my-5">
-                    <select wire.igoner class="select-2 select-2-gov" name="state" style="width:100%;margin-bottom:20px"
+                    <select  class="select-2 select-2-gov" name="state" style="width:100%;margin-bottom:20px"
                         wire:model.live="selectedState">
                         <option value="all">{{__('All experts')}}</option>
                         @foreach ($governorates as $gov)
@@ -96,7 +96,7 @@
         });
         // Function to initialize Select2
         function initializeSelect2() {
-            $('.select-2').select2({
+            $('.select-2-gov').select2({
                 theme: "bootstrap-5",
                 width: 'resolve', // Optional for better width management
             }).on("change", function() {
