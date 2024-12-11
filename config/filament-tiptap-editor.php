@@ -50,7 +50,7 @@ return [
     |
     | See: https://tiptap.dev/guide/output
     */
-    'output' => FilamentTiptapEditor\Enums\TiptapOutput::Html,
+    'output' => FilamentTiptapEditor\Enums\TiptapOutput::Json,
 
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +71,7 @@ return [
     'preserve_file_names' => false,
     'max_file_size' => 2042,
     'min_file_size' => 0,
-    'image_resize_mode' => null,
+    'image_resize_mode' => true,
     'image_crop_aspect_ratio' => null,
     'image_resize_target_width' => null,
     'image_resize_target_height' => null,

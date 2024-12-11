@@ -790,7 +790,16 @@ blockquote:after,
 /*=======================
 	Custom btn Style
 =================================*/
+.blog-content [data-as-button="true"] {
+  display: block  !important;
+  text-align: center;
+  background-color: #53a92c !important ;
+  color: white !important;
+}
 
+.blog-content [data-as-button="true"]:hover {
+  background-color: #54a92cdf !important;
+}
 .btn,[data-as-button-theme="primary"] {
 	border-radius: 3px;
 }
