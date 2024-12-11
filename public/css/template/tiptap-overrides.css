@@ -445,7 +445,7 @@
     font-size: 1.25rem;
 }
 .tiptap-editor .ProseMirror hr {
-    border-color: rgba(var(--gray-400), 1);
+    border-color: transparent;
 }
 .tiptap-editor .ProseMirror a {
     /* color: #2563eb; */
