@@ -3,7 +3,7 @@
 </x-slot>
 
 <x-slot name="breadcrumbs">
-    <li><a href="{{ route('experts.list') }}">{{ __('Experts') }}</a></li>
+    <li><a href="{{ route('experts') }}">{{ __('Experts') }}</a></li>
 
     <li><a href="#">{{ $expert->{'sir_name_' . $local} }}</a></li>
 </x-slot>
