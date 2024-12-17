@@ -796,6 +796,11 @@ blockquote:after,
 [data-as-button-theme="primary"] {
     border-radius: 3px;
 }
+
+[data-as-button-theme="primary"] {
+	 padding: 21px 29px 21px 29px;
+
+}
 .btn-default,
 [data-as-button-theme="primary"] {
     color: #53a92c;
