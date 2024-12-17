@@ -10,6 +10,7 @@ use App\Traits\PanelResource;
 class Navigation extends Model
 {
 
+
      use PanelResource;
     // use HasTranslations;
 

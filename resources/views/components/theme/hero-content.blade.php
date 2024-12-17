@@ -6,7 +6,14 @@
     $title = $sommod ? __('About Sommod Project') : __('About Council');
     $local = app()->getLocale();
     $content = $sommod ? $contentSettings[$s . '_about_' . $local] : $contentSettings[$c . '_about_' . $local];
-    $aboutImg = $sommod ? $contentSettings[$s . '_about_img'] : $contentSettings[$c . '_about_img'];
+    $aboutImg = $sommod 
+    ? (filled($contentSettings[$s . '_about_img']) 
+        ? $contentSettings[$s . '_about_img'] 
+        : config('theme.cabout'))
+    : (filled($contentSettings[$c . '_about_img']) 
+        ? $contentSettings[$c . '_about_img'] 
+        : config('theme.cabout'));
+
 
     $dest = $sommod ? $contentSettings['s_destintaion'] : $contentSettings['c_destintaion'];
 
@@ -34,7 +41,7 @@
                     <!-- .col-lg-8 -->
                     <div class="col-lg-4">
                         <div class="about-greenforest-img">
-                            <img src="{{ asset("storage/$aboutImg") }}" alt="about-greenforet-img"
+                            <img src="{{ preg_match('/(http?s)/' , $aboutImg) ? $aboutImg : asset("storage/$aboutImg") }}" alt="about-greenforet-img"
                                 class="img-responsive" />
                         </div>
                         <!-- .about-greenforest-img -->

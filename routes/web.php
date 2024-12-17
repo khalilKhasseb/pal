@@ -77,7 +77,7 @@ Route::prefix('/')->name('theme.')->group(function () {
     Route::get('/', Home::class)->name('home');
 
 
-    Route::get('/post-single', fn () => view('theme.pages.post'));
+    Route::get('/post-single', fn() => view('theme.pages.post'));
 });
 
 
@@ -111,9 +111,7 @@ Route::prefix('cources')->name('cource')->group(function () {
 Route::prefix('events')->name('event')->group(function () {
     Route::get('/', App\Livewire\Events::class);
     Route::get(config('zeus-sky.uri.post') . '/{slug}', Post::class)->name('.single');
-    // Route::get('/{slug}', function (Request $request) {
-    //     dump($request->slug);
-    // })->name('single');
+
 });
 
 
@@ -187,7 +185,7 @@ Route::get('lang/{local}', function (Request $request, $local) {
 Route::prefix('ajax')->name('ajax.')->group(function () {
     Route::post('/sendExpertEmail', [AjaxController::class, 'sendExpertEmail'])->name('sendExpertEmail');
     Route::post('/requestCertificate', [AjaxController::class, 'requestCertificate'])->name('requestCertificate');
-    Route::post('/logError' , [AjaxController::class, 'logError'])->name('logError');   
+    Route::post('/logError', [AjaxController::class, 'logError'])->name('logError');
 });
 Route::get('dashboard/library', [DashboardController::class, 'getTagItemsBySlug'])->name('library.getBySlug');
 /**

@@ -31,11 +31,14 @@ class Header extends Component
     }
     public function render()
     {
+        
         $header_settings = app(HeaderSetting::class);
+        
         $settings = app(SiteSetting::class);
-        $_logo = $settings->site_logo;
+        
+        $_logo = filled($settings->site_logo) ? $settings->site_logo : config('theme.console_logo');
         if (session()->has('somoud_load')) {
-            $_logo = $settings->sommod_logo;
+            $_logo = $settings->sommod_logo ? $settings->site_logo : config('theme.samoud_logo');
         }
         return view('livewire.header', compact('header_settings', '_logo'));
     }

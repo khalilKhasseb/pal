@@ -72,6 +72,8 @@ class PostSeeder extends Seeder
             });
         });
 
+        Post::limit(5)->each(fn($post) => $post->update(['sticky_until' => date_create('1/1/2025')->format('Y-m-d h:i:s')]));
+
     }
 
     public function parse_post_meta($meta)

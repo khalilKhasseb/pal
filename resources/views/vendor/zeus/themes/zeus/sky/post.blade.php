@@ -4,7 +4,7 @@
     <x-slot name="headerbg">
         {{ $post->coverInfo->cover() }}
     </x-slot>
-
+ž
     <x-slot name='coverinfo'>
         <a href="{{ optional($post->coverInfo)->source }}" data-bs-toggle="tooltip"
             class="position-absolute top-0 {{ app()->getLocale() === 'ar' ? 'me-2 end-0' : 'ms-2 start-0' }}"

@@ -17,9 +17,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //  $r = TagResource::form(app(Form::class));
-
-
 
     }
 

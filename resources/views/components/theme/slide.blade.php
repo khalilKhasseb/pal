@@ -29,11 +29,16 @@
                     <div class="carousel-inner">
 
                         @unless ($stickyPosts->isEmpty())
+                        
                             @foreach ($stickyPosts as $post)
-                                <div class="carousel-item" data-bs-interval="10000">
-
+                                <div class="carousel-item     @if ($loop->first) active @endif" data-bs-interval="10000">
                                     <div class="slider-item">
-                                      @if($post->getMedia('posts')[0]->hasGeneratedConversion('fit-slider'))
+                                    
+                                   @php
+                                     
+                                   @endphp
+                                      @if( $post->getMedia('posts')?->first()?->hasGeneratedConversion('fit-slider'))
+                          
                                        <img src="{{$post->getFirstMediaUrl('posts' , 'fit-slider')}}" />
                                       @else
                                         <img src="{{ $post->image() }}" alt="{{ $post->title }}">
@@ -45,7 +50,7 @@
                                                     <div class="col-md-6">
                                                         <div class="text-right slider-content">
                                                             <h3>{{ $post->title }}</h3>
-                                                            <h2>{{ $post->description }}</h2>
+                                                            {{-- <h2>{{ $post->description }}</h2> --}}
                                                             {{-- <p>By Planting Tree Tomorrow!</p> --}}
                                                             <div class="slider-btn">
                                                                 <a href="{{ route('post', ['slug' => $post->slug]) }}"

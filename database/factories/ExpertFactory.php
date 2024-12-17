@@ -30,7 +30,7 @@ class ExpertFactory extends Factory
             'ba_major' => $this->faker->word . ' Studies',
             'graduation_year' => $this->faker->year,
             'other_degrees' => $this->faker->sentence,
-            'phd_degrees' => $this->faker->sentence,
+            // 'phd_degrees' => $this->faker->sentence,
             'experience' => $this->faker->numberBetween(1, 30),
             'attachment_personal_photo' => $this->faker->imageUrl(), // Placeholder image
             'agreement_check' => true,

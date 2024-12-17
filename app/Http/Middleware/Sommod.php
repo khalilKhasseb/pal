@@ -21,6 +21,15 @@ class Sommod
         );
     }
 
+    protected function validateContentProviderIfEmptyOrNull(string $file_path)
+    {
+        $file = Storage::disk('local')->get($file_path);
+        if (is_null(json_decode($file, true))) {
+            return true;
+        }
+        return false;
+    }
+
 
     protected function validateSource($request): Request
     {
@@ -28,6 +37,11 @@ class Sommod
             $this->setProvider($request);
             return $request;
         endif;
+
+        if ($this->validateContentProviderIfEmptyOrNull(storage_path('app' . DIRECTORY_SEPARATOR . "content_provider.json"))) {
+            $this->setProvider($request);
+            return $request;
+        }
         $source = $request->route()->getName();
         $content_provider_source = $this->getContentProvider()['source'];
 
@@ -58,6 +72,10 @@ class Sommod
     protected function getContentProvider(): array|\Exception
     {
         if (file_exists(storage_path('app/content_provider.json'))) {
+            $file = Storage::disk('local')->get('content_provider.json');
+            if (is_null(json_decode($file, true))) {
+
+            }
 
             return json_decode(Storage::disk('local')->get('content_provider.json'), true);
         }

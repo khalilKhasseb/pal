@@ -45,25 +45,25 @@
 
 
     <link href="{{ asset('css/template/datatables.css') }}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 
     <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" /> --}}
 
     @if ($rtl)
         <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
         <link data-layout="front" rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link data-layout="front"
+        {{-- <link data-layout="front"
             href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-            rel="stylesheet">
+            rel="stylesheet"> --}}
     @else
-        <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
+        {{-- <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
         <link data-layout="front" rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link data-layout="front"
             href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=KoHo:ital,wght@0,200;0,300;0,500;0,700;1,200;1,300;1,600;1,700&display=swap"
-            rel="stylesheet">
+            rel="stylesheet"> --}}
     @endif
 
 
@@ -163,11 +163,12 @@
             <!-- Start Page Header Section -->
             <div class="container">
                 <section
-                    style="--header-bg:url({{ isset($headerbg) ? $headerbg : Storage::url($settings->header_bg) }})"
+                    style="--header-bg:url({{ isset($headerbg) ? $headerbg : (filled(Storage::url($settings->header_bg)) && Storage::disk('public')->exists('/site\/'.basename($settings->header_bg)) ? Storage::url($settings->header_bg) : config('theme.cover')) }})"
                     class="bg-page-header d-flex justify-content-center align-items-center position-relative">
                     @isset($coverinfo)
-                        {{ $coverinfo }}
-                    @endisset
+                        {{$coverinfo}}
+                   
+                    @endif
                     <div class="page-header-overlay w-100">
                         <div class="container">
                             <div class="row">

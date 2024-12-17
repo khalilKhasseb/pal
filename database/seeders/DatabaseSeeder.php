@@ -34,11 +34,11 @@ class DatabaseSeeder extends Seeder
             ExpertsSeeder::class, 
             LibrarySeeder::class,
 
-            PostSeeder::class,
-            ProductSeeder::class,
-            EventSeeder::class,
-            HallSeeder::class,
-            AdministrationSeeder::class,
+            PostSeeder::class, // post
+            ProductSeeder::class, // post
+            // EventSeeder::class,
+            HallSeeder::class, // post
+            AdministrationSeeder::class, //post
 
             SupporterSeeder::class,
             OutReachSeeder::class,
