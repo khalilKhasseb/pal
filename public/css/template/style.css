@@ -785,12 +785,14 @@ blockquote:after,
 .blog-content [data-as-button="true"] {
     display: block !important;
     text-align: center;
-    background-color: #4B0082 !important ;
     color: white !important;
+    background-color: #4B0082 !important ;
+    border-color: #4B0082 !important ;
 }
 
 .blog-content [data-as-button="true"]:hover {
     background-color: #4c00829f !important;
+
 }
 .btn,
 [data-as-button-theme="primary"] {
