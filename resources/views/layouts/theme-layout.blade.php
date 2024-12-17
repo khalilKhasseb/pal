@@ -45,25 +45,24 @@
 
 
     <link href="{{ asset('css/template/datatables.css') }}" rel="stylesheet">
-    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 
     <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" /> --}}
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
 
     @if ($rtl)
-        <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
-        <link data-layout="front" rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        {{-- <link data-layout="front"
-            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-            rel="stylesheet"> --}}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap"
+            rel="stylesheet">
     @else
-        {{-- <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
+        <link data-layout="front" rel="preconnect" href="https://fonts.googleapis.com">
         <link data-layout="front" rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link data-layout="front"
             href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=KoHo:ital,wght@0,200;0,300;0,500;0,700;1,200;1,300;1,600;1,700&display=swap"
-            rel="stylesheet"> --}}
+            rel="stylesheet">
     @endif
 
 
@@ -94,7 +93,7 @@
 
         <!-- own style css -->
         <link data-layout="front" rel="stylesheet" type="text/css"
-            href="{{ asset('css/template/style.css') }}?{{random_int(10 , 1000)}}" media="all" />
+            href="{{ asset('css/template/style.css') }}?{{ random_int(10, 1000) }}" media="all" />
         @if ($rtl)
             <link data-layout="front" rel="stylesheet" type="text/css" href="{{ asset('css/template/rtl.css') }}"
                 media="all" />
@@ -103,7 +102,7 @@
             href="{{ asset('css/template/responsive.css') }}" media="all" />
     @endif
 
-    <link rel="stylesheet" href="{{asset('css/template/tiptap-overrides.css')}}?{{random_int(10 , 1000)}}">
+    <link rel="stylesheet" href="{{ asset('css/template/tiptap-overrides.css') }}?{{ random_int(10, 1000) }}">
 
 
     <style data-layout="front">
@@ -163,67 +162,67 @@
             <!-- Start Page Header Section -->
             <div class="container">
                 <section
-                    style="--header-bg:url({{ isset($headerbg) ? $headerbg : (filled(Storage::url($settings->header_bg)) && Storage::disk('public')->exists('/site\/'.basename($settings->header_bg)) ? Storage::url($settings->header_bg) : config('theme.cover')) }})"
+                    style="--header-bg:url({{ isset($headerbg) ? $headerbg : (filled(Storage::url($settings->header_bg)) && Storage::disk('public')->exists('/site\/' . basename($settings->header_bg)) ? Storage::url($settings->header_bg) : config('theme.cover')) }})"
                     class="bg-page-header d-flex justify-content-center align-items-center position-relative">
                     @isset($coverinfo)
-                        {{$coverinfo}}
-                   
-                    @endif
-                    <div class="page-header-overlay w-100">
-                        <div class="container">
-                            <div class="row">
-                                <div class="page-header py-5 col-md-5 m{{ $rtl ? 's' : 'e' }}-auto rounded-top">
+                        {{ $coverinfo }}
+
+            @endif
+            <div class="page-header-overlay w-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="page-header py-5 col-md-5 m{{ $rtl ? 's' : 'e' }}-auto rounded-top">
 
 
-                                    @if (isset($header))
-                                        <div class="page-title">
-                                            {{ $header }}
-                                        </div>
-                                    @endif
-                                    <!-- .page-title -->
-
-                                    @if (isset($breadcrumbs))
-                                        <div class="page-header-content">
-                                            <ol class="breadcrumb">
-                                                {{ $breadcrumbs }}
-
-                                            </ol>
-                                        </div>
-                                    @endif
-                                    <!-- .page-header-content -->
+                            @if (isset($header))
+                                <div class="page-title">
+                                    {{ $header }}
                                 </div>
-                                <!-- .page-header -->
-                            </div>
-                            <!-- .row -->
+                            @endif
+                            <!-- .page-title -->
+
+                            @if (isset($breadcrumbs))
+                                <div class="page-header-content">
+                                    <ol class="breadcrumb">
+                                        {{ $breadcrumbs }}
+
+                                    </ol>
+                                </div>
+                            @endif
+                            <!-- .page-header-content -->
                         </div>
-                        <!-- .container -->
+                        <!-- .page-header -->
                     </div>
-                    <!-- .page-header-overlay -->
-                </section>
+                    <!-- .row -->
+                </div>
+                <!-- .container -->
             </div>
-            <!-- End Page Header Section -->
-            <!-- End page header -->
+            <!-- .page-header-overlay -->
+            </section>
+        </div>
+        <!-- End Page Header Section -->
+        <!-- End page header -->
         @endif
 
         {{-- Content area --}}
         {{ $slot }}
-    </div>
-    {{-- End content area --}}
-    <!-- Start Scrolling -->
-    <div class="scroll-img"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
-    <!-- End Scrolling -->
+        </div>
+        {{-- End content area --}}
+        <!-- Start Scrolling -->
+        <div class="scroll-img"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+        <!-- End Scrolling -->
 
-    @include('theme.partial.footer')
+        @include('theme.partial.footer')
 
-    </div>
+        </div>
 
-    @if (isset($modal))
-        {{ $modal }}
-    @endif
+        @if (isset($modal))
+            {{ $modal }}
+        @endif
 
-    <!-- Start Pre-Loader-->
+        <!-- Start Pre-Loader-->
 
-    {{-- <div id="loading">
+        {{-- <div id="loading">
         <div id="loading-center">
             <div id="loading-center-absolute">
                 <div class="object" id="object_one"></div>
@@ -235,41 +234,41 @@
     </div> --}}
 
 
-    <!-- End Pre-Loader -->
+        <!-- End Pre-Loader -->
 
-     
 
-    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery-2.2.3.min.js') }}"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script> --}}
 
-    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/bootstrap.min.js') }}"></script>
+        <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery-2.2.3.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 
-    <script type="text/javascript" src={{asset('js/template/select2.min.js')}}></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+        <script data-layout="front" type="text/javascript" src="{{ asset('js/template/bootstrap.min.js') }}"></script>
 
-    {{-- <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script> --}}
-    {{-- <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script> --}}
+        <script type="text/javascript" src={{ asset('js/template/select2.min.js') }}></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 
-    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.easing.1.3.js') }}"></script>
-    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.waypoints.min.js') }}"></script>
-    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.counterup.min.js') }}"></script>
-    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/swiper.min.js') }}"></script>
-    {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/plugins.isotope.js') }}"></script> --}}
-    {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/isotope.pkgd.min.js') }}"></script> --}}
-    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/lightcase.js') }}"></script>
-    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.nstSlider.js') }}"></script>
-    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.flexslider.js') }}"></script>
-    {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.isotope.js') }}"></script> --}}
-    {{-- <script type="text/javascript" src="{{asset('js/template/custom.map.js')}}"></script> --}}
-    @vite('resources/js/app.js')
+        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
 
-    <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.js') }}"></script>
+        <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.easing.1.3.js') }}"></script>
+        <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.waypoints.min.js') }}"></script>
+        <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.counterup.min.js') }}"></script>
+        <script data-layout="front" type="text/javascript" src="{{ asset('js/template/swiper.min.js') }}"></script>
+        {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/plugins.isotope.js') }}"></script> --}}
+        {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/isotope.pkgd.min.js') }}"></script> --}}
+        <script data-layout="front" type="text/javascript" src="{{ asset('js/template/lightcase.js') }}"></script>
+        <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.nstSlider.js') }}"></script>
+        <script data-layout="front" type="text/javascript" src="{{ asset('js/template/jquery.flexslider.js') }}"></script>
+        {{-- <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.isotope.js') }}"></script> --}}
+        {{-- <script type="text/javascript" src="{{asset('js/template/custom.map.js')}}"></script> --}}
+        @vite('resources/js/app.js')
 
-    @stack('scripts_comp')
-    <!-- Map Api -->
-    {{-- <script data-layout="front" async defer
+        <script data-layout="front" type="text/javascript" src="{{ asset('js/template/custom.js') }}"></script>
+
+        @stack('scripts_comp')
+        <!-- Map Api -->
+        {{-- <script data-layout="front" async defer
      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqVIkdttPNjl5c5hKlc_Hk3bfXQQlf2Rc&callback=initMap"></script> --}}
 
-</body>
+    </body>
 
-</html>
+    </html>
