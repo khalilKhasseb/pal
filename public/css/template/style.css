@@ -33,7 +33,7 @@
 
 -----------------------------------------------*/
 
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+@import url("https://fonts.googleapis.com/css?family=Almarai:300,400,500,600,700");
 
 /*======================
 	Start Reset css
@@ -255,7 +255,7 @@ input,
 select,
 textarea {
     color: #696969;
-    font-family: "Poppins", sans-serif;
+    font-family: "Almarai", sans-serif;
     line-height: 1.8;
 }
 
@@ -387,7 +387,7 @@ tt,
 var,
 samp,
 pre {
-    font-family: "Poppins", sans-serif;
+    font-family: "Almarai", sans-serif;
 }
 
 pre {
@@ -583,7 +583,7 @@ input[type="submit"][disabled]:focus {
     border: 0;
     border-radius: 0px;
     color: #696969;
-    font-family: "Poppins", sans-serif;
+    font-family: "Almarai", sans-serif;
     font-weight: 700;
     letter-spacing: 0.046875em;
     line-height: 1;
