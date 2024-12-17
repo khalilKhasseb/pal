@@ -23,8 +23,12 @@ class Sommod
 
     protected function validateContentProviderIfEmptyOrNull(string $file_path)
     {
-        $file = Storage::disk('local')->get($file_path);
-        if (is_null(json_decode($file, true))) {
+        
+        $file = Storage::disk('local')->get(basename($file_path));
+
+        
+        
+        if (json_decode($file, true) === null) {
             return true;
         }
         return false;
