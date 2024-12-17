@@ -115,11 +115,7 @@
         }
 
 
-        * {
-            font-family: "Rubik", sans-serif;
-
-        }
-
+        
         .fontrubib {
             font-family: "Rubik", sans-serif;
             font-optical-sizing: auto;
