@@ -1,5 +1,5 @@
 @php 
- $bg = filled($settings->subscription_background) && \Storage::disk('public')->exists($settings->subscription_background) ? asset($settings->subscription_background) : config('theme.newsletter.bg');
+ $bg = filled($settings->subscription_background) && \Storage::disk('public')->exists($settings->subscription_background) ? '/'.$settings->subscription_background : config('theme.newsletter.bg');
 @endphp
 <div class="newsletter-wraaper" style="--bg-image: url('{{ $bg }}');">
     {{-- Stop trying to control. --}}
