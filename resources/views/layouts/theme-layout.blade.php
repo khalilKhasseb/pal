@@ -155,10 +155,11 @@
             !is_null(Route::current()) &&
                 Route::current()->getName() !== 'theme.home' &&
                 Route::current()->getName() !== 'front.somoud.home')
+            
             <!-- Start Page Header Section -->
-            <div class="container">
+                <div class="container">
                 <section
-                    style="--header-bg:url({{ isset($headerbg) ? $headerbg : (filled(Storage::url($settings->header_bg)) && Storage::disk('public')->exists('/site\/' . basename($settings->header_bg)) ? Storage::url($settings->header_bg) : config('theme.cover')) }})"
+                    style="--header-bg:url({{ isset($headerbg) ? $headerbg : (filled($settings->header_bg) && Storage::disk('public')->exists('/site\/' . basename($settings->header_bg)) ? Storage::url($settings->header_bg) : config('theme.cover')) }})"
                     class="bg-page-header d-flex justify-content-center align-items-center position-relative">
                     @isset($coverinfo)
                         {{ $coverinfo }}

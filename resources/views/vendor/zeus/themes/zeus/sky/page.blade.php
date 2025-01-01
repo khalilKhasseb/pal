@@ -1,4 +1,4 @@
-@if (!is_null($post->coverInfo))
+@if (!is_null($post->coverInfo) && filled($post->coverInfo->cover()))
     <x-slot name="headerbg">
         {{ $post->coverInfo->cover() }}
     </x-slot>
