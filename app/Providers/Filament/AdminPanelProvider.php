@@ -61,7 +61,19 @@ class AdminPanelProvider extends PanelProvider
                     ->label(__('Somoud'))
                     ->url(fn() => route('filament.somoud.pages.dashboard')),
                 MenuItem::make('all_content')
-                    ->label(__('All Content'))
+                    ->label(function (): string {
+
+                        if (session()->has('show_all_content')) {
+                            $show =  session('show_all_content');
+
+                            if ($show) {
+                                return __('Disable All Content');
+                            }
+
+                            return __('Enable All Content');
+                        }
+                        return __('Enable All Content');
+                    })
                     ->url(fn() => route('admin.all_content')),
             ])->navigationGroups([
                 __('Blog'),
