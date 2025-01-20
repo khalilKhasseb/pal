@@ -23,11 +23,11 @@ class Sommod
 
     protected function validateContentProviderIfEmptyOrNull(string $file_path)
     {
-        
+
         $file = Storage::disk('local')->get(basename($file_path));
 
-        
-        
+
+
         if (json_decode($file, true) === null) {
             return true;
         }
@@ -37,25 +37,21 @@ class Sommod
 
     protected function validateSource($request): Request
     {
-        if (!file_exists(storage_path('app' . DIRECTORY_SEPARATOR . "content_provider.json"))):
+
+        $contetProviderFilePath = storage_path('app' . DIRECTORY_SEPARATOR . "content_provider.json");
+        if (
+            !file_exists($contetProviderFilePath)
+            || $this->validateContentProviderIfEmptyOrNull($contetProviderFilePath)
+        ) :
             $this->setProvider($request);
             return $request;
         endif;
 
-        if ($this->validateContentProviderIfEmptyOrNull(storage_path('app' . DIRECTORY_SEPARATOR . "content_provider.json"))) {
-            $this->setProvider($request);
-            return $request;
-        }
-        $source = $request->route()->getName();
-        $content_provider_source = $this->getContentProvider()['source'];
-
-
-        if ($source === $content_provider_source) {
-            return $request;
-        }
+        // $source = $request->route()->getName();
+        // $content_provider_source = $this->getContentProvider()['source'];        
+       
+        // set the provider if alwayes the source. 
         $this->setProvider($request);
-
-
 
         return $request;
     }
@@ -78,7 +74,6 @@ class Sommod
         if (file_exists(storage_path('app/content_provider.json'))) {
             $file = Storage::disk('local')->get('content_provider.json');
             if (is_null(json_decode($file, true))) {
-
             }
 
             return json_decode(Storage::disk('local')->get('content_provider.json'), true);
@@ -90,11 +85,11 @@ class Sommod
     protected function setProvider(Request $request): void
     {
         $routeName = $request->route()->getName();
-        // dd($routeName);
         if ($this->routeSommod($request)) {
             $this->setContentProvider('somoud', $routeName);
             $this->handelSession('somoud');
         } elseif ($this->routeHome($request)) {
+            
             $this->setContentProvider('council', $routeName);
             $this->handelSession('council');
         } elseif ($this->routeBackEnd($request)) {

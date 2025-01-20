@@ -9,6 +9,7 @@ use FilamentTiptapEditor\TiptapEditor;
 use LaraZeus\Sky\Filament\Resources\TagResource;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
+use Filament\Tables\Table;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -42,6 +43,14 @@ class AppServiceProvider extends ServiceProvider
                     \App\TiptapBlocks\PdfView::class
                 ]);
         });
+
+       Table::configureUsing(function (Table $table) {
+          // get the contet provider to validate if all content are alowed to show 
+          
+          if(session()->has('all_news') && session('all_news')) {
+            $table->render();
+          }
+       }) ;
     }
 
 }

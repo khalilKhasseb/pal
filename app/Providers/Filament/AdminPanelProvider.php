@@ -24,6 +24,7 @@ use LaraZeus\Sky\SkyPlugin;
 use Filament\Navigation\MenuItem;
 use Filament\Facades\Filament;
 use App\Classes\ExtraNavFields;
+use Google\Service\CloudSearch\Menu;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -58,13 +59,16 @@ class AdminPanelProvider extends PanelProvider
             ->userMenuItems([
                 MenuItem::make()
                     ->label(__('Somoud'))
-                    ->url(fn() => route('filament.somoud.pages.dashboard'))
+                    ->url(fn() => route('filament.somoud.pages.dashboard')),
+                MenuItem::make('all_content')
+                    ->label(__('All Content'))
+                    ->url(fn() => route('admin.all_content')),
             ])->navigationGroups([
-                    __('Blog'),
-                    __('Theme content'),
-                    __('Users'),
-                    __('Settings'),
-                ])
+                __('Blog'),
+                __('Theme content'),
+                __('Users'),
+                __('Settings'),
+            ])
             ->databaseNotifications()
 
             ->authGuard('system')
@@ -85,30 +89,28 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])->plugins([
 
-                    SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar', 'en']),
-                    SkyPlugin::make()
-                        ->navigationGroupLabel(__('Blog'))
-                        ->tagTypes([
-                            'tag' => 'Tag',
-                            'category' => 'Category',
-                            'library' => 'Library',
-                            'faq' => 'Faq',
-                            'product' => 'Product',
-                            'service' => 'Service',
-                            'hall' => 'Hall',
-                            'activity' => 'Activity',
-                            'administration' => 'Administration',
-                            'partner' => 'Partner',
-                            'gallary' => 'Gallary',
-                            'expert' => 'Expert',
-                        ])
+                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar', 'en']),
+                SkyPlugin::make()
+                    ->navigationGroupLabel(__('Blog'))
+                    ->tagTypes([
+                        'tag' => 'Tag',
+                        'category' => 'Category',
+                        'library' => 'Library',
+                        'faq' => 'Faq',
+                        'product' => 'Product',
+                        'service' => 'Service',
+                        'hall' => 'Hall',
+                        'activity' => 'Activity',
+                        'administration' => 'Administration',
+                        'partner' => 'Partner',
+                        'gallary' => 'Gallary',
+                        'expert' => 'Expert',
+                    ]),
+                \TomatoPHP\FilamentMediaManager\FilamentMediaManagerPlugin::make(),
 
-                    ,
-                    \TomatoPHP\FilamentMediaManager\FilamentMediaManagerPlugin::make(),
-
-                ])->bootUsing(function ($panel) {
-                    ExtraNavFields::initFields();
-                })
+            ])->bootUsing(function ($panel) {
+                ExtraNavFields::initFields();
+            })
             ->default()
         ;
     }

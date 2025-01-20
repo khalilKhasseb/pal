@@ -15,7 +15,9 @@
     </div>
     <!-- .bg-header-top -->
    <div class="container border-bottom rounded">
-       @if (session()->has('somoud_load'))
+
+ 
+    @if (session()->has('somoud_load'))
            <div class="brands-partner d-flex align-items-center justify-content-end pt-4">
                <div style="margin-{{ app()->getLocale() === 'ar' ? 'left' : 'right' }}:auto">
                    <x-theme.logo :route="route('front.somoud.home')" :url="$_logo" />

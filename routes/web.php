@@ -55,6 +55,35 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::get('all_content', function (Request $request) {
+    // there is a config key has a boolean valude indicate if we have to fetch all content or not
+    // this route only resposnibel to only chagne the config value between true or false 
+    // if it false set to true and vis vers
+
+    // get the key 
+
+    // set it in the current user session
+
+    // for the first time there is no key in the sessin and its not been set 
+
+    if (session()->has('show_all_content') && session('show_all_content')) {
+        // thats mean its ben activated and now to disable it
+
+        session()->put('show_all_content', false);
+
+        return back();
+    }
+
+    $value = session()->get('show_all_content', false);
+
+    session()->put('show_all_content', !$value);
+
+    return back();
+})->name('admin.all_content');
+
+
+
 require __DIR__ . '/auth.php';
 
 
@@ -111,13 +140,11 @@ Route::prefix('cources')->name('cource')->group(function () {
 Route::prefix('events')->name('event')->group(function () {
     Route::get('/', App\Livewire\Events::class);
     Route::get(config('zeus-sky.uri.post') . '/{slug}', Post::class)->name('.single');
-
 });
 
 
 Route::prefix('supporters')->name('supporters')->group(function () {
-    Route::get('/', function () {
-    });
+    Route::get('/', function () {});
 });
 
 Route::prefix('partners')->name('partners')->group(function () {
@@ -196,5 +223,3 @@ Route::get('dashboard/library', [DashboardController::class, 'getTagItemsBySlug'
  *
  * attache media to model for each post model
  */
-
-

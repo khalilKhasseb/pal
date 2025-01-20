@@ -92,8 +92,7 @@ trait PostResourceTrait
 
                         ->label(__("Post Content")),
 
-                    Select::
-                        make('panels')
+                    Select::make('panels')
                         ->label(__('Panel'))
                         ->multiple()
                         ->default(
@@ -107,9 +106,7 @@ trait PostResourceTrait
                     Toggle::make('post_meta_enable')
                         ->label('Enable Custom Fields')
                         ->live()
-                        ->afterStateUpdated(function (Set $set, $state) {
-
-                        }),
+                        ->afterStateUpdated(function (Set $set, $state) {}),
                     Section::make("post_meta_section")
                         ->heading(__('Custom fields'))
                         ->schema([
@@ -312,6 +309,27 @@ trait PostResourceTrait
                     ->multiple()
                     ->label(__('Status'))
                     ->options(SkyPlugin::get()->getModel('PostStatus')::pluck('label', 'name')),
+                Filter::make('all_news')
+                    ->label(__('All News'))
+                    ->modifyBaseQueryUsing(function(Builder $query): Builder {
+                       // set the modification to request in order to get the data from the request later or save the option for later use 
+                       // we have to make a globle setting button to show all news for all panels in the admin panel
+                        
+                       // check for the option if is true and the key exists in the cahce
+                       if(cache()->has('all_news')) {
+                           // validate the option if true that means the option is still active and we want to update it to false
+                            if(cache('all_news')) {
+                                 // update the option to false
+                                 cache(['all_news' => false]);
+                                 // add the scope to the query
+                                 return $query->withoutGlobalScope(PanelScope::class);
+                            }
+                       }
+                       cache(['all_news' => true]);
+                        
+                        
+                        return $query->withoutGlobalScope(PanelScope::class);
+                    }),
                 Filter::make('password')
                     ->label(__('Password Protected'))
                     ->query(fn(Builder $query): Builder => $query->whereNotNull('password')),
@@ -346,7 +364,4 @@ trait PostResourceTrait
             default => static::getPostType()
         };
     }
-
-
-
 }

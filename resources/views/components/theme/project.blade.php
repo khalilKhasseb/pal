@@ -8,6 +8,7 @@
        </div>
        <div class="row">
            @foreach ($posts as $post)
+           
             
                <div class="col-12 col-sm-6 col-lg-4">
 

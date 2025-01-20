@@ -91,10 +91,12 @@ class Post extends Model
     public function image($collection = 'posts'): Collection|string|null
     {
         // Check if the thumbnail collection is empty and no custom thumb exists
+            
         if ($this->getMedia('thumbnail')->isEmpty() && !$this->has_thumb) {
             // Try to load the thumb from the specified media collection (default 'posts')
             $media = $this->getMedia($collection)->first();
             if ($media && $media->hasGeneratedConversion('thumb-cropped-original')) {
+
                 $thumbPath = parse_url($media->getUrl('thumb-cropped-original'), PHP_URL_PATH);
                 $thumbFullPath = base_path('public' . $thumbPath);
 

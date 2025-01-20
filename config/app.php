@@ -12,6 +12,9 @@ return [
 
     'content_provider' => 'admin',
 
+    
+    'show_all_content' => false,
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

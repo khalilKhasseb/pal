@@ -37,8 +37,19 @@ class Home extends Component
 
         $recentQuery = config('zeus-sky.models.Post')::query();
 
+        
         if (session()->has('council_load')) {
+            // From over here i remove the scope that prevent mixing soumd news with council news
+            // in concil home page we show all news this for front end only
+            // there is issue with session managemt for the firts time it not work
+
+            /**
+             * The issue is that the session is not set in the first time & is traying to get the session value
+             * TO solve this issue we had to set the content provider in the Smoud middleware at each time 
+             **/
+
             $recentQuery->withoutGlobalScope(\App\Models\Scopes\ContentProviderScope::class);
+        
         }
 
             

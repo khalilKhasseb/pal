@@ -70,31 +70,31 @@
            <div class="col-auto">
                 <div class="countdown-box p-4">
                     <h2 id="months" class="display-4 text-light">00</h2>
-                    <p class="text-light">Months</p>
+                    <p class="text-light">{{__('Months')}}</p>
                 </div>
             </div>
             <div class="col-auto">
                 <div class="countdown-box p-4">
                     <h2 id="days" class="display-4 text-light">00</h2>
-                    <p class="text-light">Days</p>
+                    <p class="text-light">{{__('Days')}}</p>
                 </div>
             </div>
             <div class="col-auto">
                 <div class="countdown-box p-4">
                     <h2 id="hours" class="display-4 text-light">00</h2>
-                    <p class="text-light">Hours</p>
+                    <p class="text-light">{{__('Hours')}}</p>
                 </div>
             </div>
             <div class="col-auto">
                 <div class="countdown-box p-4">
                     <h2 id="minutes" class="display-4 text-light">00</h2>
-                    <p class="text-light">Minutes</p>
+                    <p class="text-light">{{__('Minutes')}}</p>
                 </div>
             </div>
             <div class="col-auto">
                 <div class="countdown-box p-4">
                     <h2 id="seconds" class="display-4 text-light">00</h2>
-                    <p class="text-light">Seconds</p>
+                    <p class="text-light">{{__('Seconds')}}</p>
                 </div>
             </div>
         </div>
