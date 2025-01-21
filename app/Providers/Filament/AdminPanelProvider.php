@@ -95,12 +95,10 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
                 \App\Http\Middleware\Sommod::class
-
             ])
             ->authMiddleware([
                 Authenticate::class,
             ])->plugins([
-
                 SpatieLaravelTranslatablePlugin::make()->defaultLocales(['ar', 'en']),
                 SkyPlugin::make()
                     ->navigationGroupLabel(__('Blog'))
