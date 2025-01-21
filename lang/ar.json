@@ -291,8 +291,7 @@
     "Sir Name English": "اسم السيد بالإنجليزية",
     "Profile": "الملف الشخصي",
     "Certificates": "الشهادات",
-    "Other Degrees" : "شهادات اخرى",
-
+    "Other Degrees": "شهادات اخرى",
     "Certificate": "الشهادة",
     "Certifying Authority": "الجهة المصدقة",
     "Authenticate Certificate URL": "رابط التحقق من الشهادة",
@@ -314,7 +313,7 @@
     "Academic Information": "المعلومات الأكاديمية",
     "Personal Information": "المعلومات الشخصية",
     "Expert Information": "معلومات الخبير",
-    "Persoanl Information":"المعلومات الشخصية",
+    "Persoanl Information": "المعلومات الشخصية",
     "International Green Certificates": "الشهادات الخضراء الدولية",
     "First name (English)": "الاسم الاول (انجليزي)",
     "Year of Certification": "سنة الحصول على الشهادة",
@@ -322,8 +321,9 @@
     "Name In Arabic": "الاسم بالعربية",
     "Name In English": "الاسم بالانجليزية",
     "Disable All Content": "تعطيل كافة المحتويات",
-    "Enable All Content": "تفعيل كافة المحتويات"
-
-  
-
+    "Enable All Content": "تفعيل كافة المحتويات",
+    "Months": "أشهر",
+    "Days": "أيام",
+    "Minutes": "دقائق",
+    "Seconds": "ثواني"
 }
