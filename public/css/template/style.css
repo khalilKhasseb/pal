@@ -786,8 +786,10 @@ blockquote:after,
     display: block !important;
     text-align: center;
     color: white !important;
-    background-color: #4B0082 !important ;
-    border-color: #4B0082 !important ;
+    /* background-color: #4B0082 !important ;
+    border-color: #4B0082 !important ; */
+    background-color: #9300ff !important;
+    border-color: #4b008240 !important;
 }
 
 .blog-content [data-as-button="true"]:hover {
