@@ -66,7 +66,7 @@
         @isset($title)
             <h1 class="mb-4 text-success">{{ $title }}</h1>
         @endisset
-        <div class="row justify-content-center">
+        <div class="row justify-content-center {{ app()->getLocale() === 'ar' ? 'flex-row-reverse' : '' }}">
            <div class="col-auto">
                 <div class="countdown-box p-4">
                     <h2 id="months" class="display-4 text-light">00</h2>
