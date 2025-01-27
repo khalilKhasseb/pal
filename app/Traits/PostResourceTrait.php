@@ -95,11 +95,11 @@ trait PostResourceTrait
                     Select::make('panels')
                         ->label(__('Panel'))
                         ->multiple()
-                        ->default(
-                            array_slice(Panel::find(1)->pluck('id', 'panel_name')->toArray(), 0, 1, true)
-                        )
                         ->relationship('panels', titleAttribute: 'panel_name')
+                        ->default('admin') 
                         ->preload(),
+
+
                     Select::make('google_form_id')
                         ->relationship(name: 'form', titleAttribute: 'name')
                         ->preload(),

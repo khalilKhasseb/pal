@@ -34,7 +34,7 @@
                         @endif
                     </div>
                 @enderror
-                <div class="col-7">
+                <div class="col-12 col-md-7">
                     <form
                         style="
                         background: #eee;
@@ -65,6 +65,8 @@
                                 <label class="required  mb-1" for="classification">{{ __('Payment type') }}</label>
                                 <select required wire:model="classification" id="classification"
                                     class="mb-3 form-select" aria-label=".form-select">
+                                    <option selected>{{ __('Select value') }}</option>
+
                                     <option value="individual">{{ __('Individuals') }}</option>
                                     <option value="company">{{ __('Companies') }}</option>
                                     <option value="organization">{{ __('Organizations') }}</option>
@@ -76,7 +78,7 @@
                         </div>
                         <hr />
                         <div class="mb-1 row">
-                            <div class="col-4">
+                            <div class="col-6 col-md-4">
                                 <label class="required  mb-1" for="full_name">{{ __('Full Name') }}</label>
                                 <input required id="full_name" wire:model="full_name" type="text"
                                     class="p-2 rounded form-control">
@@ -84,7 +86,7 @@
                                     <span class="is-invalid">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-4">
+                            <div class="col-6 col-md-4">
                                 <label class="required  mb-1" for="email">{{ __('Email') }}</label>
                                 <input required id="email" wire:model="email" type="text"
                                     class="p-2 rounded form-control">
@@ -92,7 +94,7 @@
                                     <span class="is-invalid">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-4">
+                            <div class="col-6 col-md-4">
                                 <label class="required  mb-1" for="mobile">{{ __('Mobile') }}</label>
                                 <input required id="mobile" wire:model="mobile" type="text"
                                     class="p-2 rounded form-control">
@@ -102,7 +104,7 @@
                             </div>
                         </div>
                         <div class="mb-1 row">
-                            <div class="col-4">
+                            <div class="col-6 col-md-4">
                                 <label class="required mb-1" for="address">{{ __('Address') }}</label>
                                 <input required id="address" wire:model="address" type="text"
                                     class="p-2 rounded form-control">
@@ -110,7 +112,7 @@
                                     <span class="is-invalid">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-4">
+                            <div class="col-6 col-md-4">
                                 <label class="required mb-1" for="amount">{{ __('Amount') }}</label>
                                 <input required id="amount" wire:model="amount" type="number"
                                     class="p-2 rounded form-control">
@@ -137,7 +139,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <div class="my-2 form-check d-flex justify-content-start align-items-center">
                                     <label class="form-check-label" for="contactedBefore">
                                         {{ __('Did you contact us before payment?') }}
