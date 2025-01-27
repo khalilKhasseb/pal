@@ -245,6 +245,33 @@ trait PostResourceTrait
                             Checkbox::make('has_thumb')
                                 ->label('Has thmbnail')
                                 ->required()
+                            ]),
+                            Section::make('cover_image')
+                        ->label(__('Cover'))
+                        ->schema([
+                            \Filament\Forms\Components\Fieldset::make('Cover Info')
+                                ->relationship('coverInfo')
+                                ->schema([
+                                    TextInput::make('title')
+                                        ->label(__('Title'))
+                                        ->required(),
+                                    TextInput::make('source')
+                                        ->label(__('Source'))
+                                        ->url(),
+                                    Textarea::make('description')
+                                        ->label(__('Description'))
+                                        ->columnSpanFull(),
+
+                                    SpatieMediaLibraryFileUpload::make('cover')
+                                        ->collection('cover')
+                                        ->disk(SkyPlugin::get()->getUploadDisk())
+                                        ->directory(SkyPlugin::get()->getUploadDirectory())
+                                        ->columnSpanFull()
+                                ]),
+                            // SpatieMediaLibraryFileUpload::make('post_cover')
+                            //     ->collection('post_cover')
+                            //     ->disk(SkyPlugin::get()->getUploadDisk())
+                            //     ->directory(SkyPlugin::get()->getUploadDirectory())
                         ])
                 ]),
 
