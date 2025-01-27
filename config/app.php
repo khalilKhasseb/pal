@@ -181,6 +181,7 @@ return [
         App\Providers\Filament\SommodPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\AppViewServiceProvider::class,
+        App\Providers\LahzaPayServiceProvider::class
 
     ])->toArray(),
 

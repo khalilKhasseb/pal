@@ -782,12 +782,12 @@ blockquote:after,
 /*=======================
 	Custom btn Style
 =================================*/
-.blog-content [data-as-button="true"] {
+/* .blog-content [data-as-button="true"] {
     display: block !important;
     text-align: center;
     color: white !important;
-    /* background-color: #4B0082 !important ;
-    border-color: #4B0082 !important ; */
+    background-color: #4B0082 !important ;
+    border-color: #4B0082 !important ;
     background-color: #9300ff !important;
     border-color: #4b008240 !important;
 }
@@ -796,17 +796,21 @@ blockquote:after,
     background-color: #4c00829f !important;
 
 }
-.btn,
-[data-as-button-theme="primary"] {
+[data-as-button-theme="primary"]    
+*/
+.btn
+ {
     border-radius: 3px;
 }
 
-[data-as-button-theme="primary"] {
+/* [data-as-button-theme="primary"] {
 	 font-size: 21px !important;
 
-}
-.btn-default,
-[data-as-button-theme="primary"] {
+     } 
+     [data-as-button-theme="primary"]
+     */
+.btn-default
+ {
     color: #53a92c;
     font-size: 14px;
     font-weight: 600;

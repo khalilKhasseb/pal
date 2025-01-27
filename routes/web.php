@@ -10,7 +10,13 @@ use LaraZeus\Sky\Livewire\Post;
 use LaraZeus\Sky\Livewire\Posts;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\LahzaPayController;
+use App\Livewire\Payment\PaymentForm;
+use App\Models\PaymentInfo;
+use Lahza\PaymentGateway\Facades\Lahza;
+use Illuminate\Support\Str;
 
+use Lahza\PaymentGateway\Exceptions\PaymentException;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -200,8 +206,8 @@ Route::post('/contact', App\Http\Controllers\ContactController::class)->name('co
 Route::get('attachment/{media}', App\Http\Controllers\DownloadMedia::class)->name('downloadAttachment');
 
 
-Route::get('checkout', App\Livewire\CheckOutComp::class)->name('checkout');
-Route::post('payment/callback', App\Http\Controllers\PaymentCallbackController::class)->name('payment.callback');
+Route::get('checkout',PaymentForm::class)->name('checkout');
+// Route::post('payment/callback', App\Http\Controllers\PaymentCallbackController::class)->name('payment.callback');
 
 Route::get('lang/{local}', function (Request $request, $local) {
     session()->put('lang', $local);
@@ -223,3 +229,51 @@ Route::get('dashboard/library', [DashboardController::class, 'getTagItemsBySlug'
  *
  * attache media to model for each post model
  */
+
+
+
+Route::get('/payment', PaymentForm::class)->name('payment.form');
+
+// Route for displaying the payment success page
+// Route::get('/payment-success', function () {
+//     return view('lahza.payment-success');
+// })->name('payment.success');
+
+Route::get('/test-payment', function () {
+    try {
+        $transaction = Lahza::initializeTransaction([
+            'amount' => 10000, // 100.00 ILS
+            'currency' => 'ILS',
+            'email' => 'customer@example.com',
+            'reference' => 'ORDER_123'
+        ]);
+
+
+        return redirect()->away($transaction->authorizationUrl);
+    } catch (PaymentException $e) {
+        return response()->json([
+            'error' => $e->getErrorType(),
+            'message' => $e->getMessage(),
+            'error_code' => $e->getCode(),
+            'documentation' => $e->getDocumentationUrl(),
+            'errors' => $e->getContext()
+        ], $e->getCode());
+    }
+});
+
+// routes/web.php
+Route::get('/payment/callback', [LahzaPayController::class, 'handleCallback'])
+    ->name('payment.callback');
+Route::get('/payment/receipt/{payment}', [LahzaPayController::class, 'downloadReceipt'])
+    ->name('payment.receipt');
+
+Route::get('/receipt/{reference}/download', [LahzaPayController::class, 'handleCallback'])
+    ->name('payment.receipt.download');
+
+Route::get('/payment/success/{payment}', function (PaymentInfo $payment) {
+    return view('lahza.payment-success', compact('payment'));
+})->name('payment.success');
+
+Route::get('/payment/failure/{payment}', function (PaymentInfo $payment) {
+    return view('lahza.failure', compact('payment'));
+})->name('payment.failure');

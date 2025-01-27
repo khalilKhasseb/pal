@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.1",
         "awcodes/filament-tiptap-editor": "^3.4",
+        "barryvdh/laravel-dompdf": "^3.1",
         "codeat3/blade-ant-design-icons": "^2.0",
         "filament/filament": "3.2",
         "filament/spatie-laravel-settings-plugin": "3.2",
@@ -20,6 +21,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image-laravel": "^1.2",
         "khatabwedaa/blade-css-icons": "^1.4",
+        "lahza/payment-gateway": "^1.1",
         "lara-zeus-kh/palsky": "^3.0",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
@@ -86,4 +88,6 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true
+    
+    
 }

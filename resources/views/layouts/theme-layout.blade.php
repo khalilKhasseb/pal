@@ -102,7 +102,7 @@
             href="{{ asset('css/template/responsive.css') }}" media="all" />
     @endif
 
-    <link rel="stylesheet" href="{{ asset('css/template/tiptap-overrides.css') }}?{{ random_int(10, 1000) }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/template/tiptap-overrides.css') }}?{{ random_int(10, 1000) }}"> --}}
 
 
     <style data-layout="front">
@@ -137,6 +137,9 @@
             max-width: 100px
         }
     </style>
+
+    @stack('styles')
+
 </head>
 
 <body class="{{ $rtl ? 'rtl' : '' }} " id="page-top" data-spy="scroll">

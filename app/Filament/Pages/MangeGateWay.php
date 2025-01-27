@@ -41,7 +41,6 @@ class MangeGateWay extends SettingsPage
                     ->label(__('callback_url')),
                 FC\TextInput::make('autorize_url')
                     ->label(__('autorize_url')),
-
                 FC\TextInput::make('currency_code')
                     ->label(__('currency_code')),
 
@@ -59,7 +58,9 @@ class MangeGateWay extends SettingsPage
 
     public static function canAccess(): bool
     {
-        return Filament::getCurrentPanel()->getId() === 'admin';
+       return  false;
     }
+
+
 
 }
