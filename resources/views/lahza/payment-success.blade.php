@@ -31,7 +31,7 @@
                 {{-- Transaction Details --}}
                 <div
                     style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; direction: ltr;">
-                    @foreach ([['label' => __('Reference Number'), 'value' => $payment->reference], ['label' => __('Date & Time'), 'value' => now()->format('d/m/Y H:i')], ['label' => __('Amount Paid'), 'value' => number_format($payment->amount, 2) . ' ' . __('ILS')], ['label' => __('Status'), 'value' => __('Completed'), 'status' => true]] as $item)
+                    @foreach ([['label' => __('Reference Number'), 'value' => $payment->reference], ['label' => __('Date & Time'), 'value' => now()->format('d/m/Y H:i')], ['label' => __('Amount Paid'), 'value' => number_format($payment->amount, 2) . ' ' . __(config('lahza.default_currency'))], ['label' => __('Status'), 'value' => __('Completed'), 'status' => true]] as $item)
                         <div style="text-align: {{ $textAlign }};">
                             <p style="margin: 0 0 8px; color: #64748b; font-size: 14px;">{{ $item['label'] }}</p>
                             @if (isset($item['status']))
