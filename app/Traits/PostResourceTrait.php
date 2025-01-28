@@ -86,7 +86,14 @@ trait PostResourceTrait
                         ->maxLength(255)
                         ->live(onBlur: true)
                         ->afterStateUpdated(function (Set $set, $state) {
-                            $set('slug', Str::slug($state));
+                            // first search post model if the slug is already exists
+                            $post = Post::where('slug', Str::slug($state))->get();
+                            if ($post->count() > 0) {
+                                $set('slug', Str::slug($state) . '-' . $post->count() + 1);
+                            } else {    // if not exists set the slug to the title
+                                $set('slug', Str::slug($state));
+                            }
+                            
                         }),
                     config('zeus-sky.editor')::component()
 
