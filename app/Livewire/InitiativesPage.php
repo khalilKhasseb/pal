@@ -16,6 +16,8 @@ class InitiativesPage extends Component
     public function mount() {
         $this->initiatives = Initiative::with('supporters')
         ->with('supporters.media')
+        ->with('supporters.supported_project_types')
+        ->with('supporters.supported_projects')
         ->get();
 
 

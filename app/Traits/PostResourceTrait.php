@@ -101,6 +101,7 @@ trait PostResourceTrait
 
                     Select::make('panels')
                         ->label(__('Panel'))
+                        ->required()
                         ->multiple()
                         ->relationship('panels', titleAttribute: 'panel_name')
                         ->default('admin') 

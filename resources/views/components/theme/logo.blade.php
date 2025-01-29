@@ -4,9 +4,9 @@
 ])
 
 @php
+   
     if(!Storage::disk('public')->exists('/site\/'.basename($url))) {
-        $url = config('theme.console_logo');
-        
+        $url = config('theme.console_logo');        
     }
 
     

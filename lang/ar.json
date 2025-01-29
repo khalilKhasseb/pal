@@ -366,6 +366,8 @@
     "Pending": "معلق",
     "Success": "نجاح",
     "Failed": "فشل",
-    "Payments": "المدفوعات"
+    "Payments": "المدفوعات",
+    "Supported project styps": "انواع المشاريع المدعومة",
+    "Supported projects": "المشاريع المدعومة"
     
 }
