@@ -1,5 +1,5 @@
 @use(\App\Theme\ThemeRenderNaveItem)
-@props(['content' , 'title']);
+@props(['content' , 'title'])
 
 @php
     $menu = App\Models\Blog\Navigation::find($content);
