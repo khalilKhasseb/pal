@@ -4,9 +4,17 @@
 ])
 
 @php
-   dd($url);
-    if(!Storage::disk('public')->exists('/site\/'.basename($url))) {
-        $url = config('theme.console_logo');        
+   
+    if(!Storage::disk('public')->exists('/site\/'.basename($url))
+    ) {
+       
+        if(session()->has('somoud_load'))
+        {
+            $url = config('theme.samoud_logo');
+        }else{
+            $url = config('theme.console_logo');        
+        }
+       
     }
 
     
