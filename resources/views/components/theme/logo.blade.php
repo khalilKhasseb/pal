@@ -5,7 +5,7 @@
 
 @php
 
-    if (!Storage::disk('public')->exists('/site\/' . basename($url))) {
+    if (!Storage::disk('storage')->exists('/site\/' . basename($url))) {
         dd($url);
         if (session()->has('somoud_load')) {
             $url = config('theme.samoud_logo');
