@@ -3,20 +3,6 @@
     'route' => '/',
 ])
 
-@php
-          dd($url);
-
-    if (!Storage::exists('/site\/' . basename($url))) {
-        if (session()->has('somoud_load')) {
-            $url = config('theme.samoud_logo');
-        } else {
-            $url = config('theme.console_logo');
-        }
-    }
-
-@endphp
-
-
 {{-- Recheck optional Pregmatch --}}
 <a class="navbar-brand" href="{{ $route }}">
     <img src="{{ preg_match('/(http?s)/', $url) ? $url : asset('storage/' . $url) }}" alt="logo"

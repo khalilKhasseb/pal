@@ -38,7 +38,7 @@ class Header extends Component
         
         $_logo = filled($settings->site_logo) ? $settings->site_logo : config('theme.console_logo');
         if (session()->has('somoud_load')) {
-            $_logo = $settings->sommod_logo ? $settings->site_logo : config('theme.samoud_logo');
+            $_logo = $settings->sommod_logo ? $settings->sommod_logo : config('theme.samoud_logo');
         }
         return view('livewire.header', compact('header_settings', '_logo'));
     }
