@@ -10,7 +10,7 @@ class AdminstrationComp extends Component
     public Collection $members;
 
     public function mount() {
-        $this->members = Post::administration()->orderBy('ordering' ,'asc')->get();
+        $this->members = Post::administration()->orderBy('ordering')->get();
     }
     public function render()
     {

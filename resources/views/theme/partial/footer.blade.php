@@ -10,7 +10,10 @@
                 <div class="footer-top">
                     <div class="row">
                         @php
-                            $contentbox = App\Models\Widget::location('bottom-footer')->limit(3)->get();
+                            $contentbox = App\Models\Widget::location('bottom-footer')
+                            ->orderBy('order')
+                            ->limit(3)
+                            ->get();
 
                         @endphp
                        

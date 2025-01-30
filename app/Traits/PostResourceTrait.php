@@ -43,6 +43,8 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Columns\SpatieTagsColumn;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Checkbox;
+use Filament\Tables\Columns\TextInputColumn;
+
 
 //End
 
@@ -318,6 +320,9 @@ trait PostResourceTrait
                     ->toggleable()
                     ->view('zeus::filament.columns.status-desc')
                     ->tooltip(fn(Post $record): string => $record->published_at->format('Y/m/d | H:i A')),
+
+                  TextInputColumn::make('ordering')
+                  ->label(__('Order')),  
                 // SpatieTagsColumn::make('tags')
                 //     ->label(__('Post Tags'))
                 //     ->toggleable(isToggledHiddenByDefault: false)
@@ -329,6 +334,7 @@ trait PostResourceTrait
 
                 TextColumn::make('panels.panel_name')
                     ->label(__('Panel')),
+
 
             ])
             ->defaultSort('id', 'desc')

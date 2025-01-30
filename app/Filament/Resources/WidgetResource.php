@@ -39,6 +39,7 @@ use Filament\Facades\Filament;
 use Filament\Tables\Columns\TextColumn;
 //#####//
 use Filament\Resources\Concerns\Translatable;
+use Filament\Tables\Columns\TextInputColumn;
 
 class WidgetResource extends Resource
 {
@@ -54,7 +55,8 @@ class WidgetResource extends Resource
         return true;
     }
 
-    public static function getLabel() : string {
+    public static function getLabel(): string
+    {
         return __("Widget");
     }
 
@@ -88,21 +90,25 @@ class WidgetResource extends Resource
                             ->label(__('Type'))
                             ->disabled(),
                         Select::make('location')
-                        ->label(__('Location'))
+                            ->label(__('Location'))
                             ->options([
                                 'footer' => __('Footer'),
                                 'homepage' => __('Homepage'),
                                 'bottom-footer' => __('Bottom footer')
                             ]),
-                            Select::make(__('Panel'))
+
+                        TextInput::make('order')
+                            ->numeric()
+                            ->label(__('Order')),
+                        Select::make(__('Panel'))
                             ->multiple()
-                            ->relationship('panels' ,titleAttribute:'panel_name')
+                            ->relationship('panels', titleAttribute: 'panel_name')
                             ->preload(),
 
                         // dynmic compoennts
                         Grid::make(1)
                             //->columnSpanFull()
-                            ->schema(fn (Get $get) => WidgetsForms::getWidget($get('component'), $form))
+                            ->schema(fn(Get $get) => WidgetsForms::getWidget($get('component'), $form))
                             ->key('componentsBuilder'),
 
 
@@ -117,7 +123,8 @@ class WidgetResource extends Resource
             ->columns([
                 TextColumn::make('title')->label(__('Title')),
                 TextColumn::make('component')->label(__('layout')),
-                TextColumn::make('location')->label(__("Location"))
+                TextColumn::make('location')->label(__("Location")),
+                TextInputColumn::make('order')->label(__('Order')),
             ])
             ->filters([
                 //

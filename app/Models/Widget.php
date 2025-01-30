@@ -13,7 +13,7 @@ use App\Traits\PanelResource;
 class Widget extends Model
 {
     use HasFactory, HasTranslations, PanelResource;
-    protected $fillable = ['title', 'location', 'content', 'component', 'type'];
+    protected $fillable = ['title', 'location', 'content', 'component', 'type' , 'order']; 
     protected $translatable = ['title', 'content'];
     protected $casts = [
         'content' => 'array'
