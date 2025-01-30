@@ -30,6 +30,19 @@ class CourceResource extends Resource
     {
         return $form
             ->schema([
+                
+                Forms\Components\Fieldset::make(__('Activate Or Deactivate'))
+                    ->schema([
+                        Forms\Components\Toggle::make('active')
+                            ->label(function($state) {
+                                if(!$state) {
+                                    return __('Activate');
+                                }
+                                return __('Deactivate');
+                            })
+                        
+                    ])->columns(2),
+
                 Forms\Components\Section::make(__('Cource info'))
                     ->schema([
                         Forms\Components\Select::make('google_form_id')
@@ -68,28 +81,17 @@ class CourceResource extends Resource
                         Forms\Components\TextInput::make('fees')
                             ->label(__("Fees"))
                             ->maxLength(255),
-                        // Forms\Components\Select::make('panels')
-                        //     ->label(__('Panel'))
-                        //     ->multiple()
-                        //     ->relationship('panels', titleAttribute: 'panel_name')
-                        //     ->default(
-                        //         array_slice(\App\Models\Panel::findByName(filament()->getCurrentPanel()->getId())->pluck('id', 'panel_name')->toArray(), 0, 1, true)
-                        //     )
-                        //     ->preload()
+                        Forms\Components\Select::make('panels')
+                            ->label(__('Panel'))
+                            ->multiple()
+                            ->relationship('panels', titleAttribute: 'panel_name')
+                            ->default(
+                                array_slice(\App\Models\Panel::findByName(filament()->getCurrentPanel()->getId())->pluck('id', 'panel_name')->toArray(), 0, 1, true)
+                            )
+                            ->preload()
 
                     ])->columns(3),
-                Forms\Components\Fieldset::make(__('Scolership'))
-                    ->schema([
-                        Forms\Components\Toggle::make('scholership')
-                            ->label(__('Scolership'))
-                            ->live()
-                            ->required(),
-
-                        Forms\Components\TextInput::make('scholership_link')
-                            ->label(__('Scholership link'))
-                            ->visible(fn(Get $get) => $get('scholership')),
-                    ])->columns(2),
-
+                
 
                 Forms\Components\Section::make()
                     ->schema([

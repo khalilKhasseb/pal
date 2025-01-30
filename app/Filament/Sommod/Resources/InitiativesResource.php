@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Sommod\Resources\InitiativesResource\RelationManagers\SupportersRelationManager;
+use Dompdf\FrameDecorator\Text;
+
 class InitiativesResource extends Resource
 {
     use Translatable;
@@ -51,12 +53,17 @@ class InitiativesResource extends Resource
                     }),
                     TextInput::make('slug')
                     ->label('Slug'),
-                Select::
-                    make('panels')
+
+                  TextInput::make('order')
+                    ->label(__('Order'))
+                    ->numeric(),
+                    //->required()
+                
+                Select::make('panels')
                     ->label(__('Panel'))
                     ->multiple()
                     ->default(
-                        array_slice(\App\Models\Panel::find(1)->pluck('id', 'panel_name')->toArray(), 0, 1, true)
+                        array_slice(\App\Models\Panel::first()->pluck('id', 'panel_name')->toArray(), 0, 1, true)
                     )
                     ->relationship('panels', titleAttribute: 'panel_name')
                     ->preload(),

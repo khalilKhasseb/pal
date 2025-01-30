@@ -368,6 +368,11 @@
     "Failed": "فشل",
     "Payments": "المدفوعات",
     "Supported project styps": "انواع المشاريع المدعومة",
-    "Supported projects": "المشاريع المدعومة"
+    "Supported projects": "المشاريع المدعومة",
+    "Activate Or Deactivate": "تفعيل او تعطيل",
+    "Activate": "تفعيل",
+    "Deactivate": "تعطيل",
+    "Frequently Asked Questions": "الاسئلة الشائعة",
+    "Find answers to the most common questions below.": "العثور على الاجابات على الاسئلة الاكثر شيوعا ادناه."
     
 }

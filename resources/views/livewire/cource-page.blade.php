@@ -13,8 +13,8 @@
                 <hr />
                 <ul>
                     <template x-for="(_cource , index) in courcess">
-                        <li x-init="if (index === 0) { cource = _cource }" x-on:click="loadCource(_cource)"
-                            x-text="_cource.title.{{ app()->getLocale() }}" class="p-2 my-1 text-black border"
+                        <li x-init="if (index === 0) { cource = _cource }" x-on:click="loadCource(_cource , index)"
+                            x-text="_cource.title.{{ app()->getLocale() }}" :class="`p-2 my-1 text-black border ${activeIndex === index ? 'bg-light' : ''}`"
                             style="cursor:pointer"></li>
                     </template>
                 </ul>
@@ -29,24 +29,28 @@
                     <template x-if="cource !== null">
                         <div>
                             <div class="d-flex justify-content-between">
-                                <dl class="d-fex justify-content-between">
-                                    <dt class="ms-2">{{ __('Start date') }}</dt>
-                                    <dd class="ms-2" x-text="cource.start_date"></dd>
-
-                                    <dt class="ms-2">{{ __('Fees') }}</dt>
-                                    <dd class="ms-2" x-text="cource.fees"></dd>
-                                </dl>
-
-                                <dl class="me-4">
-
-                                    <dt>{{ __('End date') }}</dt>
-                                    <dd x-text="cource.end_date"></dd>
+                                <div class="info d-flex justify-content-between">
+                                    <dl class="d-fex justify-content-between">
+                                        <dt class="ms-2">{{ __('Start date') }}</dt>
+                                        <dd x-text="new Date(cource.start_date).toDateString()"></dd>
 
 
-                                    <dt>{{ __('Scolership') }}</dt>
-                                    <dd :class="`badge ${cource.scholership ? 'bg-success' : 'bg-danger'}`"
-                                        x-text="cource.scholership !==0 ? 'Yes' : 'No'"></dd>
-                                </dl>
+                                        <dt>{{ __('End date') }}</dt>
+                                        <dd x-text="new Date(cource.end_date).toDateString()"></dd>
+                                    </dl>
+
+                                    <dl class="me-4">
+
+                                        <dt>{{ __('Active') }}</dt>
+                                        <dd :class="`badge ${cource.active ? 'bg-success' : 'bg-danger'}`"
+                                            x-text="cource.active ? 'Yes' : 'No'"></dd>
+
+                                        <dt class="ms-2">{{ __('Fees') }}</dt>
+                                        <dd class="ms-2" x-text="cource.fees"></dd>
+
+                                    </dl>
+                                </div>
+
 
                                 <div class="p-2 bg-white rounded-top w-25 d-flex align-items-center"
                                     style="margin-right:auto">
@@ -101,10 +105,7 @@
                                     :class="`btn btn-primary ${!cource.form_register ? 'disabled':''} `" tabindex="-1"
                                     role="button"
                                     :aria-disabled="!cource.form_register ? true : false">{{ __('Sign up') }}</a>
-                                <a :href="cource.scholership_link" target="_blank"
-                                    :class="`btn btn-primary ${!cource.scholership ? 'disabled' : ''}`" tabindex="-1"
-                                    role="button"
-                                    :aria-disabled="!cource.scholership ? true : false">{{ __('Apply Grant') }}</a>
+
 
                             </div>
                         </div>
@@ -122,11 +123,15 @@
         Alpine.data('courcess_data', () => ({
             init() {
                 this.courcess = @JS($courcess);
+
+
             },
             courcess: null,
             // supporters: [],
             cource: null,
             status: null,
+            activeIndex: 0,
+            currentIndex: 0,
             trans: {
                 open: @JS(__('Open')),
                 closed: @JS(__('Closed'))
@@ -136,15 +141,9 @@
                 //this.supporters = this.inititaives[index].supporters
                 //this.supporter = this.supporters[0]
             },
-            loadCource($cource) {
+            loadCource($cource , index) {
                 this.cource = $cource;
-                let start_date = new Date(this.cource.start_date).getTime();
-                let now = new Date().getTime()
-                if (start_date > now) {
-                    this.status = this.trans.open
-                } else if (start_date < now) {
-                    this.status = this.trans.closed
-                }
+                this.activeIndex = index;
                 console.log(this.cource)
             },
             test() {}

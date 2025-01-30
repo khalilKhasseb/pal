@@ -27,12 +27,18 @@ class Cource extends Model implements HasMedia
         'start_date',
         'end_date',
         'fees',
-        'scholership',
-        'scholership_link',
+        'active',
+        // 'scholership_link',
         'hours',
         'objective',
         'content',
         'google_form_id'
+    ];
+
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+        'active' => 'boolean',
     ];
 
     protected $translatable = [
@@ -49,6 +55,8 @@ class Cource extends Model implements HasMedia
     public function google_form() : BelongsTo {
         return $this->BelongsTo(GoogleForm::class);
     }
+
+
     //
 
     public function form(): BelongsTo

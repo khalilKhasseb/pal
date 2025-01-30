@@ -16,7 +16,7 @@ class Initiative extends Model implements HasMedia
     use HasFactory, InteractsWithMedia , HasTranslations , PanelResource , HasTags;
 
     protected $table = 'initiativies';
-    protected $fillable = ['title', 'slug', 'type'];
+    protected $fillable = ['title', 'slug', 'type' , 'order'];
     protected $translatable = ['title'];
 
 

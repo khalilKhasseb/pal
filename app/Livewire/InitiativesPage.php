@@ -18,7 +18,10 @@ class InitiativesPage extends Component
         ->with('supporters.media')
         ->with('supporters.supported_project_types')
         ->with('supporters.supported_projects')
+        ->orderBy('order')
         ->get();
+
+        
 
 
         $this->pageTitle = __('Initiatives');

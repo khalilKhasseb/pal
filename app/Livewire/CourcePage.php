@@ -20,6 +20,7 @@ class CourcePage extends Component
             return $cource;
         }) ;
 
+        
         $this->pageTitle = __('Cources');
 
     }

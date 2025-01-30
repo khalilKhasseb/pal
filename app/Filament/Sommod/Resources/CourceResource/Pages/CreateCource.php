@@ -15,6 +15,8 @@ class CreateCource extends CreateRecord
 
     protected static string $resource = CourceResource::class;
 
+
+    
     public  function getHeaderActions(): array {
         return [
             LocaleSwitcher::make()
