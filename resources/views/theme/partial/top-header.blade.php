@@ -13,13 +13,13 @@
         @endforeach
     </ul>
 
-    <div class="donate-option d-flex justify-content-end" style="background: black">
-        {{-- <a href="{{ route('login') }}"><i class="fa fa-heart" aria-hidden="true"></i> {{ __('Login') }}</a>
+    {{-- <div class="donate-option d-flex justify-content-end" style="background: black">
+        <a href="{{ route('login') }}"><i class="fa fa-heart" aria-hidden="true"></i> {{ __('Login') }}</a>
         @if ($settings->checkout_enabled)
             <a class="" href="{{ route('checkout') }}"><i class="fa fa-heart" aria-hidden="true"></i>
                 {{ __('Payment') }}</a>
-        @endif --}}
-    </div>
+        @endif
+    </div> --}}
 
     <div style="background-color:#53a92c" class="px-2 py-2 align-self-end">
         <a
