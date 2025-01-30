@@ -26,6 +26,8 @@ use Filament\Forms\Set;
 use Filamnet\Forms\Components as fc;
 //#######//
 
+use App\Models\Blog\Navigation;
+
 class WidgetsForms
 {
 
@@ -140,14 +142,14 @@ class WidgetsForms
                                     ->label(__('Icon'))
                                     ->preload(),
                                 ColorPicker::make('color')->label(__('Color'))
-                            ])->hidden(fn (Get $get): bool => !$get('icons_enable'))
+                            ])->hidden(fn(Get $get): bool => !$get('icons_enable'))
 
                     ])
             ]);
     }
     public static function gallary(?Form $form)
     {
-        
+
         return Select::make('content')
             ->label(__('gallary'))
             ->options(Gallary::all()->pluck('title', 'id')->toArray());
@@ -163,21 +165,12 @@ class WidgetsForms
     }
 
 
-    public static function newsLetter()
+
+    public static function menu(?Form $form): Select
     {
 
-        // return [
-        //   TextInput::make('Tittle'),
-        //   TextInput::make('Descrition')
-        // ] ;
+        return Select::make('content')
+            ->label(__('Menu'))
+            ->options(Navigation::all()->pluck('name', 'id')->toArray());
     }
-
-
-    // public static function links (?Form $form) {
-    //     return Select::make('links')
-    //         ->label(__('Links'))
-    //         ->multiple()
-    //         ->relationship('links', titleAttribute: 'title')
-    //         ->preload();
-    // }
 }

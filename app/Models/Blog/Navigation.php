@@ -12,13 +12,4 @@ class Navigation extends Model
 
 
      use PanelResource;
-    // use HasTranslations;
-
-    // public array $translatable = [
-    //     'items',
-
-    // ];
-//  public function panels() : MorphToMany { 
-//     return $this->morphToMany()
-//  }
 }

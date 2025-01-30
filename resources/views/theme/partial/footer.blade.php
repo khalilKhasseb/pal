@@ -17,25 +17,7 @@
 
                         @endphp
                        
-                        @if (!$footerMenus->isEmpty())
-                            @foreach ($footerMenus as $menu)
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="footer-widgets">
-                                        <!-- .widgets-title -->
-                                        <ul class="pages-menu">
-                                            @foreach ($menu->items as $item)
-                                                <li>
-                                                    {!! ThemeRenderNaveItem::render($item, false, 'text-white h5  ') !!}
-                                                </li>
-                                            @endforeach
-
-                                        </ul> <!-- .footer-instagram -->
-                                    </div>
-                                    
-                                    <!-- .footer-widgets -->
-                                </div>
-                            @endforeach
-                        @endif
+                       
                         @if (!empty($contentbox) || !is_null($contentbox))
                             @foreach ($contentbox as $box)
                                 {{-- @dd($box->component) --}}
