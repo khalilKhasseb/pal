@@ -5,10 +5,10 @@
 <div class="header-top d-flex align-items-center justify-content-end">
     <ul style="margin-{{app()->getLocale() == 'ar' ? 'left' : 'right'}}: auto" class="justify-content-between d-flex">
         @foreach ($items as $item)
-            <li class="m{{$rtl ? 'e' : 's'}}-2 justify-content-between align-items-center d-flex top_header_item"
+            <li class="m{{$rtl ? 'e' : 's'}}-5 justify-content-between align-items-center d-flex top_header_item"
                 style="--color:{{ $item['color'] }}">
-                <x-icon width="30px" style="fill:var(--color)" name="{{ $item['icon'] }}" />
-                <span class="inline-block m{{$rtl ? 'e' : 's'}}-2">{{ $item['title_'.$locale] }}</span>
+                <x-icon width="35px" style="fill:var(--color)" name="{{ $item['icon'] }}" />
+                <span class="inline-block m{{$rtl ? 'e' : 's'}}-3">{{ $item['title_'.$locale] }}</span>
             </li>
         @endforeach
     </ul>
