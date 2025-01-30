@@ -1,4 +1,5 @@
-@push('scripts_comp')
+ 
+ @push('scripts_comp')
     <script>
         new $('#envDaysTable').DataTable({
             language: {

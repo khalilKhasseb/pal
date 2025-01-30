@@ -12,7 +12,7 @@
                         @php
                             $contentbox = App\Models\Widget::location('bottom-footer')
                             ->orderBy('order')
-                            ->limit(3)
+                            ->limit(4)
                             ->get();
 
                         @endphp
