@@ -2,12 +2,10 @@
 @props(['content' , 'title']);
 
 @php
-
     $menu = App\Models\Blog\Navigation::find($content);
 @endphp
 
 <div class="footer-widgets">
-    <!-- .widgets-title -->
     <div class="widgets-title">
         <h3>{{ $title }}</h3>
     </div>
