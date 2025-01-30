@@ -6,6 +6,8 @@ namespace App\Livewire\Payment;
 use Livewire\Component;
 // use App\Models\Payment;
 use App\Models\PaymentInfo as Payment;
+use App\Settings\SiteSetting;
+use Google\Service\AdSensePlatform\Site;
 use Lahza\PaymentGateway\Facades\Lahza;
 use Lahza\PaymentGateway\Exceptions\PaymentValidationException;
 use Lahza\PaymentGateway\Exceptions\ErrorCodes;
@@ -20,7 +22,7 @@ class PaymentForm extends Component
     public $classification; // Fixed typo
     public $amount;
     public $contact_before_payment = false;
-
+    public bool $checkout_enabled = false;
     protected $rules = [
         'full_name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
@@ -84,44 +86,15 @@ class PaymentForm extends Component
             $this->handleGeneralErrors($e, $payment ?? null);
         }
     }
-    // public function submit()
-    // {
-    //     $this->validate();
+  
 
-    //     // Create payment record
-    //     $payment = PaymentInfo::create([
-    //         'full_name' => $this->full_name,
-    //         'email' => $this->email,
-    //         'mobile' => $this->mobile,
-    //         'address' => $this->address,
-    //         'purpose' => $this->purpose,
-    //         'classification' => $this->classification,
-    //         'amount' => $this->amount,
-    //         'contact_before_payment' => $this->contact_before_payment,
-    //         'status' => 'pending',
-    //     ]);
+    public function mount(){
+        
+        $settings = app(SiteSetting::class);
 
-    //     try {
-    //         $response = Lahza::initializeTransaction([
-    //             'amount' => $this->amount,
-    //             'email' => $this->email,
-    //             'mobile' => $this->mobile,
-    //             // 'callback_url' => route('payment.callback', ['payment' => $payment->id]),
-    //         ]);
-
-    //         // Update payment with reference
-    //         $payment->update([
-    //             'reference' => $response->reference,
-    //             'api_response' => $response->toArray()
-    //         ]);
-
-    //         return redirect()->away($response->authorization_url);
-
-    //     } catch (\Exception $e) {
-    //         $payment->update(['status' => 'failed']);
-    //         $this->addError('payment', $e->getMessage());
-    //     }
-    // }
+        $this->checkout_enabled  = $settings->checkout_enabled;
+    }
+     
 
     public function render()
     {
