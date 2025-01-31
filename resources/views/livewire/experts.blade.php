@@ -37,21 +37,25 @@
                         <div class="card-body d-flex flex-column justify-content-between">
                             <div>
                                 <h5 class="card-title mb-2">
-                                    <a href="{{ route('experts.view', $expert->id) }}" class="text-decoration-none text-dark">
+                                    <a href="{{ route('experts.view', $expert->id) }}"
+                                        class="text-decoration-none text-dark">
                                         {{ $expert->{'sir_name_' . app()->getLocale()} }}
                                     </a>
                                 </h5>
                                 <p class="card-text text-muted mb-1">{{ $expert->ba_major }}</p>
-                                <p class="card-text mb-1"><small class="text-muted">{{ $expert->governorate->name }}</small></p>
-                                <p class="card-text"><small class="text-muted">{{ $expert->certificates->implode('certificate_name', ', ') }}</small></p>
+                                <p class="card-text mb-1"><small
+                                        class="text-muted">{{ $expert->governorate->name }}</small></p>
+                                <p class="card-text"><small
+                                        class="text-muted">{{ $expert->certificates->implode('certificate_name', ', ') }}</small>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
 
-            @if($experts->isEmpty())
-                @include($skyTheme.'.partial.empty')
+            @if ($experts->isEmpty())
+                @include($skyTheme . '.partial.empty')
             @endif
         </div>
     </div>

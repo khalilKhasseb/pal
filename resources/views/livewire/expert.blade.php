@@ -163,8 +163,8 @@
         }
         .user-profile .nav-tabs .nav-link.active {
             color: #fff;
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #53a92c;
+            border-color: #75ba75;
         }
         .profile-picture img {
             max-width: 150px;
