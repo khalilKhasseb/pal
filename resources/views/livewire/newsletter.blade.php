@@ -97,5 +97,12 @@
             font-size: 18px;
             border-radius: {{ app()->getLocale() === 'ar' ? '5px 0 0 5px' : '0 5px 5px 0' }};
         }
+
+        .newsletter-content {
+            color: #fff;
+            /* white text color */
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            /* add a black text shadow */
+        }
     </style>
 @endpush
