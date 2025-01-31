@@ -6,6 +6,7 @@ use App\Models\Governorate;
 use Livewire\Component;
 use App\Models\Expert;
 use App\Models\City;
+
 class Experts extends Component
 {
     public $search;
@@ -19,7 +20,7 @@ class Experts extends Component
     public $selectedState;
     public function mount()
     {
-        $this->experts = Expert::all();
+        $this->experts = Expert::verified()->get();
 
         $this->governorates = Governorate::all();
 
@@ -37,30 +38,32 @@ class Experts extends Component
     public function filter()
     {
 
-        $experts = Expert::query();
 
-        if ($this->city && $this->city != '') {
-            $experts = $experts->whereHas('city', function ($query) {
-                $query->where('slug', '=', $this->city);
-            });
-        }
+        
+        $experts = Expert::query()->verified();
+
 
         if ($this->selectedState && $this->selectedState == 'all') {
-            return $this->experts = Expert::all();
+            return $this->experts = $experts->get();
         }
 
+
         if ($this->selectedState && $this->selectedState != '') {
-            $experts = $experts->orWhereHas('governorate', function ($query) {
-                $query->where('slug', '=', $this->selectedState);
-            });
+            $experts = $experts               
+                ->WhereHas('governorate', function ($query) {
+                    $query->where('slug', '=', $this->selectedState);
+                });
         }
+
+
 
         $this->experts = $experts->get();
 
         return $this->experts;
     }
 
-    public function hydrate() {
+    public function hydrate()
+    {
 
         $this->dispatch('select2hydrate');
     }

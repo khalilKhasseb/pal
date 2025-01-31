@@ -11,12 +11,13 @@ use Filament\Forms\Components as fc;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Infolists;
 use Filament\Infolists\Infolist;
 use Filament\Forms\Get;
 use App\Models\Governorate;
+use Filament\Facades\Filament;
+use Filament\Tables\Filters\SelectFilter;
 use TomatoPHP\FilamentMediaManager\Form\MediaManagerInput;
 
 class ExpertResource extends Resource
@@ -156,8 +157,8 @@ class ExpertResource extends Resource
                             ->numeric()
                             ->required(),
                         Forms\Components\FileUpload::make('attachment_certification')
-                            ->label(__('Attachment Certification'))
-                            ->required(),
+                            ->label(__('Attachment Certification')),
+                            //->required(),
                     ])
                     ->label(__('International Green Certificates'))
                     ->required()
@@ -170,13 +171,18 @@ class ExpertResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('sir_name_en')->label(__('Sir Name (English)')),
-                Tables\Columns\TextColumn::make('email')->label(__('Email')),
-                Tables\Columns\TextColumn::make('mobile_number')->label(__('Mobile Number')),
-
+                Tables\Columns\TextColumn::make('sir_name_en')->label(__('Sir Name (English)'))->searchable(),
+                Tables\Columns\TextColumn::make('email')->label(__('Email'))->searchable(),
+                Tables\Columns\TextColumn::make('mobile_number')->label(__('Mobile Number'))->searchable(),
+                ToggleColumn::make('is_verified')->label(__('Verified')),
             ])
             ->filters([
-                //
+                SelectFilter::make('governorate')
+                ->label(__('Governorate'))
+                ->relationship('governorate', 'name')
+                ->getOptionLabelFromRecordUsing(fn($record) => $record?->name),
+               \Filament\Tables\Filters\TernaryFilter::make('is_verified')
+               ->label(__('Verified')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

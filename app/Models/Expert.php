@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -29,8 +30,13 @@ class Expert extends Model implements HasMedia
         'experience',
         'attachment_personal_photo',
         'agreement_check',
+        'is_verified',
     ];
 
+
+    protected $casts = [
+        'is_verified' => 'boolean',
+    ];
     public function certificates()
     {
         return $this->hasMany(ExpertCirtificate::class, 'expert_id');
@@ -46,4 +52,8 @@ class Expert extends Model implements HasMedia
         return $this->belongsTo(Governorate::class);
     }
 
+    public function scopeVerified($query)
+    {
+        return $query->where('is_verified', true);
+    }
 }
