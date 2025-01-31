@@ -7,12 +7,19 @@
 <div class="bg-footer-bottom">
     <div class="container">
         <div class="row">
-            <div class="footer-bottom">
+            <div class="footer-bottom d-flex justify-content-between">
                 <div class="copyright-txt text-center" style="">
                     <p> <span>{{$siteTitle}}</span> <span>{{__('© all rights reserved')}} </span>{{date('Y')}}</p>
 
                 </div>
                 <!-- .copyright-txt -->
+
+            @if($settings->checkout_enabled)
+                <div class="payment-methods" style="width:200px">
+                    <img src="{{ asset('images/payment_methods.png') }}" alt="mastercard" class="img-responsive">
+                    {{-- <img src="{{ asset('images/payment/visa.png') }}" alt="visa" class="img-fluid"> --}}
+                </div>
+            @endif
                 <div class="social-box">
                     <ul class="social-icon-rounded">
                         @php
