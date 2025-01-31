@@ -48,7 +48,9 @@
                                     </div>
                                     <div class="card-body">
                                         @foreach ($cat->children as $child)
-                                            <button style="{{app()->getLocale() === 'ar' ? 'text-align: right' : ''}}" class="btn btn-outline-primary btn-block mb-2"
+                                            <button
+                                                style="{{ app()->getLocale() === 'ar' ? 'text-align: right' : '' }}"
+                                                class="btn btn-outline-primary btn-block mb-2"
                                                 wire:click="loadFaqsForCategoryBySlug('{{ $child->slug }}')">
                                                 {{ $child->name }}
                                             </button>
@@ -75,7 +77,7 @@
                                         </button>
                                     </h2>
                                     <div id="collapse-{{ $index }}"
-                                        class="accordion-collapse collapse {{ $index === 0 ? 'show' : '' }}"
+                                        class="accordion-collapse collapse {{ $index === 0 ? 'show' : '' }}" 53,1 Top
                                         aria-labelledby="heading-{{ $index }}" data-bs-parent="#faq-accordion">
                                         <div class="accordion-body">
                                             {{ $faq['answer'] }}

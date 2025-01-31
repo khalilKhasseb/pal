@@ -1,120 +1,108 @@
-  <x-slot name="header">
-      <h2> {{ __('Experts') }} </h2>
-  </x-slot>
+<x-slot name="header">
+    <h2> {{ __('Experts') }} </h2>
+</x-slot>
 
-  <div>
-      {{-- Because she competes with no one, no one can compete with her. --}}
+<div class="experts-wrapper bg-light py-5">
+    <div class="container">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h2 class="display-4 fw-bold">{{ __('Experts') }}</h2>
+            <p class="lead text-muted">{{ __('Meet our team of experts from various fields.') }}</p>
+        </div>
 
-      <section class="bg-team-section">
-          <div class="container">
-              <!-- Filters -->
-              <div class="row  justify-content-center">
-                  <div class="col-12 col-md-8">
-                      <h2 class="text-center mb-4">ما هو "لوريم إيبسوم" ؟
-                      </h2>
-                      <p class="fs-5 text-center text-muted my-2">
-                          {{ __('هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.') }}
-                      </p>
-                  </div>
-              </div>
+        <!-- Filters -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-md-6">
+                <label for="governorate" class="form-label">{{ __('Governorate') }}</label>
+                <select id="governorate" class="form-select form-select-lg shadow-sm" style="width:100%;"
+                    wire:model.live="selectedState">
+                    <option value="all">{{ __('All experts') }}</option>
+                    @foreach ($governorates as $gov)
+                        <option value="{{ $gov->slug }}">{{ $gov->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
 
-              <div class="row">
+        <!-- Experts List -->
+        <div class="row g-4">
+            @foreach ($experts as $expert)
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 d-flex flex-column">
+                        <div class="position-relative">
+                            <img src="{{ $expert->getFirstMediaUrl('image') ?: '' }}" class="card-img-top w-100"
+                                alt="{{ $expert->{'sir_name_' . app()->getLocale()} }}"
+                                onerror="this.onerror=null; this.outerHTML='<svg class=\'card-img-top w-100\' xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100%\' height=\'100%\' fill=\'#28a745\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'40\' font-family=\'Arial, sans-serif\'>{{ strtoupper(substr($expert->{'sir_name_' . app()->getLocale()}, 0, 1)) }}</text></svg>'">
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title mb-2">
+                                    <a href="{{ route('experts.view', $expert->id) }}" class="text-decoration-none text-dark">
+                                        {{ $expert->{'sir_name_' . app()->getLocale()} }}
+                                    </a>
+                                </h5>
+                                <p class="card-text text-muted mb-1">{{ $expert->ba_major }}</p>
+                                <p class="card-text mb-1"><small class="text-muted">{{ $expert->governorate->name }}</small></p>
+                                <p class="card-text"><small class="text-muted">{{ $expert->certificates->implode('certificate_name', ', ') }}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
 
-                  <div class="col-4 my-5">
-                      <label for="governorate">{{ __('Governorate') }}</label>
-                      <select id="governorate" class="select-2 select-2-gov" name="state"
-                          style="width:100%;margin-bottom:20px" wire:model.live="selectedState">
-                          <option value="all">{{ __('All experts') }}</option>
-                          @foreach ($governorates as $gov)
-                              <option value="{{ $gov->slug }}">{{ $gov->name }}</option>
-                          @endforeach
-                      </select>
+@push('styles')
+    <style>
+        .experts-wrapper {
+            background-color: #f8f9fa;
+        }
 
-                  </div>
-              </div>
-              <!-- .row -->
-              <!-- Experts List -->
-              <div class="row">
-                  @foreach ($experts as $expert)
-                      <div class="col-lg-3 col-sm-6 col-12">
-                          <div class="volunteers-items">
-                              <!-- Image -->
-                              <div class="volunteers-img">
-                                  <img src="{{ $expert->getFirstMediaUrl('image') }}"
-                                      alt="{{ $expert->{'sir_name_' . app()->getLocale()} }}" class="img-responsive" />
-                              </div>
-                              <!-- .volunteers-img -->
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+            transition: all 0.3s ease;
+        }
 
-                              <!-- Content -->
-                              <div class="volunteers-content">
-                                  <h4>
-                                      <a href="{{ route('experts.view', $expert->id) }}">
-                                          {{ $expert->{'sir_name_' . app()->getLocale()} }}
-                                      </a>
-                                  </h4>
-                                  <p>{{ $expert->ba_major }}</p>
-                                  <p>{{ $expert->governorate->name }}</p>
-                                  <p>{{ $expert->certificates->implode('certificate_name', ', ') }}</p>
-                              </div>
-                              <!-- .volunteers-content -->
-                          </div>
-                          <!-- .volunteers-items -->
-                      </div>
-                      <!-- .col-lg-3 -->
-                  @endforeach
-              </div>
-              <!-- .row -->
-          </div>
-          <!-- .container -->
-      </section>
-      <!-- .bg-team-section -->
-  </div>
-  @script
-      <script>
-          document.addEventListener("livewire:initialized", () => {
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+@endpush
 
-              // Initialize Select2 on the first load
-              initializeSelect2();
+@script
+    <script>
+        document.addEventListener("livewire:initialized", () => {
 
-              // Listen for Livewire DOM updates
-              Livewire.hook("request", ({
-                  respond,
-                  succeed
-              }) => {
-                  respond(() => {
-                      //console.log("Response received, but not yet processed.");
-                  });
+            // Initialize Select2 on the first load
+            initializeSelect2();
 
-                  succeed(({
-                      snapshot,
-                      effect
-                  }) => {
-                      // console.log("Livewire response processed successfully.");
+            // Listen for Livewire DOM updates
+            Livewire.hook("request", ({
+                respond,
+                succeed
+            }) => {
+                respond(() => {
+                    //console.log("Response received, but not yet processed.");
+                });
 
+                succeed(({
+                    snapshot,
+                    effect
+                }) => {
+                    // console.log("Livewire response processed successfully.");
 
-                      setTimeout(() => {
-                          initializeSelect2();
+                    setTimeout(() => {
+                        initializeSelect2();
 
-                      })
-                      // Reinitialize Select2 after DOM update
-                      //console.log(window.select2);
-                      //$('.select-2-gov').attr('data-select-test', 'red');
-                      //$('select').select2()
-                      //initializeSelect2();
-                  });
-              });
-          });
-          // Function to initialize Select2
-          function initializeSelect2() {
-              $('.select-2-gov').select2({
-                  theme: "bootstrap-5",
-                  width: 'resolve', // Optional for better width management
-              }).on("change", function() {
-                  // Update Livewire property when Select2 changes
-                  @this.set("selectedState", $(this).val());
-              });
-
-              console.log("Select2 initialized or re-initialized.");
-          }
-      </script>
-  @endscript
+                    })
+                    // Reinitialize Select2 after DOM update
+                    //console.log(window.select2);
+                    //$('.select-2-gov').attr('data-select-test', 'red');
+                });
+            });
+        });
+    </script>
+@endscript
