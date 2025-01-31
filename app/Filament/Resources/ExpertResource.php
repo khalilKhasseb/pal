@@ -25,6 +25,24 @@ class ExpertResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Experts');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('Experts');
+    }
+
+    public static function getLabel(): ?string{
+        return __('Expert');
+    }
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
     public static function form(Form $form): Form
     {
         return $form

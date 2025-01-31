@@ -31,7 +31,7 @@ class MangeContent extends SettingsPage
                         fc\Textarea::make('c_about_en')
                             ->label(__('About us Englis')),
                         fc\Select::make('c_destintaion')
-                            ->label('Destenation')
+                            ->label(__('Destenation'))
                             ->options(function () {
                                 $posts = \App\Models\Panel::panelByName('admin')->first()->posts('page')->get()->pluck('title', 'slug');
                                 return $posts;  
@@ -92,5 +92,10 @@ class MangeContent extends SettingsPage
     public static function canAccess(): bool
     {
         return Filament::getCurrentPanel()->getId() === 'admin';
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Manage Content');
     }
 }

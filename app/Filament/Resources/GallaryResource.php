@@ -86,4 +86,18 @@ class GallaryResource extends Resource
   {
         return __('Gallaries');
   }
+
+  public static function getPluralLabel(): ?string
+  {
+        return __('Gallaries');
+  }
+  public static function getLabel(): ?string
+  {
+        return __('Gallary');
+  }
+
+  public static function getNavigationBadge(): ?string
+  {
+        return static::getModel()::count();
+  }
 }

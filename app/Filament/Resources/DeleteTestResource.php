@@ -63,4 +63,9 @@ class DeleteTestResource extends Resource
             'edit' => Pages\EditDeleteTest::route('/{record}/edit'),
         ];
     }
+
+    public static function canAccess(): bool
+    {
+        return false;
+    }
 }
