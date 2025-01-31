@@ -22,6 +22,10 @@ class Newsletter extends Component
     {
         if (empty($this->email) || is_null($this->email)) return;
 
+        if (!env('MAILCHIMP_API_KEY')) {
+session()->flash('error', __('Error: Mailchimp API key is not set. Please contact the site administrator for more information or to report this issue.'));            return back();
+        }
+
         Mailchimp::subscribe($this->listId, $this->email, $merge = [], $confirm = true);
 
         session()->flash('message', __('Subscribed'));

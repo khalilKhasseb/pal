@@ -391,6 +391,9 @@
     "Sub header English Donate": "ترويسة فرعية بالانجليزية تبرع",
     "Sub header Arabic Partners": "ترويسة فرعية بالعربية شركاء",
     "Sub header English Partners": "ترويسة فرعية بالانجليزية شركاء",
-    "Manage Content": "إدارة المحتوى"
-    
+    "Manage Content": "إدارة المحتوى",
+    "Enter your email": "أدخل بريدك الإلكتروني",
+    "Stay updated with our latest news": "ابق على اطلاع بآخر الأخبار",
+    "Get the latest news and updates from our community": "احصل على آخر الأخبار والتحديثات من مجتمعنا",
+    "Error: Mailchimp API key is not set. Please contact the site administrator for more information or to report this issue.": "خطأ: لم يتم تعيين مفتاح واجهة برمجة تطبيقات Mailchimp. يرجى الاتصال بمدير الموقع للحصول على مزيد من المعلومات أو للإبلاغ عن هذه المشكلة."
 }
