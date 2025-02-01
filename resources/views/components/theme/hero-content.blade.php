@@ -22,36 +22,28 @@
 {{-- @dd($contentSettings) --}}
 <section class="bg-about-greenforest">
     <div class="container">
-        <div class="">
-            <div class="about-greenforest">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="about-greenforest-content">
-
-                            <h2>{{ $title }}
-                            </h2>
-                            <p>
-                                {{ $content }}
-                            </p>
-                            <a href="{{!empty($dest) ? route('page', ['slug' => $dest]) : '#'}}" class="btn btn-default">{{ __('More') }}</a>
-                            {{-- <a href="#" class="btn btn-default">{{ __('Join us') }}</a> --}}
-                        </div>
-                        <!-- .about-greenforest-content -->
+        <div class="about-greenforest">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="about-greenforest-content">
+                        <h2>{{ $title }}</h2>
+                        <p>{{ $content }}</p>
+                        <a href="{{ !empty($dest) ? route('page', ['slug' => $dest]) : '#' }}" class="btn btn-success">{{ __('More') }}</a>
                     </div>
-                    <!-- .col-lg-8 -->
-                    <div class="col-lg-4">
-                        <div class="about-greenforest-img">
-                            <img src="{{ preg_match('/(http?s)/' , $aboutImg) ? $aboutImg : asset("storage/$aboutImg") }}" alt="about-greenforet-img"
-                                class="img-responsive" />
-                        </div>
-                        <!-- .about-greenforest-img -->
-                    </div>
-                    <!-- .col-md-4 -->
+                    <!-- .about-greenforest-content -->
                 </div>
+                <!-- .col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="about-greenforest-img">
+                        <img src="{{ preg_match('/(http?s)/', $aboutImg) ? $aboutImg : asset("storage/$aboutImg") }}" alt="about-greenforest-img" class="img-fluid" />
+                    </div>
+                    <!-- .about-greenforest-img -->
+                </div>
+                <!-- .col-lg-4 -->
             </div>
-            <!-- .about-greenforest -->
+            <!-- .row -->
         </div>
-        <!-- .row -->
+        <!-- .about-greenforest -->
     </div>
     <!-- .container -->
 </section>
