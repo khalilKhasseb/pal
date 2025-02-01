@@ -10,7 +10,8 @@ use LaraZeus\Sky\Filament\Resources\TagResource;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Tables\Table;
-
+use Google\Service\Monitoring\Custom;
+use App\Classes\CustomLinkAction;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -37,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         TiptapEditor::configureUsing(function (TiptapEditor $tiptapEditor) {
             $tiptapEditor
                 ->collapseBlocksPanel()
-
+                
                 ->blocks([
                     \App\TiptapBlocks\CountdownTimer::class,
                     \App\TiptapBlocks\PdfView::class

@@ -1,5 +1,7 @@
 <?php
 
+use Google\Service\AdMob\App;
+
 return [
     'direction' => 'ltr',
     'max_content_width' => '5xl',
@@ -37,7 +39,8 @@ return [
     'media_action' => FilamentTiptapEditor\Actions\MediaAction::class,
     //    'media_action' => Awcodes\Curator\Actions\MediaAction::class,
     'edit_media_action' => FilamentTiptapEditor\Actions\EditMediaAction::class,
-    'link_action' => FilamentTiptapEditor\Actions\LinkAction::class,
+    // 'link_action' => FilamentTiptapEditor\Actions\LinkAction::class,
+    'link_action' => \App\Classes\CustomLinkAction::class,
     'grid_builder_action' => FilamentTiptapEditor\Actions\GridBuilderAction::class,
     'oembed_action' => FilamentTiptapEditor\Actions\OEmbedAction::class,
 

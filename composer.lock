@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "451aa7b3010647efe3539df7aca5a9cd",
+    "content-hash": "410120a85edffcd760f4c5fee5a307e4",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -132,16 +132,16 @@
         },
         {
             "name": "awcodes/filament-tiptap-editor",
-            "version": "v3.4.22",
+            "version": "v3.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/awcodes/filament-tiptap-editor.git",
-                "reference": "397a58ce1cc43f6ce2e01becaf8e0e621df6270c"
+                "reference": "0846f4e4782ba88a21479da9447195cb5e6d5721"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/awcodes/filament-tiptap-editor/zipball/397a58ce1cc43f6ce2e01becaf8e0e621df6270c",
-                "reference": "397a58ce1cc43f6ce2e01becaf8e0e621df6270c",
+                "url": "https://api.github.com/repos/awcodes/filament-tiptap-editor/zipball/0846f4e4782ba88a21479da9447195cb5e6d5721",
+                "reference": "0846f4e4782ba88a21479da9447195cb5e6d5721",
                 "shasum": ""
             },
             "require": {
@@ -202,7 +202,7 @@
             ],
             "support": {
                 "issues": "https://github.com/awcodes/filament-tiptap-editor/issues",
-                "source": "https://github.com/awcodes/filament-tiptap-editor/tree/v3.4.22"
+                "source": "https://github.com/awcodes/filament-tiptap-editor/tree/v3.5.5"
             },
             "funding": [
                 {
@@ -210,7 +210,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-29T17:35:11+00:00"
+            "time": "2025-01-27T18:35:08+00:00"
         },
         {
             "name": "barryvdh/laravel-dompdf",
@@ -14004,12 +14004,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

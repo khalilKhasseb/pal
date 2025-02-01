@@ -8,6 +8,8 @@
     $mergeTags = $getMergeTags();
     $shouldSupportBlocks = $shouldSupportBlocks();
     $shouldShowMergeTagsInBlocksPanel = $shouldShowMergeTagsInBlocksPanel();
+
+    
     //$customDocument = $getCustomDocument();
 @endphp
 
