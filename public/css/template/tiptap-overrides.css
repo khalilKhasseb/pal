@@ -1,5 +1,6 @@
 .tiptap-editor .filament-tiptap-grid-builder {
     display: grid;
+    gap: 5px;
 }
 
 /* Secondary Button - Green */
