@@ -105,4 +105,7 @@
 .tiptap-editor [data-as-button-size='full_width'] {
     width: 100%;
     display: block;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: 2rem;
 }
