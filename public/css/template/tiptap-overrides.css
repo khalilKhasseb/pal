@@ -101,3 +101,8 @@
 .tiptap-editor [data-as-button-theme="accent"]:active {
     background-color: #1f4f1f;
 }
+
+.tiptap-editor [data-as-button-size='full_width'] {
+    width: 100%;
+    display: block;
+}
