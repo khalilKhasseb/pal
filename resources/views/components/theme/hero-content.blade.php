@@ -28,7 +28,7 @@
                     <div class="about-greenforest-content">
                         <h2>{{ $title }}</h2>
                         <p>{{ $content }}</p>
-                        <a href="{{ !empty($dest) ? route('page', ['slug' => $dest]) : '#' }}" class="btn btn-success">{{ __('More') }}</a>
+                        <a href="{{ !empty($dest) ? route('page', ['slug' => $dest]) : '#' }}" class="btn btn-default">{{ __('More') }}</a>
                     </div>
                     <!-- .about-greenforest-content -->
                 </div>
