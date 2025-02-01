@@ -105,7 +105,7 @@ body.rtl .btn-default:hover:before {
     left: -26%;
 }
 body.rtl .btn-default:hover:after {
-    right: -14%;
+    right: -23%;
 }
 body.rtl .date-box {
     right: 0;
