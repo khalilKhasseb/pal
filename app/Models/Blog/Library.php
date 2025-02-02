@@ -8,5 +8,13 @@ class Library extends Model
 {
 
      use PanelResource;
+
+     protected $appends = ['file_url']; // This makes theFile() accessible in JSON responses.
+
+
+     public function getFileUrlAttribute()
+    {
+        return $this->theFile();
+    }
     
 }

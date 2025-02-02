@@ -203,7 +203,10 @@ Route::get('/faqs', App\Livewire\FaqPage::class)->name('faq');
 Route::get('gallary', App\Livewire\GallaryPage::class);
 Route::post('/contact', App\Http\Controllers\ContactController::class)->name('contact');
 
-Route::get('attachment/{media}', App\Http\Controllers\DownloadMedia::class)->name('downloadAttachment');
+Route::get('attachment/{media}', App\Http\Controllers\DownloadMedia::class)
+->middleware('auth')
+->name('downloadAttachment')
+;
 
 
 Route::get('checkout',PaymentForm::class)->name('checkout');

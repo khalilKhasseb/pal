@@ -16,8 +16,8 @@ trait PanelResource
         parent::booted();
 
 
-        // if (app()->runningInConsole())
-        //     return;
+        if (app()->runningInConsole())
+            return;
         $content_provider = json_decode(Storage::disk('local')->get('content_provider.json'));
         if (is_null($content_provider)) {
 
@@ -30,15 +30,13 @@ trait PanelResource
             // once the confing of show all content is false add the global scope
 
             // validate if session has the key to show all content
-
-            if (session()->has('show_all_content')) {
-                $show = session('show_all_content');
+            $show = session('show_all_content');
+            if ($show) {
+                
+                
                 if ($show) {
                     static::withoutGlobalScope(PanelScope::class);
-                } else {
-
-                    static::addGlobalScope(PanelScope::class);
-                }
+                } 
             } else {
                 static::addGlobalScope(PanelScope::class);
             }

@@ -19,6 +19,8 @@ class PanelScope implements Scope
 
         $panel = Panel::findById(Filament::getCurrentPanel()->getId());
 
+        
+
         if (null !== $panel) {
 
             $builder->

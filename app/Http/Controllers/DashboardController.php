@@ -18,6 +18,8 @@ class DashboardController extends Controller
     {
         // $tags = Tag::getWithType('library');
         // dd(config('zeus-sky.models.Tag')::getWithType('library'));
+
+        // dd(Library::find(46)->toJson());
         return view('dashboard')
             ->with('libraryTags', config('zeus-sky.models.Tag')::getWithType('library'))
             ->with('libraries', config('zeus-sky.models.Library')::get());
@@ -32,12 +34,14 @@ class DashboardController extends Controller
         // get Tag by slug
         $tag = Tag::findBySlug($request->slug, 'library');
 
-        $libraries = Library::withAnyTags($tag->name, 'library')->get();
+        $libraries = Library::withAnyTags($tag->name, 'library')
+        // ->with('media')
+        ->get();
 
-        $libraries->each(function ($lib) {
-            $lib->files = $lib->getFiles();
-            return $lib;
-        });
+        // $libraries->each(function ($lib) {
+        //     $lib->files = $lib->getFiles();
+        //     return $lib;
+        // });
 
         return response()->json($libraries);
     }
