@@ -4,7 +4,12 @@ namespace App\Classes;
 class CSVParser
 {
 
-    public static function parse($file_path)
+   
+
+      public function getNames(){}	
+    
+
+	public static function parse($file_path)
     {
         $data = [];
         $file = fopen($file_path, 'r');
