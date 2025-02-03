@@ -154,7 +154,7 @@
 
         $("a[data-rel^=lightcase]").lightcase();
 
-        $('.lightbox-item').lightcase();
+        // $('.lightbox-item').lightcase();
 
 
         //Js code for search box
