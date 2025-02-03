@@ -154,6 +154,9 @@
 
         $("a[data-rel^=lightcase]").lightcase();
 
+        $('.lightbox-item').lightcase();
+
+
         //Js code for search box
 
         $(".first_click").on("click", function () {

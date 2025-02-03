@@ -6,7 +6,7 @@
         <div class="row">
             @foreach ($gallary->getMedia('gallary') as $item)
                 <div class="item col-12 col-md-4 col-lg-3">
-                    <a href="{{ $item->getFullUrl() }}" data-rel="lightcase:postGallary">
+                    <a class="lightbox-item" href="{{ $item->getFullUrl() }}" data-rel="lightcase:postGallary">
                         {{-- <img src="{{ $item->getFullUrl() }}" alt="{{ $gallary->title }}"> --}}
                     </a>
                 </div>
