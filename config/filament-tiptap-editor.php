@@ -1,5 +1,6 @@
 <?php
 
+use App\Classes\CustomMediaAction;
 use Google\Service\AdMob\App;
 
 return [
@@ -38,7 +39,8 @@ return [
     */
     'media_action' => FilamentTiptapEditor\Actions\MediaAction::class,
     //    'media_action' => Awcodes\Curator\Actions\MediaAction::class,
-    'edit_media_action' => FilamentTiptapEditor\Actions\EditMediaAction::class,
+    // 'edit_media_action' => FilamentTiptapEditor\Actions\EditMediaAction::class,
+    'edit_media_action' => CustomMediaAction::class,
     // 'link_action' => FilamentTiptapEditor\Actions\LinkAction::class,
     'link_action' => \App\Classes\CustomLinkAction::class,
     'grid_builder_action' => FilamentTiptapEditor\Actions\GridBuilderAction::class,
@@ -75,9 +77,9 @@ return [
     'max_file_size' => 2042,
     'min_file_size' => 0,
     'image_resize_mode' => true,
-    'image_crop_aspect_ratio' => true,
-    'image_resize_target_width' => true,
-    'image_resize_target_height' => true,
+    'image_crop_aspect_ratio' => null,
+    'image_resize_target_width' => null,
+    'image_resize_target_height' => null,
     'use_relative_paths' => true,
 
     /*
