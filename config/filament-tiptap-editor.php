@@ -75,9 +75,9 @@ return [
     'max_file_size' => 2042,
     'min_file_size' => 0,
     'image_resize_mode' => true,
-    'image_crop_aspect_ratio' => null,
-    'image_resize_target_width' => null,
-    'image_resize_target_height' => null,
+    'image_crop_aspect_ratio' => true,
+    'image_resize_target_width' => true,
+    'image_resize_target_height' => true,
     'use_relative_paths' => true,
 
     /*
