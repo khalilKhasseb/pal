@@ -110,3 +110,10 @@
     padding-bottom: 2rem;
     font-size: 2rem;
 }
+
+.tiptap-editor img{
+    width: revert-layer;
+    height: revert-layer;
+    display: revert-layer;
+    max-width: revert-layer;
+}

@@ -71,7 +71,6 @@ class CustomMediaAction extends Action
                         ->imageCropAspectRatio($component->getImageCropAspectRatio())
                         ->imageResizeTargetWidth($component->getImageResizeTargetWidth())
                         ->imageResizeTargetHeight($component->getImageResizeTargetHeight())
-                        // ->imageEditor()
                         ->required()
                         ->live()
                         ->afterStateUpdated(function (TemporaryUploadedFile $state, callable $set) {
@@ -80,6 +79,7 @@ class CustomMediaAction extends Action
                             } else {
                                 $set('type', 'document');
                             }
+
 
                             if ($dimensions = $state->dimensions()) {
                                 $set('width', $dimensions[0]);
