@@ -39,8 +39,8 @@ return [
     */
     'media_action' => FilamentTiptapEditor\Actions\MediaAction::class,
     //    'media_action' => Awcodes\Curator\Actions\MediaAction::class,
-    // 'edit_media_action' => FilamentTiptapEditor\Actions\EditMediaAction::class,
-    'edit_media_action' => CustomMediaAction::class,
+    'edit_media_action' => FilamentTiptapEditor\Actions\EditMediaAction::class,
+    // 'edit_media_action' => CustomMediaAction::class,
     // 'link_action' => FilamentTiptapEditor\Actions\LinkAction::class,
     'link_action' => \App\Classes\CustomLinkAction::class,
     'grid_builder_action' => FilamentTiptapEditor\Actions\GridBuilderAction::class,
