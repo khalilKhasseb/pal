@@ -41,7 +41,7 @@ class LahzaPayController extends Controller
                 )
             ]);
 
-            // 5. Redirect based on status
+            // 5. Redirect based on status test staging or live
 
             if($verification->status === 'success') {
                 Mail::to($payment->email)->send(new PaymentSuccess($payment));
