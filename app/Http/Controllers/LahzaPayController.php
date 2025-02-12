@@ -6,7 +6,8 @@ use App\Models\PaymentInfo as Payment;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Lahza\PaymentGateway\Facades\Lahza;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PaymentSuccess;
 class LahzaPayController extends Controller
 {
     public function handleCallback(Request $request)
@@ -41,6 +42,10 @@ class LahzaPayController extends Controller
             ]);
 
             // 5. Redirect based on status
+
+            if($verification->status === 'success') {
+                Mail::to($payment->email)->send(new PaymentSuccess($payment));
+            }
             return $verification->status === 'success'
                 ? redirect()->route('payment.success', $payment)
                 : redirect()->route('payment.failure', $payment);

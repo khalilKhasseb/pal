@@ -19,7 +19,6 @@
         $stickyPosts = \App\Models\Post::withoutGlobalScope(ContentProviderScope::class)
             ->sticky()
             ->get();
-
     @endphp
     <section class="bg-slider-option">
         <div class="container">
