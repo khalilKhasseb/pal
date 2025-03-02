@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-9">
                             <h4 class="text-primary">
-                                <span class="fw-bold text-dark">{{ $expert->sir_name_ar }}</span>
+                                <span class="fw-bold text-dark">{{ $expert->first_name }}</span>
                                 
                                 <span class="badge {{ $expert->is_verified ? 'bg-success' : 'bg-danger' }} ms-3">
                                     <i class="ace-icon fa fa-circle smaller-80 align-middle"></i>
