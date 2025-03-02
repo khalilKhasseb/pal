@@ -53,13 +53,13 @@
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> {{ __('Name In Arabic') }} </div>
                                     <div class="profile-info-value">
-                                        <span>{{ $expert->sir_name_ar }} {{$expert->first_name}}</span>
+                                        <span> {{$expert->first_name}} {{ $expert->sir_name_ar }} </span>
                                     </div>
                                 </div>
                                 <div class="profile-info-row">
                                     <div class="profile-info-name"> {{ __('Name In English') }} </div>
                                     <div class="profile-info-value">
-                                        <span>{{$expert->first_name}} {{ $expert->sir_name_en }}</span>
+                                        <span>{{$expert->first_name_en}} {{ $expert->sir_name_en }}</span>
                                     </div>
                                 </div>
                                 <div class="profile-info-row">

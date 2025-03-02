@@ -31,7 +31,7 @@
                     <div class="card border-0 shadow-sm h-100 d-flex flex-column">
                         <div class="position-relative">
                             <img src="{{ $expert->getFirstMediaUrl('image') ?: '' }}" class="card-img-top w-100"
-                                alt="{{ $expert->{'sir_name_' . app()->getLocale()} }}"
+                                alt="{{$expert->first_name . ' ' . $expert->sir_name_ar }}"
                                 onerror="this.onerror=null; this.outerHTML='<svg class=\'card-img-top w-100\' xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100%\' height=\'100%\' fill=\'#28a745\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-size=\'40\' font-family=\'Arial, sans-serif\'>{{ strtoupper(substr($expert->{'sir_name_' . app()->getLocale()}, 0, 1)) }}</text></svg>'">
                         </div>
                         <div class="card-body d-flex flex-column justify-content-between">

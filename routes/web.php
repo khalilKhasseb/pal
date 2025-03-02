@@ -204,12 +204,12 @@ Route::get('gallary', App\Livewire\GallaryPage::class);
 Route::post('/contact', App\Http\Controllers\ContactController::class)->name('contact');
 
 Route::get('attachment/{media}', App\Http\Controllers\DownloadMedia::class)
-->middleware('auth')
-->name('downloadAttachment')
+    ->middleware('auth')
+    ->name('downloadAttachment')
 ;
 
 
-Route::get('checkout',PaymentForm::class)->name('checkout');
+Route::get('checkout', PaymentForm::class)->name('checkout');
 // Route::post('payment/callback', App\Http\Controllers\PaymentCallbackController::class)->name('payment.callback');
 
 Route::get('lang/{local}', function (Request $request, $local) {
@@ -242,41 +242,23 @@ Route::get('/payment', PaymentForm::class)->name('payment.form');
 //     return view('lahza.payment-success');
 // })->name('payment.success');
 
-Route::get('/test-payment', function () {
-    try {
-        $transaction = Lahza::initializeTransaction([
-            'amount' => 10000, // 100.00 ILS
-            'currency' => 'ILS',
-            'email' => 'customer@example.com',
-            'reference' => 'ORDER_123'
-        ]);
-
-
-        return redirect()->away($transaction->authorizationUrl);
-    } catch (PaymentException $e) {
-        return response()->json([
-            'error' => $e->getErrorType(),
-            'message' => $e->getMessage(),
-            'error_code' => $e->getCode(),
-            'documentation' => $e->getDocumentationUrl(),
-            'errors' => $e->getContext()
-        ], $e->getCode());
-    }
-});
 
 // routes/web.php
-Route::get('/payment/callback', [LahzaPayController::class, 'handleCallback'])
-    ->name('payment.callback');
-Route::get('/payment/receipt/{payment}', [LahzaPayController::class, 'downloadReceipt'])
-    ->name('payment.receipt');
 
-Route::get('/receipt/{reference}/download', [LahzaPayController::class, 'handleCallback'])
-    ->name('payment.receipt.download');
+Route::group(['prefix' => 'payment'], function () {
+    Route::get('/callback', [LahzaPayController::class, 'handleCallback'])
+        ->name('/callback');
+    Route::get('/receipt/{payment}', [LahzaPayController::class, 'downloadReceipt'])
+        ->name('payment.receipt');
 
-Route::get('/payment/success/{payment}', function (PaymentInfo $payment) {
-    return view('lahza.payment-success', compact('payment'));
-})->name('payment.success');
+    Route::get('/receipt/{reference}/download', [LahzaPayController::class, 'handleCallback'])
+        ->name('payment.receipt.download');
 
-Route::get('/payment/failure/{payment}', function (PaymentInfo $payment) {
-    return view('lahza.failure', compact('payment'));
-})->name('payment.failure');
+    Route::get('/success/{payment}', function (PaymentInfo $payment) {
+        return view('lahza.payment-success', compact('payment'));
+    })->name('payment.success');
+
+    Route::get('/failure/{payment}', function (PaymentInfo $payment) {
+        return view('lahza.failure', compact('payment'));
+    })->name('payment.failure');
+});

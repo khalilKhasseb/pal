@@ -144,7 +144,7 @@ class Post extends Model
         
         $this->addMediaConversion('thumb-cropped-original')
             ->performOnCollections('posts')
-            ->fit(Fit::Fill, 380, 300, false, '#333');
+            ->fit(Fit::Crop, 380, 300, false, '#333');
 
         $this->addMediaConversion('fit-slider')
             ->performOnCollections('posts')

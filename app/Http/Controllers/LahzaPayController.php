@@ -43,6 +43,8 @@ class LahzaPayController extends Controller
 
             // 5. Redirect based on status test staging or live
 
+
+            
             if($verification->status === 'success') {
                 Mail::to($payment->email)->send(new PaymentSuccess($payment));
             }
@@ -51,6 +53,7 @@ class LahzaPayController extends Controller
                 : redirect()->route('payment.failure', $payment);
         } catch (\Exception $e) {
             // 6. Handle verification errors
+            dd($e->getMessage() , $e)    ;
             $payment->update(['status' => 'failed']);
             logger()->error('Payment verification failed', [
                 'reference' => $reference,

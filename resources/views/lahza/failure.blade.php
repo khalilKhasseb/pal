@@ -19,7 +19,7 @@
                 <a href="{{ route('payment.form') }}" class="btn btn-primary">
                     {{ __('Try Again') }}
                 </a>
-                <a href="{{ route('home') }}" class="btn btn-secondary">
+                <a href="{{ route('theme.home') }}" class="btn btn-secondary">
                     {{ __('Return to Homepage') }}
                 </a>
             </div>
