@@ -41,7 +41,8 @@ class AppServiceProvider extends ServiceProvider
                 
                 ->blocks([
                     \App\TiptapBlocks\CountdownTimer::class,
-                    \App\TiptapBlocks\PdfView::class
+                    \App\TiptapBlocks\PdfView::class,
+                    \App\TiptapBlocks\LogoSliderBlock::class,
                 ]);
         });
 

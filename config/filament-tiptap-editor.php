@@ -3,8 +3,11 @@
 use App\Classes\CustomMediaAction;
 use Google\Service\AdMob\App;
 
+
+$rtl = app()->getLocale() === 'ar' ? 'rtl' : 'ltr';
+
 return [
-    'direction' => 'ltr',
+    'direction' => $rtl,
     'max_content_width' => '5xl',
     'disable_stylesheet' => false,
     'disable_link_as_button' => false,
