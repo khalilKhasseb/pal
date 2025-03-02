@@ -15,6 +15,8 @@ class LogoSliderBlock extends Component
     
     public function mount($logos = [], $title = null, $slidesPerView = 4, $autoPlay = true, $autoPlaySpeed = 3000, $showNavigation = true, $showPagination = false)
     {
+
+        
         $this->logos = $logos;
         $this->title = $title;
         $this->slidesPerView = (int) $slidesPerView;

@@ -1,5 +1,6 @@
 {{-- resources/views/blocks/rendered/logo-slider.blade.php --}}
 
+
 <div>
     <livewire:blocks.logo-slider-block
         :logos="$logos ?? []"

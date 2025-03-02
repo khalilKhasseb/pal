@@ -40,6 +40,7 @@ class LogoSliderBlock extends TiptapBlock
                 ->default('4'),
             Toggle::make('auto_play')
                 ->label('Auto Play')
+                 ->live()
                 ->default(true),
             TextInput::make('auto_play_speed')
                 ->label('Auto Play Speed (ms)')
@@ -48,10 +49,10 @@ class LogoSliderBlock extends TiptapBlock
                 ->visible(fn (callable $get) => $get('auto_play')),
             Toggle::make('show_navigation')
                 ->label('Show Navigation Arrows')
-                ->default(true),
+                ->default(false),
             Toggle::make('show_pagination')
                 ->label('Show Pagination Dots')
-                ->default(false),
+                ->default(true),
         ];
     }
 }
