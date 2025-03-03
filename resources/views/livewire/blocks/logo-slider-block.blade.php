@@ -4,29 +4,29 @@
 
 <div class="logo-slider-component relative mb-8" wire:ignore>
     @if ($title)
-        <h3 class="text-xl font-medium text-center mb-6">{{ $title }}</h3>
+        <h3 class="h4 fw-medium text-center mb-4">{{ $title }}</h3>
     @endif
 
-    <div class="swiper-container logo-slider-container relative">
+    <div class="swiper-container logo-slider-container position-relative">
         <div class="swiper-wrapper">
             @foreach ($logos as $logo)
                 <div class="swiper-slide">
-                    <div
-                        class="h-24 flex items-center justify-center p-4 bg-white border border-gray-100 rounded shadow-sm">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($logo) }}" alt="Partner Logo"
-                            class="max-h-full max-w-full object-contain">
+                    <div class="d-flex align-items-center justify-content-center p-4 bg-white border border-light rounded shadow-sm"
+                        style="height: 200px; ">
+                        <img style="transform:scale(0.8)" src="{{ \Illuminate\Support\Facades\Storage::url($logo) }}" alt="Partner Logo"
+                            class="img-fluid">
                     </div>
                 </div>
             @endforeach
         </div>
 
         @if ($showPagination)
-            <div class="swiper-pagination logo-slider-pagination mt-4"></div>
+            <div class="swiper-pagination logo-slider-pagination mt-3"></div>
         @endif
 
         @if ($showNavigation)
-            <div class="swiper-button-prev logo-slider-prev"></div>
-            <div class="swiper-button-next logo-slider-next"></div>
+            {{-- <div class="swiper-button-prev "></div>
+            <div class="swiper-button-next "></div> --}}
         @endif
     </div>
 
@@ -34,6 +34,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Make sure Swiper is loaded
             if (typeof Swiper === 'undefined') {
+
+                 
                 // Load Swiper if not available
                 const swiperCss = document.createElement('link');
                 swiperCss.rel = 'stylesheet';
@@ -118,7 +120,7 @@
     </script>
     <style>
         /* Fix navigation arrow positioning */
-        .logo-slider-container .swiper-button-prev,
+        /* .logo-slider-container .swiper-button-prev,
         .logo-slider-container .swiper-button-next {
             position: absolute;
             top: 50%;
@@ -130,7 +132,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             z-index: 10;
             color: #333;
-        }
+        } */
 
         .logo-slider-container .swiper-button-prev {
             left: -20px;
