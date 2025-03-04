@@ -136,17 +136,25 @@
                                 </label>
 
 
-                                
+
                                 @error('contact_before_payment')
                                     <span class="error-message">{{ $message }}</span>
                                 @enderror
                             </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                {!! NoCaptcha::display() !!}
+                            <div class="form-row">
+                                <div class="form-group">
+                                    {!! NoCaptcha::display() !!}
+                                </div>
+
+
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="error-message">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
+
                             </div>
-                        </div>
 
 
                             <button type="submit" class="submit-btn" wire:loading.attr="disabled">
@@ -159,7 +167,7 @@
                             </button>
                         </div>
 
-                        
+
 
                     </form>
                 </div>
