@@ -181,7 +181,8 @@ return [
         App\Providers\Filament\SommodPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\AppViewServiceProvider::class,
-        App\Providers\LahzaPayServiceProvider::class
+        App\Providers\LahzaPayServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 
     ])->toArray(),
 
@@ -197,6 +198,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         // 'Example' => App\Facades\Example::class,
         // "SimpleExcelReader" =>  Spatie\SimpleExcel\SimpleExcelReader::class
 

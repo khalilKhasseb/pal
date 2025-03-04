@@ -2,12 +2,16 @@
     $rtl = app()->getLocale() === 'ar';
 @endphp
 
+
+
 <x-slot name="header">
     <h2 class="header-title">
         {{ __('Payment Form') }}
     </h2>
 </x-slot>
 <div>
+    {!! NoCaptcha::renderJs() !!}
+
     <div class="payment-form-wrapper">
         <div class="container">
             <div class="form-header">
@@ -130,10 +134,20 @@
                                     <input type="checkbox" wire:model="contact_before_payment">
                                     {{ __('Did you contact us before payment?') }}
                                 </label>
+
+
+                                
                                 @error('contact_before_payment')
                                     <span class="error-message">{{ $message }}</span>
                                 @enderror
                             </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                {!! NoCaptcha::display() !!}
+                            </div>
+                        </div>
+
 
                             <button type="submit" class="submit-btn" wire:loading.attr="disabled">
                                 <span wire:loading.remove>
@@ -144,6 +158,9 @@
                                 </span>
                             </button>
                         </div>
+
+                        
+
                     </form>
                 </div>
             @else
