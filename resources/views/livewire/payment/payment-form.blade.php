@@ -10,7 +10,7 @@
     </h2>
 </x-slot>
 <div>
-    {!! NoCaptcha::renderJs() !!}
+    
 
     <div class="payment-form-wrapper">
         <div class="container">
@@ -143,17 +143,13 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group">
-                                    {!! NoCaptcha::display() !!}
+                                <div wire:ignore>
+                                    {!! NoCaptcha::renderJs() !!}
+                                    {!! NoCaptcha::display(['data-callback' => 'captchaCompleted']) !!}
                                 </div>
-
-
-                                @if ($errors->has('g-recaptcha-response'))
-                                    <span class="error-message">
-                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                    </span>
-                                @endif
-
+                                @error('recaptcha') <span class="text-red-500">{{ $message }}</span> @enderror
+                        
+                                <input type="hidden" wire:model="recaptcha">
                             </div>
 
 
@@ -361,4 +357,10 @@
             }
         </style>
     @endpush
+
+    <script>
+        function captchaCompleted(response) {
+            @this.set('recaptcha', response);
+        }
+    </script>   
 </div>

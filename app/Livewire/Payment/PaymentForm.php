@@ -23,6 +23,7 @@ class PaymentForm extends Component
     public $amount;
     public $contact_before_payment = false;
     public bool $checkout_enabled = false;
+    public $recaptcha;
     protected $rules = [
         'full_name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
@@ -32,7 +33,7 @@ class PaymentForm extends Component
         'classification' => 'required|string|max:255', // Fixed typo
         'amount' => 'required|numeric|min:1',
         'contact_before_payment' => 'boolean',
-        'g-recaptcha-response' => 'required|captcha',
+        'recaptcha' => 'required|captcha'
 
     ];
 
