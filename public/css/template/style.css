@@ -2261,6 +2261,7 @@ section {
 }
 .blog-content h4 a {
     padding-bottom: 8px;
+    font-size: 17px;
 }
 .meta-box {
     border-top: 1px solid #f0f0f0;
@@ -2309,7 +2310,7 @@ section {
 }
 
 .uniffied-blog-content-box-heiht {
-    height: 171px !important;
+    height: 180px !important;
 }
 
 /*===========================

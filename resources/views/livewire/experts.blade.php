@@ -39,7 +39,7 @@
                                 <h5 class="card-title mb-2">
                                     <a href="{{ route('experts.view', $expert->id) }}"
                                         class="text-decoration-none text-dark">
-                                        {{ $expert->{'sir_name_' . app()->getLocale()} }}
+                                        {{$expert->first_name . ' ' . $expert->sir_name_ar }}
                                     </a>
                                 </h5>
                                 <p class="card-text text-muted mb-1">{{ $expert->ba_major }}</p>
