@@ -305,9 +305,7 @@
     border-bottom: 1px solid var(--border-color);
 }
 
-html[dir="rtl"] .supporter-header {
-    flex-direction: row-reverse;
-}
+
 
 .supporter-logo {
     width: 120px;
