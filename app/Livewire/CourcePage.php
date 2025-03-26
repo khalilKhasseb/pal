@@ -13,7 +13,7 @@ class CourcePage extends Component
     public string $pageTitle ;
     public function mount() {
         $this->courcess = Cource::all()->map(function($cource){
-            $cource->image = $cource->getMedia('cources')[0]->getFullUrl();
+            $cource->image = $cource->getFirstMediaUrl('cources');
             $cource->form_register = is_null($cource->form) ? null :  $cource->form->responder_uri;
             unset($cource->form);
 
