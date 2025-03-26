@@ -171,6 +171,9 @@ class ExpertResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('first_name')->label(__('First Name'))->searchable(),
+                Tables\Columns\TextColumn::make('sir_name_ar')->label(__('Sir Name (Arabic)'))->searchable(),
+                Tables\Columns\TextColumn::make('first_name_en')->label(__('First Name (English)'))->searchable(),
                 Tables\Columns\TextColumn::make('sir_name_en')->label(__('Sir Name (English)'))->searchable(),
                 Tables\Columns\TextColumn::make('email')->label(__('Email'))->searchable(),
                 Tables\Columns\TextColumn::make('mobile_number')->label(__('Mobile Number'))->searchable(),
