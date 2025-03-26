@@ -117,8 +117,8 @@ Route::prefix('/')->name('theme.')->group(function () {
 
 
 Route::prefix('/ajax')->name('ajax.')->group(function () {
-    Route::get('/like_post/{post:slug}', [App\Http\Controllers\Theme\ContentController::class, 'like_post'])->name('like_post');
-    Route::get('/dislike-post/{post:slug}', [App\Http\Controllers\Theme\ContentController::class, 'dislike_post'])->name('dislike_post');
+    Route::get('/like_post/{id}', [App\Http\Controllers\Theme\ContentController::class, 'like_post'])->name('like_post');
+    Route::get('/dislike-post/{id}', [App\Http\Controllers\Theme\ContentController::class, 'dislike_post'])->name('dislike_post');
 });
 
 Route::get('/home-sommod', Home::class)->name('front.somoud.home');

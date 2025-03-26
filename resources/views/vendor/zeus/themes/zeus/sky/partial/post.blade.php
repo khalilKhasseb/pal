@@ -31,7 +31,7 @@
                         post_id: @js($post->id),
                         liked: @js($post->checkIfHasLikeForThisIp(request()->getClientIp())),
                         like_post() {
-                            axios.get('{{ route('ajax.like_post', $post->slug) }}')
+                            axios.get('{{ route('ajax.like_post', $post->id) }}')
                                 .then(r => {
                                     console.log(r)
                                     if (r.data) {

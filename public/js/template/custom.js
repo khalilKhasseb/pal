@@ -1,5 +1,52 @@
 (function ($) {
     "use strict";
+
+
+    function __(key) {
+        // Get current locale from HTML dir attribute or default to 'en'
+        const currentLocale = document.documentElement.lang ||
+            document.documentElement.getAttribute('lang') ||
+            (document.dir === 'rtl' ? 'ar' : 'en');
+
+        // Translation dictionary
+        const translations = {
+            'ar': {
+                'Your request has been sent successfully': 'تم إرسال طلبك بنجاح',
+                'Something went wrong. Please contact us at this email info@palgbc.org': 'حدث خطأ ما. يرجى الاتصال بنا على هذا البريد الإلكتروني info@palgbc.org',
+                'Contact Expert': 'تواصل مع الخبير',
+                'Your email': 'بريدك الإلكتروني',
+                'Enter your email address': 'أدخل عنوان بريدك الإلكتروني',
+                'Message': 'الرسالة',
+                'Write your message to the expert here...': 'اكتب رسالتك إلى الخبير هنا...',
+                'Send Message': 'إرسال الرسالة',
+                'Cancel': 'إلغاء',
+                'Loading...': 'جاري التحميل...'
+            },
+            'en': {
+                // English is the default, so we return the key as is
+            }
+        };
+
+        // Return translation if it exists, otherwise return the key itself
+        return (translations[currentLocale] && translations[currentLocale][key]) || key;
+    }
+
+
+    function updateModalTexts() {
+        // Modal Title
+        $('#contactExpertModalLabel').html(`<i class="fa fa-envelope"></i> ${__('Contact Expert')}`);
+
+        // Form Labels and Placeholders
+        $('.modal-body label[for="recipient-name"]').text(__('Your email'));
+        $('.modal-body input[name="client_email"]').attr('placeholder', __('Enter your email address'));
+        $('.modal-body label[for="message-text"]').text(__('Message'));
+        $('.modal-body textarea[name="message"]').attr('placeholder', __('Write your message to the expert here...'));
+
+        // Buttons
+        $('.modal-footer .btn-outline-secondary').text(__('Cancel'));
+        $('.modal-footer .btn-primary span').text(__('Send Message'));
+        $('.modal-footer .visually-hidden').text(__('Loading...'));
+    }
     $(document).ready(function () {
         $(".select-2").select2({
             theme: "bootstrap-5",
@@ -20,7 +67,7 @@
                         .getAttribute("content"),
                 },
                 data: JSON.stringify(_errorObject),
-                success: function (response) {},
+                success: function (response) { },
                 error: function (xhr, status, error) {
                     logErrorRecursively(error);
                 },
@@ -28,10 +75,10 @@
         }
         // function to submit a modal form via api and wait for response
 
-        function handleRequestForClientEmail(
-            triggerButton,
-            url = "/ajax/sendExpertEmail"
-        ) {
+        /**
+   * Expert Contact Modal Functionality
+   */
+        function handleRequestForClientEmail(triggerButton, url = "/ajax/sendExpertEmail") {
             $(triggerButton).on("click", function (e) {
                 $("#expertSpiner").removeClass("d-none");
                 e.preventDefault();
@@ -44,6 +91,7 @@
                 if (formDataJson.expert_certifcate_request === "1") {
                     url = "/ajax/requestCertificate";
                 }
+
                 $.ajax({
                     url: url,
                     type: "POST",
@@ -58,8 +106,11 @@
                     success: function (response) {
                         $("#success").html(
                             `<div class="alert my-2 alert-success alert-dismissible fade show" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        Your request has been sent successfully
+                        <div class="alert-content">
+                            <i class="fa fa-check-circle alert-icon"></i>
+                            <span>${__('Your request has been sent successfully')}</span>
+                            
+                        </div>
                     </div>`
                         );
 
@@ -67,6 +118,9 @@
                             $("#success").html("");
                         }, 3000);
                         $("#expertSpiner").addClass("d-none");
+
+                        // Clear form
+                        form[0].reset();
                     },
                     error: function (xhr, status, error) {
                         $("#expertSpiner").addClass("d-none");
@@ -75,20 +129,29 @@
                         if (xhr.status === 422) {
                             $(".errors_client_email").html(
                                 `<div class="alert my-2 alert-danger alert-dismissible fade show" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            ${xhr.responseJSON.message}
+                            <div class="alert-content">
+                                <i class="fa fa-exclamation-circle alert-icon"></i>
+                                <span>${xhr.responseJSON.message}</span>
+                                
+                            </div>
                         </div>`
                             );
                             return;
                         }
+
                         $(".errors_client_email").html(
                             `<div class="alert my-2 alert-danger alert-dismissible fade show" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        Something went wrong. Please contact us at this email info@palgbc.org
+                        <div class="alert-content">
+                            <i class="fa fa-exclamation-circle alert-icon"></i>
+                            <span>${__('Something went wrong. Please contact us at this email info@palgbc.org')}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                     </div>`
                         );
 
-                        logErrorRecursively(xhr.responseJSON);
+                        if (typeof logErrorRecursively === 'function') {
+                            logErrorRecursively(xhr.responseJSON);
+                        }
                     },
                 });
             });
@@ -98,21 +161,27 @@
 
         $("#requestClientEmail").on("show.bs.modal", function (e) {
             const targetButton = e.relatedTarget; // Button that triggered the modal
-            // check if has attr
+
+            // Update texts when modal opens
+            updateModalTexts();
+
+            // Check if certificate request attribute exists
             if (
-                targetButton.getAttribute(
-                    "data-bs-request-for-client-certifcate"
-                ) === "1"
+                targetButton &&
+                targetButton.getAttribute("data-bs-request-for-client-certifcate") === "1"
             ) {
                 $("#expert_certifcate_request").attr(
                     "value",
-                    targetButton.getAttribute(
-                        "data-bs-request-for-client-certifcate"
-                    )
+                    targetButton.getAttribute("data-bs-request-for-client-certifcate")
                 );
             } else {
-                $("#expert_certifcate_request").attr("value", 0);
+                $("#expert_certifcate_request").attr("value", "0");
             }
+
+            // Clear previous form values and errors
+            $(".requestForClentEmailForm")[0].reset();
+            $("#success").html("");
+            $(".errors_client_email").addClass("d-none").html("");
         });
         // handleRequestForClientEmail("#requestForCertificate");
         //jQuery for page scrolling feature - requires jQuery Easing plugin

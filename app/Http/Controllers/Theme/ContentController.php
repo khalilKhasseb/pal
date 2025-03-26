@@ -20,11 +20,12 @@ use Illuminate\Support\Facades\Session;
 class ContentController extends Controller
 {
 
-    public function like_post(Post $post, Request $request)
+    public function like_post(int $id, Request $request)
     {
 
         // check for ip
-
+         $post = Post::withoutGlobalScopes()
+         ->find($id);
         if ($post->checkIfHasLikeForThisIp($request->getClientIp())) {
 
             $this->dislike_post($post, $request);
