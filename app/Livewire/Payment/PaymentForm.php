@@ -33,7 +33,7 @@ class PaymentForm extends Component
         'classification' => 'required|string|max:255', // Fixed typo
         'amount' => 'required|numeric|min:1',
         'contact_before_payment' => 'boolean',
-        'recaptcha' => 'required|captcha'
+        // 'recaptcha' => 'required|captcha'
 
     ];
 

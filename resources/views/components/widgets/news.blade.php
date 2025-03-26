@@ -8,7 +8,9 @@
     <ul class="latest-news">
         @if($content === true)
         @php
-        $posts = App\Models\Post::limit(3)->get();
+        $posts = App\Models\Post::limit(3)
+        ->orderBy('published_at', 'desc')
+        ->get();
         @endphp
         @if(!is_null($posts) && !empty($posts))
         @foreach ($posts as $post)
