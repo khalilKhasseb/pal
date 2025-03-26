@@ -47,7 +47,7 @@
                             <div class="course-info-grid">
                                 <div class="info-card">
                                     <div class="info-icon">
-                                        <i class="fa fa-calendar-check"></i>
+                                        <i class="fa fa-calendar-check-o"></i>
                                     </div>
                                     <div class="info-content">
                                         <h4>{{ __('Start date') }}</h4>
@@ -57,7 +57,7 @@
                                 
                                 <div class="info-card">
                                     <div class="info-icon">
-                                        <i class="fa fa-calendar-times"></i>
+                                        <i class="fa fa-calendar"></i>
                                     </div>
                                     <div class="info-content">
                                         <h4>{{ __('End date') }}</h4>
@@ -67,7 +67,7 @@
                                 
                                 <div class="info-card">
                                     <div class="info-icon">
-                                        <i class="fa fa-dollar-sign"></i>
+                                        <i class="fa fa-money"></i>
                                     </div>
                                     <div class="info-content">
                                         <h4>{{ __('Fees') }}</h4>

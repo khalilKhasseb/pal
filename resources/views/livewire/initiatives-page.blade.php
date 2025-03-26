@@ -1,141 +1,535 @@
 <x-slot name="header">
-    <h2 class="capitalize">{{ $pageTitle }}</h2>
+    <div class="page-header">
+        <h2 class="capitalize">{{ $pageTitle }}</h2>
+    </div>
 </x-slot>
 
-@push('styles')
-<style>
-    .active{
-        background-color:#75ba75;
-        color: white;
-    }
-    </style>
-    
-@endpush
-<div class="container mb-4">
-    <div x-data="inititavis" class="row">
-        <!-- Supporters side -->
-
-        <div class="pt-3 col-12 col-md-2 col-lg-4">
-            <h4 class="mb-1 text-dark">{{ __('Supporters') }}</h4>
-            <hr />
-            <ul>
-                <template x-for="(sup,index) in supporters">
-                    <li x-bind:class="index === activeIndex ? 'active' : ''"  style="cursor:pointer;transtion:background-color 0.5s , color 0.5s;" x-on:click="loadSupporter(sup , index)" x-text="sup.name.{{ app()->getLocale() }}"
-                        class="p-2 my-1 text-black border" ></li>
-                </template>
-            </ul>
-        </div>
-        <!-- Supporters side -->
-
-        <div class="pt-3 col-12 col-md-10 col-lg-8">
-            <div class="d-flex justify-content-between align-items-center">
+<div class="supporters-section">
+    <div class="container">
+        <div x-data="inititavis" class="supporters-container">
+            <!-- Initiatives Tabs -->
+            <div class="initiatives-tabs">
                 @foreach ($initiatives as $initiative)
-                    <h4 style="cursor:pointer"
-                        @if ($loop->first) x-init="supporters = @JS($initiative->supporters) ; supporter =@JS($initiative->supporters[0]) " @endif
+                    <button 
+                        @if ($loop->first) x-init="supporters = @JS($initiative->supporters); supporter = @JS($initiative->supporters[0])" @endif
                         x-on:click="loadSupporters({{ $loop->index }})"
-                        x-bind:class="`px-2 py-2 text-center text-white ms-1 d-block w-100   ${activeInitiativeIndex === {{ $loop->index }} ? 'bg-success' : 'bg-dark'}`"
-                        >
+                        :class="{ 'active': activeInitiativeIndex === {{ $loop->index }} }"
+                        class="initiative-tab">
                         {{ $initiative->title }}
-                    </h4>
+                    </button>
                 @endforeach
             </div>
-
-
-            <div class="p-2 ms-1 supporter-content" style="background-color: #eee">
-
-                <template x-if="supporter !== null">
-                    <div>
-                        <div class="p-2 bg-white rounded d-flex justify-content-between align-items-start">
-
-                            <div class="info">
-                                <h3 class="mb-2 text-dark"
-                                    x-text="supporter.name && supporter.name.{{ app()->getLocale() }}">
-
-                                </h3>
-                                <hr />
-                                <dl class="row">
-                                    <dt class="col-sm-3">{{ __('Location') }}</dt>
-                                    <dd class="col-sm-9" x-text="supporter.location.{{ app()->getLocale() }}"> </dd>
-
-                                    <dt class="col-sm-3">{{ __('Website') }}</dt>
-                                    <dd class="col-sm-9"><a class="link-info"
-                                            :href="supporter.webiste !== null && supporter.website"
-                                            x-text="supporter.website ? '{{ __('Vist') }}' : '{{ __('Unaviablel') }}'">{{ __('Vist') }}</a>
-                                    </dd>
-
-                                    <dt class="col-sm-3">{{ __('Contact info') }}</dt>
-                                    <dd class="col-sm-9" x-text="supporter.contact_info"> </dd>
-
-                                    <dt class="col-sm-3">{{ __('Phone') }}</dt>
-                                    <dd class="col-sm-9"
-                                        x-text="supporter.phone !== null ? supporter.phone :'{{ __('Unaviablel') }}'">
-                                    </dd>
-
-
-
-                                </dl>
-
-                                <dl>
-                                    <dt class="col-sm-3">{{ __('Supported project styps') }}</dt>
-                                    <dd class="col-sm-9"
-                                        x-text="supporter.supported_project_types.map(item => item.name.{{ app()->getLocale() }}).join(', ')">
-                                    </dd>
-
-                                    <dt class="col-sm-3">{{ __('Supported projects') }}</dt>
-                                    <dd class="col-sm-9"
-                                        x-text="supporter.supported_projects.map(item => item.name.{{ app()->getLocale() }}).join(', ')">
-                                    </dd>
-                                </dl>
-
+            
+            <div class="content-wrapper">
+                <!-- Supporters Sidebar -->
+                <div class="supporters-sidebar">
+                    <div class="sidebar-header">
+                        <h3>{{ __('Supporters') }}</h3>
+                    </div>
+                    <div class="supporters-list">
+                        <template x-for="(sup, index) in supporters">
+                            <div 
+                                x-on:click="loadSupporter(sup, index)" 
+                                :class="{ 'active': index === activeIndex }"
+                                class="supporter-list-item">
+                                <span x-text="sup.name.{{ app()->getLocale() }}"></span>
                             </div>
-                            <div class="w-25 align-self-center">
-                                <img :src="supporter.media[0].original_url" alt=""
-                                    class="rounded d-block mw-100">
-
+                        </template>
+                    </div>
+                </div>
+                
+                <!-- Supporter Details -->
+                <div class="supporter-details">
+                    <template x-if="supporter !== null">
+                        <div class="supporter-content">
+                            <!-- Supporter Header -->
+                            <div class="supporter-header">
+                                <div class="supporter-logo">
+                                    <img :src="supporter.media[0].original_url" alt="Supporter logo" class="logo-img">
+                                </div>
+                                <div class="supporter-title">
+                                    <h2 x-text="supporter.name && supporter.name.{{ app()->getLocale() }}"></h2>
+                                </div>
+                            </div>
+                            
+                            <!-- Contact Information -->
+                            <div class="info-card">
+                                <div class="card-header">
+                                    <h3>{{ __('Contact Information') }}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="info-rows">
+                                        <!-- Location -->
+                                        <div class="info-row">
+                                            <div class="info-label">
+                                                <i class="fa fa-map-marker-alt"></i>
+                                                <span>{{ __('Location') }}</span>
+                                            </div>
+                                            <div class="info-value" x-text="supporter.location.{{ app()->getLocale() }}"></div>
+                                        </div>
+                                        
+                                        <!-- Website -->
+                                        <div class="info-row">
+                                            <div class="info-label">
+                                                <i class="fa fa-globe"></i>
+                                                <span>{{ __('Website') }}</span>
+                                            </div>
+                                            <div class="info-value">
+                                                <a :href="supporter.website" target="_blank" class="website-link" 
+                                                   x-text="supporter.website ? '{{ __('Visit') }}' : '{{ __('Unavailable') }}'"></a>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Contact Info -->
+                                        <div class="info-row">
+                                            <div class="info-label">
+                                                <i class="fa fa-envelope"></i>
+                                                <span>{{ __('Contact info') }}</span>
+                                            </div>
+                                            <div class="info-value" x-text="supporter.contact_info || '{{ __('Unavailable') }}'"></div>
+                                        </div>
+                                        
+                                        <!-- Phone -->
+                                        <div class="info-row">
+                                            <div class="info-label">
+                                                <i class="fa fa-phone"></i>
+                                                <span>{{ __('Phone') }}</span>
+                                            </div>
+                                            <div class="info-value" x-text="supporter.phone || '{{ __('Unavailable') }}'"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Support Details -->
+                            <div class="info-card">
+                                <div class="card-header">
+                                    <h3>{{ __('Support Details') }}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="info-rows">
+                                        <!-- Project Types -->
+                                        <div class="info-row">
+                                            <div class="info-label">
+                                                <i class="fa fa-project-diagram"></i>
+                                                <span>{{ __('Supported project types') }}</span>
+                                            </div>
+                                            <div class="info-value">
+                                                <div class="tags-wrapper" x-show="supporter.supported_project_types && supporter.supported_project_types.length > 0">
+                                                    <template x-for="type in supporter.supported_project_types">
+                                                        <div class="tag-item" x-text="type.name.{{ app()->getLocale() }}"></div>
+                                                    </template>
+                                                </div>
+                                                <span x-show="!supporter.supported_project_types || supporter.supported_project_types.length === 0">
+                                                    {{ __('No supported project types') }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Supported Projects -->
+                                        <div class="info-row">
+                                            <div class="info-label">
+                                                <i class="fa fa-tasks"></i>
+                                                <span>{{ __('Supported projects') }}</span>
+                                            </div>
+                                            <div class="info-value">
+                                                <div class="tags-wrapper" x-show="supporter.supported_projects && supporter.supported_projects.length > 0">
+                                                    <template x-for="project in supporter.supported_projects">
+                                                        <div class="tag-item" x-text="project.name.{{ app()->getLocale() }}"></div>
+                                                    </template>
+                                                </div>
+                                                <span x-show="!supporter.supported_projects || supporter.supported_projects.length === 0">
+                                                    {{ __('No supported projects') }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- About Supporter -->
+                            <div class="info-card">
+                                <div class="card-header">
+                                    <h3>{{ __('About') }}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="about-content" x-text="supporter.about.{{ app()->getLocale() }}"></div>
+                                </div>
                             </div>
                         </div>
-                        <p class="p-2 mt-2 bg-white rounded lead text-dark"
-                            x-text="supporter.about.{{ app()->getLocale() }}">
-
-                        </p>
-                    </div>
-                </template>
+                    </template>
+                </div>
             </div>
         </div>
     </div>
 </div>
+@push('styles')
+    
 
+<style>
+:root {
+    --primary-color: #78b843;
+    --primary-hover: #68a336;
+    --secondary-color: #4a6741;
+    --dark-color: #2c3e2e;
+    --light-color: #f9fcf7;
+    --border-color: #dbe9d3;
+    --text-color: #333;
+    --meta-color: #666;
+    --bg-light: #f4f9f0;
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: 20px;
+}
+
+.page-header h2 {
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+/* Supporters Section */
+.supporters-section {
+    padding: 30px 0 60px;
+    background-color: var(--light-color);
+}
+
+.supporters-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Initiative Tabs */
+.initiatives-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.initiative-tab {
+    background-color: var(--dark-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.initiative-tab:hover {
+    background-color: #3a4f3c;
+}
+
+.initiative-tab.active {
+    background-color: var(--primary-color);
+}
+
+/* Content Wrapper - RTL Aware */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 25px;
+}
+
+/* html[dir="rtl"] .content-wrapper {
+    grid-template-columns: 1fr 300px;
+} */
+
+/* Supporters Sidebar */
+.supporters-sidebar {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+}
+
+.sidebar-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.supporters-list {
+    padding: 10px 0;
+}
+
+.supporter-list-item {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.supporter-list-item:hover {
+    background-color: var(--light-color);
+}
+
+.supporter-list-item.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Supporter Details */
+.supporter-details {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.supporter-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Supporter Header */
+.supporter-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+html[dir="rtl"] .supporter-header {
+    flex-direction: row-reverse;
+}
+
+.supporter-logo {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.supporter-title h2 {
+    margin: 0;
+    color: var(--dark-color);
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* Info Card */
+.info-card {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.card-header {
+    background-color: var(--light-color);
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Info Rows - New Structure for RTL */
+.info-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-row {
+    display: flex;
+    gap: 20px;
+}
+
+html[dir="rtl"] .info-row {
+    /* flex-direction: row-reverse; */
+}
+
+.info-label {
+    flex: 0 0 200px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--meta-color);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+html[dir="rtl"] .info-label {
+    /* flex-direction: row-reverse; */
+    text-align: right;
+}
+
+.info-label i {
+    color: var(--primary-color);
+    width: 16px;
+    text-align: center;
+}
+
+.info-value {
+    flex: 1;
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+html[dir="rtl"] .info-value {
+    text-align: right;
+}
+
+.website-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.website-link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Tags */
+.tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-item {
+    display: inline-block;
+    background-color: var(--bg-light);
+    color: var(--secondary-color);
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 14px;
+}
+
+/* About Content */
+.about-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+html[dir="rtl"] .about-content {
+    text-align: right;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    html[dir="rtl"] .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    html[dir="rtl"] .info-row {
+        flex-direction: column;
+    }
+    
+    .info-label {
+        flex: 0 0 auto;
+    }
+    
+    .supporter-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    html[dir="rtl"] .supporter-header {
+        flex-direction: column;
+    }
+    
+    .supporter-title {
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .supporters-section {
+        padding: 20px 0 40px;
+    }
+    
+    .initiative-tab {
+        flex: 1 0 calc(50% - 10px);
+        text-align: center;
+    }
+    
+    html[dir="rtl"] .initiative-tab {
+        text-align: center;
+    }
+}
+</style>
+@endpush
 @script
-    <script>
-        Alpine.data('inititavis', () => ({
-
-            init() {
-                this.inititaives = @JS($initiatives);
-
-            },
-            active: false,
-            activeIndex: 0,
-            activeInitiativeIndex: 0,
-            inititaives: null,
-            supporters: [],
-            supporter: null,
-
-            loadSupporter(sup , index) {
-                this.supporter = sup;
-                this.activeIndex = index
-            },
-            loadSupporters(index) {
-                //   console.log(this.inititaives[index].supporters)
-                this.supporters = this.inititaives[index].supporters
-                // this.supporter = this.supporters[0]
-                // this.loadSupporter(this.supporters[0])
-
-                this.activeInitiativeIndex = index
-
-            },
-
-
-
-        }))
-    </script>
+<script>
+    Alpine.data('inititavis', () => ({
+        init() {
+            this.inititaives = @JS($initiatives);
+        },
+        active: false,
+        activeIndex: 0,
+        activeInitiativeIndex: 0,
+        inititaives: null,
+        supporters: [],
+        supporter: null,
+        
+        loadSupporter(sup, index) {
+            this.supporter = sup;
+            this.activeIndex = index;
+            
+            // Scroll to top of supporter details on mobile
+            if (window.innerWidth < 992) {
+                document.querySelector('.supporter-details').scrollIntoView({ behavior: 'smooth' });
+            }
+        },
+        
+        loadSupporters(index) {
+            this.supporters = this.inititaives[index].supporters;
+            
+            // Reset the active supporter to the first one in the list
+            if (this.supporters && this.supporters.length > 0) {
+                this.supporter = this.supporters[0];
+                this.activeIndex = 0;
+            } else {
+                this.supporter = null;
+            }
+            
+            this.activeInitiativeIndex = index;
+        }
+    }))
+</script>
 @endscript
