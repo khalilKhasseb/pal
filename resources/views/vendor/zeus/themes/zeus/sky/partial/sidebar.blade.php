@@ -2,7 +2,6 @@
 <div class="sidebar">
     @include($skyTheme.'.partial.sidebar.search')
 
-    @include($skyTheme.'.partial.sidebar.categories')
 
     @include($skyTheme.'.partial.sidebar.recent')
 
