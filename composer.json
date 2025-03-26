@@ -28,6 +28,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "3.5.12",
+        "mpdf/mpdf": "^8.2",
         "nztim/mailchimp": "^5.4",
         "owenvoke/blade-fontawesome": "^2.6",
         "spatie/simple-excel": "^3.6",
